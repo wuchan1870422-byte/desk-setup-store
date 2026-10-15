@@ -1,0 +1,18 @@
+import Image from "next/image";
+import Link from "next/link";
+import type { Metadata } from "next";
+import { ProductCollection } from "@/components/product-collection";
+import { Icon } from "@/components/icons";
+
+export const metadata: Metadata = { alternates: { canonical: "/" } };
+
+export default function Home() {
+  return <>
+    <section className="hero"><div className="hero-copy"><div className="eyebrow hero-eyebrow"><span className="short-line" /> LESS CLUTTER. MORE CLARITY.</div><h1>A little order.<br />A <em>clearer</em> day.</h1><p>Make space for what matters.<br />Simple desk and tech essentials for a more<br className="desktop-break" /> considered everyday.</p><Link href="#collection" className="button button-dark">Explore the collection <Icon name="arrow" /></Link><div className="hero-footnote"><span className="tiny-star">✳</span> Small details. A calmer workspace.</div></div><div className="hero-visual"><Image src="/images/desk-scene.svg" alt="Illustrative workspace with an oak-look desk shelf, sage cable holder, sand tech pouch and warm natural light" width={1000} height={1000} priority /><div className="hero-image-label"><span className="status-dot" /> THE ART OF A LITTLE LESS</div><span className="hero-demo-label">Illustrative scene · demo products</span><div className="hero-caption"><span>01 — THE EVERYDAY WORKSPACE</span><span>Space to focus. Room to breathe.</span></div></div></section>
+    <div className="value-strip"><span><Icon name="sun" size={18} /> Designed around everyday routines</span><span><Icon name="box" size={18} /> An Australia-focused collection</span><span><Icon name="leaf" size={18} /> Fewer things, more intention</span></div>
+    <ProductCollection />
+    <section id="our-approach" className="approach-section section-shell"><div className="approach-art"><Image src="/images/desk-detail.svg" alt="Demo illustration of a neatly arranged notebook, charging cable and desk shelf" width={800} height={650} /><span className="image-demo-label">ILLUSTRATIVE WORKSPACE</span></div><div className="approach-copy"><span className="eyebrow">A MORE CONSIDERED EVERYDAY</span><h2>Your space.<br />A little more <em>you.</em></h2><p>We’re building a small collection around a simple idea: the things on your desk should earn their place.</p><p>A home for a cable. A little extra space. Your daily kit, ready to go. Useful details that help your space feel like your own.</p><Link href="/contact/" className="text-link">Meet the store concept <Icon name="arrow" size={18} /></Link></div></section>
+    <section className="reasons-section section-shell"><div className="section-heading"><div><span className="eyebrow">OUR POINT OF VIEW</span><h2>Good things, kept simple.</h2></div></div><div className="reasons-grid"><article><span className="reason-number">01 /</span><h3>A place for the essentials</h3><p>A focused collection built around real desk routines, from tangled leads to everyday carry.</p></article><article><span className="reason-number">02 /</span><h3>Details up front</h3><p>Dimensions, materials and delivery information in one place. Every unverified demo detail is labelled.</p></article><article><span className="reason-number">03 /</span><h3>Room to explore</h3><p>Browse the concepts and try the bag. This preview accepts no payments and collects no order details.</p></article></div></section>
+    <section className="closing-note"><span className="eyebrow">MAKE A LITTLE SPACE</span><h2>For the work.<br />And everything after.</h2><Link href="#collection" className="button button-light">Find your everyday essentials <Icon name="arrow" size={18} /></Link></section>
+  </>;
+}

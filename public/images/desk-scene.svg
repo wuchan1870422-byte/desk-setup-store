@@ -1,0 +1,80 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 1000" role="img"><title>Fictional calm workspace with three demo desk essentials</title><defs>
+<linearGradient id="bg" x2="1" y2="1"><stop stop-color="#f0eee6"/><stop offset="1" stop-color="#dddcd1"/></linearGradient>
+<linearGradient id="oak" x2="0" y2="1"><stop stop-color="#d6b78c"/><stop offset=".5" stop-color="#c7a273"/><stop offset="1" stop-color="#bc9564"/></linearGradient>
+<linearGradient id="oakside" x2="0" y2="1"><stop stop-color="#b28c5d"/><stop offset="1" stop-color="#947044"/></linearGradient>
+<linearGradient id="sage" x2="0" y2="1"><stop stop-color="#a4b096"/><stop offset="1" stop-color="#708064"/></linearGradient>
+<linearGradient id="sand" x2="0" y2="1"><stop stop-color="#d8ccb8"/><stop offset="1" stop-color="#b4a387"/></linearGradient>
+<linearGradient id="screen" x2="1" y2="1"><stop stop-color="#cdd3c0"/><stop offset=".5" stop-color="#bec8ac"/><stop offset="1" stop-color="#939e84"/></linearGradient>
+<linearGradient id="dark" x2="1" y2="1"><stop stop-color="#41483e"/><stop offset="1" stop-color="#242d26"/></linearGradient>
+<linearGradient id="wall" x2="1" y2=".6"><stop stop-color="#ece9df"/><stop offset="1" stop-color="#dddccf"/></linearGradient>
+<linearGradient id="desk" x2=".5" y2="1"><stop stop-color="#e5dbca"/><stop offset="1" stop-color="#cfc1ab"/></linearGradient>
+<filter id="shadow" x="-50%" y="-80%" width="210%" height="280%"><feGaussianBlur stdDeviation="13"/></filter>
+<filter id="smallshadow" x="-40%" y="-70%" width="200%" height="250%"><feGaussianBlur stdDeviation="5"/></filter>
+<pattern id="fabric" width="4" height="4" patternUnits="userSpaceOnUse"><path d="M0 0h4M0 2h4M0 0v4M2 0v4" stroke="#8e7e64" stroke-width=".25" opacity=".25"/></pattern>
+<pattern id="grain" width="110" height="14" patternUnits="userSpaceOnUse"><path d="M0 4c34-4 50 7 110 0M0 10c32 4 65-5 110 0" fill="none" stroke="#8c6a43" stroke-width=".7" opacity=".14"/></pattern>
+</defs>
+<rect width="1000" height="1000" fill="url(#wall)"/>
+<path d="M0 0h270L1000 800v200H730L0 200Z" fill="#fffdf3" opacity=".25"/>
+<path d="M390 0h80l530 560v84Z" fill="#fffdf4" opacity=".27"/>
+<path d="M0 565 1000 495v505H0Z" fill="url(#desk)"/>
+<path d="M0 565 1000 495" stroke="#b7b49f" stroke-width="3" opacity=".4"/>
+<path d="M70 680 870 535 1000 635v310L345 1000Z" fill="#8b8b70" opacity=".1"/>
+<ellipse cx="494" cy="765" rx="355" ry="40" fill="#69705a" opacity=".17" filter="url(#shadow)"/>
+<!-- Monitor and its shadow -->
+<path d="m296 534 300-28 128 161-346 24Z" fill="#8a8c74" opacity=".17" filter="url(#shadow)"/>
+<path d="m470 453 82-7 7 144-85 11Z" fill="#a5a997"/>
+<path d="m439 580 161-17 65 31-166 22Z" fill="#bec0af"/>
+<path d="m220 224 426-25c20-1 29 11 29 28v280c0 19-10 29-26 32l-417 39c-18 2-30-11-30-31V253c0-17 5-28 18-29Z" fill="#293229"/>
+<path d="m216 239 443-27v301l-443 40Z" fill="url(#screen)"/>
+<path d="M216 459c114-98 192-103 264-34 65 62 111 3 179-45v133l-443 40Z" fill="#a4b094"/>
+<path d="M216 511c77-38 145-8 216-38 96-41 149-10 227-7v47l-443 40Z" fill="#788e6f"/>
+<path d="M216 538c95-19 170-4 243-30 62-22 132-13 200-25v30l-443 40Z" fill="#6a8060"/>
+<ellipse cx="575" cy="303" rx="27" ry="28" fill="#e5e6cd" opacity=".7"/>
+<path d="m220 224 426-25" stroke="#5b6351" stroke-width="3"/>
+<!-- Shelf -->
+<path d="m218 649 28-6 5 102-30 10Z" fill="#303a2c"/>
+<path d="m707 607 25 5 3 103-29-6Z" fill="#303a2c"/>
+<path d="m165 610 452-66 169 60-452 85Z" fill="url(#oak)"/>
+<path d="m165 610 169 79v22l-169-78Z" fill="#ad8657"/>
+<path d="m334 689 452-85v22l-452 85Z" fill="url(#oakside)"/>
+<path d="m165 610 452-66 169 60-452 85Z" fill="url(#grain)"/>
+<path d="m168 610 166 77 447-83" stroke="#e6c79d" fill="none" stroke-width="2"/>
+<!-- keyboard -->
+<ellipse cx="425" cy="797" rx="194" ry="19" fill="#69725a" opacity=".15" filter="url(#smallshadow)"/>
+<path d="m237 757 267-37 127 57-266 47Z" fill="#d4d4c4"/>
+<path d="m237 757 128 67v9l-128-66Z" fill="#b7bba8"/>
+<path d="m365 824 266-47v9l-266 47Z" fill="#c5c9b5"/>
+<g stroke="#b1b8a2" stroke-width="4" opacity=".8"><path d="m261 757 237-33M277 769l237-35M294 781l238-38M311 792l238-39M328 805l238-41"/><path d="m294 753 69 47m-43-51 70 47m-42-51 70 46m-42-51 69 46m-42-50 69 45m-42-49 69 43m-42-48 69 44m-42-48 69 43"/></g>
+<!-- mouse -->
+<ellipse cx="703" cy="775" rx="41" ry="18" fill="#647151" opacity=".17" filter="url(#smallshadow)"/>
+<path d="M666 766c-10-18 4-44 20-50 17-7 47 5 52 28 5 20-16 40-35 41-17 2-30-6-37-19Z" fill="#e0e0d0"/>
+<path d="m685 725 11 19" stroke="#c2c6b2" stroke-width="2"/>
+<!-- Cable holder on near left -->
+<ellipse cx="175" cy="865" rx="86" ry="15" fill="#647253" opacity=".2" filter="url(#smallshadow)"/>
+<path d="m101 825 132-21 43 24-132 26Z" fill="#96a580"/>
+<path d="m101 825 43 29v23l-43-27Z" fill="#71845e"/>
+<path d="m144 854 132-26v22l-132 27Z" fill="#81946d"/>
+<g stroke="#5c744a" stroke-width="7" stroke-linecap="round"><path d="m129 825 22 16m5-20 22 15m5-20 22 15m5-20 22 15m5-20 22 15"/></g>
+<path d="M152 835c-22-44-93-45-93-85s38-48 45-75M206 825c-10-25-49-47-37-80" fill="none" stroke="#f1efe0" stroke-width="6"/>
+<!-- Tech pouch -->
+<ellipse cx="825" cy="863" rx="124" ry="24" fill="#736b54" opacity=".18" filter="url(#shadow)"/>
+<path d="m758 766 118-17c24-4 46 9 53 31l22 63c6 18-4 35-23 39l-126 23c-25 4-44-11-50-31l-18-60c-6-22 3-43 24-48Z" fill="#a89b81"/>
+<path d="m752 750 120-17c24-4 46 9 53 30l21 60c6 18-5 34-24 38l-126 24c-25 4-44-11-50-31l-18-58c-6-20 4-41 24-46Z" fill="url(#sand)"/>
+<path d="m752 750 120-17c24-4 46 9 53 30l21 60c6 18-5 34-24 38l-126 24c-25 4-44-11-50-31l-18-58c-6-20 4-41 24-46Z" fill="url(#fabric)"/>
+<path d="m750 763 121-18c19-3 37 9 42 25l18 52c4 13-3 25-18 28l-116 22c-18 3-35-8-40-23l-17-50c-6-17-1-30 10-36Z" fill="none" stroke="#8d8066" stroke-width="3"/>
+<rect x="800" y="798" width="44" height="21" rx="2" fill="#c2b297" transform="rotate(-10 822 808)"/>
+<path d="m770 855 7 31" stroke="#4c5543" stroke-width="7" stroke-linecap="round"/>
+<!-- Plant to right -->
+<ellipse cx="877" cy="629" rx="65" ry="17" fill="#69775b" opacity=".18" filter="url(#smallshadow)"/>
+<path d="m836 550 78-9-7 80c-1 19-52 26-57 6Z" fill="#bfc1ad"/>
+<ellipse cx="875" cy="547" rx="40" ry="15" fill="#d1d0be"/>
+<ellipse cx="875" cy="547" rx="31" ry="9" fill="#6d6d50"/>
+<path d="M877 545c7-76-11-145-34-184m35 145c23-42 48-67 72-81m-72 66c-29-26-56-45-77-45m73-6c9-43 28-73 49-93" fill="none" stroke="#657548" stroke-width="5"/>
+<g fill="#7d8d56"><ellipse cx="834" cy="373" rx="17" ry="45" transform="rotate(-35 834 373)"/><ellipse cx="912" cy="374" rx="16" ry="40" transform="rotate(35 912 374)"/><ellipse cx="815" cy="445" rx="17" ry="42" transform="rotate(-65 815 445)"/><ellipse cx="933" cy="433" rx="16" ry="43" transform="rotate(55 933 433)"/></g>
+<g fill="#5d7445"><ellipse cx="852" cy="420" rx="14" ry="39" transform="rotate(-31 852 420)"/><ellipse cx="897" cy="470" rx="14" ry="36" transform="rotate(30 897 470)"/></g>
+<!-- cup on shelf -->
+<ellipse cx="251" cy="616" rx="32" ry="11" fill="#7c795b" opacity=".2" filter="url(#smallshadow)"/>
+<path d="M226 559h44l-3 49c-2 13-35 14-38 0Z" fill="#e2dfcf"/>
+<ellipse cx="248" cy="559" rx="22" ry="7" fill="#d0c8b3"/><ellipse cx="248" cy="560" rx="17" ry="4" fill="#705d43"/>
+<path d="M270 571c25-9 27 28-1 26" fill="none" stroke="#d8d5c4" stroke-width="7"/>
+</svg>

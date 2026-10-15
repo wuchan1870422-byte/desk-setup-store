@@ -1,0 +1,28 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 650" role="img"><title>Illustrative notebook and cable in a calm desk workspace</title><defs>
+<linearGradient id="bg" x2="1" y2="1"><stop stop-color="#f0eee6"/><stop offset="1" stop-color="#dddcd1"/></linearGradient>
+<linearGradient id="oak" x2="0" y2="1"><stop stop-color="#d6b78c"/><stop offset=".5" stop-color="#c7a273"/><stop offset="1" stop-color="#bc9564"/></linearGradient>
+<linearGradient id="oakside" x2="0" y2="1"><stop stop-color="#b28c5d"/><stop offset="1" stop-color="#947044"/></linearGradient>
+<linearGradient id="sage" x2="0" y2="1"><stop stop-color="#a4b096"/><stop offset="1" stop-color="#708064"/></linearGradient>
+<linearGradient id="sand" x2="0" y2="1"><stop stop-color="#d8ccb8"/><stop offset="1" stop-color="#b4a387"/></linearGradient>
+<linearGradient id="screen" x2="1" y2="1"><stop stop-color="#cdd3c0"/><stop offset=".5" stop-color="#bec8ac"/><stop offset="1" stop-color="#939e84"/></linearGradient>
+<linearGradient id="dark" x2="1" y2="1"><stop stop-color="#41483e"/><stop offset="1" stop-color="#242d26"/></linearGradient>
+<linearGradient id="wall" x2="1" y2=".6"><stop stop-color="#ece9df"/><stop offset="1" stop-color="#dddccf"/></linearGradient>
+<linearGradient id="desk" x2=".5" y2="1"><stop stop-color="#e5dbca"/><stop offset="1" stop-color="#cfc1ab"/></linearGradient>
+<filter id="shadow" x="-50%" y="-80%" width="210%" height="280%"><feGaussianBlur stdDeviation="13"/></filter>
+<filter id="smallshadow" x="-40%" y="-70%" width="200%" height="250%"><feGaussianBlur stdDeviation="5"/></filter>
+<pattern id="fabric" width="4" height="4" patternUnits="userSpaceOnUse"><path d="M0 0h4M0 2h4M0 0v4M2 0v4" stroke="#8e7e64" stroke-width=".25" opacity=".25"/></pattern>
+<pattern id="grain" width="110" height="14" patternUnits="userSpaceOnUse"><path d="M0 4c34-4 50 7 110 0M0 10c32 4 65-5 110 0" fill="none" stroke="#8c6a43" stroke-width=".7" opacity=".14"/></pattern>
+</defs>
+<rect width="800" height="650" fill="#d8ddcc"/>
+<path d="M0 100 800 500M0 240 800 640" stroke="#f9f7e8" stroke-width="75" opacity=".18"/>
+<path d="M-50 81 690-30l160 83-744 139Z" fill="url(#oak)"/>
+<path d="M-50 81 106 192l744-139v25L106 218-50 108Z" fill="#ad8759"/>
+<path d="m70 201 26 5 4 121-25-4Z" fill="#394431"/>
+<ellipse cx="382" cy="422" rx="216" ry="38" fill="#657650" opacity=".19" filter="url(#shadow)"/>
+<g transform="rotate(-17 380 365)"><rect x="220" y="250" width="280" height="270" rx="5" fill="#4d6144"/><rect x="230" y="252" width="270" height="256" rx="3" fill="#eeeadd"/><rect x="235" y="252" width="132" height="256" rx="2" fill="#f7f3e6"/><path d="M369 254v250" stroke="#d5cfbb" stroke-width="2"/><g stroke="#c8cbb7" stroke-width="1" opacity=".8"><path d="M253 291h96m-96 23h96m-96 23h96m-96 23h96m-96 23h96m-96 23h96m-96 23h96m-96 23h96M389 291h91m-91 23h91m-91 23h91m-91 23h91m-91 23h91m-91 23h91m-91 23h91m-91 23h91"/></g><path d="m362 252 4 268 13-9 7 5-6-264Z" fill="#a5af8c"/></g>
+<path d="m559 309 12-4 49 179-12 4Z" fill="#bc925d"/><path d="m608 488 12-4-1 24Z" fill="#d7bd8c"/><path d="m616 501 3 7-5-2Z" fill="#3f4936"/>
+<path d="M50 489c54-74 98-6 102 51s114 58 142 12" fill="none" stroke="#f1eddf" stroke-width="9"/>
+<path d="m58 471 17 8-9 21-17-8Z" fill="#c8c9b8"/>
+<ellipse cx="673" cy="211" rx="50" ry="17" fill="#657750" opacity=".18" filter="url(#smallshadow)"/>
+<path d="m632 159 74-8-6 52c-3 20-57 25-61 4Z" fill="#e6e1d0"/><ellipse cx="669" cy="155" rx="37" ry="12" fill="#d5cbb7"/><ellipse cx="669" cy="156" rx="30" ry="8" fill="#6a5b42"/>
+</svg>

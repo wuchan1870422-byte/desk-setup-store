@@ -1,0 +1,25 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 630" role="img"><title>Desk Setup Store — demo essentials</title><defs>
+<linearGradient id="bg" x2="1" y2="1"><stop stop-color="#f0eee6"/><stop offset="1" stop-color="#dddcd1"/></linearGradient>
+<linearGradient id="oak" x2="0" y2="1"><stop stop-color="#d6b78c"/><stop offset=".5" stop-color="#c7a273"/><stop offset="1" stop-color="#bc9564"/></linearGradient>
+<linearGradient id="oakside" x2="0" y2="1"><stop stop-color="#b28c5d"/><stop offset="1" stop-color="#947044"/></linearGradient>
+<linearGradient id="sage" x2="0" y2="1"><stop stop-color="#a4b096"/><stop offset="1" stop-color="#708064"/></linearGradient>
+<linearGradient id="sand" x2="0" y2="1"><stop stop-color="#d8ccb8"/><stop offset="1" stop-color="#b4a387"/></linearGradient>
+<linearGradient id="screen" x2="1" y2="1"><stop stop-color="#cdd3c0"/><stop offset=".5" stop-color="#bec8ac"/><stop offset="1" stop-color="#939e84"/></linearGradient>
+<linearGradient id="dark" x2="1" y2="1"><stop stop-color="#41483e"/><stop offset="1" stop-color="#242d26"/></linearGradient>
+<linearGradient id="wall" x2="1" y2=".6"><stop stop-color="#ece9df"/><stop offset="1" stop-color="#dddccf"/></linearGradient>
+<linearGradient id="desk" x2=".5" y2="1"><stop stop-color="#e5dbca"/><stop offset="1" stop-color="#cfc1ab"/></linearGradient>
+<filter id="shadow" x="-50%" y="-80%" width="210%" height="280%"><feGaussianBlur stdDeviation="13"/></filter>
+<filter id="smallshadow" x="-40%" y="-70%" width="200%" height="250%"><feGaussianBlur stdDeviation="5"/></filter>
+<pattern id="fabric" width="4" height="4" patternUnits="userSpaceOnUse"><path d="M0 0h4M0 2h4M0 0v4M2 0v4" stroke="#8e7e64" stroke-width=".25" opacity=".25"/></pattern>
+<pattern id="grain" width="110" height="14" patternUnits="userSpaceOnUse"><path d="M0 4c34-4 50 7 110 0M0 10c32 4 65-5 110 0" fill="none" stroke="#8c6a43" stroke-width=".7" opacity=".14"/></pattern>
+</defs>
+<rect width="1200" height="630" fill="#f7f6f2"/>
+<rect x="720" width="480" height="630" fill="#dfe5d8"/>
+<g fill="#243b32"><rect x="70" y="55" width="8" height="29"/><rect x="84" y="43" width="8" height="41"/><rect x="98" y="62" width="8" height="22"/></g>
+<text x="125" y="73" fill="#243b32" font-family="Arial" font-size="23">desk setup store</text>
+<text x="70" y="230" fill="#243b32" font-family="Georgia" font-size="76">A little order.</text>
+<text x="70" y="320" fill="#6d7c59" font-family="Georgia" font-style="italic" font-size="76">A clearer day.</text>
+<text x="74" y="390" fill="#62685f" font-family="Arial" font-size="22">Desk and tech essentials for your everyday.</text>
+<text x="74" y="537" fill="#62685f" font-family="Arial" font-size="17">AU / AUD · DEMO STORE · NO LIVE CHECKOUT</text>
+<g transform="translate(620 115) scale(.82)"><path d="m117 242 335-82 149 73-333 93Z" fill="url(#oak)"/><path d="m117 242 151 84v24l-151-84Z" fill="#ae8659"/><path d="m268 326 333-93v23l-333 94Z" fill="url(#oakside)"/><path d="m171 282 31-17 3 126-31 13Z" fill="#2a312a"/><path d="m523 278 28-13-1 116-30-6Z" fill="#2b322b"/></g>
+</svg>
