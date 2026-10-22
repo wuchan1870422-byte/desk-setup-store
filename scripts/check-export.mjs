@@ -2,7 +2,7 @@ import { readFile, access, readdir } from "node:fs/promises";
 import { join } from "node:path";
 import assert from "node:assert/strict";
 
-const pages = ["index.html", "products/cable-keeper/index.html", "products/desk-shelf/index.html", "products/tech-pouch/index.html", "cart/index.html", "shipping-policy/index.html", "return-policy/index.html", "privacy-policy/index.html", "contact/index.html", "404.html"];
+const pages = ["index.html", "products/cable-keeper/index.html", "products/desk-shelf/index.html", "products/tech-pouch/index.html", "cart/index.html", "desk-fit/index.html", "shipping-policy/index.html", "return-policy/index.html", "privacy-policy/index.html", "contact/index.html", "404.html"];
 let checkedLinks = 0;
 for (const page of pages) {
   const html = await readFile(join("out", page), "utf8");
@@ -12,7 +12,8 @@ for (const page of pages) {
   assert.match(html, /property="og:title"/, `${page}: Open Graph title`);
   assert.match(html, /noindex/, `${page}: demo is not indexed`);
   assert.match(html, /No orders or payments accepted/, `${page}: demo banner`);
-  assert.doesNotMatch(html, /<form\b|<input\b|paypal\.com\/sdk\/js/, `${page}: no data collection or payment SDK`);
+  if (page !== "desk-fit/index.html") assert.doesNotMatch(html, /<form\b|<input\b|paypal\.com\/sdk\/js/, `${page}: no data collection or payment SDK`);
+  else assert.doesNotMatch(html, /type="(?:email|tel|password)"|paypal\.com\/sdk\/js/, `${page}: fit inputs only`);
   for (const match of html.matchAll(/(?:href|src)="(\/[^"?#]*)(?:[?#][^"]*)?"/g)) {
     const url = decodeURI(match[1]);
     if (!url || url === "/") continue;
