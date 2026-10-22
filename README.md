@@ -124,3 +124,7 @@ Official references: [Next.js static exports](https://nextjs.org/docs/app/guides
 Automated checks cover lint, TypeScript, 20 tests (six cart/domain and fourteen sandbox commerce), the separate Worker bundle, exported routes, local links/assets, metadata, demo notices and absence of forms/payment SDKs in the storefront. Provider HTTP responses are mocked; account access and real transactions are unverified. See [docs/VERIFICATION.md](docs/VERIFICATION.md) for actual results and remaining manual acceptance checks.
 
 No real supplier, fulfilment, tax calculation, inventory feed, customer support inbox, analytics provider, PayPal account or payment backend is connected. Draft policies must be finalised for the actual seller. In particular, overseas sellers offering goods directly to Australian consumers must account for Australian Consumer Law and consumer guarantees; see [ACCC's guidance](https://www.accc.gov.au/business/selling-products-and-services/selling-online).
+
+## Desk fit and quote handoff
+
+The `/desk-fit/` page gives concept recommendations from clear desk width, cable count and portability. The demo bag can export a JSON handoff with allowlisted IDs and quantities; no submitted price, payment or order is implied. `tools/launch-lab.html` is a local owner economics tool, not part of the public export. These additions preserve the separate, owner-only `commerce/` Sandbox backend already in this repository.
