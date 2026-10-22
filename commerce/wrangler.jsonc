@@ -1,0 +1,12 @@
+{
+  "name": "desk-setup-sandbox-orders",
+  "main": "worker.ts",
+  "compatibility_date": "2026-10-21",
+  "vars": {
+    "COMMERCE_MODE": "disabled",
+    "STOREFRONT_ORIGIN": "https://desk-setup-store.j-w2007.chatgpt.site"
+  },
+  // After creating a dedicated sandbox D1 database, add its real binding here:
+  // "d1_databases": [{ "binding": "ORDERS", "database_name": "desk-setup-sandbox-orders", "database_id": "<actual ID>", "migrations_dir": "migrations" }]
+  "observability": { "enabled": false }
+}

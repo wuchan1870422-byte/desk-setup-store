@@ -1,0 +1,8 @@
+CREATE TABLE sandbox_orders (
+  id TEXT PRIMARY KEY,
+  request_key TEXT NOT NULL UNIQUE,
+  paypal_id TEXT UNIQUE,
+  capture_id TEXT UNIQUE,
+  state TEXT NOT NULL CHECK (state IN ('CREATING','PENDING','CAPTURING','PAID','FULFILLING','CJ_SANDBOX_PAID','REVIEW')),
+  payload TEXT NOT NULL
+);

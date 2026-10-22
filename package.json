@@ -7,7 +7,8 @@
     "build": "next build --webpack",
     "lint": "eslint . --max-warnings=0",
     "typecheck": "tsc --noEmit",
-    "test": "node --import tsx --test tests/*.test.ts",
+    "test": "node --import tsx --test tests/*.test.ts commerce/tests/*.test.ts",
+    "build:commerce": "node scripts/build-commerce.mjs",
     "check:export": "node scripts/check-export.mjs",
     "preview": "node scripts/serve.mjs"
   },
@@ -17,6 +18,7 @@
     "react-dom": "^19.2.0"
   },
   "devDependencies": {
+    "esbuild": "0.28.2",
     "@tailwindcss/postcss": "^4.1.0",
     "@types/node": "^22.0.0",
     "@types/react": "^19.2.0",

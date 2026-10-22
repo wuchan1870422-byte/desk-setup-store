@@ -1,0 +1,8 @@
+# Sandbox credentials only. Copy to .dev.vars locally; never commit real values.
+SANDBOX_ADMIN_TOKEN=
+PAYPAL_SANDBOX_CLIENT_ID=
+PAYPAL_SANDBOX_SECRET=
+PAYPAL_SANDBOX_WEBHOOK_ID=
+CJ_ACCESS_TOKEN=
+# Prefer CJ_API_KEY for server-side access-token acquisition. Never use an MCP token here.
+CJ_API_KEY=

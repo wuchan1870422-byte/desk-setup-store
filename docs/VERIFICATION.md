@@ -1,12 +1,13 @@
 # Verification
 
-Verified on 15 October 2026 with Node.js 24.19.0. Installed versions are locked: Next.js 16.4.1, React 19.3.1, Tailwind CSS 4.3.3.
+Rechecked on 22 October 2026 with Node.js 24.19.0. Installed versions are locked: Next.js 16.4.1, React 19.3.1, Tailwind CSS 4.3.3.
 
 ## Automated checks
 
 - `npm run lint`: PASS, zero warnings.
 - `npm run typecheck`: PASS.
-- `npm test`: PASS, 6/6 domain/cart cases.
+- `npm test`: PASS, 20/20 cases: six storefront cart/domain cases and fourteen sandbox commerce cases. Commerce persistence tests use real in-memory SQLite; provider responses are mocked.
+- `npm run build:commerce`: PASS, separate sandbox Worker bundle. This does not deploy or connect the backend.
 - `npm run build`: PASS, Next.js production static export; all requested routes generated.
 - `npm run check:export`: PASS, 10 exported HTML files and 218 local route/asset references, metadata, Open Graph, robots, sitemap and absence of forms/payment SDKs.
 - Source scan for common private-key and API-token patterns: no matches in publishable source.
@@ -18,7 +19,7 @@ The layout has desktop, tablet (1100px), mobile (760px) and narrow-mobile (370px
 
 ## Browser verification limit
 
-The managed environment does not provide the required control-browser skill for a local preview. Per the Sites workflow, no alternative preview browser or browser installation was used. Automated HTML/link checks and source-level responsive review do **not** replace rendered desktop/mobile interaction testing. No screenshot-based layout pass or real-device pass is claimed. A long-running local development server was not launched in this environment; use the documented `npm ci && npm run dev` locally. Successful compilation and static export have been verified.
+The original storefront verification on 15 October did not include rendered browser QA because the required browser workflow was unavailable then. The 22 October change adds a separate sandbox backend and leaves storefront components unchanged; no new desktop/mobile interaction pass was performed. Automated HTML/link checks and source-level responsive review do **not** replace rendered desktop/mobile interaction testing. No screenshot-based layout pass or real-device pass is claimed. A long-running local development server was not launched in this environment; use the documented `npm ci && npm run dev` locally. Successful compilation and static export have been verified.
 
 ## Manual acceptance before trading
 
@@ -31,4 +32,4 @@ The managed environment does not provide the required control-browser skill for 
 - Confirm PayPal stays disabled and no real personal data can be submitted.
 - Check direct product/policy navigation on the chosen public host.
 
-Payments, suppliers, fulfilment and real-world logistics are deliberately untested because they do not exist in this MVP.
+Sandbox tests cover server pricing, unique request keys, concurrent capture/callback handling, payment amount/currency/order verification, ambiguous provider failures, sandbox-only endpoints, authentication and configuration guards. They do not prove external account access or a complete PayPal-to-CJ transaction. No payment credentials are connected, no backend is deployed, no real order has been created and no real shipment has been tested. The supplier UI quote is documented separately in `SUPPLIER-VALIDATION.zh-CN.md`.
