@@ -21,13 +21,13 @@ function database() {
 function completed(order: Order) {
   return { id: order.paypalId, status: "COMPLETED", purchase_units: [{ reference_id: order.id, custom_id: order.id, amount: { currency_code: "AUD", value: "39.90" }, payments: { captures: [{ id: "CAPTURE-12345", status: "COMPLETED", final_capture: true, amount: { currency_code: "AUD", value: "39.90" } }] } }] };
 }
-function harness(overrides: { createFails?: boolean; cjFails?: boolean; mismatch?: boolean } = {}) {
+function harness(overrides: { createFails?: boolean; captureFails?: boolean; cjFails?: boolean; mismatch?: boolean } = {}) {
   const db = database();
   const counts = { create: 0, capture: 0, supplier: 0, pay: 0 };
   const verifier = new PayPalSandbox("test-client", "test-secret", "https://example.com");
   const paypal: PaymentGateway = {
     async create() { counts.create++; await Promise.resolve(); if (overrides.createFails) throw new Error("timeout"); return { id: "PAYPAL-12345", approvalUrl: "https://www.sandbox.paypal.com/checkoutnow?token=PAYPAL-12345" }; },
-    async capture(order) { counts.capture++; const payload = completed(order); if (overrides.mismatch) payload.purchase_units[0].payments.captures[0].amount.value = "0.01"; return payload; },
+    async capture(order) { counts.capture++; if (overrides.captureFails) throw new Error("uncertain capture timeout"); const payload = completed(order); if (overrides.mismatch) payload.purchase_units[0].payments.captures[0].amount.value = "0.01"; return payload; },
     async get(order) { return completed(order); },
     verifyPaid: (payload, order) => verifier.verifyPaid(payload, order),
   };
@@ -87,6 +87,39 @@ test("ambiguous CJ result is held for review and callbacks never resubmit", asyn
   await h.service.reconcile(row.paypalId!);
   assert.equal(h.counts.supplier, 1);
   assert.equal(h.counts.pay, 0);
+});
+
+test("capture timeout recovers from a fresh verified read without capturing twice", async () => {
+  const h = harness({ captureFails: true });
+  const row = await h.service.create("recovery-capture-001", line);
+  await assert.rejects(h.service.capture(row.id), /PAYPAL_CAPTURE_UNCERTAIN/);
+  assert.equal((await h.db.byId(row.id))?.state, "REVIEW");
+  await Promise.all([h.service.recover(row.id), h.service.reconcile(row.paypalId!)]);
+  assert.equal((await h.db.byId(row.id))?.state, "CJ_SANDBOX_PAID");
+  assert.equal(h.counts.capture, 1);
+  assert.equal(h.counts.supplier, 1);
+  assert.equal(h.counts.pay, 1);
+});
+
+test("crash after persisting PAID resumes sandbox fulfilment exactly once", async () => {
+  const h = harness();
+  const row = await h.service.create("recovery-paid-00001", line);
+  await h.db.transition({ ...row, state: "PAID", captureId: "CAPTURE-12345" }, "PENDING");
+  await Promise.all([h.service.recover(row.id), h.service.recover(row.id)]);
+  assert.equal((await h.db.byId(row.id))?.state, "CJ_SANDBOX_PAID");
+  assert.equal(h.counts.capture, 0);
+  assert.equal(h.counts.supplier, 1);
+});
+
+test("recovery never retries uncertain create, unverified payment or in-flight CJ", async () => {
+  for (const [state, reviewReason] of [["REVIEW", "PAYPAL_CREATE_UNCERTAIN"], ["REVIEW", "PAYMENT_NOT_VERIFIED"], ["REVIEW", "CJ_RESULT_UNCERTAIN_NO_AUTO_RETRY"], ["FULFILLING", undefined]] as const) {
+    const h = harness();
+    const row = await h.service.create("recovery-block-0001", line);
+    await h.db.transition({ ...row, state, reviewReason }, "PENDING");
+    assert.equal((await h.service.recover(row.id))?.state, state);
+    assert.equal(h.counts.capture, 0);
+    assert.equal(h.counts.supplier, 0);
+  }
 });
 
 test("provider verification rejects wrong currency, custom ID, status and non-final capture", async () => {

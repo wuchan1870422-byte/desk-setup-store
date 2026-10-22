@@ -13,6 +13,7 @@ There is no live mode in this version. PayPal's host is hard-coded to sandbox, C
 - Duplicate create/capture/callback requests do not create a second supplier order.
 - CJ API-key authentication, sandbox order creation and simulated payment.
 - Ambiguous payment or supplier timeouts become `REVIEW`; no blind procurement retries.
+- Capture-timeout reconciliation uses a fresh verified PayPal read without repeating capture. A crash after `PAID` can resume sandbox fulfilment with an atomic claim. Uncertain CJ submissions remain held for investigation.
 - All sandbox management routes require a server admin token; no public checkout or PII input.
 - An unauthenticated webhook advances only known orders after PayPal signature verification and a fresh PayPal API read.
 - No customer address is accepted: CJ sandbox uses a fixed `TEST ONLY - DO NOT DELIVER` recipient. No real shipment or tracking number is created.
@@ -57,6 +58,7 @@ The existing public cart remains disabled; it does not call these owner-only rou
 | POST | `/sandbox/orders` | Owner creates a test order; `Idempotency-Key` required |
 | GET | `/sandbox/orders/:id` | Owner checks status |
 | POST | `/sandbox/orders/:id/capture` | Owner completes sandbox capture |
+| POST | `/sandbox/orders/:id/reconcile` | Owner rechecks payment and resumes safely recoverable sandbox work |
 | POST | `/webhooks/paypal` | Verified PayPal sandbox callback |
 
 Example request body for `/sandbox/orders` (do not include contact data):
@@ -71,7 +73,7 @@ This uses an **A$39.90 test amount**, not a real listing, quote, approved sellin
 
 Real supplier/account API access, a deployed backend, a buyer approval interface, real product approval and imagery, postcode-specific shipping/tax quotes, explicit procurement budgets, durable quote/cost checks, live fulfilment/address handling and its privacy controls, stock checks, cancellation/refund/dispute handling, tracking sync, operational alerts, crash recovery and launch acceptance remain necessary. This sandbox version does not enable any live purchases merely by changing environment variables.
 
-CJ's access token is cached in the Worker isolate until its documented expiry. Production requires shared, rate-controlled refresh/reconciliation and an audited secret lifecycle. A process crash in `CREATING`, `CAPTURING` or `FULFILLING` requires reconciliation rather than creating another order. Keep the sandbox API/admin token out of public UI, source, Git, browser storage and logs. There is no email-sending integration.
+CJ's access token is cached in the Worker isolate until its documented expiry. Production requires shared, rate-controlled refresh/reconciliation and an audited secret lifecycle. A process crash in `CREATING` or `FULFILLING` requires manual investigation rather than creating another order. The owner reconcile route can recover `CAPTURING`, capture-timeout `REVIEW`, or `PAID` after a fresh verified PayPal read. It never repeats capture or retries uncertain CJ creation. Keep the sandbox API/admin token out of public UI, source, Git, browser storage and logs. There is no email-sending integration.
 
 ## Official references
 

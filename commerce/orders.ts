@@ -63,8 +63,18 @@ export class SandboxOrders {
   // Called only after the Worker verifies a real PayPal sandbox webhook signature.
   async reconcile(paypalId: string) {
     const row = await this.db.byPayPal(paypalId);
-    if (!row || !["PENDING", "CAPTURING"].includes(row.state)) return row;
+    const recoverable = row?.state === "REVIEW" && row.reviewReason === "PAYPAL_CAPTURE_UNCERTAIN";
+    if (!row || (!recoverable && !["PENDING", "CAPTURING", "PAID"].includes(row.state))) return row;
     return this.settle(row, await this.paypal.get(row));
+  }
+
+  // A fresh PayPal read can resume sandbox work, never repeat a capture or an
+  // uncertain supplier request. This operation is restricted to the owner.
+  async recover(id: string) {
+    const row = await this.db.byId(id);
+    if (!row) throw new Error("ORDER_NOT_FOUND");
+    if (!row.paypalId) return row;
+    return this.reconcile(row.paypalId);
   }
 
   private async settle(row: Order, payload: unknown) {
@@ -74,8 +84,9 @@ export class SandboxOrders {
       await this.db.transition({ ...row, state: "REVIEW", reviewReason: "PAYMENT_NOT_VERIFIED" }, row.state);
       throw new Error("PAYMENT_NOT_VERIFIED");
     }
-    const paid: Order = { ...row, state: "PAID", captureId };
-    if (!await this.db.transition(paid, row.state)) return (await this.db.byId(row.id))!;
+    if (row.captureId && row.captureId !== captureId) throw new Error("CAPTURE_REFERENCE_MISMATCH");
+    const paid: Order = { ...row, state: "PAID", captureId, reviewReason: undefined };
+    if (row.state !== "PAID" && !await this.db.transition(paid, row.state)) return (await this.db.byId(row.id))!;
     const claimed: Order = { ...paid, state: "FULFILLING" };
     if (!await this.db.transition(claimed, "PAID")) return (await this.db.byId(row.id))!;
     try {
