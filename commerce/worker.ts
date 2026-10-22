@@ -79,6 +79,8 @@ const worker = {
       }
       const capture = path.match(/^\/sandbox\/orders\/([a-zA-Z0-9-]{4,100})\/capture$/);
       if (capture && req.method === "POST") return json(await service.capture(capture[1]));
+      const recover = path.match(/^\/sandbox\/orders\/([a-zA-Z0-9-]{4,100})\/reconcile$/);
+      if (recover && req.method === "POST") return json(await service.recover(recover[1]));
       const status = path.match(/^\/sandbox\/orders\/([a-zA-Z0-9-]{4,100})$/);
       if (status && req.method === "GET") {
         const order = await db.byId(status[1]);
