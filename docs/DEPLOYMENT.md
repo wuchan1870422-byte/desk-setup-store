@@ -43,3 +43,7 @@ Update `NEXT_PUBLIC_SITE_URL` and rebuild to update absolute metadata. Browser-l
 - https://nextjs.org/docs/app/guides/static-exports
 - https://developers.cloudflare.com/pages/framework-guides/nextjs/deploy-a-static-nextjs-site/
 - https://developers.cloudflare.com/pages/configuration/build-configuration/
+
+## Separate sandbox order backend
+
+The static storefront and order Worker have different deployment identities. The canonical `commerce/` source now includes provider recovery and inspection routes plus a [hosted deployment profile](../commerce/hosting/README.md). Build it separately and preserve the existing D1 schema journal. Keep server credentials in the deployment host secret store; uploading source into a development environment does not move those values or prove provider access. Never put a sandbox admin token or provider secret in the public cart.

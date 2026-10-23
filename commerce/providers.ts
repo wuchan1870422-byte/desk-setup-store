@@ -11,17 +11,20 @@ function providerId(value: unknown): string {
   return value;
 }
 type Transport = typeof fetch;
+// Runtime fetch functions can require their original receiver. Never store a
+// raw global function as an instance method and call it with the client as this.
+const defaultTransport: Transport = (input, init) => fetch(input, init);
 
 export class PayPalSandbox implements PaymentGateway {
   // There is deliberately no live PayPal endpoint or environment override.
   private readonly base = "https://api-m.sandbox.paypal.com";
   private token?: { value: string; until: number };
-  constructor(private clientId: string, private secret: string, private storefront: string, private send: Transport = fetch) {}
+  constructor(private clientId: string, private secret: string, private storefront: string, private send: Transport = defaultTransport) {}
 
   private async auth() {
     if (this.token && this.token.until > Date.now()) return this.token.value;
     const response = await this.send(`${this.base}/v1/oauth2/token`, { method: "POST", headers: { Authorization: `Basic ${btoa(`${this.clientId}:${this.secret}`)}`, "Content-Type": "application/x-www-form-urlencoded" }, body: "grant_type=client_credentials", signal: AbortSignal.timeout(15000) });
-    if (!response.ok) throw new Error("PAYPAL_AUTH_FAILED");
+    if (!response.ok) throw new Error(`PAYPAL_AUTH_HTTP_${response.status}`);
     const data = object(await response.json());
     if (typeof data.access_token !== "string" || !data.access_token) throw new Error("PAYPAL_AUTH_FAILED");
     const lifetime = typeof data.expires_in === "number" ? data.expires_in : 60;
@@ -32,7 +35,7 @@ export class PayPalSandbox implements PaymentGateway {
     const headers: Record<string, string> = { Authorization: `Bearer ${await this.auth()}`, "Content-Type": "application/json", Prefer: "return=representation" };
     if (key) headers["PayPal-Request-Id"] = key;
     const response = await this.send(this.base + path, { method, headers, body: body === undefined ? undefined : JSON.stringify(body), signal: AbortSignal.timeout(20000) });
-    if (!response.ok) throw new Error("PAYPAL_REQUEST_FAILED");
+    if (!response.ok) throw new Error(`PAYPAL_REQUEST_HTTP_${response.status}`);
     return object(await response.json());
   }
   async create(order: Order) {
@@ -43,11 +46,23 @@ export class PayPalSandbox implements PaymentGateway {
       purchase_units: [{ reference_id: order.id, custom_id: order.id, invoice_id: `test-${order.id}`, description: "Desk Setup Store — sandbox test only", amount: { currency_code: "AUD", value: money(order.totalAudCents) } }],
       payment_source: { paypal: { experience_context: { return_url: `${origin.origin}/cart/?sandbox=approved`, cancel_url: `${origin.origin}/cart/?sandbox=cancelled`, shipping_preference: "NO_SHIPPING", user_action: "PAY_NOW" } } },
     }, order.id);
+    return this.approval(data, providerId(data.id));
+  }
+  verifyCreated(payload: unknown, order: Order) {
+    const data = object(payload);
+    if (data.id !== order.paypalId || !["CREATED", "PAYER_ACTION_REQUIRED"].includes(String(data.status)) || data.intent !== "CAPTURE" || !Array.isArray(data.purchase_units) || data.purchase_units.length !== 1) throw new Error("CREATED_ORDER_NOT_VERIFIED");
+    const unit = object(data.purchase_units[0]);
+    const amount = object(unit.amount);
+    if (unit.custom_id !== order.id || unit.reference_id !== order.id || unit.invoice_id !== `test-${order.id}` || amount.currency_code !== "AUD" || decimalCents(amount.value) !== order.totalAudCents) throw new Error("CREATED_ORDER_NOT_VERIFIED");
+    return this.approval(data, order.paypalId!);
+  }
+  private approval(data: Json, paypalId: string) {
     const links = Array.isArray(data.links) ? data.links.map(object) : [];
     const approval = links.find((link) => link.rel === "payer-action" || link.rel === "approve");
     if (typeof approval?.href !== "string") throw new Error("PAYPAL_APPROVAL_MISSING");
     const url = new URL(approval.href);
     if (url.protocol !== "https:" || !["www.sandbox.paypal.com", "sandbox.paypal.com"].includes(url.hostname) || url.username || url.password) throw new Error("PAYPAL_APPROVAL_INVALID");
+    if (url.pathname !== "/checkoutnow" || url.searchParams.get("token") !== paypalId || url.port || url.hash) throw new Error("PAYPAL_APPROVAL_INVALID");
     return { id: providerId(data.id), approvalUrl: url.href };
   }
   async capture(order: Order) {
@@ -56,6 +71,17 @@ export class PayPalSandbox implements PaymentGateway {
     return this.get(order);
   }
   async get(order: Order) { return this.api(`/v2/checkout/orders/${providerId(order.paypalId)}`); }
+  async inspect(order: Order) {
+    const data = object(await this.get(order));
+    if (data.id !== order.paypalId || data.intent !== "CAPTURE" || !Array.isArray(data.purchase_units) || data.purchase_units.length !== 1) throw new Error("CREATED_ORDER_NOT_VERIFIED");
+    const unit = object(data.purchase_units[0]);
+    const amount = object(unit.amount);
+    if (unit.custom_id !== order.id || unit.reference_id !== order.id || unit.invoice_id !== `test-${order.id}` || amount.currency_code !== "AUD" || decimalCents(amount.value) !== order.totalAudCents) throw new Error("CREATED_ORDER_NOT_VERIFIED");
+    const state = String(data.status);
+    if (!["CREATED", "SAVED", "PAYER_ACTION_REQUIRED", "APPROVED", "COMPLETED", "VOIDED", "EXPIRED"].includes(state)) throw new Error("PROVIDER_INVALID_RESPONSE");
+    const captureId = state === "COMPLETED" ? this.verifyPaid(data, order) : undefined;
+    return { paypalId: order.paypalId, state, paymentVerified: Boolean(captureId), captureId };
+  }
   verifyPaid(payload: unknown, order: Order) {
     const data = object(payload);
     if (data.id !== order.paypalId || data.status !== "COMPLETED" || !Array.isArray(data.purchase_units) || data.purchase_units.length !== 1) throw new Error("PAYMENT_NOT_VERIFIED");
@@ -88,8 +114,8 @@ export class PayPalSandbox implements PaymentGateway {
 export class CJSandbox implements SupplierGateway {
   private static cached?: { key: string; token: string; until: number };
   private readonly base = "https://developers.cjdropshipping.com/api2.0/v1";
-  constructor(private token: string, private send: Transport = fetch) {}
-  static async fromApiKey(key: string, send: Transport = fetch) {
+  constructor(private token: string, private send: Transport = defaultTransport) {}
+  static async fromApiKey(key: string, send: Transport = defaultTransport) {
     if (this.cached?.key === key && this.cached.until > Date.now()) return new CJSandbox(this.cached.token, send);
     const response = await send("https://developers.cjdropshipping.com/api2.0/v1/authentication/getAccessToken", { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify({ apiKey: key }), signal: AbortSignal.timeout(15000) });
     if (!response.ok) throw new Error("CJ_AUTH_FAILED");

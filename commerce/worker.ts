@@ -81,6 +81,20 @@ const worker = {
       if (capture && req.method === "POST") return json(await service.capture(capture[1]));
       const recover = path.match(/^\/sandbox\/orders\/([a-zA-Z0-9-]{4,100})\/reconcile$/);
       if (recover && req.method === "POST") return json(await service.recover(recover[1]));
+      const link = path.match(/^\/sandbox\/orders\/([a-zA-Z0-9-]{4,100})\/link-paypal$/);
+      if (link && req.method === "POST") {
+        const input = await body(req);
+        if (Object.keys(input).length !== 1 || typeof input.paypalId !== "string" || !/^[a-zA-Z0-9_-]{4,100}$/.test(input.paypalId)) return json({ error: "INVALID_PROVIDER_ID" }, 400);
+        return json(await service.linkPayPal(link[1], input.paypalId));
+      }
+      const inspect = path.match(/^\/sandbox\/orders\/([a-zA-Z0-9-]{4,100})\/paypal-status$/);
+      if (inspect && req.method === "GET") {
+        const order = await db.byId(inspect[1]);
+        if (!order) return json({ error: "ORDER_NOT_FOUND" }, 404);
+        if (!order.paypalId) return json({ error: "PAYPAL_REFERENCE_MISSING" }, 409);
+        // A read must not capture money, change local order state, or call CJ.
+        return json({ orderId: order.id, localState: order.state, payment: await paypal.inspect(order) });
+      }
       const status = path.match(/^\/sandbox\/orders\/([a-zA-Z0-9-]{4,100})$/);
       if (status && req.method === "GET") {
         const order = await db.byId(status[1]);
@@ -92,7 +106,9 @@ const worker = {
       if (["INVALID_ITEMS", "UNKNOWN_PRODUCT", "INVALID_QUANTITY", "QUANTITY_LIMIT", "INVALID_REQUEST_KEY", "INVALID_JSON", "BODY_TOO_LARGE", "IDEMPOTENCY_CONFLICT"].includes(reason)) return json({ error: reason }, reason === "IDEMPOTENCY_CONFLICT" ? 409 : 400);
       if (reason === "ORDER_NOT_FOUND") return json({ error: reason }, 404);
       // Never echo provider responses, secrets or internal exception messages.
-      return json({ error: "SANDBOX_ORDER_REQUIRES_REVIEW" }, 502);
+      const safeReasons = ["CREATED_ORDER_NOT_VERIFIED", "PAYPAL_APPROVAL_MISSING", "PAYPAL_APPROVAL_INVALID", "PROVIDER_INVALID_RESPONSE", "PROVIDER_INVALID_ID", "PAYPAL_AUTH_FAILED"];
+      const diagnostic = safeReasons.includes(reason) || /^PAYPAL_(AUTH|REQUEST)_HTTP_[1-5][0-9]{2}$/.test(reason) ? reason : error instanceof Error && ["TimeoutError", "AbortError"].includes(error.name) ? "PROVIDER_TIMEOUT" : reason.includes("Illegal invocation") ? "RUNTIME_FETCH_BINDING_ERROR" : error instanceof TypeError ? "RUNTIME_TYPE_ERROR" : "UNCLASSIFIED";
+      return json({ error: "SANDBOX_ORDER_REQUIRES_REVIEW", reason: diagnostic }, 502);
     }
   },
 };

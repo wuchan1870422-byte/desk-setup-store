@@ -21,14 +21,18 @@ function database() {
 function completed(order: Order) {
   return { id: order.paypalId, status: "COMPLETED", purchase_units: [{ reference_id: order.id, custom_id: order.id, amount: { currency_code: "AUD", value: "39.90" }, payments: { captures: [{ id: "CAPTURE-12345", status: "COMPLETED", final_capture: true, amount: { currency_code: "AUD", value: "39.90" } }] } }] };
 }
-function harness(overrides: { createFails?: boolean; captureFails?: boolean; cjFails?: boolean; mismatch?: boolean } = {}) {
+function pending(order: Order) {
+  return { id: order.paypalId, intent: "CAPTURE", status: "PAYER_ACTION_REQUIRED", purchase_units: [{ reference_id: order.id, custom_id: order.id, invoice_id: `test-${order.id}`, amount: { currency_code: "AUD", value: "39.90" } }], links: [{ rel: "payer-action", href: `https://www.sandbox.paypal.com/checkoutnow?token=${order.paypalId}` }] };
+}
+function harness(overrides: { createFails?: boolean; captureFails?: boolean; cjFails?: boolean; mismatch?: boolean; readPending?: boolean; wrongReference?: boolean } = {}) {
   const db = database();
   const counts = { create: 0, capture: 0, supplier: 0, pay: 0 };
   const verifier = new PayPalSandbox("test-client", "test-secret", "https://example.com");
   const paypal: PaymentGateway = {
     async create() { counts.create++; await Promise.resolve(); if (overrides.createFails) throw new Error("timeout"); return { id: "PAYPAL-12345", approvalUrl: "https://www.sandbox.paypal.com/checkoutnow?token=PAYPAL-12345" }; },
     async capture(order) { counts.capture++; if (overrides.captureFails) throw new Error("uncertain capture timeout"); const payload = completed(order); if (overrides.mismatch) payload.purchase_units[0].payments.captures[0].amount.value = "0.01"; return payload; },
-    async get(order) { return completed(order); },
+    async get(order) { const payload = pending(order); if (overrides.wrongReference) payload.purchase_units[0].custom_id = "wrong-order"; return overrides.readPending ? payload : completed(order); },
+    verifyCreated: (payload, order) => verifier.verifyCreated(payload, order),
     verifyPaid: (payload, order) => verifier.verifyPaid(payload, order),
   };
   const cj: SupplierGateway = {
@@ -87,6 +91,39 @@ test("ambiguous CJ result is held for review and callbacks never resubmit", asyn
   await h.service.reconcile(row.paypalId!);
   assert.equal(h.counts.supplier, 1);
   assert.equal(h.counts.pay, 0);
+});
+
+test("uncertain creation links one verified existing PayPal order without new creation or capture", async () => {
+  const h = harness({ createFails: true, readPending: true });
+  await assert.rejects(h.service.create("link-pending-order-001", line));
+  const row = (await h.db.byKey("link-pending-order-001"))!;
+  await Promise.all([h.service.linkPayPal(row.id, "PAYPAL-12345"), h.service.linkPayPal(row.id, "PAYPAL-12345")]);
+  const linked = (await h.db.byId(row.id))!;
+  assert.equal(linked.state, "PENDING");
+  assert.equal(linked.paypalId, "PAYPAL-12345");
+  assert.equal(linked.reviewReason, undefined);
+  assert.equal(h.counts.create, 1);
+  assert.equal(h.counts.capture, 0);
+  assert.equal(h.counts.supplier, 0);
+  await h.service.linkPayPal(row.id, "DIFFERENT-ORDER");
+  assert.equal((await h.db.byId(row.id))?.paypalId, "PAYPAL-12345");
+});
+
+test("uncertain creation cannot link a different invoice, amount, state or approval token", async () => {
+  const h = harness({ createFails: true, readPending: true, wrongReference: true });
+  await assert.rejects(h.service.create("link-wrong-order-001", line));
+  const row = (await h.db.byKey("link-wrong-order-001"))!;
+  await assert.rejects(h.service.linkPayPal(row.id, "PAYPAL-12345"), /CREATED_ORDER_NOT_VERIFIED/);
+  assert.equal((await h.db.byId(row.id))?.state, "REVIEW");
+  const expected = { ...row, paypalId: "PAYPAL-12345" };
+  const verifier = new PayPalSandbox("fake", "fake", "https://example.com");
+  for (const edit of [
+    (p: ReturnType<typeof pending>) => { p.purchase_units[0].invoice_id = "different"; },
+    (p: ReturnType<typeof pending>) => { p.purchase_units[0].amount.value = "0.01"; },
+    (p: ReturnType<typeof pending>) => { p.status = "COMPLETED"; },
+    (p: ReturnType<typeof pending>) => { p.links[0].href = "https://www.sandbox.paypal.com/checkoutnow?token=DIFFERENT"; },
+    (p: ReturnType<typeof pending>) => { p.links[0].href = "https://www.paypal.com/checkoutnow?token=PAYPAL-12345"; },
+  ]) { const payload = pending(expected); edit(payload); assert.throws(() => verifier.verifyCreated(payload, expected)); }
 });
 
 test("capture timeout recovers from a fresh verified read without capturing twice", async () => {
@@ -193,6 +230,54 @@ test("CJ API key is exchanged only server-side and its access token is cached", 
   await CJSandbox.fromApiKey("fake-key-for-unit-test", transport);
   await CJSandbox.fromApiKey("fake-key-for-unit-test", transport);
   assert.equal(requests, 1);
+});
+
+test("PayPal diagnostics report only operation and HTTP status, never the response body", async () => {
+  const h = harness();
+  const row = await h.service.create("diagnostic-http-0001", line);
+  const authFailure = new PayPalSandbox("fake", "fake", "https://example.com", async () => Response.json({ secret: "MUST-NOT-APPEAR" }, { status: 401 }));
+  await assert.rejects(authFailure.get(row), { message: "PAYPAL_AUTH_HTTP_401" });
+  const requestFailure = new PayPalSandbox("fake", "fake", "https://example.com", async input => String(input).endsWith("/oauth2/token") ? Response.json({ access_token: "fake-only" }) : Response.json({ secret: "MUST-NOT-APPEAR" }, { status: 403 }));
+  await assert.rejects(requestFailure.get(row), { message: "PAYPAL_REQUEST_HTTP_403" });
+});
+
+test("payment status reads verify references, omit payer data, and do not capture", async () => {
+  const h = harness();
+  const row = await h.service.create("inspect-payment-001", line);
+  let response: unknown = { ...pending(row), payer: { email_address: "private@example.com" } };
+  const methods: string[] = [];
+  const transport: typeof fetch = async (input, init) => {
+    methods.push(`${init?.method}:${String(input).endsWith("/oauth2/token") ? "auth" : "order"}`);
+    return Response.json(String(input).endsWith("/oauth2/token") ? { access_token: "fake-only" } : response);
+  };
+  const paypal = new PayPalSandbox("fake", "fake", "https://example.com", transport);
+  assert.deepEqual(await paypal.inspect(row), { paypalId: row.paypalId, state: "PAYER_ACTION_REQUIRED", paymentVerified: false, captureId: undefined });
+  response = { ...completed(row), intent: "CAPTURE", purchase_units: [{ ...completed(row).purchase_units[0], invoice_id: `test-${row.id}` }] };
+  assert.equal((await paypal.inspect(row)).paymentVerified, true);
+  const mismatch = pending(row); mismatch.purchase_units[0].custom_id = "another-order"; response = mismatch;
+  await assert.rejects(paypal.inspect(row), /CREATED_ORDER_NOT_VERIFIED/);
+  assert.ok(methods.filter(x => x.endsWith(":order")).every(x => x === "GET:order"));
+  assert.equal((await h.db.byId(row.id))?.state, "PENDING");
+  assert.equal(h.counts.capture, 0);
+  assert.equal(h.counts.supplier, 0);
+});
+
+test("default provider transports do not invoke global fetch with a client receiver", async () => {
+  const previous = globalThis.fetch;
+  const h = harness();
+  const row = await h.service.create("fetch-receiver-0001", line);
+  try {
+    globalThis.fetch = async function (this: unknown, input) {
+      assert.ok(this === undefined || this === globalThis, "incorrect runtime fetch receiver");
+      return String(input).endsWith("/oauth2/token") ? Response.json({ access_token: "fake-only" }) : Response.json(completed(row));
+    };
+    await new PayPalSandbox("fake", "fake", "https://example.com").get(row);
+    globalThis.fetch = async function (this: unknown) {
+      assert.ok(this === undefined || this === globalThis, "incorrect runtime fetch receiver");
+      return Response.json({ code: 200, result: true, data: { orderId: "CJ-TEST-REFERENCE" } });
+    };
+    assert.equal(await new CJSandbox("fake-only").createSandboxOrder(row), "CJ-TEST-REFERENCE");
+  } finally { globalThis.fetch = previous; }
 });
 
 test("unsigned or untrusted-certificate webhooks cannot trigger remote verification", async () => {

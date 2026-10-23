@@ -1,6 +1,6 @@
 # Owner-only sandbox order backend
 
-This is a **prepared, not yet deployed or credential-connected** Cloudflare Worker, separate from the Next.js static storefront. It implements the next integration step without enabling real checkout.
+This is a sandbox-only Cloudflare Worker, separate from the Next.js static storefront. The source includes a [separate hosted deployment profile](hosting/README.md). Runtime deployments, credentials and account-level test results are managed separately; the public storefront remains a demo.
 
 There is no live mode in this version. PayPal's host is hard-coded to sandbox, CJ orders always use `isSandbox=1` and `payType=3`, and the only supplier payment operation is CJ's explicit sandbox `simulatePay`. It first checks that the returned order really is a sandbox order. No real balance-payment endpoint exists in this code.
 
@@ -13,7 +13,9 @@ There is no live mode in this version. PayPal's host is hard-coded to sandbox, C
 - Duplicate create/capture/callback requests do not create a second supplier order.
 - CJ API-key authentication, sandbox order creation and simulated payment.
 - Ambiguous payment or supplier timeouts become `REVIEW`; no blind procurement retries.
-- Capture-timeout reconciliation uses a fresh verified PayPal read without repeating capture. A crash after `PAID` can resume sandbox fulfilment with an atomic claim. Uncertain CJ submissions remain held for investigation.
+- Capture-timeout recovery rechecks PayPal without capturing twice; verified `PAID` orders can resume fulfilment with an atomic claim. Uncertain supplier submissions are never retried automatically.
+- After uncertain creation, an owner can link an existing PayPal reference only after a fresh GET verifies the pending state, invoice, internal references, amount and approval token.
+- A read-only payment inspection returns verified state without payer data, capture or supplier calls. Provider diagnostics expose only allowlisted reason codes.
 - All sandbox management routes require a server admin token; no public checkout or PII input.
 - An unauthenticated webhook advances only known orders after PayPal signature verification and a fresh PayPal API read.
 - No customer address is accepted: CJ sandbox uses a fixed `TEST ONLY - DO NOT DELIVER` recipient. No real shipment or tracking number is created.
@@ -58,7 +60,9 @@ The existing public cart remains disabled; it does not call these owner-only rou
 | POST | `/sandbox/orders` | Owner creates a test order; `Idempotency-Key` required |
 | GET | `/sandbox/orders/:id` | Owner checks status |
 | POST | `/sandbox/orders/:id/capture` | Owner completes sandbox capture |
-| POST | `/sandbox/orders/:id/reconcile` | Owner rechecks payment and resumes safely recoverable sandbox work |
+| POST | `/sandbox/orders/:id/reconcile` | Recover verified payment without repeating capture |
+| POST | `/sandbox/orders/:id/link-paypal` | Verify and link a known order after uncertain creation |
+| GET | `/sandbox/orders/:id/paypal-status` | Inspect verified payment state without changing the order |
 | POST | `/webhooks/paypal` | Verified PayPal sandbox callback |
 
 Example request body for `/sandbox/orders` (do not include contact data):
@@ -71,9 +75,9 @@ This uses an **A$39.90 test amount**, not a real listing, quote, approved sellin
 
 ## Remaining before live commerce
 
-Real supplier/account API access, a deployed backend, a buyer approval interface, real product approval and imagery, postcode-specific shipping/tax quotes, explicit procurement budgets, durable quote/cost checks, live fulfilment/address handling and its privacy controls, stock checks, cancellation/refund/dispute handling, tracking sync, operational alerts, crash recovery and launch acceptance remain necessary. This sandbox version does not enable any live purchases merely by changing environment variables.
+Verified supplier/account API access, deployment acceptance, a buyer approval interface, real product approval and imagery, postcode-specific shipping/tax quotes, explicit procurement budgets, durable quote/cost checks, live fulfilment/address handling and its privacy controls, stock checks, cancellation/refund/dispute handling, tracking sync, operational alerts, crash recovery and launch acceptance remain necessary. This sandbox version does not enable any live purchases merely by changing environment variables.
 
-CJ's access token is cached in the Worker isolate until its documented expiry. Production requires shared, rate-controlled refresh/reconciliation and an audited secret lifecycle. A process crash in `CREATING` or `FULFILLING` requires manual investigation rather than creating another order. The owner reconcile route can recover `CAPTURING`, capture-timeout `REVIEW`, or `PAID` after a fresh verified PayPal read. It never repeats capture or retries uncertain CJ creation. Keep the sandbox API/admin token out of public UI, source, Git, browser storage and logs. There is no email-sending integration.
+CJ's access token is cached in the Worker isolate until its documented expiry. Production requires shared, rate-controlled refresh/reconciliation and an audited secret lifecycle. Uncertain creation can link only a known, verified pending provider order. The owner reconcile route can resume a capture-timeout review or a persisted `PAID` state after a fresh PayPal read. Uncertain CJ creation or payment simulation requires manual investigation; recovery never repeats it. Keep the sandbox API/admin token out of public UI, source, Git, browser storage and logs. There is no email-sending integration.
 
 ## Official references
 
@@ -83,3 +87,7 @@ CJ's access token is cached in the Worker isolate until its documented expiry. P
 - https://developers.cjdropshipping.com/en/api/api2/api/shopping.html
 - https://developers.cjdropshipping.com/en/api/start/sandbox.html
 - https://developers.cloudflare.com/d1/reference/migrations/
+
+## Safe recovery tools
+
+`link-paypal` accepts only `{ "paypalId": "<known sandbox order ID>" }`. It never creates a replacement order or captures payment. Other local states remain unchanged; mismatches remain held for review. `paypal-status` returns only allowlisted provider state and payment/capture flags. Do not capture a test order until the sandbox buyer has approved it. Keep provider credentials and admin tokens out of every public request example.

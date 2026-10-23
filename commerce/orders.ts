@@ -17,6 +17,7 @@ export interface PaymentGateway {
   create(order: Order): Promise<{ id: string; approvalUrl: string }>;
   capture(order: Order): Promise<unknown>;
   get(order: Order): Promise<unknown>;
+  verifyCreated(payload: unknown, order: Order): { id: string; approvalUrl: string };
   verifyPaid(payload: unknown, order: Order): string;
 }
 export interface SupplierGateway {
@@ -75,6 +76,19 @@ export class SandboxOrders {
     if (!row) throw new Error("ORDER_NOT_FOUND");
     if (!row.paypalId) return row;
     return this.reconcile(row.paypalId);
+  }
+
+  // Owner supplies a known provider reference after an uncertain creation.
+  // Only a fresh GET may associate it; this never creates, captures or procures.
+  async linkPayPal(id: string, paypalId: string) {
+    const row = await this.db.byId(id);
+    if (!row) throw new Error("ORDER_NOT_FOUND");
+    if (row.state !== "REVIEW" || row.reviewReason !== "PAYPAL_CREATE_UNCERTAIN" || row.paypalId) return row;
+    const reference = { ...row, paypalId };
+    const verified = this.paypal.verifyCreated(await this.paypal.get(reference), reference);
+    const pending: Order = { ...row, paypalId: verified.id, approvalUrl: verified.approvalUrl, state: "PENDING", reviewReason: undefined };
+    if (!await this.db.transition(pending, "REVIEW")) return (await this.db.byId(id))!;
+    return pending;
   }
 
   private async settle(row: Order, payload: unknown) {

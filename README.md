@@ -2,7 +2,7 @@
 
 An English-language, Australia-focused desk organisation and tech storage **demo storefront**. Built with **Next.js App Router, TypeScript and Tailwind CSS**, exported to static files for Cloudflare Pages or another static host.
 
-**22 October integration update:** a separate [owner-only sandbox order backend](commerce/README.md) is now prepared, with actual PayPal/CJ HTTP adapters and SQLite-tested order idempotency. It is not deployed, connected to credentials or exposed in the public cart. See the [verified supplier candidate and Australia quote conditions](docs/SUPPLIER-VALIDATION.zh-CN.md). Real payments and procurement remain disabled.
+**Sandbox integration:** a separate [owner-only order backend](commerce/README.md) includes PayPal/CJ adapters, durable order idempotency, verified recovery and read-only payment inspection. Its [hosted deployment profile](commerce/hosting/README.md) is included in this repository. Runtime configuration and end-to-end provider acceptance are separate from source synchronization; the public cart remains disabled. See the [supplier candidate and quote conditions](docs/SUPPLIER-VALIDATION.zh-CN.md).
 
 **This is not an operating shop. No orders or payments are accepted.** All three products, prices, specifications, supplier references, illustrations, shipping fees and delivery estimates are fictional demonstration data. There are no reviews, sales counters, stock claims or certification badges.
 
@@ -65,11 +65,11 @@ public/images/             First-party illustrative demo SVGs and OG PNG
 scripts/check-export.mjs    Exported routes, metadata, links, assets and safety checks
 scripts/serve.mjs           Dependency-free static preview
 tests/cart.test.ts          Cart arithmetic, persistence validation and demo protections
-commerce/                  Separate, undeployed owner-only sandbox Worker and tests
+commerce/                  Separate owner-only sandbox Worker, hosting profile and tests
 docs/                      Deployment and launch requirements
 ```
 
-Storefront server components run at build time. `generateStaticParams()` pre-renders the catalogue and policy routes. The deployed static storefront has **no API routes, Server Actions, SSR dependencies, accounts or order database**. The separate `commerce/` backend includes a sandbox database schema and is not deployed or called by the storefront. Tailwind v4 is loaded through PostCSS; shared editorial styles and responsive breakpoints are in `globals.css`. Product imagery and fonts require no third-party requests.
+Storefront server components run at build time. `generateStaticParams()` pre-renders the catalogue and policy routes. The deployed static storefront has **no API routes, Server Actions, SSR dependencies, accounts or order database**. The separate `commerce/` backend includes a sandbox database schema and is deployed independently and is not called by the storefront. Tailwind v4 is loaded through PostCSS; shared editorial styles and responsive breakpoints are in `globals.css`. Product imagery and fonts require no third-party requests.
 
 The cart stores **only product IDs and quantities** in `localStorage` (`desk-setup-demo-cart-v1`). Invalid, unknown, fractional and non-positive entries are discarded; duplicates merge and quantities are capped at 10 per item as a demo interaction limit. Prices always come from the catalogue, not persisted values. The cap is not an inventory statement. Browser storage can be cleared using “Clear demo bag” or browser site settings. Storage is scoped to each origin.
 
@@ -121,9 +121,9 @@ Official references: [Next.js static exports](https://nextjs.org/docs/app/guides
 
 ## Verification & known limits
 
-Automated checks cover lint, TypeScript, 20 tests (six cart/domain and fourteen sandbox commerce), the separate Worker bundle, exported routes, local links/assets, metadata, demo notices and absence of forms/payment SDKs in the storefront. Provider HTTP responses are mocked; account access and real transactions are unverified. See [docs/VERIFICATION.md](docs/VERIFICATION.md) for actual results and remaining manual acceptance checks.
+Automated checks cover lint, TypeScript, 32 tests (ten storefront/domain and twenty-two sandbox commerce), the separate Worker bundle, exported routes, local links/assets, metadata, demo notices and absence of forms/payment SDKs in the storefront. Automated provider responses are mocked; passing them does not establish a completed external-provider transaction. See [docs/VERIFICATION.md](docs/VERIFICATION.md) for actual results and remaining manual acceptance checks.
 
-No real supplier, fulfilment, tax calculation, inventory feed, customer support inbox, analytics provider, PayPal account or payment backend is connected. Draft policies must be finalised for the actual seller. In particular, overseas sellers offering goods directly to Australian consumers must account for Australian Consumer Law and consumer guarantees; see [ACCC's guidance](https://www.accc.gov.au/business/selling-products-and-services/selling-online).
+The public cart has no real checkout, fulfilment, tax calculation, inventory feed, customer support inbox or analytics provider. Sandbox deployment and credentials do not enable live commerce. Draft policies must be finalised for the actual seller. In particular, overseas sellers offering goods directly to Australian consumers must account for Australian Consumer Law and consumer guarantees; see [ACCC's guidance](https://www.accc.gov.au/business/selling-products-and-services/selling-online).
 
 ## Desk fit and quote handoff
 
