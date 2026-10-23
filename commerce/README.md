@@ -57,6 +57,7 @@ The existing public cart remains disabled; it does not call these owner-only rou
 | Method | Path | Purpose |
 | --- | --- | --- |
 | GET | `/health` | Mode/readiness flags only, no secrets |
+| GET | `/sandbox/connections` | Owner-only authentication checks; no order creation |
 | POST | `/sandbox/orders` | Owner creates a test order; `Idempotency-Key` required |
 | GET | `/sandbox/orders/:id` | Owner checks status |
 | POST | `/sandbox/orders/:id/capture` | Owner completes sandbox capture |
@@ -91,3 +92,5 @@ CJ's access token is cached in the Worker isolate until its documented expiry. P
 ## Safe recovery tools
 
 `link-paypal` accepts only `{ "paypalId": "<known sandbox order ID>" }`. It never creates a replacement order or captures payment. Other local states remain unchanged; mismatches remain held for review. `paypal-status` returns only allowlisted provider state and payment/capture flags. Do not capture a test order until the sandbox buyer has approved it. Keep provider credentials and admin tokens out of every public request example.
+
+The authenticated connection check reports provider authentication separately from order acceptance. It never captures a payment or submits a CJ order and returns no token or provider body. An already configured CJ access token without an API key is explicitly reported as unverified.

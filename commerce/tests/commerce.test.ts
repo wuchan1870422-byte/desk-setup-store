@@ -307,3 +307,33 @@ test("owner sandbox refuses customer information even when credentials are confi
   const request = new Request("https://example.com/sandbox/orders", { method: "POST", headers: { "content-type": "application/json", authorization: `Bearer ${token}` }, body: JSON.stringify({ items: line, email: "not-a-customer@example.com" }) });
   assert.equal((await worker.fetch(request, env)).status, 400);
 });
+
+test("connection inspection requires owner authentication before any provider call", async () => {
+  const response = await worker.fetch(new Request("https://example.com/sandbox/connections"), { COMMERCE_MODE: "sandbox" });
+  assert.equal(response.status, 401);
+});
+
+test("owner connection inspection authenticates only and never returns tokens", async () => {
+  const original = globalThis.fetch;
+  const paths: string[] = [];
+  const token = "test-admin-connection-check-01234567890123456789";
+  const env: Environment = { COMMERCE_MODE: "sandbox", SANDBOX_ADMIN_TOKEN: token, ORDERS: {} as Database, PAYPAL_SANDBOX_CLIENT_ID: "fake-client", PAYPAL_SANDBOX_SECRET: "fake-secret", CJ_API_KEY: "fake-connection-check-key", STOREFRONT_ORIGIN: "https://example.com" };
+  try {
+    globalThis.fetch = async input => {
+      const url = String(input); paths.push(new URL(url).pathname);
+      if (url.endsWith("/oauth2/token")) return Response.json({ access_token: "MUST-NOT-LEAK-PAYPAL" });
+      assert.ok(url.endsWith("/authentication/getAccessToken"));
+      return Response.json({ code: 200, result: true, data: { accessToken: "MUST-NOT-LEAK-CJ", accessTokenExpiryDate: "2099-01-01T00:00:00Z" } });
+    };
+    const response = await worker.fetch(new Request("https://example.com/sandbox/connections", { headers: { authorization: `Bearer ${token}` } }), env);
+    const result = await response.json();
+    assert.deepEqual(result, { paypal: "authenticated_sandbox", cj: "authenticated_api_key", livePayments: false, realProcurement: false });
+    assert.equal(paths.length, 2);
+    assert.ok(paths.every(path => path.endsWith("/token") || path.endsWith("/getAccessToken")));
+    assert.ok(!JSON.stringify(result).includes("MUST-NOT-LEAK"));
+    globalThis.fetch = async () => Response.json({ secret: "MUST-NOT-LEAK" }, { status: 401 });
+    env.CJ_API_KEY = "fake-invalid-connection-key";
+    const failed = await worker.fetch(new Request("https://example.com/sandbox/connections", { headers: { authorization: `Bearer ${token}` } }), env);
+    assert.deepEqual(await failed.json(), { paypal: "authentication_failed", cj: "authentication_failed", livePayments: false, realProcurement: false });
+  } finally { globalThis.fetch = original; }
+});

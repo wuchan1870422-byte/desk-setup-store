@@ -59,6 +59,18 @@ const worker = {
     const supplier = () => supplierClient ||= env.CJ_ACCESS_TOKEN ? Promise.resolve(new CJSandbox(env.CJ_ACCESS_TOKEN)) : CJSandbox.fromApiKey(env.CJ_API_KEY!);
     const service = new SandboxOrders(db, paypal, { createSandboxOrder: async (order) => (await supplier()).createSandboxOrder(order), simulatePayment: async (id) => (await supplier()).simulatePayment(id) });
     try {
+      if (path === "/sandbox/connections" && req.method === "GET") {
+        // Auth checks only: no payment capture, supplier order or customer data.
+        const [payment, supplierAuth] = await Promise.allSettled([
+          paypal.checkConnection(),
+          env.CJ_API_KEY ? CJSandbox.fromApiKey(env.CJ_API_KEY) : Promise.resolve(null),
+        ]);
+        return json({
+          paypal: payment.status === "fulfilled" ? "authenticated_sandbox" : "authentication_failed",
+          cj: supplierAuth.status === "fulfilled" ? supplierAuth.value ? "authenticated_api_key" : "access_token_configured_unverified" : "authentication_failed",
+          livePayments: false, realProcurement: false,
+        });
+      }
       if (webhook) {
         if (!env.PAYPAL_SANDBOX_WEBHOOK_ID) return json({ error: "WEBHOOK_NOT_CONFIGURED" }, 503);
         const event = await body(req);

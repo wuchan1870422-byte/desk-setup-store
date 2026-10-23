@@ -6,7 +6,7 @@ Rechecked on 23 October 2026 with Node.js 24.19.0. Installed versions are locked
 
 - `npm run lint`: PASS, zero warnings.
 - `npm run typecheck`: PASS.
-- `npm test`: PASS, 32/32 cases: ten storefront/domain cases and twenty-two sandbox commerce cases. Commerce persistence tests use real in-memory SQLite; provider responses are mocked.
+- `npm test`: PASS, 34/34 cases: ten storefront/domain cases and twenty-four sandbox commerce cases. Commerce persistence tests use real in-memory SQLite; provider responses are mocked.
 - `npm run build:commerce`: PASS, separate sandbox Worker bundle. This does not deploy or connect the backend.
 - `npm run build`: PASS, Next.js production static export; all requested routes generated.
 - `npm run check:export`: PASS, 11 exported HTML files and 251 local route/asset references, metadata, Open Graph, robots, sitemap and absence of forms/payment SDKs.

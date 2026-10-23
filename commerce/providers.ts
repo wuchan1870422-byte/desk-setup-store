@@ -71,6 +71,7 @@ export class PayPalSandbox implements PaymentGateway {
     return this.get(order);
   }
   async get(order: Order) { return this.api(`/v2/checkout/orders/${providerId(order.paypalId)}`); }
+  async checkConnection() { await this.auth(); return true; }
   async inspect(order: Order) {
     const data = object(await this.get(order));
     if (data.id !== order.paypalId || data.intent !== "CAPTURE" || !Array.isArray(data.purchase_units) || data.purchase_units.length !== 1) throw new Error("CREATED_ORDER_NOT_VERIFIED");
