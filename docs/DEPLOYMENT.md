@@ -20,7 +20,7 @@ npm run check:export
 npm run preview
 ```
 
-The last command serves port 3000 by default. To change it use `PORT=4173 npm run preview` on macOS/Linux, or set the equivalent environment variable in your shell. This preview server has no checkout capability.
+The last command serves port 3000 by default. `npm run preview -- --port 4173` also selects a port explicitly. To change it use `PORT=4173 npm run preview` on macOS/Linux, or set the equivalent environment variable in your shell. This preview server has no checkout capability.
 
 ## Optional direct upload
 

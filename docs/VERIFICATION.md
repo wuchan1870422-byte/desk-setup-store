@@ -1,6 +1,6 @@
 # Verification
 
-Rechecked on 23 October 2026 with Node.js 24.19.0. Installed versions are locked: Next.js 16.4.1, React 19.3.1, Tailwind CSS 4.3.3.
+Rechecked on 24 October 2026 with Node.js 24.19.0. Installed versions are locked: Next.js 16.4.1, React 19.3.1, Tailwind CSS 4.3.3.
 
 ## Automated checks
 
@@ -20,9 +20,14 @@ Rechecked on 23 October 2026 with Node.js 24.19.0. Installed versions are locked
 
 The layout has desktop, tablet (1100px), mobile (760px) and narrow-mobile (370px) breakpoints. At mobile widths the hero, collection, product details, cart and contact panels become one column. Navigation has a mobile toggle; tabs wrap. Product images use intrinsic dimensions and adaptive containers. Focus states, image alt text, button labels, a skip link, live cart status and reduced-motion styles are present.
 
-## Browser verification limit
+## Browser verification
 
-The original storefront verification on 15 October did not include rendered browser QA because the required browser workflow was unavailable then. The 23 October synchronization updates the separate sandbox backend and deployment profile; it leaves storefront components unchanged; no new desktop/mobile interaction pass was performed. Automated HTML/link checks and source-level responsive review do **not** replace rendered desktop/mobile interaction testing. No screenshot-based layout pass or real-device pass is claimed. A long-running local development server was not launched in this environment; use the documented `npm ci && npm run dev` locally. Successful compilation and static export have been verified.
+On 24 October, the managed development entrypoint was repaired to translate the supervisor's host/port flags to Next.js options. The supported preview CLI started successfully. The production static-preview server also accepts `--port` while preserving `PORT` and its default port.
+
+- Measured the production export in 320, 375, 390, 768 and 1440 CSS-pixel iframes across ten routes: homepage, three products, bag, desk-fit, three policies and Contact. All **50 route/viewport combinations** had document scroll width no larger than client width. The bag measurement covers its initial shell/loading state. See [recorded measurements](qa/layout-2026-10-24.json).
+- On the public desktop demo, added all three products: A$147 subtotal + A$9 demo delivery = A$156. Increased Cable Keeper to two and removed Desk Shelf: A$97 + A$9 = A$106. Reload preserved the bag; Clear demo bag restored the empty state. PayPal remained disabled.
+- This is browser-based layout measurement, not an iOS/Android device or touch pass. Populated mobile-bag and mobile-menu interactions, keyboard-only/zoom acceptance and blocked/corrupted-storage UI acceptance remain open. Development-preview client script readiness was not established; public production-cart interaction was verified separately.
+- The temporary responsive QA page was removed before the final build and is absent from the published export. No customer information was entered.
 
 ## Manual acceptance before trading
 

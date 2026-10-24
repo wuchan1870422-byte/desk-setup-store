@@ -121,7 +121,7 @@ Official references: [Next.js static exports](https://nextjs.org/docs/app/guides
 
 ## Verification & known limits
 
-Automated checks cover lint, TypeScript, 34 tests (ten storefront/domain and twenty-four sandbox commerce), the separate Worker bundle, exported routes, local links/assets, metadata, demo notices and absence of forms/payment SDKs in the storefront. Automated provider responses are mocked; passing them does not establish a completed external-provider transaction. See [docs/VERIFICATION.md](docs/VERIFICATION.md) for actual results and remaining manual acceptance checks.
+Automated checks cover lint, TypeScript, 34 tests (ten storefront/domain and twenty-four sandbox commerce), the separate Worker bundle, exported routes, local links/assets, metadata, demo notices and absence of forms/payment SDKs in the storefront. Automated provider responses are mocked; passing them does not establish a completed external-provider transaction. Browser acceptance covers 50 route/viewport shell-layout measurements and the public desktop cart flow. See [docs/VERIFICATION.md](docs/VERIFICATION.md) for actual results and remaining manual acceptance checks.
 
 The public cart has no real checkout, fulfilment, tax calculation, inventory feed, customer support inbox or analytics provider. Sandbox deployment and credentials do not enable live commerce. Draft policies must be finalised for the actual seller. In particular, overseas sellers offering goods directly to Australian consumers must account for Australian Consumer Law and consumer guarantees; see [ACCC's guidance](https://www.accc.gov.au/business/selling-products-and-services/selling-online).
 
