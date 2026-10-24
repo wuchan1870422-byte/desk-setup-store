@@ -19,6 +19,13 @@ There is no live mode in this version. PayPal's host is hard-coded to sandbox, C
 - All sandbox management routes require a server admin token; no public checkout or PII input.
 - An unauthenticated webhook advances only known orders after PayPal signature verification and a fresh PayPal API read.
 - No customer address is accepted: CJ sandbox uses a fixed `TEST ONLY - DO NOT DELIVER` recipient. No real shipment or tracking number is created.
+- Signed refund/reversal/decline notifications are checked against fresh sandbox
+  capture/refund records and recorded as durable holds. Provider read failures
+  for known signed exceptions hold and return a retryable error. Acknowledgement
+  never releases a hold; already in-flight supplier calls need manual inspection.
+- Owner-only readiness probes, paginated review and explicit test tooling are in
+  [SANDBOX-ACCEPTANCE.md](../docs/SANDBOX-ACCEPTANCE.md) and
+  [ORDER-HANDOFF.md](../docs/ORDER-HANDOFF.md). No automatic refunds or messages.
 
 ## Files
 
@@ -43,7 +50,7 @@ The Worker output in `commerce/dist/` is ignored. Tests use real in-memory SQLit
 Use the official Wrangler CLI with the user's own Cloudflare account, or adapt the module to a supported hosted Worker backend. Do not change the static Next.js Site's hosting manifest to point at this Worker.
 
 1. Create a **dedicated sandbox** D1 database and add its actual `ORDERS` binding to `commerce/wrangler.jsonc`. No invented IDs are included.
-2. Apply `commerce/migrations/0001_sandbox_orders.sql` using D1 migrations.
+2. Apply both numbered SQL files under `commerce/migrations/` using D1 migrations, preserving existing orders. The second adds the sandbox exception ledger. Local artifact builds do not apply remote migrations.
 3. In secret storage configure `SANDBOX_ADMIN_TOKEN` (at least 32 random characters), `PAYPAL_SANDBOX_CLIENT_ID`, `PAYPAL_SANDBOX_SECRET`, and either `CJ_API_KEY` or an existing `CJ_ACCESS_TOKEN`. Use server secrets only; the CJ API key and CJ MCP token are different credential types.
 4. Set `COMMERCE_MODE=sandbox` for this sandbox backend. The committed default is `disabled`. Setting it to `live` fails closed.
 5. Deploy the Worker, configure a real **PayPal sandbox app** webhook for `PAYMENT.CAPTURE.COMPLETED`, and store its `PAYPAL_SANDBOX_WEBHOOK_ID`. Verify the app/merchant matches the server credentials.
@@ -57,6 +64,9 @@ The existing public cart remains disabled; it does not call these owner-only rou
 | Method | Path | Purpose |
 | --- | --- | --- |
 | GET | `/health` | Mode/readiness flags only, no secrets |
+| GET | `/sandbox/readiness` | Owner-only configuration and read-only database probes; no authentication/transaction claim |
+| GET | `/sandbox/review` | Paginated read-only sandbox handoff, optional cursor/limit/staleMinutes |
+| POST | `/sandbox/events/:eventId/acknowledge` | Record owner acknowledgement without releasing the payment hold |
 | GET | `/sandbox/connections` | Owner-only authentication checks; no order creation |
 | POST | `/sandbox/orders` | Owner creates a test order; `Idempotency-Key` required |
 | GET | `/sandbox/orders/:id` | Owner checks status |

@@ -1,5 +1,6 @@
 import { decimalCents, money, sandboxCatalogue } from "./catalogue";
 import type { Order, PaymentGateway, SupplierGateway } from "./orders";
+import type { IssueKind } from "./d1-store";
 
 type Json = Record<string, unknown>;
 function object(value: unknown): Json {
@@ -14,6 +15,24 @@ type Transport = typeof fetch;
 // Runtime fetch functions can require their original receiver. Never store a
 // raw global function as an instance method and call it with the client as this.
 const defaultTransport: Transport = (input, init) => fetch(input, init);
+
+export function exceptionReference(event: Record<string, unknown>) {
+  const resource = object(event.resource);
+  const related = resource.supplementary_data ? object(object(resource.supplementary_data).related_ids || {}) : {};
+  let captureId = typeof related.capture_id === "string" ? providerId(related.capture_id) : undefined;
+  for (const link of Array.isArray(resource.links) ? resource.links : []) {
+    const item = object(link);
+    if (item.rel !== "up" || typeof item.href !== "string") continue;
+    const url = new URL(item.href);
+    const match = url.pathname.match(/^\/v2\/payments\/captures\/([a-zA-Z0-9_-]{4,100})$/);
+    if (url.protocol === "https:" && ["api.sandbox.paypal.com", "api-m.sandbox.paypal.com"].includes(url.hostname) && !url.username && !url.password && !url.port && !url.search && !url.hash && match) {
+      if (captureId && captureId !== match[1]) throw new Error("PAYMENT_EXCEPTION_MISMATCH");
+      captureId = match[1];
+    }
+  }
+  if (!captureId && event.event_type !== "PAYMENT.CAPTURE.REFUNDED") captureId = providerId(resource.id);
+  return { captureId, paypalId: typeof related.order_id === "string" ? providerId(related.order_id) : undefined, resourceId: providerId(resource.id) };
+}
 
 export class PayPalSandbox implements PaymentGateway {
   // There is deliberately no live PayPal endpoint or environment override.
@@ -72,6 +91,27 @@ export class PayPalSandbox implements PaymentGateway {
   }
   async get(order: Order) { return this.api(`/v2/checkout/orders/${providerId(order.paypalId)}`); }
   async checkConnection() { await this.auth(); return true; }
+  async inspectException(event: Record<string, unknown>, order: Order): Promise<IssueKind> {
+    const refs = exceptionReference(event);
+    const captureId = refs.captureId || order.captureId;
+    if (!captureId || !order.paypalId || (order.captureId && order.captureId !== captureId) || (refs.paypalId && refs.paypalId !== order.paypalId)) throw new Error("PAYMENT_EXCEPTION_MISMATCH");
+    // Construct sandbox URLs ourselves; never fetch webhook-supplied URLs.
+    const capture = await this.api(`/v2/payments/captures/${providerId(captureId)}`);
+    const amount = object(capture.amount);
+    const related = capture.supplementary_data ? object(object(capture.supplementary_data).related_ids || {}) : {};
+    if (capture.id !== captureId || amount.currency_code !== "AUD" || decimalCents(amount.value) !== order.totalAudCents || related.order_id !== order.paypalId) throw new Error("PAYMENT_EXCEPTION_MISMATCH");
+    if (event.event_type === "PAYMENT.CAPTURE.REFUNDED") {
+      const refund = await this.api(`/v2/payments/refunds/${refs.resourceId}`);
+      const refundAmount = object(refund.amount);
+      const refundRefs = exceptionReference({ event_type: "PAYMENT.CAPTURE.REFUNDED", resource: refund });
+      if (refund.id !== refs.resourceId || refundRefs.captureId !== captureId || refundAmount.currency_code !== "AUD" || decimalCents(refundAmount.value) < 1 || decimalCents(refundAmount.value) > order.totalAudCents) throw new Error("PAYMENT_EXCEPTION_MISMATCH");
+      if (refund.status !== "COMPLETED" || !["REFUNDED", "PARTIALLY_REFUNDED"].includes(String(capture.status))) return "PAYMENT_EXCEPTION_UNCONFIRMED";
+      return "PAYMENT_REFUNDED";
+    }
+    if (event.event_type === "PAYMENT.CAPTURE.REVERSED") return ["REFUNDED", "PARTIALLY_REFUNDED", "FAILED", "DECLINED"].includes(String(capture.status)) ? "PAYMENT_REVERSED" : "PAYMENT_EXCEPTION_UNCONFIRMED";
+    if (event.event_type === "PAYMENT.CAPTURE.DECLINED") return ["DECLINED", "FAILED"].includes(String(capture.status)) ? "PAYMENT_DECLINED" : "PAYMENT_EXCEPTION_UNCONFIRMED";
+    throw new Error("PAYMENT_EXCEPTION_MISMATCH");
+  }
   async inspect(order: Order) {
     const data = object(await this.get(order));
     if (data.id !== order.paypalId || data.intent !== "CAPTURE" || !Array.isArray(data.purchase_units) || data.purchase_units.length !== 1) throw new Error("CREATED_ORDER_NOT_VERIFIED");

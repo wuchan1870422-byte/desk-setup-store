@@ -1,12 +1,12 @@
 # Verification
 
-Rechecked on 23 October 2026 with Node.js 24.19.0. Installed versions are locked: Next.js 16.4.1, React 19.3.1, Tailwind CSS 4.3.3.
+Rechecked on 24 October 2026 with Node.js 24.19.0. Installed versions are locked: Next.js 16.4.1, React 19.3.1, Tailwind CSS 4.3.3. Browser tests use pinned @playwright/test 1.64.1.
 
 ## Automated checks
 
 - `npm run lint`: PASS, zero warnings.
 - `npm run typecheck`: PASS.
-- `npm test`: PASS, 34/34 cases: ten storefront/domain cases and twenty-four sandbox commerce cases. Commerce persistence tests use real in-memory SQLite; provider responses are mocked.
+- `npm test`: PASS, 51/51 cases: fifteen storefront/domain/evidence cases and thirty-six sandbox commerce/acceptance/review cases. Commerce persistence tests apply both real SQL migrations in in-memory SQLite; provider responses are mocked.
 - `npm run build:commerce`: PASS, separate sandbox Worker bundle. This does not deploy or connect the backend.
 - `npm run build`: PASS, Next.js production static export; all requested routes generated.
 - `npm run check:export`: PASS, 11 exported HTML files and 251 local route/asset references, metadata, Open Graph, robots, sitemap and absence of forms/payment SDKs.
@@ -15,6 +15,11 @@ Rechecked on 23 October 2026 with Node.js 24.19.0. Installed versions are locked
 
 - `node commerce/hosting/build.mjs <backend-project-id>`: PASS, separate hosted Worker artifact and schema-only migration; rejects the storefront Site identity.
 - Hosted artifact smoke check: PASS, valid ESM, health response, disabled-by-default orders and status page.
+- `npm run check:launch`: PASS as a diagnostic; the current candidate correctly reports commercial evidence blocked, unknown costs and checkout disabled. It is not a commercial-ready assertion.
+- `npm run test:e2e`: PASS, 20/20 local rendered Chromium cases across 320, 375, 390, 768 and 1440 CSS pixels. Coverage includes navigation/filter/footer routes, add/update/remove/clear, refresh, download, corrupt/unavailable storage, cross-tab persistence, direct routes/404 and keyboard skip focus. Unexpected external browser requests fail tests.
+- Local browser runtime: Chromium 153.0.8010.0 via `PLAYWRIGHT_CHROMIUM_EXECUTABLE_PATH`. The default Playwright browser download returned invalid ZIP data in this environment; an isolated scratch Chromium runtime was used instead. This fallback is not added to repository dependencies. CI installs its own matching Chromium; this record does not claim a CI result.
+- Local 390px/1440px homepage and populated-cart screenshots captured and visually inspected. No layout clipping observed in those views. Screenshots contain demo data only and are not committed.
+- Credential-free CLI smoke checks: missing explicit network opt-in / credentials returns blocked with exit 2 and no provider traffic, rather than reporting acceptance passed.
 
 ## Responsive implementation
 
@@ -22,7 +27,7 @@ The layout has desktop, tablet (1100px), mobile (760px) and narrow-mobile (370px
 
 ## Browser verification limit
 
-The original storefront verification on 15 October did not include rendered browser QA because the required browser workflow was unavailable then. The 23 October synchronization updates the separate sandbox backend and deployment profile; it leaves storefront components unchanged; no new desktop/mobile interaction pass was performed. Automated HTML/link checks and source-level responsive review do **not** replace rendered desktop/mobile interaction testing. No screenshot-based layout pass or real-device pass is claimed. A long-running local development server was not launched in this environment; use the documented `npm ci && npm run dev` locally. Successful compilation and static export have been verified.
+The 24 October local static-export browser pass replaces the earlier source-only responsive check. It found that the skip link scrolled without moving keyboard focus; the main target now has tabIndex=-1 and all five viewport tests pass. Chromium viewport emulation and local screenshots do **not** establish a real-phone, Safari, manual 200% browser-zoom or public-host deep-link pass. Those remain manual acceptance items. No external provider order was created or captured during these local tests; no remote migration or deployment was performed.
 
 ## Manual acceptance before trading
 

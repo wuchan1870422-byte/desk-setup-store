@@ -1,6 +1,8 @@
 import { D1Orders, type Database } from "./d1-store";
 import { SandboxOrders } from "./orders";
-import { CJSandbox, PayPalSandbox } from "./providers";
+import { CJSandbox, PayPalSandbox, exceptionReference } from "./providers";
+import { configurationStatus, runtimeReadiness } from "./readiness";
+import { orderReview } from "./review";
 
 export interface Environment {
   COMMERCE_MODE?: string;
@@ -47,7 +49,7 @@ async function body(req: Request): Promise<Record<string, unknown>> {
 const worker = {
   async fetch(req: Request, env: Environment): Promise<Response> {
     const path = new URL(req.url).pathname;
-    if (path === "/health" && req.method === "GET") return json({ service: "desk-setup-sandbox-orders", mode: env.COMMERCE_MODE === "sandbox" ? "sandbox" : "disabled", livePayments: false, realProcurement: false, ready: Boolean(env.ORDERS && env.PAYPAL_SANDBOX_CLIENT_ID && env.PAYPAL_SANDBOX_SECRET && (env.CJ_ACCESS_TOKEN || env.CJ_API_KEY) && (env.SANDBOX_ADMIN_TOKEN?.length || 0) >= 32) });
+    if (path === "/health" && req.method === "GET") return json({ service: "desk-setup-sandbox-orders", mode: env.COMMERCE_MODE === "sandbox" ? "sandbox" : "disabled", livePayments: false, realProcurement: false, configurationPresent: configurationStatus(env).configurationPresent, endToEnd: "not_verified" });
     // No environment setting can activate live purchases in this implementation.
     if (env.COMMERCE_MODE !== "sandbox") return json({ error: "SANDBOX_DISABLED" }, 503);
     const webhook = path === "/webhooks/paypal" && req.method === "POST";
@@ -59,6 +61,13 @@ const worker = {
     const supplier = () => supplierClient ||= env.CJ_ACCESS_TOKEN ? Promise.resolve(new CJSandbox(env.CJ_ACCESS_TOKEN)) : CJSandbox.fromApiKey(env.CJ_API_KEY!);
     const service = new SandboxOrders(db, paypal, { createSandboxOrder: async (order) => (await supplier()).createSandboxOrder(order), simulatePayment: async (id) => (await supplier()).simulatePayment(id) });
     try {
+      if (path === "/sandbox/readiness" && req.method === "GET") return json(await runtimeReadiness(env));
+      if (path === "/sandbox/review" && req.method === "GET") {
+        const query = new URL(req.url).searchParams;
+        return json(await orderReview(db, query.get("cursor") || "", Number(query.get("limit") || 50), Number(query.get("staleMinutes") || 30)));
+      }
+      const acknowledge = path.match(/^\/sandbox\/events\/([a-zA-Z0-9_-]{4,100})\/acknowledge$/);
+      if (acknowledge && req.method === "POST") return json({ acknowledged: await db.acknowledge(acknowledge[1]), holdReleased: false });
       if (path === "/sandbox/connections" && req.method === "GET") {
         // Auth checks only: no payment capture, supplier order or customer data.
         const [payment, supplierAuth] = await Promise.allSettled([
@@ -75,7 +84,25 @@ const worker = {
         if (!env.PAYPAL_SANDBOX_WEBHOOK_ID) return json({ error: "WEBHOOK_NOT_CONFIGURED" }, 503);
         const event = await body(req);
         if (!await paypal.verifyWebhook(req.headers, event, env.PAYPAL_SANDBOX_WEBHOOK_ID)) return json({ error: "INVALID_SIGNATURE" }, 400);
-        // Refunds/reversals require a later live-order workflow. Never trigger a new order.
+        if (["PAYMENT.CAPTURE.REFUNDED", "PAYMENT.CAPTURE.REVERSED", "PAYMENT.CAPTURE.DECLINED"].includes(String(event.event_type))) {
+          if (typeof event.id !== "string" || !/^[a-zA-Z0-9_-]{4,100}$/.test(event.id)) return json({ error: "INVALID_PROVIDER_ID" }, 400);
+          const refs = exceptionReference(event);
+          const order = refs.captureId ? await db.byCapture(refs.captureId) : null;
+          const known = order || (refs.paypalId ? await db.byPayPal(refs.paypalId) : null);
+          if (!known) return json({ received: true, unknownOrder: true, reviewRequired: true });
+          let kind;
+          try { kind = await paypal.inspectException(event, known); }
+          catch (error) {
+            if (error instanceof Error && error.message === "PAYMENT_EXCEPTION_MISMATCH") throw error;
+            // A signed event mapped to a known order but a failed read requires
+            // a durable hold AND a non-2xx response so PayPal can redeliver.
+            await db.issue(known.id, event.id, "PAYMENT_EXCEPTION_UNCONFIRMED");
+            throw error;
+          }
+          await db.issue(known.id, event.id, kind);
+          // Negative events only hold/record. Never capture, fulfil or retry CJ.
+          return json({ received: true, reviewRequired: true });
+        }
         if (event.event_type !== "PAYMENT.CAPTURE.COMPLETED") return json({ received: true, ignored: true });
         const resource = event.resource as { supplementary_data?: { related_ids?: { order_id?: unknown } } } | undefined;
         const id = resource?.supplementary_data?.related_ids?.order_id;
@@ -115,7 +142,7 @@ const worker = {
       return json({ error: "NOT_FOUND" }, 404);
     } catch (error) {
       const reason = error instanceof Error ? error.message : "INTERNAL_ERROR";
-      if (["INVALID_ITEMS", "UNKNOWN_PRODUCT", "INVALID_QUANTITY", "QUANTITY_LIMIT", "INVALID_REQUEST_KEY", "INVALID_JSON", "BODY_TOO_LARGE", "IDEMPOTENCY_CONFLICT"].includes(reason)) return json({ error: reason }, reason === "IDEMPOTENCY_CONFLICT" ? 409 : 400);
+      if (["INVALID_ITEMS", "UNKNOWN_PRODUCT", "INVALID_QUANTITY", "QUANTITY_LIMIT", "INVALID_REQUEST_KEY", "INVALID_JSON", "BODY_TOO_LARGE", "IDEMPOTENCY_CONFLICT", "INVALID_PAGINATION", "PAYMENT_EXCEPTION_MISMATCH"].includes(reason)) return json({ error: reason }, reason === "IDEMPOTENCY_CONFLICT" ? 409 : 400);
       if (reason === "ORDER_NOT_FOUND") return json({ error: reason }, 404);
       // Never echo provider responses, secrets or internal exception messages.
       const safeReasons = ["CREATED_ORDER_NOT_VERIFIED", "PAYPAL_APPROVAL_MISSING", "PAYPAL_APPROVAL_INVALID", "PROVIDER_INVALID_RESPONSE", "PROVIDER_INVALID_ID", "PAYPAL_AUTH_FAILED"];

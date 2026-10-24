@@ -4,13 +4,14 @@ export type State = "CREATING" | "PENDING" | "CAPTURING" | "PAID" | "FULFILLING"
 export type Order = {
   id: string; requestKey: string; lines: Line[]; totalAudCents: number; state: State;
   paypalId?: string; approvalUrl?: string; captureId?: string; cjOrderId?: string;
-  reviewReason?: string; createdAt: string;
+  reviewReason?: string; createdAt: string; updatedAt?: string;
 };
 export interface OrderStore {
   insert(order: Order): Promise<boolean>;
   byId(id: string): Promise<Order | null>;
   byKey(key: string): Promise<Order | null>;
   byPayPal(id: string): Promise<Order | null>;
+  hasHold(id: string): Promise<boolean>;
   transition(order: Order, expected: State): Promise<boolean>;
 }
 export interface PaymentGateway {
@@ -51,6 +52,7 @@ export class SandboxOrders {
   async capture(id: string) {
     const row = await this.db.byId(id);
     if (!row) throw new Error("ORDER_NOT_FOUND");
+    if (await this.db.hasHold(row.id)) return row;
     if (row.state !== "PENDING") return row;
     const claimed: Order = { ...row, state: "CAPTURING" };
     if (!await this.db.transition(claimed, "PENDING")) return (await this.db.byId(id))!;
@@ -92,6 +94,7 @@ export class SandboxOrders {
   }
 
   private async settle(row: Order, payload: unknown) {
+    if (await this.db.hasHold(row.id)) return (await this.db.byId(row.id))!;
     let captureId: string;
     try { captureId = this.paypal.verifyPaid(payload, row); }
     catch {

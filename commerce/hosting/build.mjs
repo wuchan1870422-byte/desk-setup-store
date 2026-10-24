@@ -16,5 +16,6 @@ await mkdir(resolve(output, '.openai/drizzle/meta'), { recursive: true });
 await build({ entryPoints: [resolve(root, 'commerce/hosting/entry.ts')], outfile: resolve(output, 'server/index.js'), bundle: true, format: 'esm', platform: 'browser', target: 'es2022' });
 await writeFile(resolve(output, '.openai/hosting.json'), JSON.stringify({ project_id: projectId, d1: 'ORDERS', r2: null }, null, 2) + '\n');
 await cp(resolve(root, 'commerce/migrations/0001_sandbox_orders.sql'), resolve(output, '.openai/drizzle/0000_sandbox_orders.sql'));
+await cp(resolve(root, 'commerce/migrations/0002_order_events.sql'), resolve(output, '.openai/drizzle/0001_order_events.sql'));
 await cp(resolve(root, 'commerce/hosting/journal.json'), resolve(output, '.openai/drizzle/meta/_journal.json'));
 console.log('Built separate Sites sandbox artifact in commerce/dist/site. No runtime credentials are included.');

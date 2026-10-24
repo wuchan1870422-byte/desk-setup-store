@@ -3,6 +3,8 @@ import { products } from "../data/products";
 
 export const launchChecks = ["supplierAndSample", "shippingRoute", "stockAndPrice", "sellerIdentity", "returnsAddress", "policies", "sandboxPaymentAndRefund"] as const;
 export type LaunchEvidence = Record<(typeof launchChecks)[number], boolean>;
+// Legacy demo-only UI summary. Operator commercial evidence is evaluated by
+// commerce/launch-readiness.ts; neither result is an enable-checkout switch.
 export function checkoutReadiness(evidence: Partial<LaunchEvidence>) {
   const missing = launchChecks.filter((key) => evidence[key] !== true);
   return { ready: missing.length === 0 && !products.some((p) => p.isDemo), missing, demoCatalogue: products.some((p) => p.isDemo) };

@@ -12,7 +12,9 @@ const line = [{ productId: "tech-organiser-black-3", quantity: 1 }];
 function database() {
   const sql = new DatabaseSync(":memory:");
   sql.exec(readFileSync(new URL("../migrations/0001_sandbox_orders.sql", import.meta.url), "utf8"));
+  sql.exec(readFileSync(new URL("../migrations/0002_order_events.sql", import.meta.url), "utf8"));
   const adapter: Database = { prepare: (query) => ({ bind: (...values) => ({
+    all: async <T>() => ({ results: sql.prepare(query).all(...values as SQLInputValue[]) as T[] }),
     first: async <T>() => (sql.prepare(query).get(...values as SQLInputValue[]) as T) || null,
     run: async () => ({ meta: { changes: Number(sql.prepare(query).run(...values as SQLInputValue[]).changes) } }),
   }) }) };

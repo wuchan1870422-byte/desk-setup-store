@@ -121,9 +121,29 @@ Official references: [Next.js static exports](https://nextjs.org/docs/app/guides
 
 ## Verification & known limits
 
-Automated checks cover lint, TypeScript, 34 tests (ten storefront/domain and twenty-four sandbox commerce), the separate Worker bundle, exported routes, local links/assets, metadata, demo notices and absence of forms/payment SDKs in the storefront. Automated provider responses are mocked; passing them does not establish a completed external-provider transaction. See [docs/VERIFICATION.md](docs/VERIFICATION.md) for actual results and remaining manual acceptance checks.
+Automated checks cover lint, TypeScript, 51 tests (fifteen storefront/domain/evidence and thirty-six sandbox commerce), the separate Worker bundle, exported routes, local links/assets, metadata, demo notices and absence of forms/payment SDKs in the storefront. Automated provider responses are mocked; passing them does not establish a completed external-provider transaction. See [docs/VERIFICATION.md](docs/VERIFICATION.md) for actual results and remaining manual acceptance checks.
 
 The public cart has no real checkout, fulfilment, tax calculation, inventory feed, customer support inbox or analytics provider. Sandbox deployment and credentials do not enable live commerce. Draft policies must be finalised for the actual seller. In particular, overseas sellers offering goods directly to Australian consumers must account for Australian Consumer Law and consumer guarantees; see [ACCC's guidance](https://www.accc.gov.au/business/selling-products-and-services/selling-online).
+
+## Minimal commercial test tools
+
+- `npm run check:launch`: structural single-candidate evidence and converted unit
+  costs. The committed example intentionally reports blockers. See
+  [evidence rules](docs/LAUNCH-EVIDENCE.md); no result enables checkout.
+- `npm run sandbox:acceptance -- check --network=sandbox`: explicit private
+  operator runner. It separates runtime configuration, authentication and actual
+  acceptance; [the runbook](docs/SANDBOX-ACCEPTANCE.md) covers buyer approval,
+  failure, duplicates, recovery and test refunds. It never uses live PayPal.
+- `npm run orders:review -- --network=sandbox`: paginated private sandbox ledger
+  export. [Payment-exception holds and manual handoff](docs/ORDER-HANDOFF.md)
+  never imply real dispatch or automatic supplier retry.
+- `npm run test:e2e`: Playwright Chromium interactions at five viewport widths
+  against the production static export. Install Chromium first. CI contains no
+  provider credentials, remote transaction or deployment step.
+
+The backend now requires migration `0002_order_events.sql` in addition to the
+original order schema. Both standalone and separate hosted artifact builds retain
+the same core. Building does not update any deployed backend or database.
 
 ## Desk fit and quote handoff
 
