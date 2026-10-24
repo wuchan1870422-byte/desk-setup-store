@@ -12,6 +12,7 @@ There is no live mode in this version. PayPal's host is hard-coded to sandbox, C
 - Only verified `COMPLETED` capture status, matching currency, total and internal order IDs can advance an order.
 - Duplicate create/capture/callback requests do not create a second supplier order.
 - CJ API-key authentication, sandbox order creation and simulated payment.
+- A separate owner-only CJ contract check uses a fixed fixture and its own durable request key. It cannot mark a customer order paid or bypass that order's PayPal verification.
 - Ambiguous payment or supplier timeouts become `REVIEW`; no blind procurement retries.
 - Capture-timeout recovery rechecks PayPal without capturing twice; verified `PAID` orders can resume fulfilment with an atomic claim. Uncertain supplier submissions are never retried automatically.
 - After uncertain creation, an owner can link an existing PayPal reference only after a fresh GET verifies the pending state, invoice, internal references, amount and approval token.
@@ -43,7 +44,7 @@ The Worker output in `commerce/dist/` is ignored. Tests use real in-memory SQLit
 Use the official Wrangler CLI with the user's own Cloudflare account, or adapt the module to a supported hosted Worker backend. Do not change the static Next.js Site's hosting manifest to point at this Worker.
 
 1. Create a **dedicated sandbox** D1 database and add its actual `ORDERS` binding to `commerce/wrangler.jsonc`. No invented IDs are included.
-2. Apply `commerce/migrations/0001_sandbox_orders.sql` using D1 migrations.
+2. Apply all `commerce/migrations/` schema migrations in order using D1 migrations.
 3. In secret storage configure `SANDBOX_ADMIN_TOKEN` (at least 32 random characters), `PAYPAL_SANDBOX_CLIENT_ID`, `PAYPAL_SANDBOX_SECRET`, and either `CJ_API_KEY` or an existing `CJ_ACCESS_TOKEN`. Use server secrets only; the CJ API key and CJ MCP token are different credential types.
 4. Set `COMMERCE_MODE=sandbox` for this sandbox backend. The committed default is `disabled`. Setting it to `live` fails closed.
 5. Deploy the Worker, configure a real **PayPal sandbox app** webhook for `PAYMENT.CAPTURE.COMPLETED`, and store its `PAYPAL_SANDBOX_WEBHOOK_ID`. Verify the app/merchant matches the server credentials.
@@ -58,6 +59,8 @@ The existing public cart remains disabled; it does not call these owner-only rou
 | --- | --- | --- |
 | GET | `/health` | Mode/readiness flags only, no secrets |
 | GET | `/sandbox/connections` | Owner-only authentication checks; no order creation |
+| POST | `/sandbox/supplier-checks` | Owner runs a fixed CJ sandbox fixture; empty JSON body and `Idempotency-Key` required |
+| GET | `/sandbox/supplier-checks/:id` | Owner reads the separate supplier check result |
 | POST | `/sandbox/orders` | Owner creates a test order; `Idempotency-Key` required |
 | GET | `/sandbox/orders/:id` | Owner checks status |
 | POST | `/sandbox/orders/:id/capture` | Owner completes sandbox capture |
@@ -94,3 +97,5 @@ CJ's access token is cached in the Worker isolate until its documented expiry. P
 `link-paypal` accepts only `{ "paypalId": "<known sandbox order ID>" }`. It never creates a replacement order or captures payment. Other local states remain unchanged; mismatches remain held for review. `paypal-status` returns only allowlisted provider state and payment/capture flags. Do not capture a test order until the sandbox buyer has approved it. Keep provider credentials and admin tokens out of every public request example.
 
 The authenticated connection check reports provider authentication separately from order acceptance. It never captures a payment or submits a CJ order and returns no token or provider body. An already configured CJ access token without an API key is explicitly reported as unverified.
+
+The separate supplier contract check accepts only `{}` and the adapter's fixed test product/recipient. A successful `SIMULATED_PAID` result establishes only CJ's sandbox simulation; it does not establish PayPal buyer approval, customer payment, real dispatch or delivery. The check persists a supplier reference before simulation. Repeating a request key reads the existing result and never retries an uncertain creation or simulation. Investigate `REVIEW`, `CREATING` or `SIMULATING` before considering any new check; a different key creates a different remote sandbox order. Numeric CJ error codes are retained without provider messages, account identifiers or tokens. Account-level execution evidence belongs in private operational records, not this public repository.

@@ -1,0 +1,6 @@
+CREATE TABLE sandbox_supplier_checks (
+  id TEXT PRIMARY KEY NOT NULL,
+  request_key TEXT NOT NULL UNIQUE,
+  state TEXT NOT NULL CHECK (state IN ('CREATING', 'SIMULATING', 'SIMULATED_PAID', 'REVIEW')),
+  payload TEXT NOT NULL
+);

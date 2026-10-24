@@ -1,6 +1,7 @@
 import { D1Orders, type Database } from "./d1-store";
 import { SandboxOrders } from "./orders";
 import { CJSandbox, PayPalSandbox } from "./providers";
+import { D1SupplierChecks, SandboxSupplierChecks } from "./supplier-check";
 
 export interface Environment {
   COMMERCE_MODE?: string;
@@ -59,6 +60,20 @@ const worker = {
     const supplier = () => supplierClient ||= env.CJ_ACCESS_TOKEN ? Promise.resolve(new CJSandbox(env.CJ_ACCESS_TOKEN)) : CJSandbox.fromApiKey(env.CJ_API_KEY!);
     const service = new SandboxOrders(db, paypal, { createSandboxOrder: async (order) => (await supplier()).createSandboxOrder(order), simulatePayment: async (id) => (await supplier()).simulatePayment(id) });
     try {
+      if (path === "/sandbox/supplier-checks" && req.method === "POST") {
+        const input = await body(req);
+        if (Object.keys(input).length) return json({ error: "ONLY_EMPTY_TEST_BODY_ACCEPTED" }, 400);
+        const checks = new SandboxSupplierChecks(new D1SupplierChecks(env.ORDERS), {
+          createSandboxOrder: async (order) => (await supplier()).createSandboxOrder(order),
+          simulatePayment: async (id) => (await supplier()).simulatePayment(id),
+        });
+        return json(await checks.create(req.headers.get("idempotency-key") || ""));
+      }
+      const supplierCheck = path.match(/^\/sandbox\/supplier-checks\/([a-zA-Z0-9-]{4,100})$/);
+      if (supplierCheck && req.method === "GET") {
+        const check = await new D1SupplierChecks(env.ORDERS).byId(supplierCheck[1]);
+        return check ? json(check) : json({ error: "CHECK_NOT_FOUND" }, 404);
+      }
       if (path === "/sandbox/connections" && req.method === "GET") {
         // Auth checks only: no payment capture, supplier order or customer data.
         const [payment, supplierAuth] = await Promise.allSettled([

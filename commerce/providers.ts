@@ -129,9 +129,9 @@ export class CJSandbox implements SupplierGateway {
   }
   private async api(path: string, method: string, body?: unknown) {
     const response = await this.send(this.base + path, { method, headers: { "CJ-Access-Token": this.token, "Content-Type": "application/json" }, body: body === undefined ? undefined : JSON.stringify(body), signal: AbortSignal.timeout(20000) });
-    if (!response.ok) throw new Error("CJ_REQUEST_FAILED");
+    if (!response.ok) throw new Error(`CJ_REQUEST_HTTP_${response.status}`);
     const json = object(await response.json());
-    if (json.code !== 200 || json.result !== true) throw new Error("CJ_REQUEST_FAILED");
+    if (json.code !== 200 || json.result !== true) throw new Error(Number.isSafeInteger(json.code) && Number(json.code) >= 0 && Number(json.code) <= 9999999999 ? `CJ_API_CODE_${json.code}` : "CJ_REQUEST_FAILED");
     return json.data;
   }
   async createSandboxOrder(order: Order) {
@@ -150,6 +150,6 @@ export class CJSandbox implements SupplierGateway {
     const detail = object(await this.api(`/shopping/order/getOrderDetail?orderId=${id}`, "GET"));
     // CJ uses its production API for both modes: assert the returned flag first.
     if (detail.isSandbox !== 1) throw new Error("CJ_NOT_A_SANDBOX_ORDER");
-    await this.api("/shopping/sandbox/simulatePay", "POST", { orderId: id });
+    if (await this.api("/shopping/sandbox/simulatePay", "POST", { orderId: id }) !== true) throw new Error("CJ_SIMULATION_NOT_CONFIRMED");
   }
 }
