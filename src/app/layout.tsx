@@ -18,5 +18,5 @@ export const metadata: Metadata = {
 export const viewport: Viewport = { width: "device-width", initialScale: 1, themeColor: "#f7f6f2" };
 
 export default function RootLayout({ children }: Readonly<{ children: React.ReactNode }>) {
-  return <html lang="en-AU"><body><a className="skip-link" href="#main-content">Skip to content</a><CartProvider><SiteHeader /><main id="main-content" className="min-h-[50vh]">{children}</main><SiteFooter /></CartProvider></body></html>;
+  return <html lang="en-AU"><body><a className="skip-link" href="#main-content">Skip to content</a><CartProvider><SiteHeader /><main id="main-content" tabIndex={-1} className="min-h-[50vh]">{children}</main><SiteFooter /></CartProvider></body></html>;
 }

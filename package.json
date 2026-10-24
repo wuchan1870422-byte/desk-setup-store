@@ -10,7 +10,11 @@
     "test": "node --import tsx --test tests/*.test.ts commerce/tests/*.test.ts",
     "build:commerce": "node scripts/build-commerce.mjs",
     "check:export": "node scripts/check-export.mjs",
-    "preview": "node scripts/serve.mjs"
+    "preview": "node scripts/serve.mjs",
+    "check:launch": "node --import tsx scripts/check-launch-readiness.ts",
+    "test:e2e": "playwright test",
+    "sandbox:acceptance": "node --import tsx scripts/sandbox-acceptance.ts",
+    "orders:review": "node --import tsx scripts/export-order-review.ts"
   },
   "dependencies": {
     "next": "^16.2.10",
@@ -18,11 +22,12 @@
     "react-dom": "^19.2.0"
   },
   "devDependencies": {
-    "esbuild": "0.28.2",
+    "@playwright/test": "1.64.1",
     "@tailwindcss/postcss": "^4.1.0",
     "@types/node": "^22.0.0",
     "@types/react": "^19.2.0",
     "@types/react-dom": "^19.2.0",
+    "esbuild": "0.28.2",
     "eslint": "^9.0.0",
     "eslint-config-next": "^16.2.10",
     "tailwindcss": "^4.1.0",

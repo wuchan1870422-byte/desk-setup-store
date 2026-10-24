@@ -1,12 +1,12 @@
 # Verification
 
-Rechecked on 24 October 2026 with Node.js 24.19.0. Installed versions are locked: Next.js 16.4.1, React 19.3.1, Tailwind CSS 4.3.3.
+Rechecked on 24 October 2026 with Node.js 24.19.0. Installed versions are locked: Next.js 16.4.1, React 19.3.1, Tailwind CSS 4.3.3. Browser tests use pinned @playwright/test 1.64.1.
 
 ## Automated checks
 
 - `npm run lint`: PASS, zero warnings.
 - `npm run typecheck`: PASS.
-- `npm test`: PASS, 34/34 cases: ten storefront/domain cases and twenty-four sandbox commerce cases. Commerce persistence tests use real in-memory SQLite; provider responses are mocked.
+- `npm test`: PASS, 57/57 cases: fifteen storefront/domain/evidence cases and forty-two sandbox commerce/acceptance/review/contract-check cases. Commerce persistence tests exercise the real SQL schemas in in-memory SQLite, including all three migrations in readiness/review tests; provider responses are mocked.
 - `npm run build:commerce`: PASS, separate sandbox Worker bundle. This does not deploy or connect the backend.
 - `npm run build`: PASS, Next.js production static export; all requested routes generated.
 - `npm run check:export`: PASS, 11 exported HTML files and 251 local route/asset references, metadata, Open Graph, robots, sitemap and absence of forms/payment SDKs.
@@ -15,6 +15,11 @@ Rechecked on 24 October 2026 with Node.js 24.19.0. Installed versions are locked
 
 - `node commerce/hosting/build.mjs <backend-project-id>`: PASS, separate hosted Worker artifact and schema-only migration; rejects the storefront Site identity.
 - Hosted artifact smoke check: PASS, valid ESM, health response, disabled-by-default orders and status page.
+- `npm run check:launch`: PASS as a diagnostic; the current candidate correctly reports commercial evidence blocked, unknown costs and checkout disabled. It is not a commercial-ready assertion.
+- `npm run test:e2e`: PASS, 20/20 local rendered Chromium cases across 320, 375, 390, 768 and 1440 CSS pixels. Coverage includes navigation/filter/footer routes, add/update/remove/clear, refresh, download, corrupt/unavailable storage, cross-tab persistence, direct routes/404 and keyboard skip focus. Unexpected external browser requests fail tests.
+- Local browser runtime: Chromium 153.0.8010.0 via `PLAYWRIGHT_CHROMIUM_EXECUTABLE_PATH`. The default Playwright browser download returned invalid ZIP data in this environment; an isolated scratch Chromium runtime was used instead. This fallback is not added to repository dependencies. CI installs its own matching Chromium; this record does not claim a CI result.
+- Local 390px/1440px homepage and populated-cart screenshots captured and visually inspected. No layout clipping observed in those views. Screenshots contain demo data only and are not committed.
+- Credential-free CLI smoke checks: missing explicit network opt-in / credentials returns blocked with exit 2 and no provider traffic, rather than reporting acceptance passed.
 
 ## Responsive implementation
 
@@ -26,8 +31,13 @@ On 24 October, the managed development entrypoint was repaired to translate the 
 
 - Measured the production export in 320, 375, 390, 768 and 1440 CSS-pixel iframes across ten routes: homepage, three products, bag, desk-fit, three policies and Contact. All **50 route/viewport combinations** had document scroll width no larger than client width. The bag measurement covers its initial shell/loading state. See [recorded measurements](qa/layout-2026-10-24.json).
 - On the public desktop demo, added all three products: A$147 subtotal + A$9 demo delivery = A$156. Increased Cable Keeper to two and removed Desk Shelf: A$97 + A$9 = A$106. Reload preserved the bag; Clear demo bag restored the empty state. PayPal remained disabled.
-- This is browser-based layout measurement, not an iOS/Android device or touch pass. Populated mobile-bag and mobile-menu interactions, keyboard-only/zoom acceptance and blocked/corrupted-storage UI acceptance remain open. Development-preview client script readiness was not established; public production-cart interaction was verified separately.
+- Limits of that earlier pass: no real-device/touch or 200% zoom acceptance; development-preview client script readiness was not established. Its initial mobile-interaction gaps are addressed by the separate local Playwright pass below, not retroactively by these 50 measurements.
 - The temporary responsive QA page was removed before the final build and is absent from the published export. No customer information was entered.
+
+
+### Repeatable local interaction pass
+
+The 24 October local static-export browser pass replaces the earlier source-only responsive check. It found that the skip link scrolled without moving keyboard focus; the main target now has tabIndex=-1 and all five viewport tests pass. Chromium viewport emulation and local screenshots do **not** establish a real-phone, Safari, manual 200% browser-zoom or public-host deep-link pass. Those remain manual acceptance items. No external provider order was created or captured during these local tests; no remote migration or deployment was performed.
 
 ## Manual acceptance before trading
 

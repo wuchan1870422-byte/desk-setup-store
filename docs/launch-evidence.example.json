@@ -1,0 +1,134 @@
+{
+  "schema": "desk-setup-launch-v1",
+  "product": {
+    "productId": "tech-organiser-black-3",
+    "cjSku": "CJJT107047201AZ",
+    "variant": "black / three-layer candidate; not approved for sale"
+  },
+  "shipping": {
+    "country": "AU",
+    "postcodes": [],
+    "route": "CJPacket Ordinary \u2014 candidate only",
+    "quoteExpiresAt": null
+  },
+  "costs": {
+    "saleAudCents": null,
+    "goods": {
+      "currency": "USD",
+      "cents": null
+    },
+    "freight": {
+      "currency": "USD",
+      "cents": null
+    },
+    "fx": {
+      "audPerUsd": null,
+      "reference": null,
+      "checkedAt": null,
+      "expiresAt": null
+    },
+    "feeBps": null,
+    "feeFixedAudCents": null,
+    "reserveBps": null,
+    "taxAudCents": null,
+    "acquisitionAudCents": null
+  },
+  "checks": {
+    "supplier": {
+      "status": "pending",
+      "reference": null,
+      "checkedAt": null,
+      "expiresAt": null
+    },
+    "sample": {
+      "status": "pending",
+      "reference": null,
+      "checkedAt": null,
+      "expiresAt": null
+    },
+    "imageRights": {
+      "status": "pending",
+      "reference": null,
+      "checkedAt": null,
+      "expiresAt": null
+    },
+    "stock": {
+      "status": "pending",
+      "reference": null,
+      "checkedAt": null,
+      "expiresAt": null
+    },
+    "shippingQuote": {
+      "status": "pending",
+      "reference": null,
+      "checkedAt": null,
+      "expiresAt": null
+    },
+    "sampleDelivery": {
+      "status": "pending",
+      "reference": null,
+      "checkedAt": null,
+      "expiresAt": null
+    },
+    "sellerIdentity": {
+      "status": "pending",
+      "reference": null,
+      "checkedAt": null,
+      "expiresAt": null
+    },
+    "support": {
+      "status": "pending",
+      "reference": null,
+      "checkedAt": null,
+      "expiresAt": null
+    },
+    "returns": {
+      "status": "pending",
+      "reference": null,
+      "checkedAt": null,
+      "expiresAt": null
+    },
+    "policies": {
+      "status": "pending",
+      "reference": null,
+      "checkedAt": null,
+      "expiresAt": null
+    },
+    "taxArrangement": {
+      "status": "pending",
+      "reference": null,
+      "checkedAt": null,
+      "expiresAt": null
+    },
+    "sandboxPayment": {
+      "status": "pending",
+      "reference": null,
+      "checkedAt": null,
+      "expiresAt": null
+    },
+    "sandboxRefund": {
+      "status": "pending",
+      "reference": null,
+      "checkedAt": null,
+      "expiresAt": null
+    },
+    "desktopQA": {
+      "status": "pending",
+      "reference": null,
+      "checkedAt": null,
+      "expiresAt": null
+    },
+    "realPhoneQA": {
+      "status": "pending",
+      "reference": null,
+      "checkedAt": null,
+      "expiresAt": null
+    },
+    "orderHandoff": {
+      "status": "pending",
+      "reference": null,
+      "checkedAt": null,
+      "expiresAt": null
+    }
+  }
+}
