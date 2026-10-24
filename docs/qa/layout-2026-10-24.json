@@ -1,0 +1,373 @@
+{
+  "checked_on": "2026-10-24",
+  "method": "Recorded Cloud Browser DOM measurements from same-origin production-export iframes. Each row below was observed in the browser; viewport width includes a 15px scrollbar.",
+  "checks": [
+    {
+      "viewport": 320,
+      "page": "/",
+      "client_width": 305,
+      "scroll_width": 305,
+      "pass": true
+    },
+    {
+      "viewport": 320,
+      "page": "/products/cable-keeper/",
+      "client_width": 305,
+      "scroll_width": 305,
+      "pass": true
+    },
+    {
+      "viewport": 320,
+      "page": "/products/desk-shelf/",
+      "client_width": 305,
+      "scroll_width": 305,
+      "pass": true
+    },
+    {
+      "viewport": 320,
+      "page": "/products/tech-pouch/",
+      "client_width": 305,
+      "scroll_width": 305,
+      "pass": true
+    },
+    {
+      "viewport": 320,
+      "page": "/cart/",
+      "client_width": 305,
+      "scroll_width": 305,
+      "pass": true
+    },
+    {
+      "viewport": 320,
+      "page": "/desk-fit/",
+      "client_width": 305,
+      "scroll_width": 305,
+      "pass": true
+    },
+    {
+      "viewport": 320,
+      "page": "/shipping-policy/",
+      "client_width": 305,
+      "scroll_width": 305,
+      "pass": true
+    },
+    {
+      "viewport": 320,
+      "page": "/return-policy/",
+      "client_width": 305,
+      "scroll_width": 305,
+      "pass": true
+    },
+    {
+      "viewport": 320,
+      "page": "/privacy-policy/",
+      "client_width": 305,
+      "scroll_width": 305,
+      "pass": true
+    },
+    {
+      "viewport": 320,
+      "page": "/contact/",
+      "client_width": 305,
+      "scroll_width": 305,
+      "pass": true
+    },
+    {
+      "viewport": 375,
+      "page": "/",
+      "client_width": 360,
+      "scroll_width": 360,
+      "pass": true
+    },
+    {
+      "viewport": 375,
+      "page": "/products/cable-keeper/",
+      "client_width": 360,
+      "scroll_width": 360,
+      "pass": true
+    },
+    {
+      "viewport": 375,
+      "page": "/products/desk-shelf/",
+      "client_width": 360,
+      "scroll_width": 360,
+      "pass": true
+    },
+    {
+      "viewport": 375,
+      "page": "/products/tech-pouch/",
+      "client_width": 360,
+      "scroll_width": 360,
+      "pass": true
+    },
+    {
+      "viewport": 375,
+      "page": "/cart/",
+      "client_width": 360,
+      "scroll_width": 360,
+      "pass": true
+    },
+    {
+      "viewport": 375,
+      "page": "/desk-fit/",
+      "client_width": 360,
+      "scroll_width": 360,
+      "pass": true
+    },
+    {
+      "viewport": 375,
+      "page": "/shipping-policy/",
+      "client_width": 360,
+      "scroll_width": 360,
+      "pass": true
+    },
+    {
+      "viewport": 375,
+      "page": "/return-policy/",
+      "client_width": 360,
+      "scroll_width": 360,
+      "pass": true
+    },
+    {
+      "viewport": 375,
+      "page": "/privacy-policy/",
+      "client_width": 360,
+      "scroll_width": 360,
+      "pass": true
+    },
+    {
+      "viewport": 375,
+      "page": "/contact/",
+      "client_width": 360,
+      "scroll_width": 360,
+      "pass": true
+    },
+    {
+      "viewport": 390,
+      "page": "/",
+      "client_width": 375,
+      "scroll_width": 375,
+      "pass": true
+    },
+    {
+      "viewport": 390,
+      "page": "/products/cable-keeper/",
+      "client_width": 375,
+      "scroll_width": 375,
+      "pass": true
+    },
+    {
+      "viewport": 390,
+      "page": "/products/desk-shelf/",
+      "client_width": 375,
+      "scroll_width": 375,
+      "pass": true
+    },
+    {
+      "viewport": 390,
+      "page": "/products/tech-pouch/",
+      "client_width": 375,
+      "scroll_width": 375,
+      "pass": true
+    },
+    {
+      "viewport": 390,
+      "page": "/cart/",
+      "client_width": 375,
+      "scroll_width": 375,
+      "pass": true
+    },
+    {
+      "viewport": 390,
+      "page": "/desk-fit/",
+      "client_width": 375,
+      "scroll_width": 375,
+      "pass": true
+    },
+    {
+      "viewport": 390,
+      "page": "/shipping-policy/",
+      "client_width": 375,
+      "scroll_width": 375,
+      "pass": true
+    },
+    {
+      "viewport": 390,
+      "page": "/return-policy/",
+      "client_width": 375,
+      "scroll_width": 375,
+      "pass": true
+    },
+    {
+      "viewport": 390,
+      "page": "/privacy-policy/",
+      "client_width": 375,
+      "scroll_width": 375,
+      "pass": true
+    },
+    {
+      "viewport": 390,
+      "page": "/contact/",
+      "client_width": 375,
+      "scroll_width": 375,
+      "pass": true
+    },
+    {
+      "viewport": 768,
+      "page": "/",
+      "client_width": 753,
+      "scroll_width": 753,
+      "pass": true
+    },
+    {
+      "viewport": 768,
+      "page": "/products/cable-keeper/",
+      "client_width": 753,
+      "scroll_width": 753,
+      "pass": true
+    },
+    {
+      "viewport": 768,
+      "page": "/products/desk-shelf/",
+      "client_width": 753,
+      "scroll_width": 753,
+      "pass": true
+    },
+    {
+      "viewport": 768,
+      "page": "/products/tech-pouch/",
+      "client_width": 753,
+      "scroll_width": 753,
+      "pass": true
+    },
+    {
+      "viewport": 768,
+      "page": "/cart/",
+      "client_width": 753,
+      "scroll_width": 753,
+      "pass": true
+    },
+    {
+      "viewport": 768,
+      "page": "/desk-fit/",
+      "client_width": 753,
+      "scroll_width": 753,
+      "pass": true
+    },
+    {
+      "viewport": 768,
+      "page": "/shipping-policy/",
+      "client_width": 753,
+      "scroll_width": 753,
+      "pass": true
+    },
+    {
+      "viewport": 768,
+      "page": "/return-policy/",
+      "client_width": 753,
+      "scroll_width": 753,
+      "pass": true
+    },
+    {
+      "viewport": 768,
+      "page": "/privacy-policy/",
+      "client_width": 753,
+      "scroll_width": 753,
+      "pass": true
+    },
+    {
+      "viewport": 768,
+      "page": "/contact/",
+      "client_width": 753,
+      "scroll_width": 753,
+      "pass": true
+    },
+    {
+      "viewport": 1440,
+      "page": "/",
+      "client_width": 1425,
+      "scroll_width": 1425,
+      "pass": true
+    },
+    {
+      "viewport": 1440,
+      "page": "/products/cable-keeper/",
+      "client_width": 1425,
+      "scroll_width": 1425,
+      "pass": true
+    },
+    {
+      "viewport": 1440,
+      "page": "/products/desk-shelf/",
+      "client_width": 1425,
+      "scroll_width": 1425,
+      "pass": true
+    },
+    {
+      "viewport": 1440,
+      "page": "/products/tech-pouch/",
+      "client_width": 1425,
+      "scroll_width": 1425,
+      "pass": true
+    },
+    {
+      "viewport": 1440,
+      "page": "/cart/",
+      "client_width": 1425,
+      "scroll_width": 1425,
+      "pass": true
+    },
+    {
+      "viewport": 1440,
+      "page": "/desk-fit/",
+      "client_width": 1425,
+      "scroll_width": 1425,
+      "pass": true
+    },
+    {
+      "viewport": 1440,
+      "page": "/shipping-policy/",
+      "client_width": 1425,
+      "scroll_width": 1425,
+      "pass": true
+    },
+    {
+      "viewport": 1440,
+      "page": "/return-policy/",
+      "client_width": 1425,
+      "scroll_width": 1425,
+      "pass": true
+    },
+    {
+      "viewport": 1440,
+      "page": "/privacy-policy/",
+      "client_width": 1425,
+      "scroll_width": 1425,
+      "pass": true
+    },
+    {
+      "viewport": 1440,
+      "page": "/contact/",
+      "client_width": 1425,
+      "scroll_width": 1425,
+      "pass": true
+    }
+  ],
+  "desktop_cart": {
+    "add_three_products": true,
+    "subtotal_cents": 14700,
+    "delivery_cents": 900,
+    "total_cents": 15600,
+    "increase_cable_and_remove_shelf": true,
+    "updated_total_cents": 10600,
+    "reload_persistence": true,
+    "clear_bag": true,
+    "live_checkout_disabled": true
+  },
+  "limits": [
+    "Cart iframe measurement covers its initial shell/loading state, not a populated mobile cart.",
+    "Mobile menu, touch, real-device, keyboard-only and blocked-storage interaction acceptance remain unverified.",
+    "Development-preview client script readiness was not established.",
+    "Payment and procurement transactions are outside these UI checks."
+  ]
+}

@@ -25,7 +25,17 @@ Rechecked on 24 October 2026 with Node.js 24.19.0. Installed versions are locked
 
 The layout has desktop, tablet (1100px), mobile (760px) and narrow-mobile (370px) breakpoints. At mobile widths the hero, collection, product details, cart and contact panels become one column. Navigation has a mobile toggle; tabs wrap. Product images use intrinsic dimensions and adaptive containers. Focus states, image alt text, button labels, a skip link, live cart status and reduced-motion styles are present.
 
-## Browser verification limit
+## Browser verification
+
+On 24 October, the managed development entrypoint was repaired to translate the supervisor's host/port flags to Next.js options. The supported preview CLI started successfully. The production static-preview server also accepts `--port` while preserving `PORT` and its default port.
+
+- Measured the production export in 320, 375, 390, 768 and 1440 CSS-pixel iframes across ten routes: homepage, three products, bag, desk-fit, three policies and Contact. All **50 route/viewport combinations** had document scroll width no larger than client width. The bag measurement covers its initial shell/loading state. See [recorded measurements](qa/layout-2026-10-24.json).
+- On the public desktop demo, added all three products: A$147 subtotal + A$9 demo delivery = A$156. Increased Cable Keeper to two and removed Desk Shelf: A$97 + A$9 = A$106. Reload preserved the bag; Clear demo bag restored the empty state. PayPal remained disabled.
+- Limits of that earlier pass: no real-device/touch or 200% zoom acceptance; development-preview client script readiness was not established. Its initial mobile-interaction gaps are addressed by the separate local Playwright pass below, not retroactively by these 50 measurements.
+- The temporary responsive QA page was removed before the final build and is absent from the published export. No customer information was entered.
+
+
+### Repeatable local interaction pass
 
 The 24 October local static-export browser pass replaces the earlier source-only responsive check. It found that the skip link scrolled without moving keyboard focus; the main target now has tabIndex=-1 and all five viewport tests pass. Chromium viewport emulation and local screenshots do **not** establish a real-phone, Safari, manual 200% browser-zoom or public-host deep-link pass. Those remain manual acceptance items. No external provider order was created or captured during these local tests; no remote migration or deployment was performed.
 

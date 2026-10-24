@@ -4,7 +4,10 @@ import { extname, resolve, sep } from "node:path";
 
 // Dependency-free static preview for the production export. Not an order server.
 const root = resolve("out");
-const port = Number(process.env.PORT || 3000);
+const args = process.argv.slice(2);
+const portIndex = args.indexOf('--port');
+const port = Number(portIndex >= 0 ? args[portIndex + 1] : process.env.PORT || 3000);
+if (!Number.isInteger(port) || port < 1 || port > 65535) throw new Error('Invalid preview port.');
 const types = { ".html":"text/html; charset=utf-8", ".css":"text/css", ".js":"text/javascript", ".svg":"image/svg+xml", ".png":"image/png", ".xml":"application/xml", ".txt":"text/plain", ".json":"application/json" };
 createServer(async (req, res) => {
   try {
