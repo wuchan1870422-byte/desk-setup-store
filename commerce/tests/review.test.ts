@@ -11,7 +11,7 @@ import worker, { type Environment } from "../worker";
 
 function database() {
   const sql = new DatabaseSync(":memory:");
-  for (const file of ["0001_sandbox_orders.sql", "0002_order_events.sql"]) sql.exec(readFileSync(new URL(`../migrations/${file}`, import.meta.url), "utf8"));
+  for (const file of ["0001_sandbox_orders.sql", "0002_sandbox_supplier_checks.sql", "0003_order_events.sql"]) sql.exec(readFileSync(new URL(`../migrations/${file}`, import.meta.url), "utf8"));
   const raw: Database = { prepare: query => ({ bind: (...values) => ({
     first: async <T>() => sql.prepare(query).get(...values as SQLInputValue[]) as T || null,
     all: async <T>() => ({ results: sql.prepare(query).all(...values as SQLInputValue[]) as T[] }),

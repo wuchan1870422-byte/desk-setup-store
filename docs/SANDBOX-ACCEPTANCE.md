@@ -29,9 +29,9 @@ record its actual version when used. Browser downloads are not silently skipped.
 ## Existing environment preflight
 
 Before external testing, inspect the existing backend; do not create a second
-Site/database. Both SQL migrations must exist in its database and its deployed
+Site/database. All three SQL migrations must exist in its database and its deployed
 source must match the version under test. For the separate hosted profile,
-`hosting/build.mjs` includes both migrations in the existing journal sequence.
+`hosting/build.mjs` includes all three migrations in the existing journal sequence.
 Building is local only and does not apply migrations. Keep storefront and backend
 identities separate. Never apply a migration to a production customer database as
 part of a test run.
@@ -45,7 +45,7 @@ Subscribe the same PayPal Sandbox app to `PAYMENT.CAPTURE.COMPLETED`,
 `PAYMENT.CAPTURE.DECLINED`.
 
 `/health` reports configuration presence, not usable credentials or a working
-database. `/sandbox/readiness` (authenticated) separately probes both database
+database. `/sandbox/readiness` (authenticated) separately probes all three database
 tables. `/sandbox/connections` authenticates; a configured CJ access token without
 an API key remains unverified. None of these endpoints certifies end-to-end
 acceptance. Missing schema/configuration must be fixed through an independently

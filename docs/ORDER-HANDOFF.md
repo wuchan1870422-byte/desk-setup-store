@@ -9,7 +9,7 @@ shipment, email sender, real procurement or automated refund in this version.
 admin token. It uses bounded keyset pagination over all sandbox orders; empty
 results are not a claim about payments in provider accounts. It returns known
 references, safe reason codes and suggested owner actions. No request keys,
-approval URLs, payer details or provider bodies are included. Review is read-only.
+approval URLs, payer details or provider bodies are included. Review is read-only. Separate CJ contract checks are not customer/payment orders and are inspected through `/sandbox/supplier-checks/:id`; this order export does not include those checks.
 
 ```sh
 npm run orders:review -- --network=sandbox

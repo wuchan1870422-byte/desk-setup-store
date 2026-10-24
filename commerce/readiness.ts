@@ -19,7 +19,8 @@ export async function runtimeReadiness(env: Environment) {
   try {
     const row = await env.ORDERS?.prepare("SELECT COUNT(*) AS count FROM sandbox_orders").bind().first<{ count: number }>();
     const events = await env.ORDERS?.prepare("SELECT COUNT(*) AS count FROM sandbox_order_events").bind().first<{ count: number }>();
-    if (typeof row?.count === "number" && typeof events?.count === "number") database = "available";
+    const supplierChecks = await env.ORDERS?.prepare("SELECT COUNT(*) AS count FROM sandbox_supplier_checks").bind().first<{ count: number }>();
+    if (typeof supplierChecks?.count === "number" && typeof row?.count === "number" && typeof events?.count === "number") database = "available";
   } catch { /* no SQL, binding details or provider response is returned */ }
   return { ...configuration, database, authentication: "not_checked", endToEnd: "not_verified", livePayments: false, realProcurement: false } as const;
 }

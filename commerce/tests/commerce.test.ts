@@ -12,7 +12,7 @@ const line = [{ productId: "tech-organiser-black-3", quantity: 1 }];
 function database() {
   const sql = new DatabaseSync(":memory:");
   sql.exec(readFileSync(new URL("../migrations/0001_sandbox_orders.sql", import.meta.url), "utf8"));
-  sql.exec(readFileSync(new URL("../migrations/0002_order_events.sql", import.meta.url), "utf8"));
+  sql.exec(readFileSync(new URL("../migrations/0003_order_events.sql", import.meta.url), "utf8"));
   const adapter: Database = { prepare: (query) => ({ bind: (...values) => ({
     all: async <T>() => ({ results: sql.prepare(query).all(...values as SQLInputValue[]) as T[] }),
     first: async <T>() => (sql.prepare(query).get(...values as SQLInputValue[]) as T) || null,
@@ -197,7 +197,7 @@ test("CJ client forces isSandbox=1 and create-only mode; a non-sandbox response 
 
 test("CJ sandbox payment uses only its documented simulation endpoint", async () => {
   const calls: string[] = [];
-  const send: typeof fetch = async (input) => { const url = String(input); calls.push(url); return Response.json({ code: 200, result: true, data: url.includes("getOrderDetail") ? { isSandbox: 1 } : null }); };
+  const send: typeof fetch = async (input) => { const url = String(input); calls.push(url); return Response.json({ code: 200, result: true, data: url.includes("getOrderDetail") ? { isSandbox: 1 } : true }); };
   await new CJSandbox("not-a-real-token", send).simulatePayment("CJ-TEST-23456");
   assert.match(calls[1], /\/sandbox\/simulatePay$/);
 });
