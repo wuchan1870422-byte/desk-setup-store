@@ -20,6 +20,13 @@ There is no live mode in this version. PayPal's host is hard-coded to sandbox, C
 - All sandbox management routes require a server admin token; no public checkout or PII input.
 - An unauthenticated webhook advances only known orders after PayPal signature verification and a fresh PayPal API read.
 - No customer address is accepted: CJ sandbox uses a fixed `TEST ONLY - DO NOT DELIVER` recipient. No real shipment or tracking number is created.
+- Signed refund/reversal/decline notifications are checked against fresh sandbox
+  capture/refund records and recorded as durable holds. Provider read failures
+  for known signed exceptions hold and return a retryable error. Acknowledgement
+  never releases a hold; already in-flight supplier calls need manual inspection.
+- Owner-only readiness probes, paginated review and explicit test tooling are in
+  [SANDBOX-ACCEPTANCE.md](../docs/SANDBOX-ACCEPTANCE.md) and
+  [ORDER-HANDOFF.md](../docs/ORDER-HANDOFF.md). No automatic refunds or messages.
 
 ## Files
 
@@ -58,6 +65,9 @@ The existing public cart remains disabled; it does not call these owner-only rou
 | Method | Path | Purpose |
 | --- | --- | --- |
 | GET | `/health` | Mode/readiness flags only, no secrets |
+| GET | `/sandbox/readiness` | Owner-only configuration and read-only database probes; no authentication/transaction claim |
+| GET | `/sandbox/review` | Paginated read-only sandbox handoff, optional cursor/limit/staleMinutes |
+| POST | `/sandbox/events/:eventId/acknowledge` | Record owner acknowledgement without releasing the payment hold |
 | GET | `/sandbox/connections` | Owner-only authentication checks; no order creation |
 | POST | `/sandbox/supplier-checks` | Owner runs a fixed CJ sandbox fixture; empty JSON body and `Idempotency-Key` required |
 | GET | `/sandbox/supplier-checks/:id` | Owner reads the separate supplier check result |
