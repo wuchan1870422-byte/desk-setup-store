@@ -1,5 +1,13 @@
 # Verification
 
+## 25 October 2026 update
+
+The complete GitHub main source at `0220b874ed7e54bbf530fa54c666d72e9fb87322` was checked with Node.js 24.22.1. Lint, typecheck, the Next.js build and static-export checks passed. Unit tests passed **64/64**: fifteen storefront/domain/evidence cases and forty-nine commerce/acceptance/review/contract-check cases.
+
+[GitHub CI for this source](https://github.com/wuchan1870422-byte/desk-setup-store/actions/runs/40172157590) also passed lint, typecheck, unit tests, launch diagnostics, Worker build, Next.js build, static-export checks and the browser test step. The source adds guarded CJ sandbox confirmation, fresh unpaid/paid state checks, bounded read-only rate-limit retries and explicit owner recovery without recreating a supplier order. Backend artifact validation passed separately. Account credentials, provider references and account-level execution results are kept out of this repository. This record does not certify a full PayPal-to-CJ transaction or live trading readiness.
+
+The earlier verification record follows.
+
 Rechecked on 24 October 2026 with Node.js 24.19.0. Installed versions are locked: Next.js 16.4.1, React 19.3.1, Tailwind CSS 4.3.3. Browser tests use pinned @playwright/test 1.64.1.
 
 ## Automated checks
