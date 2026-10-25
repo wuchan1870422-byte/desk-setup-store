@@ -85,9 +85,9 @@ test("supplier check routes require owner auth and reject all caller-supplied re
 
 test("CJ simulation must explicitly return true and diagnostics never expose response bodies", async () => {
   const transport: typeof fetch = async input => Response.json({ code: 200, result: true, data: String(input).includes("getOrderDetail") ? { isSandbox: 1, orderStatus: "UNPAID" } : false });
-  await assert.rejects(new CJSandbox("fake", transport).simulatePayment("CJ-FAKE-12345"), /CJ_SIMULATION_NOT_CONFIRMED/);
+  await assert.rejects(new CJSandbox("fake", transport, async () => {}).simulatePayment("CJ-FAKE-12345"), /CJ_SIMULATION_NOT_CONFIRMED/);
   const failure: typeof fetch = async () => Response.json({ code: 1600100, result: false, message: "PRIVATE-PROVIDER-BODY" });
-  await assert.rejects(new CJSandbox("fake", failure).simulatePayment("CJ-FAKE-12345"), { message: "CJ_API_CODE_1600100" });
+  await assert.rejects(new CJSandbox("fake", failure, async () => {}).simulatePayment("CJ-FAKE-12345"), { message: "CJ_API_CODE_1600100" });
 });
 
 test("supplier inspection returns only sandbox state and never writes to the provider", async () => {
@@ -96,7 +96,7 @@ test("supplier inspection returns only sandbox state and never writes to the pro
     methods.push(init?.method || "GET");
     return Response.json({ code: 200, result: true, data: { isSandbox: 1, orderStatus: "CREATED", shippingAddress: "PRIVATE", shippingCustomerName: "PRIVATE", shopId: "PRIVATE" } });
   };
-  assert.deepEqual(await new CJSandbox("fake", transport).inspectSandboxOrder("CJ-FAKE-12345"), { cjOrderId: "CJ-FAKE-12345", isSandbox: true, state: "CREATED", subStatus: undefined });
+  assert.deepEqual(await new CJSandbox("fake", transport, async () => {}).inspectSandboxOrder("CJ-FAKE-12345"), { cjOrderId: "CJ-FAKE-12345", isSandbox: true, state: "CREATED", subStatus: undefined });
   assert.deepEqual(methods, ["GET"]);
 });
 
@@ -107,7 +107,7 @@ test("created CJ sandbox orders are confirmed, rechecked, simulated and verified
     const url = String(input); calls.push(`${init?.method}:${new URL(url).pathname.split("/").pop()}`);
     return Response.json({ code: 200, result: true, data: url.includes("getOrderDetail") ? { isSandbox: 1, orderStatus: states.shift() } : true });
   };
-  await new CJSandbox("fake", transport).simulatePayment("CJ-FAKE-12345");
+  await new CJSandbox("fake", transport, async () => {}).simulatePayment("CJ-FAKE-12345");
   assert.deepEqual(calls, ["GET:getOrderDetail", "PATCH:confirmOrder", "GET:getOrderDetail", "POST:simulatePay", "GET:getOrderDetail"]);
 });
 
@@ -115,7 +115,7 @@ test("CJ cannot confirm non-sandbox orders or simulate in an unverified payment 
   for (const detail of [{ isSandbox: 0, orderStatus: "CREATED" }, { isSandbox: 1, orderStatus: "SHIPPED" }, { isSandbox: 1, orderStatus: "UNKNOWN" }]) {
     const methods: string[] = [];
     const transport: typeof fetch = async (_input, init) => { methods.push(init?.method || "GET"); return Response.json({ code: 200, result: true, data: detail }); };
-    await assert.rejects(new CJSandbox("fake", transport).simulatePayment("CJ-FAKE-12345"));
+    await assert.rejects(new CJSandbox("fake", transport, async () => {}).simulatePayment("CJ-FAKE-12345"));
     assert.deepEqual(methods, ["GET"]);
   }
 });
@@ -124,7 +124,7 @@ test("a CJ confirmation or simulated payment must be verified by a fresh state r
   for (const initial of ["CREATED", "UNPAID"]) {
     const calls: string[] = [];
     const transport: typeof fetch = async (input, init) => { const url = String(input); calls.push(init?.method || "GET"); return Response.json({ code: 200, result: true, data: url.includes("getOrderDetail") ? { isSandbox: 1, orderStatus: initial } : true }); };
-    await assert.rejects(new CJSandbox("fake", transport).simulatePayment("CJ-FAKE-12345"), initial === "CREATED" ? /CJ_ORDER_NOT_UNPAID/ : /CJ_SIMULATION_NOT_CONFIRMED/);
+    await assert.rejects(new CJSandbox("fake", transport, async () => {}).simulatePayment("CJ-FAKE-12345"), initial === "CREATED" ? /CJ_ORDER_NOT_UNPAID/ : /CJ_SIMULATION_NOT_CONFIRMED/);
     assert.deepEqual(calls, initial === "CREATED" ? ["GET", "PATCH", "GET"] : ["GET", "POST", "GET"]);
   }
 });
@@ -144,4 +144,22 @@ test("owner recovery leaves ambiguous supplier outcomes held", async () => {
   await h.service.resume(row.id);
   assert.equal((await h.db.byId(row.id))?.state, "REVIEW");
   assert.deepEqual(h.counts, { create: 1, simulate: 1 });
+});
+
+test("CJ retries one rate-limited read through the request gate but never replays a write", async () => {
+  let reads = 0, slots = 0, writes = 0;
+  const transport: typeof fetch = async (input, init) => {
+    if (String(input).includes("getOrderDetail")) {
+      if (++reads === 1) return Response.json({}, { status: 429 });
+      return Response.json({ code: 200, result: true, data: { isSandbox: 1, orderStatus: "UNPAID" } });
+    }
+    assert.equal(init?.method, "POST"); writes++;
+    return Response.json({}, { status: 429 });
+  };
+  await assert.rejects(new CJSandbox("fake", transport, async () => { slots++; }).simulatePayment("CJ-FAKE-12345"), /CJ_REQUEST_HTTP_429/);
+  assert.deepEqual({ reads, slots, writes }, { reads: 2, slots: 3, writes: 1 });
+  let failedReads = 0;
+  const limited: typeof fetch = async () => { failedReads++; return Response.json({}, { status: 429 }); };
+  await assert.rejects(new CJSandbox("fake", limited, async () => {}).inspectSandboxOrder("CJ-FAKE-12345"));
+  assert.equal(failedReads, 2);
 });

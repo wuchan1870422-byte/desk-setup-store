@@ -47,7 +47,7 @@ export class SandboxSupplierChecks {
     if (!row) throw new Error("CHECK_NOT_FOUND");
     // Explicit owner recovery is limited to a definite rejected simulation.
     // Never resubmit a supplier order or retry unknown/timeout outcomes.
-    if (row.state !== "REVIEW" || row.reviewReason !== "CJ_API_CODE_812" || !row.cjOrderId) return row;
+    if (row.state !== "REVIEW" || !["CJ_API_CODE_812", "CJ_REQUEST_HTTP_429"].includes(row.reviewReason || "") || !row.cjOrderId) return row;
     const current = await this.cj.inspectSandboxOrder(row.cjOrderId);
     if (!current.isSandbox) throw new Error("CJ_NOT_A_SANDBOX_ORDER");
     if (["UNSHIPPED", "PENDING", "PROCESSING"].includes(current.state)) {

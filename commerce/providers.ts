@@ -152,10 +152,22 @@ export class PayPalSandbox implements PaymentGateway {
   }
 }
 
+let cjNextRequestAt = 0;
+let cjQueue: Promise<void> = Promise.resolve();
+function cjRequestSlot() {
+  const slot = cjQueue.then(async () => {
+    const delay = Math.max(0, cjNextRequestAt - Date.now());
+    if (delay) await new Promise(resolve => setTimeout(resolve, delay));
+    cjNextRequestAt = Date.now() + 1100;
+  });
+  cjQueue = slot.catch(() => {});
+  return slot;
+}
+
 export class CJSandbox implements SupplierGateway {
   private static cached?: { key: string; token: string; until: number };
   private readonly base = "https://developers.cjdropshipping.com/api2.0/v1";
-  constructor(private token: string, private send: Transport = defaultTransport) {}
+  constructor(private token: string, private send: Transport = defaultTransport, private waitForSlot: () => Promise<void> = cjRequestSlot) {}
   static async fromApiKey(key: string, send: Transport = defaultTransport) {
     if (this.cached?.key === key && this.cached.until > Date.now()) return new CJSandbox(this.cached.token, send);
     const response = await send("https://developers.cjdropshipping.com/api2.0/v1/authentication/getAccessToken", { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify({ apiKey: key }), signal: AbortSignal.timeout(15000) });
@@ -168,7 +180,14 @@ export class CJSandbox implements SupplierGateway {
     return new CJSandbox(data.accessToken, send);
   }
   private async api(path: string, method: string, body?: unknown) {
-    const response = await this.send(this.base + path, { method, headers: { "CJ-Access-Token": this.token, "Content-Type": "application/json" }, body: body === undefined ? undefined : JSON.stringify(body), signal: AbortSignal.timeout(20000) });
+    const request = async () => {
+      await this.waitForSlot();
+      return this.send(this.base + path, { method, headers: { "CJ-Access-Token": this.token, "Content-Type": "application/json" }, body: body === undefined ? undefined : JSON.stringify(body), signal: AbortSignal.timeout(20000) });
+    };
+    let response = await request();
+    // Only reads may retry a definite rate-limit rejection, once. Never replay
+    // creation, confirmation or simulation because a response is uncertain.
+    if (method === "GET" && response.status === 429) response = await request();
     if (!response.ok) throw new Error(`CJ_REQUEST_HTTP_${response.status}`);
     const json = object(await response.json());
     if (json.code !== 200 || json.result !== true) throw new Error(Number.isSafeInteger(json.code) && Number(json.code) >= 0 && Number(json.code) <= 9999999999 ? `CJ_API_CODE_${json.code}` : "CJ_REQUEST_FAILED");
