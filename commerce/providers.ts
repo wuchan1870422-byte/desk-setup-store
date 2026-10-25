@@ -187,9 +187,29 @@ export class CJSandbox implements SupplierGateway {
   }
   async simulatePayment(orderId: string) {
     const id = providerId(orderId);
+    let detail = await this.readSandboxOrder(id);
+    if (detail.orderStatus === "CREATED") {
+      // payType=3 leaves a created order. Confirm only after checking the
+      // actual sandbox flag, then require a fresh unpaid state before payment.
+      await this.api("/shopping/order/confirmOrder", "PATCH", { orderId: id });
+      detail = await this.readSandboxOrder(id);
+    }
+    if (detail.orderStatus !== "UNPAID") throw new Error("CJ_ORDER_NOT_UNPAID");
+    if (await this.api("/shopping/sandbox/simulatePay", "POST", { orderId: id }) !== true) throw new Error("CJ_SIMULATION_NOT_CONFIRMED");
+    const paid = await this.readSandboxOrder(id);
+    if (!["UNSHIPPED", "PENDING", "PROCESSING"].includes(String(paid.orderStatus))) throw new Error("CJ_SIMULATION_NOT_CONFIRMED");
+  }
+  private async readSandboxOrder(orderId: string) {
+    const id = providerId(orderId);
     const detail = object(await this.api(`/shopping/order/getOrderDetail?orderId=${id}`, "GET"));
     // CJ uses its production API for both modes: assert the returned flag first.
     if (detail.isSandbox !== 1) throw new Error("CJ_NOT_A_SANDBOX_ORDER");
-    if (await this.api("/shopping/sandbox/simulatePay", "POST", { orderId: id }) !== true) throw new Error("CJ_SIMULATION_NOT_CONFIRMED");
+    return detail;
+  }
+  async inspectSandboxOrder(orderId: string) {
+    const id = providerId(orderId);
+    const detail = await this.readSandboxOrder(id);
+    const states = ["CREATED", "IN_CART", "UNPAID", "PENDING", "PROCESSING", "UNSHIPPED", "SHIPPED", "DELIVERED", "CANCELLED", "CLOSED"];
+    return { cjOrderId: id, isSandbox: true, state: typeof detail.orderStatus === "string" && states.includes(detail.orderStatus) ? detail.orderStatus : "UNKNOWN", subStatus: detail.subStatus === "PENDING" || detail.subStatus === "PROCESSING" ? detail.subStatus : undefined };
   }
 }

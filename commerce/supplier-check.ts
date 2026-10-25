@@ -10,6 +10,9 @@ export type SupplierCheck = {
   kind: "CJ_SANDBOX_CONTRACT_CHECK"; cjOrderId?: string; reviewReason?: string;
   livePayments: false; realProcurement: false;
 };
+export interface SupplierCheckGateway extends SupplierGateway {
+  inspectSandboxOrder(id: string): Promise<{ isSandbox: boolean; state: string }>;
+}
 
 export class D1SupplierChecks {
   constructor(private db: Database) {}
@@ -33,12 +36,35 @@ export class D1SupplierChecks {
 
 function diagnostic(error: unknown) {
   const reason = error instanceof Error ? error.message : "";
-  return /^CJ_(REQUEST_HTTP_[1-5][0-9]{2}|API_CODE_[0-9]{1,10}|NOT_A_SANDBOX_ORDER|SIMULATION_NOT_CONFIRMED|AUTH_FAILED|REQUEST_FAILED)$/.test(reason)
+  return /^CJ_(REQUEST_HTTP_[1-5][0-9]{2}|API_CODE_[0-9]{1,10}|NOT_A_SANDBOX_ORDER|ORDER_NOT_UNPAID|SIMULATION_NOT_CONFIRMED|AUTH_FAILED|REQUEST_FAILED)$/.test(reason)
     ? reason : "CJ_RESULT_UNCERTAIN_NO_AUTO_RETRY";
 }
 
 export class SandboxSupplierChecks {
-  constructor(private db: D1SupplierChecks, private cj: SupplierGateway) {}
+  constructor(private db: D1SupplierChecks, private cj: SupplierCheckGateway) {}
+  async resume(id: string) {
+    const row = await this.db.byId(id);
+    if (!row) throw new Error("CHECK_NOT_FOUND");
+    // Explicit owner recovery is limited to a definite rejected simulation.
+    // Never resubmit a supplier order or retry unknown/timeout outcomes.
+    if (row.state !== "REVIEW" || row.reviewReason !== "CJ_API_CODE_812" || !row.cjOrderId) return row;
+    const current = await this.cj.inspectSandboxOrder(row.cjOrderId);
+    if (!current.isSandbox) throw new Error("CJ_NOT_A_SANDBOX_ORDER");
+    if (["UNSHIPPED", "PENDING", "PROCESSING"].includes(current.state)) {
+      await this.db.transition({ ...row, state: "SIMULATED_PAID", reviewReason: undefined }, "REVIEW");
+      return (await this.db.byId(id))!;
+    }
+    if (!["CREATED", "UNPAID"].includes(current.state)) return row;
+    const claimed: SupplierCheck = { ...row, state: "SIMULATING", reviewReason: undefined };
+    if (!await this.db.transition(claimed, "REVIEW")) return (await this.db.byId(id))!;
+    try {
+      await this.cj.simulatePayment(row.cjOrderId);
+      await this.db.transition({ ...claimed, state: "SIMULATED_PAID" }, "SIMULATING");
+    } catch (error) {
+      await this.db.transition({ ...claimed, state: "REVIEW", reviewReason: diagnostic(error) }, "SIMULATING");
+    }
+    return (await this.db.byId(id))!;
+  }
   async create(key: string) {
     if (!/^[a-zA-Z0-9_-]{16,80}$/.test(key)) throw new Error("INVALID_REQUEST_KEY");
     let row: SupplierCheck = {

@@ -71,6 +71,8 @@ The existing public cart remains disabled; it does not call these owner-only rou
 | GET | `/sandbox/connections` | Owner-only authentication checks; no order creation |
 | POST | `/sandbox/supplier-checks` | Owner runs a fixed CJ sandbox fixture; empty JSON body and `Idempotency-Key` required |
 | GET | `/sandbox/supplier-checks/:id` | Owner reads the separate supplier check result |
+| GET | `/sandbox/supplier-checks/:id/supplier-status` | Read sandbox supplier state without creation, confirmation or payment |
+| POST | `/sandbox/supplier-checks/:id/resume` | Owner explicitly recovers a rejected simulation after a fresh sandbox-state read |
 | POST | `/sandbox/orders` | Owner creates a test order; `Idempotency-Key` required |
 | GET | `/sandbox/orders/:id` | Owner checks status |
 | POST | `/sandbox/orders/:id/capture` | Owner completes sandbox capture |
@@ -109,3 +111,5 @@ CJ's access token is cached in the Worker isolate until its documented expiry. P
 The authenticated connection check reports provider authentication separately from order acceptance. It never captures a payment or submits a CJ order and returns no token or provider body. An already configured CJ access token without an API key is explicitly reported as unverified.
 
 The separate supplier contract check accepts only `{}` and the adapter's fixed test product/recipient. A successful `SIMULATED_PAID` result establishes only CJ's sandbox simulation; it does not establish PayPal buyer approval, customer payment, real dispatch or delivery. The check persists a supplier reference before simulation. Repeating a request key reads the existing result and never retries an uncertain creation or simulation. Investigate `REVIEW`, `CREATING` or `SIMULATING` before considering any new check; a different key creates a different remote sandbox order. Numeric CJ error codes are retained without provider messages, account identifiers or tokens. Account-level execution evidence belongs in private operational records, not this public repository.
+
+Created sandbox orders are checked for `isSandbox=1` before confirmation. A fresh `UNPAID` state is required before `simulatePay`, followed by a fresh paid-state read. Explicit owner recovery is limited to a stored rejected simulation (`CJ_API_CODE_812`) with a known supplier reference and a fresh sandbox state. It never recreates the supplier order. Unknown or timed-out outcomes remain held. Account execution evidence and real provider references stay outside this public repository.

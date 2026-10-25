@@ -197,7 +197,8 @@ test("CJ client forces isSandbox=1 and create-only mode; a non-sandbox response 
 
 test("CJ sandbox payment uses only its documented simulation endpoint", async () => {
   const calls: string[] = [];
-  const send: typeof fetch = async (input) => { const url = String(input); calls.push(url); return Response.json({ code: 200, result: true, data: url.includes("getOrderDetail") ? { isSandbox: 1 } : true }); };
+  let reads = 0;
+  const send: typeof fetch = async (input) => { const url = String(input); calls.push(url); return Response.json({ code: 200, result: true, data: url.includes("getOrderDetail") ? { isSandbox: 1, orderStatus: ++reads === 1 ? "UNPAID" : "UNSHIPPED" } : true }); };
   await new CJSandbox("not-a-real-token", send).simulatePayment("CJ-TEST-23456");
   assert.match(calls[1], /\/sandbox\/simulatePay$/);
 });

@@ -60,6 +60,11 @@ const worker = {
     const paypal = new PayPalSandbox(env.PAYPAL_SANDBOX_CLIENT_ID, env.PAYPAL_SANDBOX_SECRET, env.STOREFRONT_ORIGIN);
     let supplierClient: Promise<CJSandbox> | undefined;
     const supplier = () => supplierClient ||= env.CJ_ACCESS_TOKEN ? Promise.resolve(new CJSandbox(env.CJ_ACCESS_TOKEN)) : CJSandbox.fromApiKey(env.CJ_API_KEY!);
+    const checks = new SandboxSupplierChecks(new D1SupplierChecks(env.ORDERS), {
+      createSandboxOrder: async (order) => (await supplier()).createSandboxOrder(order),
+      simulatePayment: async (id) => (await supplier()).simulatePayment(id),
+      inspectSandboxOrder: async (id) => (await supplier()).inspectSandboxOrder(id),
+    });
     const service = new SandboxOrders(db, paypal, { createSandboxOrder: async (order) => (await supplier()).createSandboxOrder(order), simulatePayment: async (id) => (await supplier()).simulatePayment(id) });
     try {
       if (path === "/sandbox/readiness" && req.method === "GET") return json(await runtimeReadiness(env));
@@ -72,11 +77,20 @@ const worker = {
       if (path === "/sandbox/supplier-checks" && req.method === "POST") {
         const input = await body(req);
         if (Object.keys(input).length) return json({ error: "ONLY_EMPTY_TEST_BODY_ACCEPTED" }, 400);
-        const checks = new SandboxSupplierChecks(new D1SupplierChecks(env.ORDERS), {
-          createSandboxOrder: async (order) => (await supplier()).createSandboxOrder(order),
-          simulatePayment: async (id) => (await supplier()).simulatePayment(id),
-        });
         return json(await checks.create(req.headers.get("idempotency-key") || ""));
+      }
+      const supplierResume = path.match(/^\/sandbox\/supplier-checks\/([a-zA-Z0-9-]{4,100})\/resume$/);
+      if (supplierResume && req.method === "POST") {
+        if (Object.keys(await body(req)).length) return json({ error: "ONLY_EMPTY_TEST_BODY_ACCEPTED" }, 400);
+        return json(await checks.resume(supplierResume[1]));
+      }
+      const supplierInspect = path.match(/^\/sandbox\/supplier-checks\/([a-zA-Z0-9-]{4,100})\/supplier-status$/);
+      if (supplierInspect && req.method === "GET") {
+        const check = await new D1SupplierChecks(env.ORDERS).byId(supplierInspect[1]);
+        if (!check) return json({ error: "CHECK_NOT_FOUND" }, 404);
+        if (!check.cjOrderId) return json({ error: "SUPPLIER_REFERENCE_MISSING" }, 409);
+        // Read only: do not repeat creation, confirm an order or simulate pay.
+        return json({ checkId: check.id, localState: check.state, supplier: await (await supplier()).inspectSandboxOrder(check.cjOrderId), livePayments: false, realProcurement: false });
       }
       const supplierCheck = path.match(/^\/sandbox\/supplier-checks\/([a-zA-Z0-9-]{4,100})$/);
       if (supplierCheck && req.method === "GET") {
@@ -158,10 +172,10 @@ const worker = {
     } catch (error) {
       const reason = error instanceof Error ? error.message : "INTERNAL_ERROR";
       if (["INVALID_ITEMS", "UNKNOWN_PRODUCT", "INVALID_QUANTITY", "QUANTITY_LIMIT", "INVALID_REQUEST_KEY", "INVALID_JSON", "BODY_TOO_LARGE", "IDEMPOTENCY_CONFLICT", "INVALID_PAGINATION", "PAYMENT_EXCEPTION_MISMATCH"].includes(reason)) return json({ error: reason }, reason === "IDEMPOTENCY_CONFLICT" ? 409 : 400);
-      if (reason === "ORDER_NOT_FOUND") return json({ error: reason }, 404);
+      if (reason === "ORDER_NOT_FOUND" || reason === "CHECK_NOT_FOUND") return json({ error: reason }, 404);
       // Never echo provider responses, secrets or internal exception messages.
       const safeReasons = ["CREATED_ORDER_NOT_VERIFIED", "PAYPAL_APPROVAL_MISSING", "PAYPAL_APPROVAL_INVALID", "PROVIDER_INVALID_RESPONSE", "PROVIDER_INVALID_ID", "PAYPAL_AUTH_FAILED"];
-      const diagnostic = safeReasons.includes(reason) || /^PAYPAL_(AUTH|REQUEST)_HTTP_[1-5][0-9]{2}$/.test(reason) ? reason : error instanceof Error && ["TimeoutError", "AbortError"].includes(error.name) ? "PROVIDER_TIMEOUT" : reason.includes("Illegal invocation") ? "RUNTIME_FETCH_BINDING_ERROR" : error instanceof TypeError ? "RUNTIME_TYPE_ERROR" : "UNCLASSIFIED";
+      const diagnostic = safeReasons.includes(reason) || /^PAYPAL_(AUTH|REQUEST)_HTTP_[1-5][0-9]{2}$/.test(reason) || /^CJ_(REQUEST_HTTP_[1-5][0-9]{2}|API_CODE_[0-9]{1,10}|NOT_A_SANDBOX_ORDER)$/.test(reason) ? reason : error instanceof Error && ["TimeoutError", "AbortError"].includes(error.name) ? "PROVIDER_TIMEOUT" : reason.includes("Illegal invocation") ? "RUNTIME_FETCH_BINDING_ERROR" : error instanceof TypeError ? "RUNTIME_TYPE_ERROR" : "UNCLASSIFIED";
       return json({ error: "SANDBOX_ORDER_REQUIRES_REVIEW", reason: diagnostic }, 502);
     }
   },
