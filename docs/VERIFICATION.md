@@ -1,5 +1,9 @@
 # Verification
 
+## Official provider observation — 1 November 2026
+
+The existing owner-private deployment completed one A$39.90 PayPal sandbox capture followed by CJ sandbox creation and simulated payment. Fresh provider reads verified PayPal `COMPLETED` and a CJ sandbox `UNSHIPPED` result. Repeated create/capture calls returned the same persisted references. See [the redacted provider receipt](PROVIDER-SANDBOX-2026-11-01.md) for exact scope, deployment commits and remaining acceptance gaps. This used the protected operator route; external signed webhook delivery and provider refunds remain unverified. It produced no real shipment or revenue and does not enable public checkout. Code-test counts below belong to their recorded source/verification runs.
+
 ## 25 October 2026 update
 
 The complete GitHub main source at `0220b874ed7e54bbf530fa54c666d72e9fb87322` was checked with Node.js 24.22.1. Lint, typecheck, the Next.js build and static-export checks passed. Unit tests passed **64/64**: fifteen storefront/domain/evidence cases and forty-nine commerce/acceptance/review/contract-check cases.
