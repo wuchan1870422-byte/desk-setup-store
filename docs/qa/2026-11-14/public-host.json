@@ -1,0 +1,126 @@
+{
+  "observedAt": "2026-11-14T08:27:52.174788+00:00",
+  "origin": "https://desk-setup-store.j-w2007.chatgpt.site",
+  "scope": "Read-only public-host snapshot; does not identify deployed source commit or verify private backend.",
+  "results": [
+    {
+      "path": "/",
+      "status": 200,
+      "finalUrl": "https://desk-setup-store.j-w2007.chatgpt.site/",
+      "bytes": 17911,
+      "headers": {
+        "content-type": "text/html",
+        "x-content-type-options": null,
+        "x-frame-options": null,
+        "content-security-policy": null,
+        "referrer-policy": null,
+        "permissions-policy": null,
+        "x-robots-tag": null
+      },
+      "hasDemoNotice": true,
+      "body": null
+    },
+    {
+      "path": "/products/cable-keeper/",
+      "status": 200,
+      "finalUrl": "https://desk-setup-store.j-w2007.chatgpt.site/products/cable-keeper/",
+      "bytes": 25049,
+      "headers": {
+        "content-type": "text/html",
+        "x-content-type-options": null,
+        "x-frame-options": null,
+        "content-security-policy": null,
+        "referrer-policy": null,
+        "permissions-policy": null,
+        "x-robots-tag": null
+      },
+      "hasDemoNotice": true,
+      "body": null
+    },
+    {
+      "path": "/cart/",
+      "status": 200,
+      "finalUrl": "https://desk-setup-store.j-w2007.chatgpt.site/cart/",
+      "bytes": 13410,
+      "headers": {
+        "content-type": "text/html",
+        "x-content-type-options": null,
+        "x-frame-options": null,
+        "content-security-policy": null,
+        "referrer-policy": null,
+        "permissions-policy": null,
+        "x-robots-tag": null
+      },
+      "hasDemoNotice": true,
+      "body": null
+    },
+    {
+      "path": "/shipping-policy/",
+      "status": 200,
+      "finalUrl": "https://desk-setup-store.j-w2007.chatgpt.site/shipping-policy/",
+      "bytes": 19350,
+      "headers": {
+        "content-type": "text/html",
+        "x-content-type-options": null,
+        "x-frame-options": null,
+        "content-security-policy": null,
+        "referrer-policy": null,
+        "permissions-policy": null,
+        "x-robots-tag": null
+      },
+      "hasDemoNotice": true,
+      "body": null
+    },
+    {
+      "path": "/missing-audit-20261114/",
+      "status": 404,
+      "finalUrl": "https://desk-setup-store.j-w2007.chatgpt.site/missing-audit-20261114/",
+      "bytes": 13186,
+      "headers": {
+        "content-type": "text/html",
+        "x-content-type-options": null,
+        "x-frame-options": null,
+        "content-security-policy": null,
+        "referrer-policy": null,
+        "permissions-policy": null,
+        "x-robots-tag": null
+      },
+      "hasDemoNotice": true,
+      "body": null
+    },
+    {
+      "path": "/robots.txt",
+      "status": 200,
+      "finalUrl": "https://desk-setup-store.j-w2007.chatgpt.site/robots.txt",
+      "bytes": 168,
+      "headers": {
+        "content-type": "text/plain",
+        "x-content-type-options": null,
+        "x-frame-options": null,
+        "content-security-policy": null,
+        "referrer-policy": null,
+        "permissions-policy": null,
+        "x-robots-tag": null
+      },
+      "hasDemoNotice": false,
+      "body": "User-Agent: *\nAllow: /\nAllow: /tech-kit/\nDisallow: /products/\nDisallow: /cart/\nDisallow: /desk-fit/\n\nSitemap: https://desk-setup-store.j-w2007.chatgpt.site/sitemap.xml\n"
+    },
+    {
+      "path": "/sitemap.xml",
+      "status": 200,
+      "finalUrl": "https://desk-setup-store.j-w2007.chatgpt.site/sitemap.xml",
+      "bytes": 375,
+      "headers": {
+        "content-type": "text/xml",
+        "x-content-type-options": null,
+        "x-frame-options": null,
+        "content-security-policy": null,
+        "referrer-policy": null,
+        "permissions-policy": null,
+        "x-robots-tag": null
+      },
+      "hasDemoNotice": false,
+      "body": "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<urlset xmlns=\"http://www.sitemaps.org/schemas/sitemap/0.9\">\n<url>\n<loc>https://desk-setup-store.j-w2007.chatgpt.site/</loc>\n<changefreq>monthly</changefreq>\n<priority>1</priority>\n</url>\n<url>\n<loc>https://desk-setup-store.j-w2007.chatgpt.site/tech-kit/</loc>\n<changefreq>monthly</changefreq>\n<priority>0.8</priority>\n</url>\n</urlset>\n"
+    }
+  ]
+}

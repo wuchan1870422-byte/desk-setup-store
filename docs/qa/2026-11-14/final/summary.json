@@ -1,0 +1,142 @@
+{
+  "startedAt": "2026-11-14T08:35:12.529Z",
+  "node": "v24.22.1",
+  "baseCommit": "9508fb4e23ca3a593694165d8fffb190ca258412",
+  "lockSha256": "fdf9d172c973a9e5cc0b232bc27af48bbb646e130ca6ee5e17ac42fe852acc0f",
+  "scope": "local source, SQLite fixtures and local browser; no external provider acceptance or deployment",
+  "steps": [
+    {
+      "name": "install",
+      "command": "npm ci",
+      "startedAt": "2026-11-14T08:35:12.534Z",
+      "finishedAt": "2026-11-14T08:35:21.567Z",
+      "exitCode": 0,
+      "signal": null,
+      "expectedCode": 0,
+      "passed": true,
+      "log": "01-install.log"
+    },
+    {
+      "name": "audit",
+      "command": "npm audit --json",
+      "startedAt": "2026-11-14T08:35:21.568Z",
+      "finishedAt": "2026-11-14T08:35:22.042Z",
+      "exitCode": 0,
+      "signal": null,
+      "expectedCode": 0,
+      "passed": true,
+      "log": "02-audit.log"
+    },
+    {
+      "name": "lint",
+      "command": "npm run lint",
+      "startedAt": "2026-11-14T08:35:22.042Z",
+      "finishedAt": "2026-11-14T08:35:24.274Z",
+      "exitCode": 0,
+      "signal": null,
+      "expectedCode": 0,
+      "passed": true,
+      "log": "03-lint.log"
+    },
+    {
+      "name": "typecheck",
+      "command": "npm run typecheck",
+      "startedAt": "2026-11-14T08:35:24.275Z",
+      "finishedAt": "2026-11-14T08:35:25.701Z",
+      "exitCode": 0,
+      "signal": null,
+      "expectedCode": 0,
+      "passed": true,
+      "log": "04-typecheck.log"
+    },
+    {
+      "name": "tests",
+      "command": "npm test",
+      "startedAt": "2026-11-14T08:35:25.701Z",
+      "finishedAt": "2026-11-14T08:35:26.859Z",
+      "exitCode": 0,
+      "signal": null,
+      "expectedCode": 0,
+      "passed": true,
+      "log": "05-tests.log"
+    },
+    {
+      "name": "launch-diagnostic",
+      "command": "npm run check:launch",
+      "startedAt": "2026-11-14T08:35:26.859Z",
+      "finishedAt": "2026-11-14T08:35:27.029Z",
+      "exitCode": 0,
+      "signal": null,
+      "expectedCode": 0,
+      "passed": true,
+      "log": "06-launch-diagnostic.log"
+    },
+    {
+      "name": "commercial-gate",
+      "command": "npm run check:launch -- --require-commercial",
+      "startedAt": "2026-11-14T08:35:27.029Z",
+      "finishedAt": "2026-11-14T08:35:27.180Z",
+      "exitCode": 2,
+      "signal": null,
+      "expectedCode": 2,
+      "passed": true,
+      "log": "07-commercial-gate.log"
+    },
+    {
+      "name": "credential-free-sandbox",
+      "command": "npm run sandbox:acceptance -- check --network=sandbox",
+      "startedAt": "2026-11-14T08:35:27.180Z",
+      "finishedAt": "2026-11-14T08:35:27.355Z",
+      "exitCode": 2,
+      "signal": null,
+      "expectedCode": 2,
+      "passed": true,
+      "log": "08-credential-free-sandbox.log"
+    },
+    {
+      "name": "commerce-build",
+      "command": "npm run build:commerce",
+      "startedAt": "2026-11-14T08:35:27.356Z",
+      "finishedAt": "2026-11-14T08:35:27.490Z",
+      "exitCode": 0,
+      "signal": null,
+      "expectedCode": 0,
+      "passed": true,
+      "log": "09-commerce-build.log"
+    },
+    {
+      "name": "storefront-build",
+      "command": "npm run build",
+      "startedAt": "2026-11-14T08:35:27.490Z",
+      "finishedAt": "2026-11-14T08:35:38.538Z",
+      "exitCode": 0,
+      "signal": null,
+      "expectedCode": 0,
+      "passed": true,
+      "log": "10-storefront-build.log"
+    },
+    {
+      "name": "export",
+      "command": "npm run check:export",
+      "startedAt": "2026-11-14T08:35:38.540Z",
+      "finishedAt": "2026-11-14T08:35:38.650Z",
+      "exitCode": 0,
+      "signal": null,
+      "expectedCode": 0,
+      "passed": true,
+      "log": "11-export.log"
+    },
+    {
+      "name": "browser",
+      "command": "npm run test:e2e",
+      "startedAt": "2026-11-14T08:35:38.650Z",
+      "finishedAt": "2026-11-14T08:36:43.681Z",
+      "exitCode": 0,
+      "signal": null,
+      "expectedCode": 0,
+      "passed": true,
+      "log": "12-browser.log"
+    }
+  ],
+  "allExpected": true
+}

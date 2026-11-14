@@ -1,0 +1,89 @@
+
+> desk-setup-store@0.1.0 test:e2e
+> playwright test
+
+[WebServer] (node:8520) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+[WebServer] (Use `node --trace-warnings ...` to show where the warning was created)
+
+Running 54 tests using 2 workers
+
+(node:8533) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+(node:8532) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ✓   2 [chromium-320] › tests/e2e/audit.spec.ts:35:5 › mobile menu supports Escape, focus restoration and viewport changes (826ms)
+  ✓   3 [chromium-320] › tests/e2e/audit.spec.ts:51:5 › blank fit answers do not silently become zero and errors are associated with inputs (438ms)
+  ✓   4 [chromium-320] › tests/e2e/audit.spec.ts:66:5 › populated bag totals, maximum quantity, download contents and accessibility (1.9s)
+  ✓   5 [chromium-320] › tests/e2e/audit.spec.ts:91:5 › forged approval or cancellation URLs never turn a demo bag into a paid order (898ms)
+  ✓   6 [chromium-320] › tests/e2e/storefront.spec.ts:18:5 › responsive navigation, collection filters, footer routes and demo boundary (2.4s)
+  ✓   7 [chromium-320] › tests/e2e/storefront.spec.ts:43:5 › all products, quantities, refresh, download, removal and empty bag (1.3s)
+  ✓   8 [chromium-320] › tests/e2e/storefront.spec.ts:63:5 › corrupt and blocked storage degrade safely; direct route and missing page render (1.1s)
+  ✓   1 [chromium-320] › tests/e2e/audit.spec.ts:19:5 › every route and error page passes WCAG A/AA scan with no overflow or browser errors (9.6s)
+  ✓   9 [chromium-320] › tests/e2e/storefront.spec.ts:86:5 › two tabs synchronise and keyboard skip link reaches main (909ms)
+(node:8959) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+(node:8967) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ✓  11 [chromium-375] › tests/e2e/audit.spec.ts:35:5 › mobile menu supports Escape, focus restoration and viewport changes (740ms)
+  ✓  12 [chromium-375] › tests/e2e/audit.spec.ts:51:5 › blank fit answers do not silently become zero and errors are associated with inputs (603ms)
+  ✓  13 [chromium-375] › tests/e2e/audit.spec.ts:66:5 › populated bag totals, maximum quantity, download contents and accessibility (1.9s)
+  ✓  14 [chromium-375] › tests/e2e/audit.spec.ts:91:5 › forged approval or cancellation URLs never turn a demo bag into a paid order (931ms)
+  ✓  15 [chromium-375] › tests/e2e/storefront.spec.ts:18:5 › responsive navigation, collection filters, footer routes and demo boundary (2.6s)
+  ✓  16 [chromium-375] › tests/e2e/storefront.spec.ts:43:5 › all products, quantities, refresh, download, removal and empty bag (1.3s)
+  ✓  10 [chromium-375] › tests/e2e/audit.spec.ts:19:5 › every route and error page passes WCAG A/AA scan with no overflow or browser errors (9.6s)
+  ✓  17 [chromium-375] › tests/e2e/storefront.spec.ts:63:5 › corrupt and blocked storage degrade safely; direct route and missing page render (1.2s)
+(node:9369) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ✓  18 [chromium-375] › tests/e2e/storefront.spec.ts:86:5 › two tabs synchronise and keyboard skip link reaches main (1.1s)
+(node:9460) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ✓  20 [chromium-390] › tests/e2e/audit.spec.ts:35:5 › mobile menu supports Escape, focus restoration and viewport changes (861ms)
+  ✓  21 [chromium-390] › tests/e2e/audit.spec.ts:51:5 › blank fit answers do not silently become zero and errors are associated with inputs (486ms)
+  ✓  22 [chromium-390] › tests/e2e/audit.spec.ts:66:5 › populated bag totals, maximum quantity, download contents and accessibility (1.9s)
+  ✓  23 [chromium-390] › tests/e2e/audit.spec.ts:91:5 › forged approval or cancellation URLs never turn a demo bag into a paid order (878ms)
+  ✓  24 [chromium-390] › tests/e2e/storefront.spec.ts:18:5 › responsive navigation, collection filters, footer routes and demo boundary (2.5s)
+  ✓  25 [chromium-390] › tests/e2e/storefront.spec.ts:43:5 › all products, quantities, refresh, download, removal and empty bag (1.3s)
+  ✓  19 [chromium-390] › tests/e2e/audit.spec.ts:19:5 › every route and error page passes WCAG A/AA scan with no overflow or browser errors (9.3s)
+  ✓  26 [chromium-390] › tests/e2e/storefront.spec.ts:63:5 › corrupt and blocked storage degrade safely; direct route and missing page render (1.4s)
+  ✓  27 [chromium-390] › tests/e2e/storefront.spec.ts:86:5 › two tabs synchronise and keyboard skip link reaches main (1.1s)
+(node:9811) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+(node:9818) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ✓  29 [chromium-768] › tests/e2e/audit.spec.ts:35:5 › mobile menu supports Escape, focus restoration and viewport changes (545ms)
+  ✓  30 [chromium-768] › tests/e2e/audit.spec.ts:51:5 › blank fit answers do not silently become zero and errors are associated with inputs (698ms)
+  ✓  31 [chromium-768] › tests/e2e/audit.spec.ts:66:5 › populated bag totals, maximum quantity, download contents and accessibility (1.7s)
+  ✓  32 [chromium-768] › tests/e2e/audit.spec.ts:91:5 › forged approval or cancellation URLs never turn a demo bag into a paid order (971ms)
+  ✓  33 [chromium-768] › tests/e2e/storefront.spec.ts:18:5 › responsive navigation, collection filters, footer routes and demo boundary (2.5s)
+  ✓  34 [chromium-768] › tests/e2e/storefront.spec.ts:43:5 › all products, quantities, refresh, download, removal and empty bag (1.5s)
+  ✓  35 [chromium-768] › tests/e2e/storefront.spec.ts:63:5 › corrupt and blocked storage degrade safely; direct route and missing page render (1.3s)
+  ✓  28 [chromium-768] › tests/e2e/audit.spec.ts:19:5 › every route and error page passes WCAG A/AA scan with no overflow or browser errors (10.3s)
+  ✓  36 [chromium-768] › tests/e2e/storefront.spec.ts:86:5 › two tabs synchronise and keyboard skip link reaches main (966ms)
+(node:10234) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+(node:10242) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ✓  38 [chromium-1440] › tests/e2e/audit.spec.ts:35:5 › mobile menu supports Escape, focus restoration and viewport changes (531ms)
+  ✓  39 [chromium-1440] › tests/e2e/audit.spec.ts:51:5 › blank fit answers do not silently become zero and errors are associated with inputs (665ms)
+  ✓  40 [chromium-1440] › tests/e2e/audit.spec.ts:66:5 › populated bag totals, maximum quantity, download contents and accessibility (2.0s)
+  ✓  41 [chromium-1440] › tests/e2e/audit.spec.ts:91:5 › forged approval or cancellation URLs never turn a demo bag into a paid order (1.1s)
+  ✓  42 [chromium-1440] › tests/e2e/storefront.spec.ts:18:5 › responsive navigation, collection filters, footer routes and demo boundary (2.4s)
+  ✓  43 [chromium-1440] › tests/e2e/storefront.spec.ts:43:5 › all products, quantities, refresh, download, removal and empty bag (1.3s)
+  ✓  44 [chromium-1440] › tests/e2e/storefront.spec.ts:63:5 › corrupt and blocked storage degrade safely; direct route and missing page render (1.2s)
+  ✓  37 [chromium-1440] › tests/e2e/audit.spec.ts:19:5 › every route and error page passes WCAG A/AA scan with no overflow or browser errors (10.0s)
+(node:10641) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ✓  45 [chromium-1440] › tests/e2e/storefront.spec.ts:86:5 › two tabs synchronise and keyboard skip link reaches main (1.2s)
+(node:10731) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ✓  47 [chromium-touch-390] › tests/e2e/audit.spec.ts:35:5 › mobile menu supports Escape, focus restoration and viewport changes (922ms)
+  ✓  48 [chromium-touch-390] › tests/e2e/audit.spec.ts:51:5 › blank fit answers do not silently become zero and errors are associated with inputs (589ms)
+  ✓  49 [chromium-touch-390] › tests/e2e/audit.spec.ts:66:5 › populated bag totals, maximum quantity, download contents and accessibility (2.5s)
+  ✓  50 [chromium-touch-390] › tests/e2e/audit.spec.ts:91:5 › forged approval or cancellation URLs never turn a demo bag into a paid order (797ms)
+  ✓  51 [chromium-touch-390] › tests/e2e/storefront.spec.ts:18:5 › responsive navigation, collection filters, footer routes and demo boundary (2.2s)
+  ✓  46 [chromium-touch-390] › tests/e2e/audit.spec.ts:19:5 › every route and error page passes WCAG A/AA scan with no overflow or browser errors (8.6s)
+  ✓  52 [chromium-touch-390] › tests/e2e/storefront.spec.ts:43:5 › all products, quantities, refresh, download, removal and empty bag (1.6s)
+  ✓  53 [chromium-touch-390] › tests/e2e/storefront.spec.ts:63:5 › corrupt and blocked storage degrade safely; direct route and missing page render (1.3s)
+  ✓  54 [chromium-touch-390] › tests/e2e/storefront.spec.ts:86:5 › two tabs synchronise and keyboard skip link reaches main (864ms)
+
+  54 passed (1.1m)

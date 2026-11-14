@@ -1,0 +1,5 @@
+
+> desk-setup-store@0.1.0 check:export
+> node scripts/check-export.mjs
+
+PASS: 11 exported HTML pages, 251 internal asset/link references, sitemap, robots, OG image, no forms/payment SDK.
