@@ -13,7 +13,7 @@ export function validateLines(input: unknown): Line[] {
   if (!Array.isArray(input) || !input.length || input.length > 3) throw new Error("INVALID_ITEMS");
   const quantities = new Map<keyof typeof sandboxCatalogue, number>();
   for (const value of input) {
-    if (!value || typeof value !== "object") throw new Error("INVALID_ITEMS");
+    if (!value || typeof value !== "object" || Array.isArray(value) || Object.keys(value).some(key => key !== "productId" && key !== "quantity")) throw new Error("INVALID_ITEMS");
     const { productId, quantity } = value as Record<string, unknown>;
     if (typeof productId !== "string" || !Object.hasOwn(sandboxCatalogue, productId)) throw new Error("UNKNOWN_PRODUCT");
     const id = productId as keyof typeof sandboxCatalogue;

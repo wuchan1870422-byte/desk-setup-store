@@ -7,6 +7,9 @@ export default defineConfig({
     baseURL: "http://127.0.0.1:3100", browserName: "chromium", trace: "retain-on-failure", screenshot: "only-on-failure",
     launchOptions: process.env.PLAYWRIGHT_CHROMIUM_EXECUTABLE_PATH ? { executablePath: process.env.PLAYWRIGHT_CHROMIUM_EXECUTABLE_PATH } : {},
   },
-  projects: [320, 375, 390, 768, 1440].map(width => ({ name: `chromium-${width}`, use: { viewport: { width, height: 900 } } })),
+  projects: [
+    ...[320, 375, 390, 768, 1440].map(width => ({ name: `chromium-${width}`, use: { viewport: { width, height: 900 } } })),
+    { name: "chromium-touch-390", use: { viewport: { width: 390, height: 844 }, isMobile: true, hasTouch: true, deviceScaleFactor: 3 } },
+  ],
   webServer: { command: "npm run preview", url: "http://127.0.0.1:3100", env: { PORT: "3100" }, reuseExistingServer: false },
 });
