@@ -21,6 +21,7 @@ const steps = [
   ["commercial-gate", ["run", "check:launch", "--", "--require-commercial"], 2],
   ["credential-free-sandbox", ["run", "sandbox:acceptance", "--", "check", "--network=sandbox"], 2],
   ["commerce-build", ["run", "build:commerce"], 0],
+  ["commerce-hosting", ["run", "check:commerce-hosting"], 0],
   ["storefront-build", ["run", "build"], 0],
   ["export", ["run", "check:export"], 0],
   ["browser", ["run", "test:e2e"], 0],

@@ -15,6 +15,7 @@
     "typecheck": "tsc --noEmit",
     "test": "node --import tsx --test tests/*.test.ts commerce/tests/*.test.ts",
     "build:commerce": "node scripts/build-commerce.mjs",
+    "check:commerce-hosting": "node commerce/hosting/smoke.mjs",
     "check:export": "node scripts/check-export.mjs",
     "preview": "node scripts/serve.mjs",
     "check:launch": "node --import tsx scripts/check-launch-readiness.ts",

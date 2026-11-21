@@ -22,6 +22,7 @@ jobs:
       - run: npm test
       - run: npm run check:launch
       - run: npm run build:commerce
+      - run: npm run check:commerce-hosting
       - run: npm run build
       - run: npm run check:export
       - run: npx playwright install --with-deps chromium
