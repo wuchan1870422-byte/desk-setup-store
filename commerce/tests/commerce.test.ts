@@ -21,7 +21,7 @@ function database() {
   return new D1Orders(adapter);
 }
 function completed(order: Order) {
-  return { id: order.paypalId, status: "COMPLETED", purchase_units: [{ reference_id: order.id, custom_id: order.id, amount: { currency_code: "AUD", value: "39.90" }, payments: { captures: [{ id: "CAPTURE-12345", status: "COMPLETED", final_capture: true, amount: { currency_code: "AUD", value: "39.90" } }] } }] };
+  return { id: order.paypalId, intent: "CAPTURE", status: "COMPLETED", purchase_units: [{ reference_id: order.id, custom_id: order.id, invoice_id: `test-${order.id}`, amount: { currency_code: "AUD", value: "39.90" }, payments: { captures: [{ id: "CAPTURE-12345", status: "COMPLETED", final_capture: true, amount: { currency_code: "AUD", value: "39.90" } }] } }] };
 }
 function pending(order: Order) {
   return { id: order.paypalId, intent: "CAPTURE", status: "PAYER_ACTION_REQUIRED", purchase_units: [{ reference_id: order.id, custom_id: order.id, invoice_id: `test-${order.id}`, amount: { currency_code: "AUD", value: "39.90" } }], links: [{ rel: "payer-action", href: `https://www.sandbox.paypal.com/checkoutnow?token=${order.paypalId}` }] };
@@ -44,8 +44,9 @@ function harness(overrides: { createFails?: boolean; captureFails?: boolean; cjF
   return { db, service: new SandboxOrders(db, paypal, cj), counts };
 }
 
-test("server catalogue ignores submitted prices and rejects unknown or excessive quantities", () => {
-  assert.equal(priceLines(validateLines([{ ...line[0], price: 1 }])), 3990);
+test("server catalogue prices accepted IDs itself and rejects client prices or invalid quantities", () => {
+  assert.equal(priceLines(validateLines(line)), 3990);
+  assert.throws(() => validateLines([{ ...line[0], price: 1 }]), /INVALID_ITEMS/);
   for (const invalid of [[{ productId: "not-allowed", quantity: 1 }], [{ ...line[0], quantity: 0 }], [{ ...line[0], quantity: 1.2 }], [{ ...line[0], quantity: 4 }], [{ ...line[0], quantity: "1" }], []]) assert.throws(() => validateLines(invalid));
 });
 
@@ -166,6 +167,8 @@ test("provider verification rejects wrong currency, custom ID, status and non-fi
   const row = await h.service.create("unique-request-key-006", line);
   const verifier = new PayPalSandbox("test-client", "test-secret", "https://example.com");
   const changes = [
+    (p: ReturnType<typeof completed>) => { p.intent = "AUTHORIZE"; },
+    (p: ReturnType<typeof completed>) => { p.purchase_units[0].invoice_id = "wrong-invoice"; },
     (p: ReturnType<typeof completed>) => { p.status = "APPROVED"; },
     (p: ReturnType<typeof completed>) => { p.purchase_units[0].custom_id = "wrong-order"; },
     (p: ReturnType<typeof completed>) => { p.purchase_units[0].amount.currency_code = "USD"; },

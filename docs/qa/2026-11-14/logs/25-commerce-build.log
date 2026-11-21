@@ -1,0 +1,5 @@
+
+> desk-setup-store@0.1.0 build:commerce
+> node scripts/build-commerce.mjs
+
+Sandbox Worker compiled. No credentials embedded; not deployed.

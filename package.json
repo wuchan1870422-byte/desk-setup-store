@@ -2,13 +2,20 @@
   "name": "desk-setup-store",
   "version": "0.1.0",
   "private": true,
+  "overrides": {
+    "@typescript-eslint/typescript-estree": {
+      "minimatch": "11.0.1"
+    }
+  },
   "scripts": {
+    "verify": "node scripts/verify.mjs",
     "dev": "node scripts/dev.mjs",
     "build": "next build --webpack",
     "lint": "eslint . --max-warnings=0",
     "typecheck": "tsc --noEmit",
     "test": "node --import tsx --test tests/*.test.ts commerce/tests/*.test.ts",
     "build:commerce": "node scripts/build-commerce.mjs",
+    "check:commerce-hosting": "node commerce/hosting/smoke.mjs",
     "check:export": "node scripts/check-export.mjs",
     "preview": "node scripts/serve.mjs",
     "check:launch": "node --import tsx scripts/check-launch-readiness.ts",
@@ -22,6 +29,7 @@
     "react-dom": "^19.2.0"
   },
   "devDependencies": {
+    "@axe-core/playwright": "4.14.0",
     "@playwright/test": "1.64.1",
     "@tailwindcss/postcss": "^4.1.0",
     "@types/node": "^22.0.0",

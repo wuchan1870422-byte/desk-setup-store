@@ -1,0 +1,105 @@
+✖ malformed JSON and non-object bodies return safe client errors before database/provider work (24.403242ms)
+✖ JSON media type is parsed exactly and oversized streamed input is rejected (2.772227ms)
+✖ sandbox item rows reject nested customer fields, arrays and client prices (0.380406ms)
+✖ authenticated readiness explains missing setup without requiring provider credentials (0.632869ms)
+✖ invalid storefront origins cannot reach order creation or any provider (1.72377ms)
+ℹ tests 5
+ℹ suites 0
+ℹ pass 0
+ℹ fail 5
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 269.854472
+
+✖ failing tests:
+
+test at commerce/tests/input-security.test.ts:2:1626
+✖ malformed JSON and non-object bodies return safe client errors before database/provider work (24.403242ms)
+  AssertionError [ERR_ASSERTION]: {broken-private-value
+  
+  502 !== 400
+  
+      at TestContext.<anonymous> (/workspace/desk-setup-store/commerce/tests/input-security.test.ts:21:12)
+      at async Test.run (node:internal/test_runner/test:1409:7)
+      at async startSubtestAfterBootstrap (node:internal/test_runner/harness:387:3) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: 502,
+    expected: 400,
+    operator: 'strictEqual',
+    diff: 'simple'
+  }
+
+test at commerce/tests/input-security.test.ts:2:2119
+✖ JSON media type is parsed exactly and oversized streamed input is rejected (2.772227ms)
+  AssertionError [ERR_ASSERTION]: Expected values to be strictly deep-equal:
+  + actual - expected
+  
+    {
+  +   error: 'INVALID_ITEMS'
+  -   error: 'INVALID_JSON'
+    }
+  
+      at TestContext.<anonymous> (/workspace/desk-setup-store/commerce/tests/input-security.test.ts:31:12)
+      at async Test.run (node:internal/test_runner/test:1409:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:974:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: { error: 'INVALID_ITEMS' },
+    expected: { error: 'INVALID_JSON' },
+    operator: 'deepStrictEqual',
+    diff: 'simple'
+  }
+
+test at commerce/tests/input-security.test.ts:2:3015
+✖ sandbox item rows reject nested customer fields, arrays and client prices (0.380406ms)
+  AssertionError [ERR_ASSERTION]: Missing expected exception.
+      at TestContext.<anonymous> (/workspace/desk-setup-store/commerce/tests/input-security.test.ts:44:12)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1402:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:974:18)
+      at Test.postRun (node:internal/test_runner/test:1542:19)
+      at Test.run (node:internal/test_runner/test:1467:12)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:974:7) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: undefined,
+    expected: /INVALID_ITEMS/,
+    operator: 'throws',
+    diff: 'simple'
+  }
+
+test at commerce/tests/input-security.test.ts:2:3482
+✖ authenticated readiness explains missing setup without requiring provider credentials (0.632869ms)
+  AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:
+  
+  503 !== 200
+  
+      at TestContext.<anonymous> (/workspace/desk-setup-store/commerce/tests/input-security.test.ts:53:10)
+      at async Test.run (node:internal/test_runner/test:1409:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:974:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: 503,
+    expected: 200,
+    operator: 'strictEqual',
+    diff: 'simple'
+  }
+
+test at commerce/tests/input-security.test.ts:2:4337
+✖ invalid storefront origins cannot reach order creation or any provider (1.72377ms)
+  AssertionError [ERR_ASSERTION]: http://example.com
+  
+  502 !== 503
+  
+      at TestContext.<anonymous> (/workspace/desk-setup-store/commerce/tests/input-security.test.ts:66:12)
+      at async Test.run (node:internal/test_runner/test:1409:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:974:7) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: 502,
+    expected: 503,
+    operator: 'strictEqual',
+    diff: 'simple'
+  }

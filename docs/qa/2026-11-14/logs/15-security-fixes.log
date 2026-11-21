@@ -1,0 +1,13 @@
+✔ malformed JSON and non-object bodies return safe client errors before database/provider work (17.236494ms)
+✔ JSON media type is parsed exactly and oversized streamed input is rejected (1.472599ms)
+✔ sandbox item rows reject nested customer fields, arrays and client prices (0.337351ms)
+✔ authenticated readiness explains missing setup without requiring provider credentials (0.406455ms)
+✔ invalid storefront origins cannot reach order creation or any provider (0.565767ms)
+ℹ tests 5
+ℹ suites 0
+ℹ pass 5
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 206.921091

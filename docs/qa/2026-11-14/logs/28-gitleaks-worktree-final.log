@@ -1,0 +1,12 @@
+Final publishable snapshot including code, tests, reports and logs: 155 files; ignored dependencies/build outputs excluded (export scanned separately).
+
+    ○
+    │╲
+    │ ○
+    ○ ░
+    ░    gitleaks
+
+8:41AM INF scanned ~668241 bytes (668.24 KB) in 106ms
+8:41AM INF no leaks found
+
+Exit code: 0

@@ -1,0 +1,37 @@
+
+> desk-setup-store@0.1.0 check:launch
+> node --import tsx scripts/check-launch-readiness.ts
+
+{
+  "schema": "desk-setup-readiness-v1",
+  "evaluatedAt": "2026-11-14T08:20:56.714Z",
+  "sandboxTestReady": true,
+  "sandboxReadinessScope": "catalogue fixture only; runtime and provider acceptance are separate",
+  "commercialEvidenceReady": false,
+  "checkoutEnabled": false,
+  "evidenceBasis": "operator attestations; source documents require human review",
+  "verifiedPostcodes": [],
+  "economics": null,
+  "blockers": [
+    "EVIDENCE_SUPPLIER_MISSING_OR_STALE",
+    "EVIDENCE_SAMPLE_MISSING_OR_STALE",
+    "EVIDENCE_IMAGERIGHTS_MISSING_OR_STALE",
+    "EVIDENCE_STOCK_MISSING_OR_STALE",
+    "EVIDENCE_SHIPPINGQUOTE_MISSING_OR_STALE",
+    "EVIDENCE_SAMPLEDELIVERY_MISSING_OR_STALE",
+    "EVIDENCE_SELLERIDENTITY_MISSING_OR_STALE",
+    "EVIDENCE_SUPPORT_MISSING_OR_STALE",
+    "EVIDENCE_RETURNS_MISSING_OR_STALE",
+    "EVIDENCE_POLICIES_MISSING_OR_STALE",
+    "EVIDENCE_TAXARRANGEMENT_MISSING_OR_STALE",
+    "EVIDENCE_SANDBOXPAYMENT_MISSING_OR_STALE",
+    "EVIDENCE_SANDBOXREFUND_MISSING_OR_STALE",
+    "EVIDENCE_DESKTOPQA_MISSING_OR_STALE",
+    "EVIDENCE_REALPHONEQA_MISSING_OR_STALE",
+    "EVIDENCE_ORDERHANDOFF_MISSING_OR_STALE",
+    "SHIPPING_SCOPE_UNCONFIRMED",
+    "SHIPPING_QUOTE_MISSING_OR_EXPIRED",
+    "COST_MISSING_OR_INVALID",
+    "PRICING_OR_FEES_UNCONFIRMED"
+  ]
+}

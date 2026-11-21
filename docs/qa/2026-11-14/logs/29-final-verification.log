@@ -1,0 +1,351 @@
+
+> desk-setup-store@0.1.0 verify
+> node scripts/verify.mjs docs/qa/2026-11-14/final
+
+Checking install: npm ci (expected exit 0)
+npm warn deprecated eslint@9.39.5: This version is no longer supported. Please see https://eslint.org/version-support for other options.
+
+added 375 packages in 9s
+Checking audit: npm audit --json (expected exit 0)
+{
+  "auditReportVersion": 2,
+  "vulnerabilities": {},
+  "metadata": {
+    "vulnerabilities": {
+      "info": 0,
+      "low": 0,
+      "moderate": 0,
+      "high": 0,
+      "critical": 0,
+      "total": 0
+    },
+    "dependencies": {
+      "prod": 20,
+      "dev": 421,
+      "optional": 121,
+      "peer": 0,
+      "peerOptional": 0,
+      "total": 478
+    }
+  }
+}
+Checking lint: npm run lint (expected exit 0)
+
+> desk-setup-store@0.1.0 lint
+> eslint . --max-warnings=0
+
+Checking typecheck: npm run typecheck (expected exit 0)
+
+> desk-setup-store@0.1.0 typecheck
+> tsc --noEmit
+
+Checking tests: npm test (expected exit 0)
+
+> desk-setup-store@0.1.0 test
+> node --import tsx --test tests/*.test.ts commerce/tests/*.test.ts
+
+✔ external acceptance requires explicit sandbox opt-in and fails closed for live backend (13.472466ms)
+✔ cancelled or unapproved sandbox buyer cannot trigger capture (0.729204ms)
+✔ approved capture is explicit, while failures never echo provider payloads (1.10957ms)
+✔ create uses one stable idempotency key and rejects a live approval URL (1.236532ms)
+✔ public acceptance summaries exclude arbitrary fields and never self-certify external acceptance (0.155115ms)
+✔ server catalogue prices accepted IDs itself and rejects client prices or invalid quantities (1.038131ms)
+✔ SQLite unique request keys prevent simultaneous duplicate PayPal creation (2.917346ms)
+✔ only a verified completed payment submits exactly one sandbox supplier order (1.406469ms)
+✔ mismatched captured amount prevents supplier submission (0.816385ms)
+✔ ambiguous PayPal creation is held for review without creating a second remote order (0.515941ms)
+✔ ambiguous CJ result is held for review and callbacks never resubmit (0.811379ms)
+✔ uncertain creation links one verified existing PayPal order without new creation or capture (0.847873ms)
+✔ uncertain creation cannot link a different invoice, amount, state or approval token (0.623714ms)
+✔ capture timeout recovers from a fresh verified read without capturing twice (1.000294ms)
+✔ crash after persisting PAID resumes sandbox fulfilment exactly once (0.820232ms)
+✔ recovery never retries uncertain create, unverified payment or in-flight CJ (1.500211ms)
+✔ provider verification rejects wrong currency, custom ID, status and non-final capture (0.512355ms)
+✔ CJ client forces isSandbox=1 and create-only mode; a non-sandbox response cannot be paid (17.151945ms)
+✔ CJ sandbox payment uses only its documented simulation endpoint (0.822936ms)
+✔ PayPal adapter uses sandbox hosts, stable request IDs and a full order read after capture (1.754496ms)
+✔ CJ API key is exchanged only server-side and its access token is cached (0.840212ms)
+✔ PayPal diagnostics report only operation and HTTP status, never the response body (0.951781ms)
+✔ payment status reads verify references, omit payer data, and do not capture (0.983088ms)
+✔ default provider transports do not invoke global fetch with a client receiver (0.787652ms)
+✔ unsigned or untrusted-certificate webhooks cannot trigger remote verification (0.210849ms)
+✔ Worker fails closed for disabled/live modes, missing auth and incomplete configuration (1.883311ms)
+✔ owner sandbox refuses customer information even when credentials are configured (0.657215ms)
+✔ connection inspection requires owner authentication before any provider call (0.128234ms)
+✔ owner connection inspection authenticates only and never returns tokens (0.792179ms)
+✔ malformed JSON and non-object bodies return safe client errors before database/provider work (21.486107ms)
+✔ JSON media type is parsed exactly and oversized streamed input is rejected (1.471047ms)
+✔ sandbox item rows reject nested customer fields, arrays and client prices (0.341297ms)
+✔ authenticated readiness explains missing setup without requiring provider credentials (0.54129ms)
+✔ invalid storefront origins cannot reach order creation or any provider (0.668722ms)
+✔ provider credential and API requests reject HTTP redirects without reaching the destination (34.811819ms)
+✔ real SQLite migrations, readonly pagination and stale transitions produce actionable handoff (3.115146ms)
+✔ payment holds survive acknowledgement and atomically prevent payment/fulfilment claims (1.220086ms)
+✔ signed refund callbacks verify fresh provider records and deduplicate without changing fulfilment (22.466701ms)
+✔ forged, unknown and mismatched negative callbacks cannot place a known order on hold (2.640747ms)
+✔ a known signed exception with temporarily unavailable provider read holds and retries safely (2.243376ms)
+✔ reversal and partial refunds are verified without any mutation request to PayPal (0.712969ms)
+✔ readiness separates configuration, database, authentication and end-to-end evidence (0.749695ms)
+✔ concurrent supplier checks create and simulate once, independently of payment orders (2.876985ms)
+✔ uncertain supplier creation is durable and never retried with the same key (1.020395ms)
+✔ refused simulation keeps its supplier reference and never repeats creation or payment (0.570183ms)
+✔ crashed supplier checks remain held and invalid keys create no record (0.684817ms)
+✔ supplier check routes require owner auth and reject all caller-supplied recipient or item data (15.188884ms)
+✔ CJ simulation must explicitly return true and diagnostics never expose response bodies (1.069089ms)
+✔ supplier inspection returns only sandbox state and never writes to the provider (0.352403ms)
+✔ created CJ sandbox orders are confirmed, rechecked, simulated and verified without real payment APIs (0.688462ms)
+✔ CJ cannot confirm non-sandbox orders or simulate in an unverified payment state (0.41586ms)
+✔ a CJ confirmation or simulated payment must be verified by a fresh state read (0.571966ms)
+✔ owner recovery claims one rejected simulation without recreating the supplier order (0.761323ms)
+✔ owner recovery leaves ambiguous supplier outcomes held (0.419055ms)
+✔ CJ retries one rate-limited read through the request gate but never replays a write (0.553178ms)
+✔ invalid persisted data cannot introduce unknown products or invalid quantities (0.886713ms)
+✔ duplicate product rows merge and quantities stay within the demo limit (0.182136ms)
+✔ integer-cent totals match a known multi-item basket (0.141254ms)
+✔ an empty or fully removed bag has no delivery charge (0.115115ms)
+✔ persisted price tampering is ignored; totals always use the catalogue (0.1585ms)
+✔ demo mode and catalogue cannot represent live inventory or payments (0.162006ms)
+✔ fit advice does not force an unnecessary product or guarantee load/fit (1.198004ms)
+✔ quote handoff excludes client prices, unknown IDs and personal data (0.323009ms)
+✔ checkboxes alone cannot enable checkout while catalogue remains a demo (0.119521ms)
+✔ unit economics known scenario and invalid rate boundary (0.805409ms)
+✔ complete synthetic evidence calculates converted costs but cannot enable checkout (2.025887ms)
+✔ current candidate has missing evidence and no invented zero costs (0.292703ms)
+✔ expired freight, unknown fees, future evidence and unmapped demo products block readiness (1.218003ms)
+✔ USD inputs require a fresh exchange rate and nonpositive margins remain blocked (0.260083ms)
+✔ booleans, malformed input and prototype keys never imply readiness (0.189036ms)
+ℹ tests 70
+ℹ suites 0
+ℹ pass 70
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 1042.539463
+Checking launch-diagnostic: npm run check:launch (expected exit 0)
+
+> desk-setup-store@0.1.0 check:launch
+> node --import tsx scripts/check-launch-readiness.ts
+
+{
+  "schema": "desk-setup-readiness-v1",
+  "evaluatedAt": "2026-11-14T08:35:27.013Z",
+  "sandboxTestReady": true,
+  "sandboxReadinessScope": "catalogue fixture only; runtime and provider acceptance are separate",
+  "commercialEvidenceReady": false,
+  "checkoutEnabled": false,
+  "evidenceBasis": "operator attestations; source documents require human review",
+  "verifiedPostcodes": [],
+  "economics": null,
+  "blockers": [
+    "EVIDENCE_SUPPLIER_MISSING_OR_STALE",
+    "EVIDENCE_SAMPLE_MISSING_OR_STALE",
+    "EVIDENCE_IMAGERIGHTS_MISSING_OR_STALE",
+    "EVIDENCE_STOCK_MISSING_OR_STALE",
+    "EVIDENCE_SHIPPINGQUOTE_MISSING_OR_STALE",
+    "EVIDENCE_SAMPLEDELIVERY_MISSING_OR_STALE",
+    "EVIDENCE_SELLERIDENTITY_MISSING_OR_STALE",
+    "EVIDENCE_SUPPORT_MISSING_OR_STALE",
+    "EVIDENCE_RETURNS_MISSING_OR_STALE",
+    "EVIDENCE_POLICIES_MISSING_OR_STALE",
+    "EVIDENCE_TAXARRANGEMENT_MISSING_OR_STALE",
+    "EVIDENCE_SANDBOXPAYMENT_MISSING_OR_STALE",
+    "EVIDENCE_SANDBOXREFUND_MISSING_OR_STALE",
+    "EVIDENCE_DESKTOPQA_MISSING_OR_STALE",
+    "EVIDENCE_REALPHONEQA_MISSING_OR_STALE",
+    "EVIDENCE_ORDERHANDOFF_MISSING_OR_STALE",
+    "SHIPPING_SCOPE_UNCONFIRMED",
+    "SHIPPING_QUOTE_MISSING_OR_EXPIRED",
+    "COST_MISSING_OR_INVALID",
+    "PRICING_OR_FEES_UNCONFIRMED"
+  ]
+}
+Checking commercial-gate: npm run check:launch -- --require-commercial (expected exit 2)
+
+> desk-setup-store@0.1.0 check:launch
+> node --import tsx scripts/check-launch-readiness.ts --require-commercial
+
+{
+  "schema": "desk-setup-readiness-v1",
+  "evaluatedAt": "2026-11-14T08:35:27.170Z",
+  "sandboxTestReady": true,
+  "sandboxReadinessScope": "catalogue fixture only; runtime and provider acceptance are separate",
+  "commercialEvidenceReady": false,
+  "checkoutEnabled": false,
+  "evidenceBasis": "operator attestations; source documents require human review",
+  "verifiedPostcodes": [],
+  "economics": null,
+  "blockers": [
+    "EVIDENCE_SUPPLIER_MISSING_OR_STALE",
+    "EVIDENCE_SAMPLE_MISSING_OR_STALE",
+    "EVIDENCE_IMAGERIGHTS_MISSING_OR_STALE",
+    "EVIDENCE_STOCK_MISSING_OR_STALE",
+    "EVIDENCE_SHIPPINGQUOTE_MISSING_OR_STALE",
+    "EVIDENCE_SAMPLEDELIVERY_MISSING_OR_STALE",
+    "EVIDENCE_SELLERIDENTITY_MISSING_OR_STALE",
+    "EVIDENCE_SUPPORT_MISSING_OR_STALE",
+    "EVIDENCE_RETURNS_MISSING_OR_STALE",
+    "EVIDENCE_POLICIES_MISSING_OR_STALE",
+    "EVIDENCE_TAXARRANGEMENT_MISSING_OR_STALE",
+    "EVIDENCE_SANDBOXPAYMENT_MISSING_OR_STALE",
+    "EVIDENCE_SANDBOXREFUND_MISSING_OR_STALE",
+    "EVIDENCE_DESKTOPQA_MISSING_OR_STALE",
+    "EVIDENCE_REALPHONEQA_MISSING_OR_STALE",
+    "EVIDENCE_ORDERHANDOFF_MISSING_OR_STALE",
+    "SHIPPING_SCOPE_UNCONFIRMED",
+    "SHIPPING_QUOTE_MISSING_OR_EXPIRED",
+    "COST_MISSING_OR_INVALID",
+    "PRICING_OR_FEES_UNCONFIRMED"
+  ]
+}
+Checking credential-free-sandbox: npm run sandbox:acceptance -- check --network=sandbox (expected exit 2)
+
+> desk-setup-store@0.1.0 sandbox:acceptance
+> node --import tsx scripts/sandbox-acceptance.ts check --network=sandbox
+
+{"status":"blocked","code":"SANDBOX_CHECK_BLOCKED","externalEndToEndAccepted":false}
+Checking commerce-build: npm run build:commerce (expected exit 0)
+
+> desk-setup-store@0.1.0 build:commerce
+> node scripts/build-commerce.mjs
+
+Sandbox Worker compiled. No credentials embedded; not deployed.
+Checking storefront-build: npm run build (expected exit 0)
+
+> desk-setup-store@0.1.0 build
+> next build --webpack
+
+▲ Next.js 16.4.1 (webpack)
+✓ Running next.config.ts took 21ms
+
+  Creating an optimized production build ...
+✓ Compiled successfully in 1485ms
+  Running TypeScript ...
+  Finished TypeScript in 1402ms ...
+  Collecting page data using 2 workers ...
+  Generating static pages using 2 workers (0/14) ...
+  Generating static pages using 2 workers (3/14) 
+  Generating static pages using 2 workers (6/14) 
+  Generating static pages using 2 workers (10/14) 
+✓ Generating static pages using 2 workers (14/14) in 405ms
+  Finalizing page optimization ...
+  Collecting build traces ...
+
+Route (app)
+┌ ○ /
+├ ○ /_not-found
+├   /[policy]
+│ ├ ● /shipping-policy
+│ ├ ● /return-policy
+│ └ ● /privacy-policy
+├ ○ /cart
+├ ○ /contact
+├ ○ /desk-fit
+├   /products/[slug]
+│ ├ ● /products/cable-keeper
+│ ├ ● /products/desk-shelf
+│ └ ● /products/tech-pouch
+├ ○ /robots.txt
+└ ○ /sitemap.xml
+
+
+○  (Static)  prerendered as static content
+●  (SSG)     prerendered as static HTML (uses generateStaticParams)
+
+Checking export: npm run check:export (expected exit 0)
+
+> desk-setup-store@0.1.0 check:export
+> node scripts/check-export.mjs
+
+PASS: 11 exported HTML pages, 251 internal asset/link references, sitemap, robots, OG image, no forms/payment SDK.
+Checking browser: npm run test:e2e (expected exit 0)
+
+> desk-setup-store@0.1.0 test:e2e
+> playwright test
+
+[WebServer] (node:8520) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+[WebServer] (Use `node --trace-warnings ...` to show where the warning was created)
+
+Running 54 tests using 2 workers
+
+(node:8533) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+(node:8532) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ✓   2 [chromium-320] › tests/e2e/audit.spec.ts:35:5 › mobile menu supports Escape, focus restoration and viewport changes (826ms)
+  ✓   3 [chromium-320] › tests/e2e/audit.spec.ts:51:5 › blank fit answers do not silently become zero and errors are associated with inputs (438ms)
+  ✓   4 [chromium-320] › tests/e2e/audit.spec.ts:66:5 › populated bag totals, maximum quantity, download contents and accessibility (1.9s)
+  ✓   5 [chromium-320] › tests/e2e/audit.spec.ts:91:5 › forged approval or cancellation URLs never turn a demo bag into a paid order (898ms)
+  ✓   6 [chromium-320] › tests/e2e/storefront.spec.ts:18:5 › responsive navigation, collection filters, footer routes and demo boundary (2.4s)
+  ✓   7 [chromium-320] › tests/e2e/storefront.spec.ts:43:5 › all products, quantities, refresh, download, removal and empty bag (1.3s)
+  ✓   8 [chromium-320] › tests/e2e/storefront.spec.ts:63:5 › corrupt and blocked storage degrade safely; direct route and missing page render (1.1s)
+  ✓   1 [chromium-320] › tests/e2e/audit.spec.ts:19:5 › every route and error page passes WCAG A/AA scan with no overflow or browser errors (9.6s)
+  ✓   9 [chromium-320] › tests/e2e/storefront.spec.ts:86:5 › two tabs synchronise and keyboard skip link reaches main (909ms)
+(node:8959) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+(node:8967) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ✓  11 [chromium-375] › tests/e2e/audit.spec.ts:35:5 › mobile menu supports Escape, focus restoration and viewport changes (740ms)
+  ✓  12 [chromium-375] › tests/e2e/audit.spec.ts:51:5 › blank fit answers do not silently become zero and errors are associated with inputs (603ms)
+  ✓  13 [chromium-375] › tests/e2e/audit.spec.ts:66:5 › populated bag totals, maximum quantity, download contents and accessibility (1.9s)
+  ✓  14 [chromium-375] › tests/e2e/audit.spec.ts:91:5 › forged approval or cancellation URLs never turn a demo bag into a paid order (931ms)
+  ✓  15 [chromium-375] › tests/e2e/storefront.spec.ts:18:5 › responsive navigation, collection filters, footer routes and demo boundary (2.6s)
+  ✓  16 [chromium-375] › tests/e2e/storefront.spec.ts:43:5 › all products, quantities, refresh, download, removal and empty bag (1.3s)
+  ✓  10 [chromium-375] › tests/e2e/audit.spec.ts:19:5 › every route and error page passes WCAG A/AA scan with no overflow or browser errors (9.6s)
+  ✓  17 [chromium-375] › tests/e2e/storefront.spec.ts:63:5 › corrupt and blocked storage degrade safely; direct route and missing page render (1.2s)
+(node:9369) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ✓  18 [chromium-375] › tests/e2e/storefront.spec.ts:86:5 › two tabs synchronise and keyboard skip link reaches main (1.1s)
+(node:9460) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ✓  20 [chromium-390] › tests/e2e/audit.spec.ts:35:5 › mobile menu supports Escape, focus restoration and viewport changes (861ms)
+  ✓  21 [chromium-390] › tests/e2e/audit.spec.ts:51:5 › blank fit answers do not silently become zero and errors are associated with inputs (486ms)
+  ✓  22 [chromium-390] › tests/e2e/audit.spec.ts:66:5 › populated bag totals, maximum quantity, download contents and accessibility (1.9s)
+  ✓  23 [chromium-390] › tests/e2e/audit.spec.ts:91:5 › forged approval or cancellation URLs never turn a demo bag into a paid order (878ms)
+  ✓  24 [chromium-390] › tests/e2e/storefront.spec.ts:18:5 › responsive navigation, collection filters, footer routes and demo boundary (2.5s)
+  ✓  25 [chromium-390] › tests/e2e/storefront.spec.ts:43:5 › all products, quantities, refresh, download, removal and empty bag (1.3s)
+  ✓  19 [chromium-390] › tests/e2e/audit.spec.ts:19:5 › every route and error page passes WCAG A/AA scan with no overflow or browser errors (9.3s)
+  ✓  26 [chromium-390] › tests/e2e/storefront.spec.ts:63:5 › corrupt and blocked storage degrade safely; direct route and missing page render (1.4s)
+  ✓  27 [chromium-390] › tests/e2e/storefront.spec.ts:86:5 › two tabs synchronise and keyboard skip link reaches main (1.1s)
+(node:9811) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+(node:9818) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ✓  29 [chromium-768] › tests/e2e/audit.spec.ts:35:5 › mobile menu supports Escape, focus restoration and viewport changes (545ms)
+  ✓  30 [chromium-768] › tests/e2e/audit.spec.ts:51:5 › blank fit answers do not silently become zero and errors are associated with inputs (698ms)
+  ✓  31 [chromium-768] › tests/e2e/audit.spec.ts:66:5 › populated bag totals, maximum quantity, download contents and accessibility (1.7s)
+  ✓  32 [chromium-768] › tests/e2e/audit.spec.ts:91:5 › forged approval or cancellation URLs never turn a demo bag into a paid order (971ms)
+  ✓  33 [chromium-768] › tests/e2e/storefront.spec.ts:18:5 › responsive navigation, collection filters, footer routes and demo boundary (2.5s)
+  ✓  34 [chromium-768] › tests/e2e/storefront.spec.ts:43:5 › all products, quantities, refresh, download, removal and empty bag (1.5s)
+  ✓  35 [chromium-768] › tests/e2e/storefront.spec.ts:63:5 › corrupt and blocked storage degrade safely; direct route and missing page render (1.3s)
+  ✓  28 [chromium-768] › tests/e2e/audit.spec.ts:19:5 › every route and error page passes WCAG A/AA scan with no overflow or browser errors (10.3s)
+  ✓  36 [chromium-768] › tests/e2e/storefront.spec.ts:86:5 › two tabs synchronise and keyboard skip link reaches main (966ms)
+(node:10234) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+(node:10242) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ✓  38 [chromium-1440] › tests/e2e/audit.spec.ts:35:5 › mobile menu supports Escape, focus restoration and viewport changes (531ms)
+  ✓  39 [chromium-1440] › tests/e2e/audit.spec.ts:51:5 › blank fit answers do not silently become zero and errors are associated with inputs (665ms)
+  ✓  40 [chromium-1440] › tests/e2e/audit.spec.ts:66:5 › populated bag totals, maximum quantity, download contents and accessibility (2.0s)
+  ✓  41 [chromium-1440] › tests/e2e/audit.spec.ts:91:5 › forged approval or cancellation URLs never turn a demo bag into a paid order (1.1s)
+  ✓  42 [chromium-1440] › tests/e2e/storefront.spec.ts:18:5 › responsive navigation, collection filters, footer routes and demo boundary (2.4s)
+  ✓  43 [chromium-1440] › tests/e2e/storefront.spec.ts:43:5 › all products, quantities, refresh, download, removal and empty bag (1.3s)
+  ✓  44 [chromium-1440] › tests/e2e/storefront.spec.ts:63:5 › corrupt and blocked storage degrade safely; direct route and missing page render (1.2s)
+  ✓  37 [chromium-1440] › tests/e2e/audit.spec.ts:19:5 › every route and error page passes WCAG A/AA scan with no overflow or browser errors (10.0s)
+(node:10641) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ✓  45 [chromium-1440] › tests/e2e/storefront.spec.ts:86:5 › two tabs synchronise and keyboard skip link reaches main (1.2s)
+(node:10731) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ✓  47 [chromium-touch-390] › tests/e2e/audit.spec.ts:35:5 › mobile menu supports Escape, focus restoration and viewport changes (922ms)
+  ✓  48 [chromium-touch-390] › tests/e2e/audit.spec.ts:51:5 › blank fit answers do not silently become zero and errors are associated with inputs (589ms)
+  ✓  49 [chromium-touch-390] › tests/e2e/audit.spec.ts:66:5 › populated bag totals, maximum quantity, download contents and accessibility (2.5s)
+  ✓  50 [chromium-touch-390] › tests/e2e/audit.spec.ts:91:5 › forged approval or cancellation URLs never turn a demo bag into a paid order (797ms)
+  ✓  51 [chromium-touch-390] › tests/e2e/storefront.spec.ts:18:5 › responsive navigation, collection filters, footer routes and demo boundary (2.2s)
+  ✓  46 [chromium-touch-390] › tests/e2e/audit.spec.ts:19:5 › every route and error page passes WCAG A/AA scan with no overflow or browser errors (8.6s)
+  ✓  52 [chromium-touch-390] › tests/e2e/storefront.spec.ts:43:5 › all products, quantities, refresh, download, removal and empty bag (1.6s)
+  ✓  53 [chromium-touch-390] › tests/e2e/storefront.spec.ts:63:5 › corrupt and blocked storage degrade safely; direct route and missing page render (1.3s)
+  ✓  54 [chromium-touch-390] › tests/e2e/storefront.spec.ts:86:5 › two tabs synchronise and keyboard skip link reaches main (864ms)
+
+  54 passed (1.1m)
+Verification matched all expected outcomes; full logs: /workspace/desk-setup-store/docs/qa/2026-11-14/final

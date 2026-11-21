@@ -1,5 +1,9 @@
 # Verification
 
+## Current repository audit — 14 November 2026
+
+Fresh checkout, fixes and complete local verification: **70 unit/integration tests and 54 browser tests passed**, including six viewport/touch projects and automated accessibility scans. Install, audit (zero advisories), lint, typecheck, both builds and export checks passed. Commercial launch and credential-free external acceptance correctly remain blocked. The public host's robots/sitemap and missing security headers differ from source. See the [full audit and launch blockers](REPOSITORY-AUDIT-2026-11-14.zh-CN.md) and [complete command logs with exit codes](qa/2026-11-14/final/summary.json). No deployment or provider transaction was executed in this audit. Earlier observations below are historical.
+
 ## Official provider observation — 1 November 2026
 
 The existing owner-private deployment completed one A$39.90 PayPal sandbox capture followed by CJ sandbox creation and simulated payment. Fresh provider reads verified PayPal `COMPLETED` and a CJ sandbox `UNSHIPPED` result. Repeated create/capture calls returned the same persisted references. See [the redacted provider receipt](PROVIDER-SANDBOX-2026-11-01.md) for exact scope, deployment commits and remaining acceptance gaps. This used the protected operator route; external signed webhook delivery and provider refunds remain unverified. It produced no real shipment or revenue and does not enable public checkout. Code-test counts below belong to their recorded source/verification runs.

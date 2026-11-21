@@ -1,0 +1,41 @@
+
+> desk-setup-store@0.1.0 build
+> next build --webpack
+
+▲ Next.js 16.4.1 (webpack)
+✓ Running next.config.ts took 27ms
+
+  Creating an optimized production build ...
+✓ Compiled successfully in 1667ms
+  Running TypeScript ...
+  Finished TypeScript in 1429ms ...
+  Collecting page data using 2 workers ...
+  Generating static pages using 2 workers (0/14) ...
+  Generating static pages using 2 workers (3/14) 
+  Generating static pages using 2 workers (6/14) 
+  Generating static pages using 2 workers (10/14) 
+✓ Generating static pages using 2 workers (14/14) in 311ms
+  Finalizing page optimization ...
+  Collecting build traces ...
+
+Route (app)
+┌ ○ /
+├ ○ /_not-found
+├   /[policy]
+│ ├ ● /shipping-policy
+│ ├ ● /return-policy
+│ └ ● /privacy-policy
+├ ○ /cart
+├ ○ /contact
+├ ○ /desk-fit
+├   /products/[slug]
+│ ├ ● /products/cable-keeper
+│ ├ ● /products/desk-shelf
+│ └ ● /products/tech-pouch
+├ ○ /robots.txt
+└ ○ /sitemap.xml
+
+
+○  (Static)  prerendered as static content
+●  (SSG)     prerendered as static HTML (uses generateStaticParams)
+

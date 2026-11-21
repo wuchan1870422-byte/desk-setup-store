@@ -42,7 +42,7 @@ export class PayPalSandbox implements PaymentGateway {
 
   private async auth() {
     if (this.token && this.token.until > Date.now()) return this.token.value;
-    const response = await this.send(`${this.base}/v1/oauth2/token`, { method: "POST", headers: { Authorization: `Basic ${btoa(`${this.clientId}:${this.secret}`)}`, "Content-Type": "application/x-www-form-urlencoded" }, body: "grant_type=client_credentials", signal: AbortSignal.timeout(15000) });
+    const response = await this.send(`${this.base}/v1/oauth2/token`, { method: "POST", redirect: "error", headers: { Authorization: `Basic ${btoa(`${this.clientId}:${this.secret}`)}`, "Content-Type": "application/x-www-form-urlencoded" }, body: "grant_type=client_credentials", signal: AbortSignal.timeout(15000) });
     if (!response.ok) throw new Error(`PAYPAL_AUTH_HTTP_${response.status}`);
     const data = object(await response.json());
     if (typeof data.access_token !== "string" || !data.access_token) throw new Error("PAYPAL_AUTH_FAILED");
@@ -53,7 +53,7 @@ export class PayPalSandbox implements PaymentGateway {
   private async api(path: string, method = "GET", body?: unknown, key?: string) {
     const headers: Record<string, string> = { Authorization: `Bearer ${await this.auth()}`, "Content-Type": "application/json", Prefer: "return=representation" };
     if (key) headers["PayPal-Request-Id"] = key;
-    const response = await this.send(this.base + path, { method, headers, body: body === undefined ? undefined : JSON.stringify(body), signal: AbortSignal.timeout(20000) });
+    const response = await this.send(this.base + path, { method, redirect: "error", headers, body: body === undefined ? undefined : JSON.stringify(body), signal: AbortSignal.timeout(20000) });
     if (!response.ok) throw new Error(`PAYPAL_REQUEST_HTTP_${response.status}`);
     return object(await response.json());
   }
@@ -125,10 +125,10 @@ export class PayPalSandbox implements PaymentGateway {
   }
   verifyPaid(payload: unknown, order: Order) {
     const data = object(payload);
-    if (data.id !== order.paypalId || data.status !== "COMPLETED" || !Array.isArray(data.purchase_units) || data.purchase_units.length !== 1) throw new Error("PAYMENT_NOT_VERIFIED");
+    if (data.id !== order.paypalId || data.intent !== "CAPTURE" || data.status !== "COMPLETED" || !Array.isArray(data.purchase_units) || data.purchase_units.length !== 1) throw new Error("PAYMENT_NOT_VERIFIED");
     const unit = object(data.purchase_units[0]);
     const amount = object(unit.amount);
-    if (unit.custom_id !== order.id || unit.reference_id !== order.id || amount.currency_code !== "AUD" || decimalCents(amount.value) !== order.totalAudCents) throw new Error("PAYMENT_NOT_VERIFIED");
+    if (unit.custom_id !== order.id || unit.reference_id !== order.id || unit.invoice_id !== `test-${order.id}` || amount.currency_code !== "AUD" || decimalCents(amount.value) !== order.totalAudCents) throw new Error("PAYMENT_NOT_VERIFIED");
     const payments = object(unit.payments);
     if (!Array.isArray(payments.captures) || payments.captures.length !== 1) throw new Error("PAYMENT_NOT_VERIFIED");
     const capture = object(payments.captures[0]);
@@ -170,7 +170,7 @@ export class CJSandbox implements SupplierGateway {
   constructor(private token: string, private send: Transport = defaultTransport, private waitForSlot: () => Promise<void> = cjRequestSlot) {}
   static async fromApiKey(key: string, send: Transport = defaultTransport) {
     if (this.cached?.key === key && this.cached.until > Date.now()) return new CJSandbox(this.cached.token, send);
-    const response = await send("https://developers.cjdropshipping.com/api2.0/v1/authentication/getAccessToken", { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify({ apiKey: key }), signal: AbortSignal.timeout(15000) });
+    const response = await send("https://developers.cjdropshipping.com/api2.0/v1/authentication/getAccessToken", { method: "POST", redirect: "error", headers: { "Content-Type": "application/json" }, body: JSON.stringify({ apiKey: key }), signal: AbortSignal.timeout(15000) });
     if (!response.ok) throw new Error("CJ_AUTH_FAILED");
     const result = object(await response.json());
     const data = object(result.data);
@@ -182,7 +182,7 @@ export class CJSandbox implements SupplierGateway {
   private async api(path: string, method: string, body?: unknown) {
     const request = async () => {
       await this.waitForSlot();
-      return this.send(this.base + path, { method, headers: { "CJ-Access-Token": this.token, "Content-Type": "application/json" }, body: body === undefined ? undefined : JSON.stringify(body), signal: AbortSignal.timeout(20000) });
+      return this.send(this.base + path, { method, redirect: "error", headers: { "CJ-Access-Token": this.token, "Content-Type": "application/json" }, body: body === undefined ? undefined : JSON.stringify(body), signal: AbortSignal.timeout(20000) });
     };
     let response = await request();
     // Only reads may retry a definite rate-limit rejection, once. Never replay

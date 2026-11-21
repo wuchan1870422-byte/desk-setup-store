@@ -27,7 +27,7 @@ function authorised(req: Request, token?: string) {
   return different === 0;
 }
 async function body(req: Request): Promise<Record<string, unknown>> {
-  if (!req.headers.get("content-type")?.startsWith("application/json")) throw new Error("INVALID_JSON");
+  if (req.headers.get("content-type")?.split(";")[0].trim().toLowerCase() !== "application/json") throw new Error("INVALID_JSON");
   const reader = req.body?.getReader();
   if (!reader) throw new Error("INVALID_JSON");
   let size = 0;
@@ -42,9 +42,11 @@ async function body(req: Request): Promise<Record<string, unknown>> {
   const bytes = new Uint8Array(size);
   let offset = 0;
   for (const chunk of chunks) { bytes.set(chunk, offset); offset += chunk.length; }
-  const parsed = JSON.parse(new TextDecoder().decode(bytes));
+  let parsed: unknown;
+  try { parsed = JSON.parse(new TextDecoder("utf-8", { fatal: true }).decode(bytes)); }
+  catch { throw new Error("INVALID_JSON"); }
   if (!parsed || typeof parsed !== "object" || Array.isArray(parsed)) throw new Error("INVALID_JSON");
-  return parsed;
+  return parsed as Record<string, unknown>;
 }
 
 const worker = {
@@ -55,7 +57,9 @@ const worker = {
     if (env.COMMERCE_MODE !== "sandbox") return json({ error: "SANDBOX_DISABLED" }, 503);
     const webhook = path === "/webhooks/paypal" && req.method === "POST";
     if (!webhook && !authorised(req, env.SANDBOX_ADMIN_TOKEN)) return json({ error: "UNAUTHORISED" }, 401);
-    if (!env.ORDERS || !env.PAYPAL_SANDBOX_CLIENT_ID || !env.PAYPAL_SANDBOX_SECRET || !(env.CJ_ACCESS_TOKEN || env.CJ_API_KEY) || !env.STOREFRONT_ORIGIN) return json({ error: "SANDBOX_CONFIGURATION_INCOMPLETE" }, 503);
+    // An authenticated diagnostic must remain usable while setup is incomplete.
+    if (path === "/sandbox/readiness" && req.method === "GET") return json(await runtimeReadiness(env));
+    if (!env.ORDERS || !env.PAYPAL_SANDBOX_CLIENT_ID || !env.PAYPAL_SANDBOX_SECRET || !(env.CJ_ACCESS_TOKEN || env.CJ_API_KEY) || !env.STOREFRONT_ORIGIN || !configurationStatus(env).checks.storefrontOrigin) return json({ error: "SANDBOX_CONFIGURATION_INCOMPLETE" }, 503);
     const db = new D1Orders(env.ORDERS);
     const paypal = new PayPalSandbox(env.PAYPAL_SANDBOX_CLIENT_ID, env.PAYPAL_SANDBOX_SECRET, env.STOREFRONT_ORIGIN);
     let supplierClient: Promise<CJSandbox> | undefined;
@@ -67,7 +71,6 @@ const worker = {
     });
     const service = new SandboxOrders(db, paypal, { createSandboxOrder: async (order) => (await supplier()).createSandboxOrder(order), simulatePayment: async (id) => (await supplier()).simulatePayment(id) });
     try {
-      if (path === "/sandbox/readiness" && req.method === "GET") return json(await runtimeReadiness(env));
       if (path === "/sandbox/review" && req.method === "GET") {
         const query = new URL(req.url).searchParams;
         return json(await orderReview(db, query.get("cursor") || "", Number(query.get("limit") || 50), Number(query.get("staleMinutes") || 30)));

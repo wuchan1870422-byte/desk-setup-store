@@ -1,0 +1,4215 @@
+
+> desk-setup-store@0.1.0 test:e2e
+> playwright test --reporter=list
+
+[WebServer] (node:1452) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+[WebServer] (Use `node --trace-warnings ...` to show where the warning was created)
+
+Running 40 tests using 2 workers
+
+(node:1465) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+(node:1464) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ✘   1 [chromium-320] › tests/e2e/audit.spec.ts:26:5 › mobile menu supports Escape, focus restoration and viewport changes (6.3s)
+(node:1804) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ✘   2 [chromium-320] › tests/e2e/audit.spec.ts:10:5 › every route and error page passes WCAG A/AA scan with no overflow or browser errors (7.3s)
+(node:1908) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ✘   4 [chromium-320] › tests/e2e/audit.spec.ts:55:5 › populated bag totals, maximum quantity, download contents and accessibility (1.6s)
+(node:1995) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ✘   3 [chromium-320] › tests/e2e/audit.spec.ts:42:5 › blank fit answers do not silently become zero and errors are associated with inputs (5.5s)
+  ✓   5 [chromium-320] › tests/e2e/storefront.spec.ts:18:5 › responsive navigation, collection filters, footer routes and demo boundary (1.7s)
+(node:2078) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ✓   6 [chromium-320] › tests/e2e/storefront.spec.ts:63:5 › corrupt and blocked storage degrade safely; direct route and missing page render (1.3s)
+  ✓   8 [chromium-320] › tests/e2e/storefront.spec.ts:86:5 › two tabs synchronise and keyboard skip link reaches main (1.2s)
+  ✓   7 [chromium-320] › tests/e2e/storefront.spec.ts:43:5 › all products, quantities, refresh, download, removal and empty bag (2.0s)
+(node:2200) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+(node:2207) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ✘  10 [chromium-375] › tests/e2e/audit.spec.ts:26:5 › mobile menu supports Escape, focus restoration and viewport changes (5.6s)
+(node:2510) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ✘   9 [chromium-375] › tests/e2e/audit.spec.ts:10:5 › every route and error page passes WCAG A/AA scan with no overflow or browser errors (7.0s)
+(node:2590) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ✘  12 [chromium-375] › tests/e2e/audit.spec.ts:55:5 › populated bag totals, maximum quantity, download contents and accessibility (1.4s)
+(node:2680) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ✓  13 [chromium-375] › tests/e2e/storefront.spec.ts:18:5 › responsive navigation, collection filters, footer routes and demo boundary (1.4s)
+  ✘  11 [chromium-375] › tests/e2e/audit.spec.ts:42:5 › blank fit answers do not silently become zero and errors are associated with inputs (5.5s)
+(node:2768) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ✓  14 [chromium-375] › tests/e2e/storefront.spec.ts:43:5 › all products, quantities, refresh, download, removal and empty bag (1.9s)
+  ✓  15 [chromium-375] › tests/e2e/storefront.spec.ts:63:5 › corrupt and blocked storage degrade safely; direct route and missing page render (2.5s)
+  ✓  16 [chromium-375] › tests/e2e/storefront.spec.ts:86:5 › two tabs synchronise and keyboard skip link reaches main (1.5s)
+(node:2959) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+(node:2967) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ✘  18 [chromium-390] › tests/e2e/audit.spec.ts:26:5 › mobile menu supports Escape, focus restoration and viewport changes (5.8s)
+(node:3259) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ✘  17 [chromium-390] › tests/e2e/audit.spec.ts:10:5 › every route and error page passes WCAG A/AA scan with no overflow or browser errors (7.0s)
+(node:3339) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ✘  20 [chromium-390] › tests/e2e/audit.spec.ts:55:5 › populated bag totals, maximum quantity, download contents and accessibility (1.8s)
+(node:3512) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ✘  19 [chromium-390] › tests/e2e/audit.spec.ts:42:5 › blank fit answers do not silently become zero and errors are associated with inputs (5.6s)
+(node:3601) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ✓  21 [chromium-390] › tests/e2e/storefront.spec.ts:18:5 › responsive navigation, collection filters, footer routes and demo boundary (2.0s)
+  ✓  23 [chromium-390] › tests/e2e/storefront.spec.ts:63:5 › corrupt and blocked storage degrade safely; direct route and missing page render (1.5s)
+  ✓  22 [chromium-390] › tests/e2e/storefront.spec.ts:43:5 › all products, quantities, refresh, download, removal and empty bag (1.7s)
+(node:3707) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ✓  24 [chromium-390] › tests/e2e/storefront.spec.ts:86:5 › two tabs synchronise and keyboard skip link reaches main (933ms)
+(node:3794) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ✓  26 [chromium-768] › tests/e2e/audit.spec.ts:26:5 › mobile menu supports Escape, focus restoration and viewport changes (471ms)
+  ✘  27 [chromium-768] › tests/e2e/audit.spec.ts:42:5 › blank fit answers do not silently become zero and errors are associated with inputs (5.6s)
+(node:4025) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ✘  25 [chromium-768] › tests/e2e/audit.spec.ts:10:5 › every route and error page passes WCAG A/AA scan with no overflow or browser errors (7.0s)
+(node:4103) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ✘  28 [chromium-768] › tests/e2e/audit.spec.ts:55:5 › populated bag totals, maximum quantity, download contents and accessibility (2.1s)
+(node:4194) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ✓  29 [chromium-768] › tests/e2e/storefront.spec.ts:18:5 › responsive navigation, collection filters, footer routes and demo boundary (3.1s)
+  ✓  30 [chromium-768] › tests/e2e/storefront.spec.ts:43:5 › all products, quantities, refresh, download, removal and empty bag (2.1s)
+  ✓  31 [chromium-768] › tests/e2e/storefront.spec.ts:63:5 › corrupt and blocked storage degrade safely; direct route and missing page render (1.4s)
+  ✓  32 [chromium-768] › tests/e2e/storefront.spec.ts:86:5 › two tabs synchronise and keyboard skip link reaches main (1.3s)
+(node:4313) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+(node:4321) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ✓  34 [chromium-1440] › tests/e2e/audit.spec.ts:26:5 › mobile menu supports Escape, focus restoration and viewport changes (543ms)
+  ✘  35 [chromium-1440] › tests/e2e/audit.spec.ts:42:5 › blank fit answers do not silently become zero and errors are associated with inputs (5.5s)
+(node:4624) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ✘  33 [chromium-1440] › tests/e2e/audit.spec.ts:10:5 › every route and error page passes WCAG A/AA scan with no overflow or browser errors (7.2s)
+(node:4716) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ✘  36 [chromium-1440] › tests/e2e/audit.spec.ts:55:5 › populated bag totals, maximum quantity, download contents and accessibility (2.0s)
+(node:4796) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ✓  38 [chromium-1440] › tests/e2e/storefront.spec.ts:43:5 › all products, quantities, refresh, download, removal and empty bag (2.0s)
+  ✓  37 [chromium-1440] › tests/e2e/storefront.spec.ts:18:5 › responsive navigation, collection filters, footer routes and demo boundary (3.0s)
+  ✓  40 [chromium-1440] › tests/e2e/storefront.spec.ts:86:5 › two tabs synchronise and keyboard skip link reaches main (1.4s)
+  ✓  39 [chromium-1440] › tests/e2e/storefront.spec.ts:63:5 › corrupt and blocked storage degrade safely; direct route and missing page render (1.7s)
+
+
+  1) [chromium-320] › tests/e2e/audit.spec.ts:10:5 › every route and error page passes WCAG A/AA scan with no overflow or browser errors 
+
+    Error: /
+
+    expect(received).toEqual(expected) // deep equality
+
+    - Expected  -  1
+    + Received  + 67
+
+    - Array []
+    + Array [
+    +   Object {
+    +     "id": "color-contrast",
+    +     "nodes": Array [
+    +       Array [
+    +         ".hero-footnote",
+    +       ],
+    +       Array [
+    +         ".collection-count",
+    +       ],
+    +       Array [
+    +         ".product-card:nth-child(1) > .product-card-info > div:nth-child(1) > .product-category",
+    +       ],
+    +       Array [
+    +         ".product-card:nth-child(1) > .product-card-info > .product-price > span",
+    +       ],
+    +       Array [
+    +         ".product-card:nth-child(2) > .product-card-info > div:nth-child(1) > .product-category",
+    +       ],
+    +       Array [
+    +         ".product-card:nth-child(2) > .product-card-info > .product-price > span",
+    +       ],
+    +       Array [
+    +         ".product-card:nth-child(3) > .product-card-info > div:nth-child(1) > .product-category",
+    +       ],
+    +       Array [
+    +         ".product-card:nth-child(3) > .product-card-info > .product-price > span",
+    +       ],
+    +       Array [
+    +         ".catalogue-disclaimer",
+    +       ],
+    +       Array [
+    +         ".approach-copy > p:nth-child(3)",
+    +       ],
+    +       Array [
+    +         ".approach-copy > p:nth-child(4)",
+    +       ],
+    +       Array [
+    +         "article:nth-child(1) > .reason-number",
+    +       ],
+    +       Array [
+    +         "article:nth-child(1) > p",
+    +       ],
+    +       Array [
+    +         "article:nth-child(2) > .reason-number",
+    +       ],
+    +       Array [
+    +         "article:nth-child(2) > p",
+    +       ],
+    +       Array [
+    +         "article:nth-child(3) > .reason-number",
+    +       ],
+    +       Array [
+    +         "article:nth-child(3) > p",
+    +       ],
+    +       Array [
+    +         ".footer-location",
+    +       ],
+    +       Array [
+    +         ".footer-bottom > span:nth-child(1)",
+    +       ],
+    +       Array [
+    +         ".footer-demo",
+    +       ],
+    +     ],
+    +   },
+    + ]
+
+      19 |     const results = await new AxeBuilder({ page }).withTags(["wcag2a", "wcag2aa", "wcag21aa", "wcag22aa"]).analyze();
+      20 |     if (results.violations.length) await testInfo.attach(`axe-${path.replaceAll("/", "_")}`, { body: JSON.stringify(results.violations, null, 2), contentType: "application/json" });
+    > 21 |     expect.soft(results.violations.map(v => ({ id: v.id, nodes: v.nodes.map(n => n.target) })), path).toEqual([]);
+         |                                                                                                       ^
+      22 |   }
+      23 |   expect(errors).toEqual([]);
+      24 | });
+        at /workspace/desk-setup-store/tests/e2e/audit.spec.ts:21:103
+
+    Error: /products/cable-keeper/
+
+    expect(received).toEqual(expected) // deep equality
+
+    - Expected  -  1
+    + Received  + 61
+
+    - Array []
+    + Array [
+    +   Object {
+    +     "id": "color-contrast",
+    +     "nodes": Array [
+    +       Array [
+    +         ".breadcrumbs > a[href=\"/\"]",
+    +       ],
+    +       Array [
+    +         ".breadcrumbs > a[href$=\"/#collection\"]",
+    +       ],
+    +       Array [
+    +         "span[aria-current=\"page\"]",
+    +       ],
+    +       Array [
+    +         ".detail-tagline",
+    +       ],
+    +       Array [
+    +         ".detail-price > span",
+    +       ],
+    +       Array [
+    +         "small",
+    +       ],
+    +       Array [
+    +         ".micro-copy",
+    +       ],
+    +       Array [
+    +         ".demo-callout > p",
+    +       ],
+    +       Array [
+    +         "div:nth-child(1) > dt",
+    +       ],
+    +       Array [
+    +         "div:nth-child(2) > dt",
+    +       ],
+    +       Array [
+    +         "div:nth-child(3) > dt",
+    +       ],
+    +       Array [
+    +         "div:nth-child(4) > dt",
+    +       ],
+    +       Array [
+    +         "details[open=\"\"] > p:nth-child(2)",
+    +       ],
+    +       Array [
+    +         "details[open=\"\"] > p:nth-child(3)",
+    +       ],
+    +       Array [
+    +         "p:nth-child(3) > a[href$=\"shipping-policy/\"]",
+    +       ],
+    +       Array [
+    +         ".footer-location",
+    +       ],
+    +       Array [
+    +         ".footer-bottom > span:nth-child(1)",
+    +       ],
+    +       Array [
+    +         ".footer-demo",
+    +       ],
+    +     ],
+    +   },
+    + ]
+
+      19 |     const results = await new AxeBuilder({ page }).withTags(["wcag2a", "wcag2aa", "wcag21aa", "wcag22aa"]).analyze();
+      20 |     if (results.violations.length) await testInfo.attach(`axe-${path.replaceAll("/", "_")}`, { body: JSON.stringify(results.violations, null, 2), contentType: "application/json" });
+    > 21 |     expect.soft(results.violations.map(v => ({ id: v.id, nodes: v.nodes.map(n => n.target) })), path).toEqual([]);
+         |                                                                                                       ^
+      22 |   }
+      23 |   expect(errors).toEqual([]);
+      24 | });
+        at /workspace/desk-setup-store/tests/e2e/audit.spec.ts:21:103
+
+    Error: /products/desk-shelf/
+
+    expect(received).toEqual(expected) // deep equality
+
+    - Expected  -  1
+    + Received  + 61
+
+    - Array []
+    + Array [
+    +   Object {
+    +     "id": "color-contrast",
+    +     "nodes": Array [
+    +       Array [
+    +         ".breadcrumbs > a[href=\"/\"]",
+    +       ],
+    +       Array [
+    +         ".breadcrumbs > a[href$=\"/#collection\"]",
+    +       ],
+    +       Array [
+    +         "span[aria-current=\"page\"]",
+    +       ],
+    +       Array [
+    +         ".detail-tagline",
+    +       ],
+    +       Array [
+    +         ".detail-price > span",
+    +       ],
+    +       Array [
+    +         "small",
+    +       ],
+    +       Array [
+    +         ".micro-copy",
+    +       ],
+    +       Array [
+    +         ".demo-callout > p",
+    +       ],
+    +       Array [
+    +         "div:nth-child(1) > dt",
+    +       ],
+    +       Array [
+    +         "div:nth-child(2) > dt",
+    +       ],
+    +       Array [
+    +         "div:nth-child(3) > dt",
+    +       ],
+    +       Array [
+    +         "div:nth-child(4) > dt",
+    +       ],
+    +       Array [
+    +         "details[open=\"\"] > p:nth-child(2)",
+    +       ],
+    +       Array [
+    +         "details[open=\"\"] > p:nth-child(3)",
+    +       ],
+    +       Array [
+    +         "p:nth-child(3) > a[href$=\"shipping-policy/\"]",
+    +       ],
+    +       Array [
+    +         ".footer-location",
+    +       ],
+    +       Array [
+    +         ".footer-bottom > span:nth-child(1)",
+    +       ],
+    +       Array [
+    +         ".footer-demo",
+    +       ],
+    +     ],
+    +   },
+    + ]
+
+      19 |     const results = await new AxeBuilder({ page }).withTags(["wcag2a", "wcag2aa", "wcag21aa", "wcag22aa"]).analyze();
+      20 |     if (results.violations.length) await testInfo.attach(`axe-${path.replaceAll("/", "_")}`, { body: JSON.stringify(results.violations, null, 2), contentType: "application/json" });
+    > 21 |     expect.soft(results.violations.map(v => ({ id: v.id, nodes: v.nodes.map(n => n.target) })), path).toEqual([]);
+         |                                                                                                       ^
+      22 |   }
+      23 |   expect(errors).toEqual([]);
+      24 | });
+        at /workspace/desk-setup-store/tests/e2e/audit.spec.ts:21:103
+
+    Error: /products/tech-pouch/
+
+    expect(received).toEqual(expected) // deep equality
+
+    - Expected  -  1
+    + Received  + 61
+
+    - Array []
+    + Array [
+    +   Object {
+    +     "id": "color-contrast",
+    +     "nodes": Array [
+    +       Array [
+    +         ".breadcrumbs > a[href=\"/\"]",
+    +       ],
+    +       Array [
+    +         ".breadcrumbs > a[href$=\"/#collection\"]",
+    +       ],
+    +       Array [
+    +         "span[aria-current=\"page\"]",
+    +       ],
+    +       Array [
+    +         ".detail-tagline",
+    +       ],
+    +       Array [
+    +         ".detail-price > span",
+    +       ],
+    +       Array [
+    +         "small",
+    +       ],
+    +       Array [
+    +         ".micro-copy",
+    +       ],
+    +       Array [
+    +         ".demo-callout > p",
+    +       ],
+    +       Array [
+    +         "div:nth-child(1) > dt",
+    +       ],
+    +       Array [
+    +         "div:nth-child(2) > dt",
+    +       ],
+    +       Array [
+    +         "div:nth-child(3) > dt",
+    +       ],
+    +       Array [
+    +         "div:nth-child(4) > dt",
+    +       ],
+    +       Array [
+    +         "details[open=\"\"] > p:nth-child(2)",
+    +       ],
+    +       Array [
+    +         "details[open=\"\"] > p:nth-child(3)",
+    +       ],
+    +       Array [
+    +         "p:nth-child(3) > a[href$=\"shipping-policy/\"]",
+    +       ],
+    +       Array [
+    +         ".footer-location",
+    +       ],
+    +       Array [
+    +         ".footer-bottom > span:nth-child(1)",
+    +       ],
+    +       Array [
+    +         ".footer-demo",
+    +       ],
+    +     ],
+    +   },
+    + ]
+
+      19 |     const results = await new AxeBuilder({ page }).withTags(["wcag2a", "wcag2aa", "wcag21aa", "wcag22aa"]).analyze();
+      20 |     if (results.violations.length) await testInfo.attach(`axe-${path.replaceAll("/", "_")}`, { body: JSON.stringify(results.violations, null, 2), contentType: "application/json" });
+    > 21 |     expect.soft(results.violations.map(v => ({ id: v.id, nodes: v.nodes.map(n => n.target) })), path).toEqual([]);
+         |                                                                                                       ^
+      22 |   }
+      23 |   expect(errors).toEqual([]);
+      24 | });
+        at /workspace/desk-setup-store/tests/e2e/audit.spec.ts:21:103
+
+    Error: /cart/
+
+    expect(received).toEqual(expected) // deep equality
+
+    - Expected  -  1
+    + Received  + 22
+
+    - Array []
+    + Array [
+    +   Object {
+    +     "id": "color-contrast",
+    +     "nodes": Array [
+    +       Array [
+    +         ".page-intro",
+    +       ],
+    +       Array [
+    +         "section > p",
+    +       ],
+    +       Array [
+    +         ".footer-location",
+    +       ],
+    +       Array [
+    +         ".footer-bottom > span:nth-child(1)",
+    +       ],
+    +       Array [
+    +         ".footer-demo",
+    +       ],
+    +     ],
+    +   },
+    + ]
+
+      19 |     const results = await new AxeBuilder({ page }).withTags(["wcag2a", "wcag2aa", "wcag21aa", "wcag22aa"]).analyze();
+      20 |     if (results.violations.length) await testInfo.attach(`axe-${path.replaceAll("/", "_")}`, { body: JSON.stringify(results.violations, null, 2), contentType: "application/json" });
+    > 21 |     expect.soft(results.violations.map(v => ({ id: v.id, nodes: v.nodes.map(n => n.target) })), path).toEqual([]);
+         |                                                                                                       ^
+      22 |   }
+      23 |   expect(errors).toEqual([]);
+      24 | });
+        at /workspace/desk-setup-store/tests/e2e/audit.spec.ts:21:103
+
+    Error: /desk-fit/
+
+    expect(received).toEqual(expected) // deep equality
+
+    - Expected  -  1
+    + Received  + 22
+
+    - Array []
+    + Array [
+    +   Object {
+    +     "id": "color-contrast",
+    +     "nodes": Array [
+    +       Array [
+    +         ".page-intro",
+    +       ],
+    +       Array [
+    +         ".demo-callout",
+    +       ],
+    +       Array [
+    +         ".footer-location",
+    +       ],
+    +       Array [
+    +         ".footer-bottom > span:nth-child(1)",
+    +       ],
+    +       Array [
+    +         ".footer-demo",
+    +       ],
+    +     ],
+    +   },
+    + ]
+
+      19 |     const results = await new AxeBuilder({ page }).withTags(["wcag2a", "wcag2aa", "wcag21aa", "wcag22aa"]).analyze();
+      20 |     if (results.violations.length) await testInfo.attach(`axe-${path.replaceAll("/", "_")}`, { body: JSON.stringify(results.violations, null, 2), contentType: "application/json" });
+    > 21 |     expect.soft(results.violations.map(v => ({ id: v.id, nodes: v.nodes.map(n => n.target) })), path).toEqual([]);
+         |                                                                                                       ^
+      22 |   }
+      23 |   expect(errors).toEqual([]);
+      24 | });
+        at /workspace/desk-setup-store/tests/e2e/audit.spec.ts:21:103
+
+    Error: /contact/
+
+    expect(received).toEqual(expected) // deep equality
+
+    - Expected  -  1
+    + Received  + 25
+
+    - Array []
+    + Array [
+    +   Object {
+    +     "id": "color-contrast",
+    +     "nodes": Array [
+    +       Array [
+    +         ".page-intro",
+    +       ],
+    +       Array [
+    +         ".inline-tag",
+    +       ],
+    +       Array [
+    +         "p:nth-child(5)",
+    +       ],
+    +       Array [
+    +         ".footer-location",
+    +       ],
+    +       Array [
+    +         ".footer-bottom > span:nth-child(1)",
+    +       ],
+    +       Array [
+    +         ".footer-demo",
+    +       ],
+    +     ],
+    +   },
+    + ]
+
+      19 |     const results = await new AxeBuilder({ page }).withTags(["wcag2a", "wcag2aa", "wcag21aa", "wcag22aa"]).analyze();
+      20 |     if (results.violations.length) await testInfo.attach(`axe-${path.replaceAll("/", "_")}`, { body: JSON.stringify(results.violations, null, 2), contentType: "application/json" });
+    > 21 |     expect.soft(results.violations.map(v => ({ id: v.id, nodes: v.nodes.map(n => n.target) })), path).toEqual([]);
+         |                                                                                                       ^
+      22 |   }
+      23 |   expect(errors).toEqual([]);
+      24 | });
+        at /workspace/desk-setup-store/tests/e2e/audit.spec.ts:21:103
+
+    Error: /shipping-policy/
+
+    expect(received).toEqual(expected) // deep equality
+
+    - Expected  -  1
+    + Received  + 28
+
+    - Array []
+    + Array [
+    +   Object {
+    +     "id": "color-contrast",
+    +     "nodes": Array [
+    +       Array [
+    +         ".breadcrumbs",
+    +       ],
+    +       Array [
+    +         ".page-intro",
+    +       ],
+    +       Array [
+    +         ".policy-banner > p",
+    +       ],
+    +       Array [
+    +         ".policy-date",
+    +       ],
+    +       Array [
+    +         ".footer-location",
+    +       ],
+    +       Array [
+    +         ".footer-bottom > span:nth-child(1)",
+    +       ],
+    +       Array [
+    +         ".footer-demo",
+    +       ],
+    +     ],
+    +   },
+    + ]
+
+      19 |     const results = await new AxeBuilder({ page }).withTags(["wcag2a", "wcag2aa", "wcag21aa", "wcag22aa"]).analyze();
+      20 |     if (results.violations.length) await testInfo.attach(`axe-${path.replaceAll("/", "_")}`, { body: JSON.stringify(results.violations, null, 2), contentType: "application/json" });
+    > 21 |     expect.soft(results.violations.map(v => ({ id: v.id, nodes: v.nodes.map(n => n.target) })), path).toEqual([]);
+         |                                                                                                       ^
+      22 |   }
+      23 |   expect(errors).toEqual([]);
+      24 | });
+        at /workspace/desk-setup-store/tests/e2e/audit.spec.ts:21:103
+
+    Error: /return-policy/
+
+    expect(received).toEqual(expected) // deep equality
+
+    - Expected  -  1
+    + Received  + 28
+
+    - Array []
+    + Array [
+    +   Object {
+    +     "id": "color-contrast",
+    +     "nodes": Array [
+    +       Array [
+    +         ".breadcrumbs",
+    +       ],
+    +       Array [
+    +         ".page-intro",
+    +       ],
+    +       Array [
+    +         ".policy-banner > p",
+    +       ],
+    +       Array [
+    +         ".policy-date",
+    +       ],
+    +       Array [
+    +         ".footer-location",
+    +       ],
+    +       Array [
+    +         ".footer-bottom > span:nth-child(1)",
+    +       ],
+    +       Array [
+    +         ".footer-demo",
+    +       ],
+    +     ],
+    +   },
+    + ]
+
+      19 |     const results = await new AxeBuilder({ page }).withTags(["wcag2a", "wcag2aa", "wcag21aa", "wcag22aa"]).analyze();
+      20 |     if (results.violations.length) await testInfo.attach(`axe-${path.replaceAll("/", "_")}`, { body: JSON.stringify(results.violations, null, 2), contentType: "application/json" });
+    > 21 |     expect.soft(results.violations.map(v => ({ id: v.id, nodes: v.nodes.map(n => n.target) })), path).toEqual([]);
+         |                                                                                                       ^
+      22 |   }
+      23 |   expect(errors).toEqual([]);
+      24 | });
+        at /workspace/desk-setup-store/tests/e2e/audit.spec.ts:21:103
+
+    Error: /privacy-policy/
+
+    expect(received).toEqual(expected) // deep equality
+
+    - Expected  -  1
+    + Received  + 28
+
+    - Array []
+    + Array [
+    +   Object {
+    +     "id": "color-contrast",
+    +     "nodes": Array [
+    +       Array [
+    +         ".breadcrumbs",
+    +       ],
+    +       Array [
+    +         ".page-intro",
+    +       ],
+    +       Array [
+    +         ".policy-banner > p",
+    +       ],
+    +       Array [
+    +         ".policy-date",
+    +       ],
+    +       Array [
+    +         ".footer-location",
+    +       ],
+    +       Array [
+    +         ".footer-bottom > span:nth-child(1)",
+    +       ],
+    +       Array [
+    +         ".footer-demo",
+    +       ],
+    +     ],
+    +   },
+    + ]
+
+      19 |     const results = await new AxeBuilder({ page }).withTags(["wcag2a", "wcag2aa", "wcag21aa", "wcag22aa"]).analyze();
+      20 |     if (results.violations.length) await testInfo.attach(`axe-${path.replaceAll("/", "_")}`, { body: JSON.stringify(results.violations, null, 2), contentType: "application/json" });
+    > 21 |     expect.soft(results.violations.map(v => ({ id: v.id, nodes: v.nodes.map(n => n.target) })), path).toEqual([]);
+         |                                                                                                       ^
+      22 |   }
+      23 |   expect(errors).toEqual([]);
+      24 | });
+        at /workspace/desk-setup-store/tests/e2e/audit.spec.ts:21:103
+
+    Error: /missing/
+
+    expect(received).toEqual(expected) // deep equality
+
+    - Expected  -  1
+    + Received  + 19
+
+    - Array []
+    + Array [
+    +   Object {
+    +     "id": "color-contrast",
+    +     "nodes": Array [
+    +       Array [
+    +         "section > p",
+    +       ],
+    +       Array [
+    +         ".footer-location",
+    +       ],
+    +       Array [
+    +         ".footer-bottom > span:nth-child(1)",
+    +       ],
+    +       Array [
+    +         ".footer-demo",
+    +       ],
+    +     ],
+    +   },
+    + ]
+
+      19 |     const results = await new AxeBuilder({ page }).withTags(["wcag2a", "wcag2aa", "wcag21aa", "wcag22aa"]).analyze();
+      20 |     if (results.violations.length) await testInfo.attach(`axe-${path.replaceAll("/", "_")}`, { body: JSON.stringify(results.violations, null, 2), contentType: "application/json" });
+    > 21 |     expect.soft(results.violations.map(v => ({ id: v.id, nodes: v.nodes.map(n => n.target) })), path).toEqual([]);
+         |                                                                                                       ^
+      22 |   }
+      23 |   expect(errors).toEqual([]);
+      24 | });
+        at /workspace/desk-setup-store/tests/e2e/audit.spec.ts:21:103
+
+    Error: /products/missing/
+
+    expect(received).toEqual(expected) // deep equality
+
+    - Expected  -  1
+    + Received  + 19
+
+    - Array []
+    + Array [
+    +   Object {
+    +     "id": "color-contrast",
+    +     "nodes": Array [
+    +       Array [
+    +         "section > p",
+    +       ],
+    +       Array [
+    +         ".footer-location",
+    +       ],
+    +       Array [
+    +         ".footer-bottom > span:nth-child(1)",
+    +       ],
+    +       Array [
+    +         ".footer-demo",
+    +       ],
+    +     ],
+    +   },
+    + ]
+
+      19 |     const results = await new AxeBuilder({ page }).withTags(["wcag2a", "wcag2aa", "wcag21aa", "wcag22aa"]).analyze();
+      20 |     if (results.violations.length) await testInfo.attach(`axe-${path.replaceAll("/", "_")}`, { body: JSON.stringify(results.violations, null, 2), contentType: "application/json" });
+    > 21 |     expect.soft(results.violations.map(v => ({ id: v.id, nodes: v.nodes.map(n => n.target) })), path).toEqual([]);
+         |                                                                                                       ^
+      22 |   }
+      23 |   expect(errors).toEqual([]);
+      24 | });
+        at /workspace/desk-setup-store/tests/e2e/audit.spec.ts:21:103
+
+    attachment #13: screenshot (image/png) ─────────────────────────────────────────────────────────
+    test-results/audit-every-route-and-erro-5836f--overflow-or-browser-errors-chromium-320/test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Error Context: test-results/audit-every-route-and-erro-5836f--overflow-or-browser-errors-chromium-320/error-context.md
+
+    attachment #15: trace (application/zip) ────────────────────────────────────────────────────────
+    test-results/audit-every-route-and-erro-5836f--overflow-or-browser-errors-chromium-320/trace.zip
+    Usage:
+
+        npx playwright show-trace test-results/audit-every-route-and-erro-5836f--overflow-or-browser-errors-chromium-320/trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+  2) [chromium-320] › tests/e2e/audit.spec.ts:26:5 › mobile menu supports Escape, focus restoration and viewport changes 
+
+    Error: expect(locator).toBeFocused() failed
+
+    Locator: getByRole('button', { name: 'Open menu' })
+    Expected: focused
+    Timeout: 5000ms
+    Error: element(s) not found
+
+    Call log:
+      - Expect "toBeFocused" getByRole('button', { name: 'Open menu' }) with timeout 5000ms
+      - waiting for getByRole('button', { name: 'Open menu' })
+
+
+      31 |   await page.getByRole("navigation", { name: "Mobile navigation" }).getByRole("link").first().focus();
+      32 |   await page.keyboard.press("Escape");
+    > 33 |   await expect(menu).toBeFocused();
+         |                      ^
+      34 |   await expect(page.getByRole("navigation", { name: "Mobile navigation" })).toHaveCount(0);
+      35 |   await menu.click();
+      36 |   await page.setViewportSize({ width: 1440, height: 900 });
+        at /workspace/desk-setup-store/tests/e2e/audit.spec.ts:33:22
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    test-results/audit-mobile-menu-supports-6d1e3-ration-and-viewport-changes-chromium-320/test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Error Context: test-results/audit-mobile-menu-supports-6d1e3-ration-and-viewport-changes-chromium-320/error-context.md
+
+    attachment #3: trace (application/zip) ─────────────────────────────────────────────────────────
+    test-results/audit-mobile-menu-supports-6d1e3-ration-and-viewport-changes-chromium-320/trace.zip
+    Usage:
+
+        npx playwright show-trace test-results/audit-mobile-menu-supports-6d1e3-ration-and-viewport-changes-chromium-320/trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+  3) [chromium-320] › tests/e2e/audit.spec.ts:42:5 › blank fit answers do not silently become zero and errors are associated with inputs 
+
+    Error: expect(locator).toHaveAttribute(expected) failed
+
+    Locator:  getByLabel('Cables you use every day')
+    Expected: "true"
+    Received: ""
+    Timeout:  5000ms
+
+    Call log:
+      - Expect "toHaveAttribute" getByLabel('Cables you use every day') with timeout 5000ms
+      - waiting for getByLabel('Cables you use every day')
+        14 × locator resolved to <input min="0" step="1" value="" max="100" type="number" id="fit-cables"/>
+           - unexpected value "null"
+
+
+      45 |   await cables.fill("");
+      46 |   await expect(page.getByRole("alert")).toBeVisible();
+    > 47 |   await expect(cables).toHaveAttribute("aria-invalid", "true");
+         |                        ^
+      48 |   await cables.fill("0");
+      49 |   await expect(page.getByRole("alert")).toHaveCount(0);
+      50 |   await page.getByLabel("Clear desk width (mm)").fill("99");
+        at /workspace/desk-setup-store/tests/e2e/audit.spec.ts:47:24
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    test-results/audit-blank-fit-answers-do-c1a15--are-associated-with-inputs-chromium-320/test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Error Context: test-results/audit-blank-fit-answers-do-c1a15--are-associated-with-inputs-chromium-320/error-context.md
+
+    attachment #3: trace (application/zip) ─────────────────────────────────────────────────────────
+    test-results/audit-blank-fit-answers-do-c1a15--are-associated-with-inputs-chromium-320/trace.zip
+    Usage:
+
+        npx playwright show-trace test-results/audit-blank-fit-answers-do-c1a15--are-associated-with-inputs-chromium-320/trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+  4) [chromium-320] › tests/e2e/audit.spec.ts:55:5 › populated bag totals, maximum quantity, download contents and accessibility 
+
+    Error: expect(received).toEqual(expected) // deep equality
+
+    - Expected  -  1
+    + Received  + 49
+
+    - Array []
+    + Array [
+    +   Object {
+    +     "id": "color-contrast",
+    +     "nodes": Array [
+    +       Array [
+    +         ".page-intro",
+    +       ],
+    +       Array [
+    +         ".product-category",
+    +       ],
+    +       Array [
+    +         ".cart-item-copy > p",
+    +       ],
+    +       Array [
+    +         ".cart-unit-price",
+    +       ],
+    +       Array [
+    +         "button[aria-label=\"Remove The Cable Keeper\"]",
+    +       ],
+    +       Array [
+    +         ".cart-below-items > .remove-button",
+    +       ],
+    +       Array [
+    +         ".cart-items > .micro-copy",
+    +       ],
+    +       Array [
+    +         ".micro-copy:nth-child(4)",
+    +       ],
+    +       Array [
+    +         ".paypal-slot > p",
+    +       ],
+    +       Array [
+    +         ".micro-copy:nth-child(7)",
+    +       ],
+    +       Array [
+    +         ".checkout-note",
+    +       ],
+    +       Array [
+    +         ".footer-location",
+    +       ],
+    +       Array [
+    +         ".footer-bottom > span:nth-child(1)",
+    +       ],
+    +       Array [
+    +         ".footer-demo",
+    +       ],
+    +     ],
+    +   },
+    + ]
+
+      69 |   expect(JSON.parse(Buffer.concat(chunks).toString())).toEqual({ schema: "desk-setup-quote-v1", currency: "AUD", mode: "demo", items: [{ productId: "demo-cable-keeper", quantity: 10 }], paymentRequested: false });
+      70 |   const scan = await new AxeBuilder({ page }).withTags(["wcag2a", "wcag2aa", "wcag21aa", "wcag22aa"]).analyze();
+    > 71 |   expect(scan.violations.map(v => ({ id: v.id, nodes: v.nodes.map(n => n.target) }))).toEqual([]);
+         |                                                                                       ^
+      72 |   expect(await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth + 1)).toBe(true);
+      73 |   if ([390, 1440].includes(page.viewportSize()!.width)) await page.screenshot({ path: `docs/qa/2026-11-14/cart-${testInfo.project.name}.png`, fullPage: true });
+      74 | });
+        at /workspace/desk-setup-store/tests/e2e/audit.spec.ts:71:87
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    test-results/audit-populated-bag-totals-af10b--contents-and-accessibility-chromium-320/test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Error Context: test-results/audit-populated-bag-totals-af10b--contents-and-accessibility-chromium-320/error-context.md
+
+    attachment #3: trace (application/zip) ─────────────────────────────────────────────────────────
+    test-results/audit-populated-bag-totals-af10b--contents-and-accessibility-chromium-320/trace.zip
+    Usage:
+
+        npx playwright show-trace test-results/audit-populated-bag-totals-af10b--contents-and-accessibility-chromium-320/trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+  5) [chromium-375] › tests/e2e/audit.spec.ts:10:5 › every route and error page passes WCAG A/AA scan with no overflow or browser errors 
+
+    Error: /
+
+    expect(received).toEqual(expected) // deep equality
+
+    - Expected  -  1
+    + Received  + 70
+
+    - Array []
+    + Array [
+    +   Object {
+    +     "id": "color-contrast",
+    +     "nodes": Array [
+    +       Array [
+    +         ".hero-footnote",
+    +       ],
+    +       Array [
+    +         ".hero-caption > span:nth-child(2)",
+    +       ],
+    +       Array [
+    +         ".collection-count",
+    +       ],
+    +       Array [
+    +         ".product-card:nth-child(1) > .product-card-info > div:nth-child(1) > .product-category",
+    +       ],
+    +       Array [
+    +         ".product-card:nth-child(1) > .product-card-info > .product-price > span",
+    +       ],
+    +       Array [
+    +         ".product-card:nth-child(2) > .product-card-info > div:nth-child(1) > .product-category",
+    +       ],
+    +       Array [
+    +         ".product-card:nth-child(2) > .product-card-info > .product-price > span",
+    +       ],
+    +       Array [
+    +         ".product-card:nth-child(3) > .product-card-info > div:nth-child(1) > .product-category",
+    +       ],
+    +       Array [
+    +         ".product-card:nth-child(3) > .product-card-info > .product-price > span",
+    +       ],
+    +       Array [
+    +         ".catalogue-disclaimer",
+    +       ],
+    +       Array [
+    +         ".approach-copy > p:nth-child(3)",
+    +       ],
+    +       Array [
+    +         ".approach-copy > p:nth-child(4)",
+    +       ],
+    +       Array [
+    +         "article:nth-child(1) > .reason-number",
+    +       ],
+    +       Array [
+    +         "article:nth-child(1) > p",
+    +       ],
+    +       Array [
+    +         "article:nth-child(2) > .reason-number",
+    +       ],
+    +       Array [
+    +         "article:nth-child(2) > p",
+    +       ],
+    +       Array [
+    +         "article:nth-child(3) > .reason-number",
+    +       ],
+    +       Array [
+    +         "article:nth-child(3) > p",
+    +       ],
+    +       Array [
+    +         ".footer-location",
+    +       ],
+    +       Array [
+    +         ".footer-bottom > span:nth-child(1)",
+    +       ],
+    +       Array [
+    +         ".footer-demo",
+    +       ],
+    +     ],
+    +   },
+    + ]
+
+      19 |     const results = await new AxeBuilder({ page }).withTags(["wcag2a", "wcag2aa", "wcag21aa", "wcag22aa"]).analyze();
+      20 |     if (results.violations.length) await testInfo.attach(`axe-${path.replaceAll("/", "_")}`, { body: JSON.stringify(results.violations, null, 2), contentType: "application/json" });
+    > 21 |     expect.soft(results.violations.map(v => ({ id: v.id, nodes: v.nodes.map(n => n.target) })), path).toEqual([]);
+         |                                                                                                       ^
+      22 |   }
+      23 |   expect(errors).toEqual([]);
+      24 | });
+        at /workspace/desk-setup-store/tests/e2e/audit.spec.ts:21:103
+
+    Error: /products/cable-keeper/
+
+    expect(received).toEqual(expected) // deep equality
+
+    - Expected  -  1
+    + Received  + 61
+
+    - Array []
+    + Array [
+    +   Object {
+    +     "id": "color-contrast",
+    +     "nodes": Array [
+    +       Array [
+    +         ".breadcrumbs > a[href=\"/\"]",
+    +       ],
+    +       Array [
+    +         ".breadcrumbs > a[href$=\"/#collection\"]",
+    +       ],
+    +       Array [
+    +         "span[aria-current=\"page\"]",
+    +       ],
+    +       Array [
+    +         ".detail-tagline",
+    +       ],
+    +       Array [
+    +         ".detail-price > span",
+    +       ],
+    +       Array [
+    +         "small",
+    +       ],
+    +       Array [
+    +         ".micro-copy",
+    +       ],
+    +       Array [
+    +         ".demo-callout > p",
+    +       ],
+    +       Array [
+    +         "div:nth-child(1) > dt",
+    +       ],
+    +       Array [
+    +         "div:nth-child(2) > dt",
+    +       ],
+    +       Array [
+    +         "div:nth-child(3) > dt",
+    +       ],
+    +       Array [
+    +         "div:nth-child(4) > dt",
+    +       ],
+    +       Array [
+    +         "details[open=\"\"] > p:nth-child(2)",
+    +       ],
+    +       Array [
+    +         "details[open=\"\"] > p:nth-child(3)",
+    +       ],
+    +       Array [
+    +         "p:nth-child(3) > a[href$=\"shipping-policy/\"]",
+    +       ],
+    +       Array [
+    +         ".footer-location",
+    +       ],
+    +       Array [
+    +         ".footer-bottom > span:nth-child(1)",
+    +       ],
+    +       Array [
+    +         ".footer-demo",
+    +       ],
+    +     ],
+    +   },
+    + ]
+
+      19 |     const results = await new AxeBuilder({ page }).withTags(["wcag2a", "wcag2aa", "wcag21aa", "wcag22aa"]).analyze();
+      20 |     if (results.violations.length) await testInfo.attach(`axe-${path.replaceAll("/", "_")}`, { body: JSON.stringify(results.violations, null, 2), contentType: "application/json" });
+    > 21 |     expect.soft(results.violations.map(v => ({ id: v.id, nodes: v.nodes.map(n => n.target) })), path).toEqual([]);
+         |                                                                                                       ^
+      22 |   }
+      23 |   expect(errors).toEqual([]);
+      24 | });
+        at /workspace/desk-setup-store/tests/e2e/audit.spec.ts:21:103
+
+    Error: /products/desk-shelf/
+
+    expect(received).toEqual(expected) // deep equality
+
+    - Expected  -  1
+    + Received  + 61
+
+    - Array []
+    + Array [
+    +   Object {
+    +     "id": "color-contrast",
+    +     "nodes": Array [
+    +       Array [
+    +         ".breadcrumbs > a[href=\"/\"]",
+    +       ],
+    +       Array [
+    +         ".breadcrumbs > a[href$=\"/#collection\"]",
+    +       ],
+    +       Array [
+    +         "span[aria-current=\"page\"]",
+    +       ],
+    +       Array [
+    +         ".detail-tagline",
+    +       ],
+    +       Array [
+    +         ".detail-price > span",
+    +       ],
+    +       Array [
+    +         "small",
+    +       ],
+    +       Array [
+    +         ".micro-copy",
+    +       ],
+    +       Array [
+    +         ".demo-callout > p",
+    +       ],
+    +       Array [
+    +         "div:nth-child(1) > dt",
+    +       ],
+    +       Array [
+    +         "div:nth-child(2) > dt",
+    +       ],
+    +       Array [
+    +         "div:nth-child(3) > dt",
+    +       ],
+    +       Array [
+    +         "div:nth-child(4) > dt",
+    +       ],
+    +       Array [
+    +         "details[open=\"\"] > p:nth-child(2)",
+    +       ],
+    +       Array [
+    +         "details[open=\"\"] > p:nth-child(3)",
+    +       ],
+    +       Array [
+    +         "p:nth-child(3) > a[href$=\"shipping-policy/\"]",
+    +       ],
+    +       Array [
+    +         ".footer-location",
+    +       ],
+    +       Array [
+    +         ".footer-bottom > span:nth-child(1)",
+    +       ],
+    +       Array [
+    +         ".footer-demo",
+    +       ],
+    +     ],
+    +   },
+    + ]
+
+      19 |     const results = await new AxeBuilder({ page }).withTags(["wcag2a", "wcag2aa", "wcag21aa", "wcag22aa"]).analyze();
+      20 |     if (results.violations.length) await testInfo.attach(`axe-${path.replaceAll("/", "_")}`, { body: JSON.stringify(results.violations, null, 2), contentType: "application/json" });
+    > 21 |     expect.soft(results.violations.map(v => ({ id: v.id, nodes: v.nodes.map(n => n.target) })), path).toEqual([]);
+         |                                                                                                       ^
+      22 |   }
+      23 |   expect(errors).toEqual([]);
+      24 | });
+        at /workspace/desk-setup-store/tests/e2e/audit.spec.ts:21:103
+
+    Error: /products/tech-pouch/
+
+    expect(received).toEqual(expected) // deep equality
+
+    - Expected  -  1
+    + Received  + 61
+
+    - Array []
+    + Array [
+    +   Object {
+    +     "id": "color-contrast",
+    +     "nodes": Array [
+    +       Array [
+    +         ".breadcrumbs > a[href=\"/\"]",
+    +       ],
+    +       Array [
+    +         ".breadcrumbs > a[href$=\"/#collection\"]",
+    +       ],
+    +       Array [
+    +         "span[aria-current=\"page\"]",
+    +       ],
+    +       Array [
+    +         ".detail-tagline",
+    +       ],
+    +       Array [
+    +         ".detail-price > span",
+    +       ],
+    +       Array [
+    +         "small",
+    +       ],
+    +       Array [
+    +         ".micro-copy",
+    +       ],
+    +       Array [
+    +         ".demo-callout > p",
+    +       ],
+    +       Array [
+    +         "div:nth-child(1) > dt",
+    +       ],
+    +       Array [
+    +         "div:nth-child(2) > dt",
+    +       ],
+    +       Array [
+    +         "div:nth-child(3) > dt",
+    +       ],
+    +       Array [
+    +         "div:nth-child(4) > dt",
+    +       ],
+    +       Array [
+    +         "details[open=\"\"] > p:nth-child(2)",
+    +       ],
+    +       Array [
+    +         "details[open=\"\"] > p:nth-child(3)",
+    +       ],
+    +       Array [
+    +         "p:nth-child(3) > a[href$=\"shipping-policy/\"]",
+    +       ],
+    +       Array [
+    +         ".footer-location",
+    +       ],
+    +       Array [
+    +         ".footer-bottom > span:nth-child(1)",
+    +       ],
+    +       Array [
+    +         ".footer-demo",
+    +       ],
+    +     ],
+    +   },
+    + ]
+
+      19 |     const results = await new AxeBuilder({ page }).withTags(["wcag2a", "wcag2aa", "wcag21aa", "wcag22aa"]).analyze();
+      20 |     if (results.violations.length) await testInfo.attach(`axe-${path.replaceAll("/", "_")}`, { body: JSON.stringify(results.violations, null, 2), contentType: "application/json" });
+    > 21 |     expect.soft(results.violations.map(v => ({ id: v.id, nodes: v.nodes.map(n => n.target) })), path).toEqual([]);
+         |                                                                                                       ^
+      22 |   }
+      23 |   expect(errors).toEqual([]);
+      24 | });
+        at /workspace/desk-setup-store/tests/e2e/audit.spec.ts:21:103
+
+    Error: /cart/
+
+    expect(received).toEqual(expected) // deep equality
+
+    - Expected  -  1
+    + Received  + 22
+
+    - Array []
+    + Array [
+    +   Object {
+    +     "id": "color-contrast",
+    +     "nodes": Array [
+    +       Array [
+    +         ".page-intro",
+    +       ],
+    +       Array [
+    +         "section > p",
+    +       ],
+    +       Array [
+    +         ".footer-location",
+    +       ],
+    +       Array [
+    +         ".footer-bottom > span:nth-child(1)",
+    +       ],
+    +       Array [
+    +         ".footer-demo",
+    +       ],
+    +     ],
+    +   },
+    + ]
+
+      19 |     const results = await new AxeBuilder({ page }).withTags(["wcag2a", "wcag2aa", "wcag21aa", "wcag22aa"]).analyze();
+      20 |     if (results.violations.length) await testInfo.attach(`axe-${path.replaceAll("/", "_")}`, { body: JSON.stringify(results.violations, null, 2), contentType: "application/json" });
+    > 21 |     expect.soft(results.violations.map(v => ({ id: v.id, nodes: v.nodes.map(n => n.target) })), path).toEqual([]);
+         |                                                                                                       ^
+      22 |   }
+      23 |   expect(errors).toEqual([]);
+      24 | });
+        at /workspace/desk-setup-store/tests/e2e/audit.spec.ts:21:103
+
+    Error: /desk-fit/
+
+    expect(received).toEqual(expected) // deep equality
+
+    - Expected  -  1
+    + Received  + 22
+
+    - Array []
+    + Array [
+    +   Object {
+    +     "id": "color-contrast",
+    +     "nodes": Array [
+    +       Array [
+    +         ".page-intro",
+    +       ],
+    +       Array [
+    +         ".demo-callout",
+    +       ],
+    +       Array [
+    +         ".footer-location",
+    +       ],
+    +       Array [
+    +         ".footer-bottom > span:nth-child(1)",
+    +       ],
+    +       Array [
+    +         ".footer-demo",
+    +       ],
+    +     ],
+    +   },
+    + ]
+
+      19 |     const results = await new AxeBuilder({ page }).withTags(["wcag2a", "wcag2aa", "wcag21aa", "wcag22aa"]).analyze();
+      20 |     if (results.violations.length) await testInfo.attach(`axe-${path.replaceAll("/", "_")}`, { body: JSON.stringify(results.violations, null, 2), contentType: "application/json" });
+    > 21 |     expect.soft(results.violations.map(v => ({ id: v.id, nodes: v.nodes.map(n => n.target) })), path).toEqual([]);
+         |                                                                                                       ^
+      22 |   }
+      23 |   expect(errors).toEqual([]);
+      24 | });
+        at /workspace/desk-setup-store/tests/e2e/audit.spec.ts:21:103
+
+    Error: /contact/
+
+    expect(received).toEqual(expected) // deep equality
+
+    - Expected  -  1
+    + Received  + 25
+
+    - Array []
+    + Array [
+    +   Object {
+    +     "id": "color-contrast",
+    +     "nodes": Array [
+    +       Array [
+    +         ".page-intro",
+    +       ],
+    +       Array [
+    +         ".inline-tag",
+    +       ],
+    +       Array [
+    +         "p:nth-child(5)",
+    +       ],
+    +       Array [
+    +         ".footer-location",
+    +       ],
+    +       Array [
+    +         ".footer-bottom > span:nth-child(1)",
+    +       ],
+    +       Array [
+    +         ".footer-demo",
+    +       ],
+    +     ],
+    +   },
+    + ]
+
+      19 |     const results = await new AxeBuilder({ page }).withTags(["wcag2a", "wcag2aa", "wcag21aa", "wcag22aa"]).analyze();
+      20 |     if (results.violations.length) await testInfo.attach(`axe-${path.replaceAll("/", "_")}`, { body: JSON.stringify(results.violations, null, 2), contentType: "application/json" });
+    > 21 |     expect.soft(results.violations.map(v => ({ id: v.id, nodes: v.nodes.map(n => n.target) })), path).toEqual([]);
+         |                                                                                                       ^
+      22 |   }
+      23 |   expect(errors).toEqual([]);
+      24 | });
+        at /workspace/desk-setup-store/tests/e2e/audit.spec.ts:21:103
+
+    Error: /shipping-policy/
+
+    expect(received).toEqual(expected) // deep equality
+
+    - Expected  -  1
+    + Received  + 28
+
+    - Array []
+    + Array [
+    +   Object {
+    +     "id": "color-contrast",
+    +     "nodes": Array [
+    +       Array [
+    +         ".breadcrumbs",
+    +       ],
+    +       Array [
+    +         ".page-intro",
+    +       ],
+    +       Array [
+    +         ".policy-banner > p",
+    +       ],
+    +       Array [
+    +         ".policy-date",
+    +       ],
+    +       Array [
+    +         ".footer-location",
+    +       ],
+    +       Array [
+    +         ".footer-bottom > span:nth-child(1)",
+    +       ],
+    +       Array [
+    +         ".footer-demo",
+    +       ],
+    +     ],
+    +   },
+    + ]
+
+      19 |     const results = await new AxeBuilder({ page }).withTags(["wcag2a", "wcag2aa", "wcag21aa", "wcag22aa"]).analyze();
+      20 |     if (results.violations.length) await testInfo.attach(`axe-${path.replaceAll("/", "_")}`, { body: JSON.stringify(results.violations, null, 2), contentType: "application/json" });
+    > 21 |     expect.soft(results.violations.map(v => ({ id: v.id, nodes: v.nodes.map(n => n.target) })), path).toEqual([]);
+         |                                                                                                       ^
+      22 |   }
+      23 |   expect(errors).toEqual([]);
+      24 | });
+        at /workspace/desk-setup-store/tests/e2e/audit.spec.ts:21:103
+
+    Error: /return-policy/
+
+    expect(received).toEqual(expected) // deep equality
+
+    - Expected  -  1
+    + Received  + 28
+
+    - Array []
+    + Array [
+    +   Object {
+    +     "id": "color-contrast",
+    +     "nodes": Array [
+    +       Array [
+    +         ".breadcrumbs",
+    +       ],
+    +       Array [
+    +         ".page-intro",
+    +       ],
+    +       Array [
+    +         ".policy-banner > p",
+    +       ],
+    +       Array [
+    +         ".policy-date",
+    +       ],
+    +       Array [
+    +         ".footer-location",
+    +       ],
+    +       Array [
+    +         ".footer-bottom > span:nth-child(1)",
+    +       ],
+    +       Array [
+    +         ".footer-demo",
+    +       ],
+    +     ],
+    +   },
+    + ]
+
+      19 |     const results = await new AxeBuilder({ page }).withTags(["wcag2a", "wcag2aa", "wcag21aa", "wcag22aa"]).analyze();
+      20 |     if (results.violations.length) await testInfo.attach(`axe-${path.replaceAll("/", "_")}`, { body: JSON.stringify(results.violations, null, 2), contentType: "application/json" });
+    > 21 |     expect.soft(results.violations.map(v => ({ id: v.id, nodes: v.nodes.map(n => n.target) })), path).toEqual([]);
+         |                                                                                                       ^
+      22 |   }
+      23 |   expect(errors).toEqual([]);
+      24 | });
+        at /workspace/desk-setup-store/tests/e2e/audit.spec.ts:21:103
+
+    Error: /privacy-policy/
+
+    expect(received).toEqual(expected) // deep equality
+
+    - Expected  -  1
+    + Received  + 28
+
+    - Array []
+    + Array [
+    +   Object {
+    +     "id": "color-contrast",
+    +     "nodes": Array [
+    +       Array [
+    +         ".breadcrumbs",
+    +       ],
+    +       Array [
+    +         ".page-intro",
+    +       ],
+    +       Array [
+    +         ".policy-banner > p",
+    +       ],
+    +       Array [
+    +         ".policy-date",
+    +       ],
+    +       Array [
+    +         ".footer-location",
+    +       ],
+    +       Array [
+    +         ".footer-bottom > span:nth-child(1)",
+    +       ],
+    +       Array [
+    +         ".footer-demo",
+    +       ],
+    +     ],
+    +   },
+    + ]
+
+      19 |     const results = await new AxeBuilder({ page }).withTags(["wcag2a", "wcag2aa", "wcag21aa", "wcag22aa"]).analyze();
+      20 |     if (results.violations.length) await testInfo.attach(`axe-${path.replaceAll("/", "_")}`, { body: JSON.stringify(results.violations, null, 2), contentType: "application/json" });
+    > 21 |     expect.soft(results.violations.map(v => ({ id: v.id, nodes: v.nodes.map(n => n.target) })), path).toEqual([]);
+         |                                                                                                       ^
+      22 |   }
+      23 |   expect(errors).toEqual([]);
+      24 | });
+        at /workspace/desk-setup-store/tests/e2e/audit.spec.ts:21:103
+
+    Error: /missing/
+
+    expect(received).toEqual(expected) // deep equality
+
+    - Expected  -  1
+    + Received  + 19
+
+    - Array []
+    + Array [
+    +   Object {
+    +     "id": "color-contrast",
+    +     "nodes": Array [
+    +       Array [
+    +         "section > p",
+    +       ],
+    +       Array [
+    +         ".footer-location",
+    +       ],
+    +       Array [
+    +         ".footer-bottom > span:nth-child(1)",
+    +       ],
+    +       Array [
+    +         ".footer-demo",
+    +       ],
+    +     ],
+    +   },
+    + ]
+
+      19 |     const results = await new AxeBuilder({ page }).withTags(["wcag2a", "wcag2aa", "wcag21aa", "wcag22aa"]).analyze();
+      20 |     if (results.violations.length) await testInfo.attach(`axe-${path.replaceAll("/", "_")}`, { body: JSON.stringify(results.violations, null, 2), contentType: "application/json" });
+    > 21 |     expect.soft(results.violations.map(v => ({ id: v.id, nodes: v.nodes.map(n => n.target) })), path).toEqual([]);
+         |                                                                                                       ^
+      22 |   }
+      23 |   expect(errors).toEqual([]);
+      24 | });
+        at /workspace/desk-setup-store/tests/e2e/audit.spec.ts:21:103
+
+    Error: /products/missing/
+
+    expect(received).toEqual(expected) // deep equality
+
+    - Expected  -  1
+    + Received  + 19
+
+    - Array []
+    + Array [
+    +   Object {
+    +     "id": "color-contrast",
+    +     "nodes": Array [
+    +       Array [
+    +         "section > p",
+    +       ],
+    +       Array [
+    +         ".footer-location",
+    +       ],
+    +       Array [
+    +         ".footer-bottom > span:nth-child(1)",
+    +       ],
+    +       Array [
+    +         ".footer-demo",
+    +       ],
+    +     ],
+    +   },
+    + ]
+
+      19 |     const results = await new AxeBuilder({ page }).withTags(["wcag2a", "wcag2aa", "wcag21aa", "wcag22aa"]).analyze();
+      20 |     if (results.violations.length) await testInfo.attach(`axe-${path.replaceAll("/", "_")}`, { body: JSON.stringify(results.violations, null, 2), contentType: "application/json" });
+    > 21 |     expect.soft(results.violations.map(v => ({ id: v.id, nodes: v.nodes.map(n => n.target) })), path).toEqual([]);
+         |                                                                                                       ^
+      22 |   }
+      23 |   expect(errors).toEqual([]);
+      24 | });
+        at /workspace/desk-setup-store/tests/e2e/audit.spec.ts:21:103
+
+    attachment #13: screenshot (image/png) ─────────────────────────────────────────────────────────
+    test-results/audit-every-route-and-erro-5836f--overflow-or-browser-errors-chromium-375/test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Error Context: test-results/audit-every-route-and-erro-5836f--overflow-or-browser-errors-chromium-375/error-context.md
+
+    attachment #15: trace (application/zip) ────────────────────────────────────────────────────────
+    test-results/audit-every-route-and-erro-5836f--overflow-or-browser-errors-chromium-375/trace.zip
+    Usage:
+
+        npx playwright show-trace test-results/audit-every-route-and-erro-5836f--overflow-or-browser-errors-chromium-375/trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+  6) [chromium-375] › tests/e2e/audit.spec.ts:26:5 › mobile menu supports Escape, focus restoration and viewport changes 
+
+    Error: expect(locator).toBeFocused() failed
+
+    Locator: getByRole('button', { name: 'Open menu' })
+    Expected: focused
+    Timeout: 5000ms
+    Error: element(s) not found
+
+    Call log:
+      - Expect "toBeFocused" getByRole('button', { name: 'Open menu' }) with timeout 5000ms
+      - waiting for getByRole('button', { name: 'Open menu' })
+
+
+      31 |   await page.getByRole("navigation", { name: "Mobile navigation" }).getByRole("link").first().focus();
+      32 |   await page.keyboard.press("Escape");
+    > 33 |   await expect(menu).toBeFocused();
+         |                      ^
+      34 |   await expect(page.getByRole("navigation", { name: "Mobile navigation" })).toHaveCount(0);
+      35 |   await menu.click();
+      36 |   await page.setViewportSize({ width: 1440, height: 900 });
+        at /workspace/desk-setup-store/tests/e2e/audit.spec.ts:33:22
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    test-results/audit-mobile-menu-supports-6d1e3-ration-and-viewport-changes-chromium-375/test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Error Context: test-results/audit-mobile-menu-supports-6d1e3-ration-and-viewport-changes-chromium-375/error-context.md
+
+    attachment #3: trace (application/zip) ─────────────────────────────────────────────────────────
+    test-results/audit-mobile-menu-supports-6d1e3-ration-and-viewport-changes-chromium-375/trace.zip
+    Usage:
+
+        npx playwright show-trace test-results/audit-mobile-menu-supports-6d1e3-ration-and-viewport-changes-chromium-375/trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+  7) [chromium-375] › tests/e2e/audit.spec.ts:42:5 › blank fit answers do not silently become zero and errors are associated with inputs 
+
+    Error: expect(locator).toHaveAttribute(expected) failed
+
+    Locator:  getByLabel('Cables you use every day')
+    Expected: "true"
+    Received: ""
+    Timeout:  5000ms
+
+    Call log:
+      - Expect "toHaveAttribute" getByLabel('Cables you use every day') with timeout 5000ms
+      - waiting for getByLabel('Cables you use every day')
+        14 × locator resolved to <input min="0" step="1" value="" max="100" type="number" id="fit-cables"/>
+           - unexpected value "null"
+
+
+      45 |   await cables.fill("");
+      46 |   await expect(page.getByRole("alert")).toBeVisible();
+    > 47 |   await expect(cables).toHaveAttribute("aria-invalid", "true");
+         |                        ^
+      48 |   await cables.fill("0");
+      49 |   await expect(page.getByRole("alert")).toHaveCount(0);
+      50 |   await page.getByLabel("Clear desk width (mm)").fill("99");
+        at /workspace/desk-setup-store/tests/e2e/audit.spec.ts:47:24
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    test-results/audit-blank-fit-answers-do-c1a15--are-associated-with-inputs-chromium-375/test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Error Context: test-results/audit-blank-fit-answers-do-c1a15--are-associated-with-inputs-chromium-375/error-context.md
+
+    attachment #3: trace (application/zip) ─────────────────────────────────────────────────────────
+    test-results/audit-blank-fit-answers-do-c1a15--are-associated-with-inputs-chromium-375/trace.zip
+    Usage:
+
+        npx playwright show-trace test-results/audit-blank-fit-answers-do-c1a15--are-associated-with-inputs-chromium-375/trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+  8) [chromium-375] › tests/e2e/audit.spec.ts:55:5 › populated bag totals, maximum quantity, download contents and accessibility 
+
+    Error: expect(received).toEqual(expected) // deep equality
+
+    - Expected  -  1
+    + Received  + 49
+
+    - Array []
+    + Array [
+    +   Object {
+    +     "id": "color-contrast",
+    +     "nodes": Array [
+    +       Array [
+    +         ".page-intro",
+    +       ],
+    +       Array [
+    +         ".product-category",
+    +       ],
+    +       Array [
+    +         ".cart-item-copy > p",
+    +       ],
+    +       Array [
+    +         ".cart-unit-price",
+    +       ],
+    +       Array [
+    +         "button[aria-label=\"Remove The Cable Keeper\"]",
+    +       ],
+    +       Array [
+    +         ".cart-below-items > .remove-button",
+    +       ],
+    +       Array [
+    +         ".cart-items > .micro-copy",
+    +       ],
+    +       Array [
+    +         ".micro-copy:nth-child(4)",
+    +       ],
+    +       Array [
+    +         ".paypal-slot > p",
+    +       ],
+    +       Array [
+    +         ".micro-copy:nth-child(7)",
+    +       ],
+    +       Array [
+    +         ".checkout-note",
+    +       ],
+    +       Array [
+    +         ".footer-location",
+    +       ],
+    +       Array [
+    +         ".footer-bottom > span:nth-child(1)",
+    +       ],
+    +       Array [
+    +         ".footer-demo",
+    +       ],
+    +     ],
+    +   },
+    + ]
+
+      69 |   expect(JSON.parse(Buffer.concat(chunks).toString())).toEqual({ schema: "desk-setup-quote-v1", currency: "AUD", mode: "demo", items: [{ productId: "demo-cable-keeper", quantity: 10 }], paymentRequested: false });
+      70 |   const scan = await new AxeBuilder({ page }).withTags(["wcag2a", "wcag2aa", "wcag21aa", "wcag22aa"]).analyze();
+    > 71 |   expect(scan.violations.map(v => ({ id: v.id, nodes: v.nodes.map(n => n.target) }))).toEqual([]);
+         |                                                                                       ^
+      72 |   expect(await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth + 1)).toBe(true);
+      73 |   if ([390, 1440].includes(page.viewportSize()!.width)) await page.screenshot({ path: `docs/qa/2026-11-14/cart-${testInfo.project.name}.png`, fullPage: true });
+      74 | });
+        at /workspace/desk-setup-store/tests/e2e/audit.spec.ts:71:87
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    test-results/audit-populated-bag-totals-af10b--contents-and-accessibility-chromium-375/test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Error Context: test-results/audit-populated-bag-totals-af10b--contents-and-accessibility-chromium-375/error-context.md
+
+    attachment #3: trace (application/zip) ─────────────────────────────────────────────────────────
+    test-results/audit-populated-bag-totals-af10b--contents-and-accessibility-chromium-375/trace.zip
+    Usage:
+
+        npx playwright show-trace test-results/audit-populated-bag-totals-af10b--contents-and-accessibility-chromium-375/trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+  9) [chromium-390] › tests/e2e/audit.spec.ts:10:5 › every route and error page passes WCAG A/AA scan with no overflow or browser errors 
+
+    Error: /
+
+    expect(received).toEqual(expected) // deep equality
+
+    - Expected  -  1
+    + Received  + 70
+
+    - Array []
+    + Array [
+    +   Object {
+    +     "id": "color-contrast",
+    +     "nodes": Array [
+    +       Array [
+    +         ".hero-footnote",
+    +       ],
+    +       Array [
+    +         ".hero-caption > span:nth-child(2)",
+    +       ],
+    +       Array [
+    +         ".collection-count",
+    +       ],
+    +       Array [
+    +         ".product-card:nth-child(1) > .product-card-info > div:nth-child(1) > .product-category",
+    +       ],
+    +       Array [
+    +         ".product-card:nth-child(1) > .product-card-info > .product-price > span",
+    +       ],
+    +       Array [
+    +         ".product-card:nth-child(2) > .product-card-info > div:nth-child(1) > .product-category",
+    +       ],
+    +       Array [
+    +         ".product-card:nth-child(2) > .product-card-info > .product-price > span",
+    +       ],
+    +       Array [
+    +         ".product-card:nth-child(3) > .product-card-info > div:nth-child(1) > .product-category",
+    +       ],
+    +       Array [
+    +         ".product-card:nth-child(3) > .product-card-info > .product-price > span",
+    +       ],
+    +       Array [
+    +         ".catalogue-disclaimer",
+    +       ],
+    +       Array [
+    +         ".approach-copy > p:nth-child(3)",
+    +       ],
+    +       Array [
+    +         ".approach-copy > p:nth-child(4)",
+    +       ],
+    +       Array [
+    +         "article:nth-child(1) > .reason-number",
+    +       ],
+    +       Array [
+    +         "article:nth-child(1) > p",
+    +       ],
+    +       Array [
+    +         "article:nth-child(2) > .reason-number",
+    +       ],
+    +       Array [
+    +         "article:nth-child(2) > p",
+    +       ],
+    +       Array [
+    +         "article:nth-child(3) > .reason-number",
+    +       ],
+    +       Array [
+    +         "article:nth-child(3) > p",
+    +       ],
+    +       Array [
+    +         ".footer-location",
+    +       ],
+    +       Array [
+    +         ".footer-bottom > span:nth-child(1)",
+    +       ],
+    +       Array [
+    +         ".footer-demo",
+    +       ],
+    +     ],
+    +   },
+    + ]
+
+      19 |     const results = await new AxeBuilder({ page }).withTags(["wcag2a", "wcag2aa", "wcag21aa", "wcag22aa"]).analyze();
+      20 |     if (results.violations.length) await testInfo.attach(`axe-${path.replaceAll("/", "_")}`, { body: JSON.stringify(results.violations, null, 2), contentType: "application/json" });
+    > 21 |     expect.soft(results.violations.map(v => ({ id: v.id, nodes: v.nodes.map(n => n.target) })), path).toEqual([]);
+         |                                                                                                       ^
+      22 |   }
+      23 |   expect(errors).toEqual([]);
+      24 | });
+        at /workspace/desk-setup-store/tests/e2e/audit.spec.ts:21:103
+
+    Error: /products/cable-keeper/
+
+    expect(received).toEqual(expected) // deep equality
+
+    - Expected  -  1
+    + Received  + 61
+
+    - Array []
+    + Array [
+    +   Object {
+    +     "id": "color-contrast",
+    +     "nodes": Array [
+    +       Array [
+    +         ".breadcrumbs > a[href=\"/\"]",
+    +       ],
+    +       Array [
+    +         ".breadcrumbs > a[href$=\"/#collection\"]",
+    +       ],
+    +       Array [
+    +         "span[aria-current=\"page\"]",
+    +       ],
+    +       Array [
+    +         ".detail-tagline",
+    +       ],
+    +       Array [
+    +         ".detail-price > span",
+    +       ],
+    +       Array [
+    +         "small",
+    +       ],
+    +       Array [
+    +         ".micro-copy",
+    +       ],
+    +       Array [
+    +         ".demo-callout > p",
+    +       ],
+    +       Array [
+    +         "div:nth-child(1) > dt",
+    +       ],
+    +       Array [
+    +         "div:nth-child(2) > dt",
+    +       ],
+    +       Array [
+    +         "div:nth-child(3) > dt",
+    +       ],
+    +       Array [
+    +         "div:nth-child(4) > dt",
+    +       ],
+    +       Array [
+    +         "details[open=\"\"] > p:nth-child(2)",
+    +       ],
+    +       Array [
+    +         "details[open=\"\"] > p:nth-child(3)",
+    +       ],
+    +       Array [
+    +         "p:nth-child(3) > a[href$=\"shipping-policy/\"]",
+    +       ],
+    +       Array [
+    +         ".footer-location",
+    +       ],
+    +       Array [
+    +         ".footer-bottom > span:nth-child(1)",
+    +       ],
+    +       Array [
+    +         ".footer-demo",
+    +       ],
+    +     ],
+    +   },
+    + ]
+
+      19 |     const results = await new AxeBuilder({ page }).withTags(["wcag2a", "wcag2aa", "wcag21aa", "wcag22aa"]).analyze();
+      20 |     if (results.violations.length) await testInfo.attach(`axe-${path.replaceAll("/", "_")}`, { body: JSON.stringify(results.violations, null, 2), contentType: "application/json" });
+    > 21 |     expect.soft(results.violations.map(v => ({ id: v.id, nodes: v.nodes.map(n => n.target) })), path).toEqual([]);
+         |                                                                                                       ^
+      22 |   }
+      23 |   expect(errors).toEqual([]);
+      24 | });
+        at /workspace/desk-setup-store/tests/e2e/audit.spec.ts:21:103
+
+    Error: /products/desk-shelf/
+
+    expect(received).toEqual(expected) // deep equality
+
+    - Expected  -  1
+    + Received  + 61
+
+    - Array []
+    + Array [
+    +   Object {
+    +     "id": "color-contrast",
+    +     "nodes": Array [
+    +       Array [
+    +         ".breadcrumbs > a[href=\"/\"]",
+    +       ],
+    +       Array [
+    +         ".breadcrumbs > a[href$=\"/#collection\"]",
+    +       ],
+    +       Array [
+    +         "span[aria-current=\"page\"]",
+    +       ],
+    +       Array [
+    +         ".detail-tagline",
+    +       ],
+    +       Array [
+    +         ".detail-price > span",
+    +       ],
+    +       Array [
+    +         "small",
+    +       ],
+    +       Array [
+    +         ".micro-copy",
+    +       ],
+    +       Array [
+    +         ".demo-callout > p",
+    +       ],
+    +       Array [
+    +         "div:nth-child(1) > dt",
+    +       ],
+    +       Array [
+    +         "div:nth-child(2) > dt",
+    +       ],
+    +       Array [
+    +         "div:nth-child(3) > dt",
+    +       ],
+    +       Array [
+    +         "div:nth-child(4) > dt",
+    +       ],
+    +       Array [
+    +         "details[open=\"\"] > p:nth-child(2)",
+    +       ],
+    +       Array [
+    +         "details[open=\"\"] > p:nth-child(3)",
+    +       ],
+    +       Array [
+    +         "p:nth-child(3) > a[href$=\"shipping-policy/\"]",
+    +       ],
+    +       Array [
+    +         ".footer-location",
+    +       ],
+    +       Array [
+    +         ".footer-bottom > span:nth-child(1)",
+    +       ],
+    +       Array [
+    +         ".footer-demo",
+    +       ],
+    +     ],
+    +   },
+    + ]
+
+      19 |     const results = await new AxeBuilder({ page }).withTags(["wcag2a", "wcag2aa", "wcag21aa", "wcag22aa"]).analyze();
+      20 |     if (results.violations.length) await testInfo.attach(`axe-${path.replaceAll("/", "_")}`, { body: JSON.stringify(results.violations, null, 2), contentType: "application/json" });
+    > 21 |     expect.soft(results.violations.map(v => ({ id: v.id, nodes: v.nodes.map(n => n.target) })), path).toEqual([]);
+         |                                                                                                       ^
+      22 |   }
+      23 |   expect(errors).toEqual([]);
+      24 | });
+        at /workspace/desk-setup-store/tests/e2e/audit.spec.ts:21:103
+
+    Error: /products/tech-pouch/
+
+    expect(received).toEqual(expected) // deep equality
+
+    - Expected  -  1
+    + Received  + 61
+
+    - Array []
+    + Array [
+    +   Object {
+    +     "id": "color-contrast",
+    +     "nodes": Array [
+    +       Array [
+    +         ".breadcrumbs > a[href=\"/\"]",
+    +       ],
+    +       Array [
+    +         ".breadcrumbs > a[href$=\"/#collection\"]",
+    +       ],
+    +       Array [
+    +         "span[aria-current=\"page\"]",
+    +       ],
+    +       Array [
+    +         ".detail-tagline",
+    +       ],
+    +       Array [
+    +         ".detail-price > span",
+    +       ],
+    +       Array [
+    +         "small",
+    +       ],
+    +       Array [
+    +         ".micro-copy",
+    +       ],
+    +       Array [
+    +         ".demo-callout > p",
+    +       ],
+    +       Array [
+    +         "div:nth-child(1) > dt",
+    +       ],
+    +       Array [
+    +         "div:nth-child(2) > dt",
+    +       ],
+    +       Array [
+    +         "div:nth-child(3) > dt",
+    +       ],
+    +       Array [
+    +         "div:nth-child(4) > dt",
+    +       ],
+    +       Array [
+    +         "details[open=\"\"] > p:nth-child(2)",
+    +       ],
+    +       Array [
+    +         "details[open=\"\"] > p:nth-child(3)",
+    +       ],
+    +       Array [
+    +         "p:nth-child(3) > a[href$=\"shipping-policy/\"]",
+    +       ],
+    +       Array [
+    +         ".footer-location",
+    +       ],
+    +       Array [
+    +         ".footer-bottom > span:nth-child(1)",
+    +       ],
+    +       Array [
+    +         ".footer-demo",
+    +       ],
+    +     ],
+    +   },
+    + ]
+
+      19 |     const results = await new AxeBuilder({ page }).withTags(["wcag2a", "wcag2aa", "wcag21aa", "wcag22aa"]).analyze();
+      20 |     if (results.violations.length) await testInfo.attach(`axe-${path.replaceAll("/", "_")}`, { body: JSON.stringify(results.violations, null, 2), contentType: "application/json" });
+    > 21 |     expect.soft(results.violations.map(v => ({ id: v.id, nodes: v.nodes.map(n => n.target) })), path).toEqual([]);
+         |                                                                                                       ^
+      22 |   }
+      23 |   expect(errors).toEqual([]);
+      24 | });
+        at /workspace/desk-setup-store/tests/e2e/audit.spec.ts:21:103
+
+    Error: /cart/
+
+    expect(received).toEqual(expected) // deep equality
+
+    - Expected  -  1
+    + Received  + 22
+
+    - Array []
+    + Array [
+    +   Object {
+    +     "id": "color-contrast",
+    +     "nodes": Array [
+    +       Array [
+    +         ".page-intro",
+    +       ],
+    +       Array [
+    +         "section > p",
+    +       ],
+    +       Array [
+    +         ".footer-location",
+    +       ],
+    +       Array [
+    +         ".footer-bottom > span:nth-child(1)",
+    +       ],
+    +       Array [
+    +         ".footer-demo",
+    +       ],
+    +     ],
+    +   },
+    + ]
+
+      19 |     const results = await new AxeBuilder({ page }).withTags(["wcag2a", "wcag2aa", "wcag21aa", "wcag22aa"]).analyze();
+      20 |     if (results.violations.length) await testInfo.attach(`axe-${path.replaceAll("/", "_")}`, { body: JSON.stringify(results.violations, null, 2), contentType: "application/json" });
+    > 21 |     expect.soft(results.violations.map(v => ({ id: v.id, nodes: v.nodes.map(n => n.target) })), path).toEqual([]);
+         |                                                                                                       ^
+      22 |   }
+      23 |   expect(errors).toEqual([]);
+      24 | });
+        at /workspace/desk-setup-store/tests/e2e/audit.spec.ts:21:103
+
+    Error: /desk-fit/
+
+    expect(received).toEqual(expected) // deep equality
+
+    - Expected  -  1
+    + Received  + 22
+
+    - Array []
+    + Array [
+    +   Object {
+    +     "id": "color-contrast",
+    +     "nodes": Array [
+    +       Array [
+    +         ".page-intro",
+    +       ],
+    +       Array [
+    +         ".demo-callout",
+    +       ],
+    +       Array [
+    +         ".footer-location",
+    +       ],
+    +       Array [
+    +         ".footer-bottom > span:nth-child(1)",
+    +       ],
+    +       Array [
+    +         ".footer-demo",
+    +       ],
+    +     ],
+    +   },
+    + ]
+
+      19 |     const results = await new AxeBuilder({ page }).withTags(["wcag2a", "wcag2aa", "wcag21aa", "wcag22aa"]).analyze();
+      20 |     if (results.violations.length) await testInfo.attach(`axe-${path.replaceAll("/", "_")}`, { body: JSON.stringify(results.violations, null, 2), contentType: "application/json" });
+    > 21 |     expect.soft(results.violations.map(v => ({ id: v.id, nodes: v.nodes.map(n => n.target) })), path).toEqual([]);
+         |                                                                                                       ^
+      22 |   }
+      23 |   expect(errors).toEqual([]);
+      24 | });
+        at /workspace/desk-setup-store/tests/e2e/audit.spec.ts:21:103
+
+    Error: /contact/
+
+    expect(received).toEqual(expected) // deep equality
+
+    - Expected  -  1
+    + Received  + 25
+
+    - Array []
+    + Array [
+    +   Object {
+    +     "id": "color-contrast",
+    +     "nodes": Array [
+    +       Array [
+    +         ".page-intro",
+    +       ],
+    +       Array [
+    +         ".inline-tag",
+    +       ],
+    +       Array [
+    +         "p:nth-child(5)",
+    +       ],
+    +       Array [
+    +         ".footer-location",
+    +       ],
+    +       Array [
+    +         ".footer-bottom > span:nth-child(1)",
+    +       ],
+    +       Array [
+    +         ".footer-demo",
+    +       ],
+    +     ],
+    +   },
+    + ]
+
+      19 |     const results = await new AxeBuilder({ page }).withTags(["wcag2a", "wcag2aa", "wcag21aa", "wcag22aa"]).analyze();
+      20 |     if (results.violations.length) await testInfo.attach(`axe-${path.replaceAll("/", "_")}`, { body: JSON.stringify(results.violations, null, 2), contentType: "application/json" });
+    > 21 |     expect.soft(results.violations.map(v => ({ id: v.id, nodes: v.nodes.map(n => n.target) })), path).toEqual([]);
+         |                                                                                                       ^
+      22 |   }
+      23 |   expect(errors).toEqual([]);
+      24 | });
+        at /workspace/desk-setup-store/tests/e2e/audit.spec.ts:21:103
+
+    Error: /shipping-policy/
+
+    expect(received).toEqual(expected) // deep equality
+
+    - Expected  -  1
+    + Received  + 28
+
+    - Array []
+    + Array [
+    +   Object {
+    +     "id": "color-contrast",
+    +     "nodes": Array [
+    +       Array [
+    +         ".breadcrumbs",
+    +       ],
+    +       Array [
+    +         ".page-intro",
+    +       ],
+    +       Array [
+    +         ".policy-banner > p",
+    +       ],
+    +       Array [
+    +         ".policy-date",
+    +       ],
+    +       Array [
+    +         ".footer-location",
+    +       ],
+    +       Array [
+    +         ".footer-bottom > span:nth-child(1)",
+    +       ],
+    +       Array [
+    +         ".footer-demo",
+    +       ],
+    +     ],
+    +   },
+    + ]
+
+      19 |     const results = await new AxeBuilder({ page }).withTags(["wcag2a", "wcag2aa", "wcag21aa", "wcag22aa"]).analyze();
+      20 |     if (results.violations.length) await testInfo.attach(`axe-${path.replaceAll("/", "_")}`, { body: JSON.stringify(results.violations, null, 2), contentType: "application/json" });
+    > 21 |     expect.soft(results.violations.map(v => ({ id: v.id, nodes: v.nodes.map(n => n.target) })), path).toEqual([]);
+         |                                                                                                       ^
+      22 |   }
+      23 |   expect(errors).toEqual([]);
+      24 | });
+        at /workspace/desk-setup-store/tests/e2e/audit.spec.ts:21:103
+
+    Error: /return-policy/
+
+    expect(received).toEqual(expected) // deep equality
+
+    - Expected  -  1
+    + Received  + 28
+
+    - Array []
+    + Array [
+    +   Object {
+    +     "id": "color-contrast",
+    +     "nodes": Array [
+    +       Array [
+    +         ".breadcrumbs",
+    +       ],
+    +       Array [
+    +         ".page-intro",
+    +       ],
+    +       Array [
+    +         ".policy-banner > p",
+    +       ],
+    +       Array [
+    +         ".policy-date",
+    +       ],
+    +       Array [
+    +         ".footer-location",
+    +       ],
+    +       Array [
+    +         ".footer-bottom > span:nth-child(1)",
+    +       ],
+    +       Array [
+    +         ".footer-demo",
+    +       ],
+    +     ],
+    +   },
+    + ]
+
+      19 |     const results = await new AxeBuilder({ page }).withTags(["wcag2a", "wcag2aa", "wcag21aa", "wcag22aa"]).analyze();
+      20 |     if (results.violations.length) await testInfo.attach(`axe-${path.replaceAll("/", "_")}`, { body: JSON.stringify(results.violations, null, 2), contentType: "application/json" });
+    > 21 |     expect.soft(results.violations.map(v => ({ id: v.id, nodes: v.nodes.map(n => n.target) })), path).toEqual([]);
+         |                                                                                                       ^
+      22 |   }
+      23 |   expect(errors).toEqual([]);
+      24 | });
+        at /workspace/desk-setup-store/tests/e2e/audit.spec.ts:21:103
+
+    Error: /privacy-policy/
+
+    expect(received).toEqual(expected) // deep equality
+
+    - Expected  -  1
+    + Received  + 28
+
+    - Array []
+    + Array [
+    +   Object {
+    +     "id": "color-contrast",
+    +     "nodes": Array [
+    +       Array [
+    +         ".breadcrumbs",
+    +       ],
+    +       Array [
+    +         ".page-intro",
+    +       ],
+    +       Array [
+    +         ".policy-banner > p",
+    +       ],
+    +       Array [
+    +         ".policy-date",
+    +       ],
+    +       Array [
+    +         ".footer-location",
+    +       ],
+    +       Array [
+    +         ".footer-bottom > span:nth-child(1)",
+    +       ],
+    +       Array [
+    +         ".footer-demo",
+    +       ],
+    +     ],
+    +   },
+    + ]
+
+      19 |     const results = await new AxeBuilder({ page }).withTags(["wcag2a", "wcag2aa", "wcag21aa", "wcag22aa"]).analyze();
+      20 |     if (results.violations.length) await testInfo.attach(`axe-${path.replaceAll("/", "_")}`, { body: JSON.stringify(results.violations, null, 2), contentType: "application/json" });
+    > 21 |     expect.soft(results.violations.map(v => ({ id: v.id, nodes: v.nodes.map(n => n.target) })), path).toEqual([]);
+         |                                                                                                       ^
+      22 |   }
+      23 |   expect(errors).toEqual([]);
+      24 | });
+        at /workspace/desk-setup-store/tests/e2e/audit.spec.ts:21:103
+
+    Error: /missing/
+
+    expect(received).toEqual(expected) // deep equality
+
+    - Expected  -  1
+    + Received  + 19
+
+    - Array []
+    + Array [
+    +   Object {
+    +     "id": "color-contrast",
+    +     "nodes": Array [
+    +       Array [
+    +         "section > p",
+    +       ],
+    +       Array [
+    +         ".footer-location",
+    +       ],
+    +       Array [
+    +         ".footer-bottom > span:nth-child(1)",
+    +       ],
+    +       Array [
+    +         ".footer-demo",
+    +       ],
+    +     ],
+    +   },
+    + ]
+
+      19 |     const results = await new AxeBuilder({ page }).withTags(["wcag2a", "wcag2aa", "wcag21aa", "wcag22aa"]).analyze();
+      20 |     if (results.violations.length) await testInfo.attach(`axe-${path.replaceAll("/", "_")}`, { body: JSON.stringify(results.violations, null, 2), contentType: "application/json" });
+    > 21 |     expect.soft(results.violations.map(v => ({ id: v.id, nodes: v.nodes.map(n => n.target) })), path).toEqual([]);
+         |                                                                                                       ^
+      22 |   }
+      23 |   expect(errors).toEqual([]);
+      24 | });
+        at /workspace/desk-setup-store/tests/e2e/audit.spec.ts:21:103
+
+    Error: /products/missing/
+
+    expect(received).toEqual(expected) // deep equality
+
+    - Expected  -  1
+    + Received  + 19
+
+    - Array []
+    + Array [
+    +   Object {
+    +     "id": "color-contrast",
+    +     "nodes": Array [
+    +       Array [
+    +         "section > p",
+    +       ],
+    +       Array [
+    +         ".footer-location",
+    +       ],
+    +       Array [
+    +         ".footer-bottom > span:nth-child(1)",
+    +       ],
+    +       Array [
+    +         ".footer-demo",
+    +       ],
+    +     ],
+    +   },
+    + ]
+
+      19 |     const results = await new AxeBuilder({ page }).withTags(["wcag2a", "wcag2aa", "wcag21aa", "wcag22aa"]).analyze();
+      20 |     if (results.violations.length) await testInfo.attach(`axe-${path.replaceAll("/", "_")}`, { body: JSON.stringify(results.violations, null, 2), contentType: "application/json" });
+    > 21 |     expect.soft(results.violations.map(v => ({ id: v.id, nodes: v.nodes.map(n => n.target) })), path).toEqual([]);
+         |                                                                                                       ^
+      22 |   }
+      23 |   expect(errors).toEqual([]);
+      24 | });
+        at /workspace/desk-setup-store/tests/e2e/audit.spec.ts:21:103
+
+    attachment #13: screenshot (image/png) ─────────────────────────────────────────────────────────
+    test-results/audit-every-route-and-erro-5836f--overflow-or-browser-errors-chromium-390/test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Error Context: test-results/audit-every-route-and-erro-5836f--overflow-or-browser-errors-chromium-390/error-context.md
+
+    attachment #15: trace (application/zip) ────────────────────────────────────────────────────────
+    test-results/audit-every-route-and-erro-5836f--overflow-or-browser-errors-chromium-390/trace.zip
+    Usage:
+
+        npx playwright show-trace test-results/audit-every-route-and-erro-5836f--overflow-or-browser-errors-chromium-390/trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+  10) [chromium-390] › tests/e2e/audit.spec.ts:26:5 › mobile menu supports Escape, focus restoration and viewport changes 
+
+    Error: expect(locator).toBeFocused() failed
+
+    Locator: getByRole('button', { name: 'Open menu' })
+    Expected: focused
+    Timeout: 5000ms
+    Error: element(s) not found
+
+    Call log:
+      - Expect "toBeFocused" getByRole('button', { name: 'Open menu' }) with timeout 5000ms
+      - waiting for getByRole('button', { name: 'Open menu' })
+
+
+      31 |   await page.getByRole("navigation", { name: "Mobile navigation" }).getByRole("link").first().focus();
+      32 |   await page.keyboard.press("Escape");
+    > 33 |   await expect(menu).toBeFocused();
+         |                      ^
+      34 |   await expect(page.getByRole("navigation", { name: "Mobile navigation" })).toHaveCount(0);
+      35 |   await menu.click();
+      36 |   await page.setViewportSize({ width: 1440, height: 900 });
+        at /workspace/desk-setup-store/tests/e2e/audit.spec.ts:33:22
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    test-results/audit-mobile-menu-supports-6d1e3-ration-and-viewport-changes-chromium-390/test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Error Context: test-results/audit-mobile-menu-supports-6d1e3-ration-and-viewport-changes-chromium-390/error-context.md
+
+    attachment #3: trace (application/zip) ─────────────────────────────────────────────────────────
+    test-results/audit-mobile-menu-supports-6d1e3-ration-and-viewport-changes-chromium-390/trace.zip
+    Usage:
+
+        npx playwright show-trace test-results/audit-mobile-menu-supports-6d1e3-ration-and-viewport-changes-chromium-390/trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+  11) [chromium-390] › tests/e2e/audit.spec.ts:42:5 › blank fit answers do not silently become zero and errors are associated with inputs 
+
+    Error: expect(locator).toHaveAttribute(expected) failed
+
+    Locator:  getByLabel('Cables you use every day')
+    Expected: "true"
+    Received: ""
+    Timeout:  5000ms
+
+    Call log:
+      - Expect "toHaveAttribute" getByLabel('Cables you use every day') with timeout 5000ms
+      - waiting for getByLabel('Cables you use every day')
+        14 × locator resolved to <input min="0" step="1" value="" max="100" type="number" id="fit-cables"/>
+           - unexpected value "null"
+
+
+      45 |   await cables.fill("");
+      46 |   await expect(page.getByRole("alert")).toBeVisible();
+    > 47 |   await expect(cables).toHaveAttribute("aria-invalid", "true");
+         |                        ^
+      48 |   await cables.fill("0");
+      49 |   await expect(page.getByRole("alert")).toHaveCount(0);
+      50 |   await page.getByLabel("Clear desk width (mm)").fill("99");
+        at /workspace/desk-setup-store/tests/e2e/audit.spec.ts:47:24
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    test-results/audit-blank-fit-answers-do-c1a15--are-associated-with-inputs-chromium-390/test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Error Context: test-results/audit-blank-fit-answers-do-c1a15--are-associated-with-inputs-chromium-390/error-context.md
+
+    attachment #3: trace (application/zip) ─────────────────────────────────────────────────────────
+    test-results/audit-blank-fit-answers-do-c1a15--are-associated-with-inputs-chromium-390/trace.zip
+    Usage:
+
+        npx playwright show-trace test-results/audit-blank-fit-answers-do-c1a15--are-associated-with-inputs-chromium-390/trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+  12) [chromium-390] › tests/e2e/audit.spec.ts:55:5 › populated bag totals, maximum quantity, download contents and accessibility 
+
+    Error: expect(received).toEqual(expected) // deep equality
+
+    - Expected  -  1
+    + Received  + 49
+
+    - Array []
+    + Array [
+    +   Object {
+    +     "id": "color-contrast",
+    +     "nodes": Array [
+    +       Array [
+    +         ".page-intro",
+    +       ],
+    +       Array [
+    +         ".product-category",
+    +       ],
+    +       Array [
+    +         ".cart-item-copy > p",
+    +       ],
+    +       Array [
+    +         ".cart-unit-price",
+    +       ],
+    +       Array [
+    +         "button[aria-label=\"Remove The Cable Keeper\"]",
+    +       ],
+    +       Array [
+    +         ".cart-below-items > .remove-button",
+    +       ],
+    +       Array [
+    +         ".cart-items > .micro-copy",
+    +       ],
+    +       Array [
+    +         ".micro-copy:nth-child(4)",
+    +       ],
+    +       Array [
+    +         ".paypal-slot > p",
+    +       ],
+    +       Array [
+    +         ".micro-copy:nth-child(7)",
+    +       ],
+    +       Array [
+    +         ".checkout-note",
+    +       ],
+    +       Array [
+    +         ".footer-location",
+    +       ],
+    +       Array [
+    +         ".footer-bottom > span:nth-child(1)",
+    +       ],
+    +       Array [
+    +         ".footer-demo",
+    +       ],
+    +     ],
+    +   },
+    + ]
+
+      69 |   expect(JSON.parse(Buffer.concat(chunks).toString())).toEqual({ schema: "desk-setup-quote-v1", currency: "AUD", mode: "demo", items: [{ productId: "demo-cable-keeper", quantity: 10 }], paymentRequested: false });
+      70 |   const scan = await new AxeBuilder({ page }).withTags(["wcag2a", "wcag2aa", "wcag21aa", "wcag22aa"]).analyze();
+    > 71 |   expect(scan.violations.map(v => ({ id: v.id, nodes: v.nodes.map(n => n.target) }))).toEqual([]);
+         |                                                                                       ^
+      72 |   expect(await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth + 1)).toBe(true);
+      73 |   if ([390, 1440].includes(page.viewportSize()!.width)) await page.screenshot({ path: `docs/qa/2026-11-14/cart-${testInfo.project.name}.png`, fullPage: true });
+      74 | });
+        at /workspace/desk-setup-store/tests/e2e/audit.spec.ts:71:87
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    test-results/audit-populated-bag-totals-af10b--contents-and-accessibility-chromium-390/test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Error Context: test-results/audit-populated-bag-totals-af10b--contents-and-accessibility-chromium-390/error-context.md
+
+    attachment #3: trace (application/zip) ─────────────────────────────────────────────────────────
+    test-results/audit-populated-bag-totals-af10b--contents-and-accessibility-chromium-390/trace.zip
+    Usage:
+
+        npx playwright show-trace test-results/audit-populated-bag-totals-af10b--contents-and-accessibility-chromium-390/trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+  13) [chromium-768] › tests/e2e/audit.spec.ts:10:5 › every route and error page passes WCAG A/AA scan with no overflow or browser errors 
+
+    Error: /
+
+    expect(received).toEqual(expected) // deep equality
+
+    - Expected  -  1
+    + Received  + 70
+
+    - Array []
+    + Array [
+    +   Object {
+    +     "id": "color-contrast",
+    +     "nodes": Array [
+    +       Array [
+    +         ".hero-footnote",
+    +       ],
+    +       Array [
+    +         ".hero-caption > span:nth-child(2)",
+    +       ],
+    +       Array [
+    +         ".collection-count",
+    +       ],
+    +       Array [
+    +         ".product-card:nth-child(1) > .product-card-info > div:nth-child(1) > .product-category",
+    +       ],
+    +       Array [
+    +         ".product-card:nth-child(1) > .product-card-info > .product-price > span",
+    +       ],
+    +       Array [
+    +         ".product-card:nth-child(2) > .product-card-info > div:nth-child(1) > .product-category",
+    +       ],
+    +       Array [
+    +         ".product-card:nth-child(2) > .product-card-info > .product-price > span",
+    +       ],
+    +       Array [
+    +         ".product-card:nth-child(3) > .product-card-info > div:nth-child(1) > .product-category",
+    +       ],
+    +       Array [
+    +         ".product-card:nth-child(3) > .product-card-info > .product-price > span",
+    +       ],
+    +       Array [
+    +         ".catalogue-disclaimer",
+    +       ],
+    +       Array [
+    +         ".approach-copy > p:nth-child(3)",
+    +       ],
+    +       Array [
+    +         ".approach-copy > p:nth-child(4)",
+    +       ],
+    +       Array [
+    +         "article:nth-child(1) > .reason-number",
+    +       ],
+    +       Array [
+    +         "article:nth-child(1) > p",
+    +       ],
+    +       Array [
+    +         "article:nth-child(2) > .reason-number",
+    +       ],
+    +       Array [
+    +         "article:nth-child(2) > p",
+    +       ],
+    +       Array [
+    +         "article:nth-child(3) > .reason-number",
+    +       ],
+    +       Array [
+    +         "article:nth-child(3) > p",
+    +       ],
+    +       Array [
+    +         ".footer-location",
+    +       ],
+    +       Array [
+    +         ".footer-bottom > span:nth-child(1)",
+    +       ],
+    +       Array [
+    +         ".footer-demo",
+    +       ],
+    +     ],
+    +   },
+    + ]
+
+      19 |     const results = await new AxeBuilder({ page }).withTags(["wcag2a", "wcag2aa", "wcag21aa", "wcag22aa"]).analyze();
+      20 |     if (results.violations.length) await testInfo.attach(`axe-${path.replaceAll("/", "_")}`, { body: JSON.stringify(results.violations, null, 2), contentType: "application/json" });
+    > 21 |     expect.soft(results.violations.map(v => ({ id: v.id, nodes: v.nodes.map(n => n.target) })), path).toEqual([]);
+         |                                                                                                       ^
+      22 |   }
+      23 |   expect(errors).toEqual([]);
+      24 | });
+        at /workspace/desk-setup-store/tests/e2e/audit.spec.ts:21:103
+
+    Error: /products/cable-keeper/
+
+    expect(received).toEqual(expected) // deep equality
+
+    - Expected  -  1
+    + Received  + 61
+
+    - Array []
+    + Array [
+    +   Object {
+    +     "id": "color-contrast",
+    +     "nodes": Array [
+    +       Array [
+    +         ".breadcrumbs > a[href=\"/\"]",
+    +       ],
+    +       Array [
+    +         ".breadcrumbs > a[href$=\"/#collection\"]",
+    +       ],
+    +       Array [
+    +         "span[aria-current=\"page\"]",
+    +       ],
+    +       Array [
+    +         ".detail-tagline",
+    +       ],
+    +       Array [
+    +         ".detail-price > span",
+    +       ],
+    +       Array [
+    +         "small",
+    +       ],
+    +       Array [
+    +         ".micro-copy",
+    +       ],
+    +       Array [
+    +         ".demo-callout > p",
+    +       ],
+    +       Array [
+    +         "div:nth-child(1) > dt",
+    +       ],
+    +       Array [
+    +         "div:nth-child(2) > dt",
+    +       ],
+    +       Array [
+    +         "div:nth-child(3) > dt",
+    +       ],
+    +       Array [
+    +         "div:nth-child(4) > dt",
+    +       ],
+    +       Array [
+    +         "details[open=\"\"] > p:nth-child(2)",
+    +       ],
+    +       Array [
+    +         "details[open=\"\"] > p:nth-child(3)",
+    +       ],
+    +       Array [
+    +         "p:nth-child(3) > a[href$=\"shipping-policy/\"]",
+    +       ],
+    +       Array [
+    +         ".footer-location",
+    +       ],
+    +       Array [
+    +         ".footer-bottom > span:nth-child(1)",
+    +       ],
+    +       Array [
+    +         ".footer-demo",
+    +       ],
+    +     ],
+    +   },
+    + ]
+
+      19 |     const results = await new AxeBuilder({ page }).withTags(["wcag2a", "wcag2aa", "wcag21aa", "wcag22aa"]).analyze();
+      20 |     if (results.violations.length) await testInfo.attach(`axe-${path.replaceAll("/", "_")}`, { body: JSON.stringify(results.violations, null, 2), contentType: "application/json" });
+    > 21 |     expect.soft(results.violations.map(v => ({ id: v.id, nodes: v.nodes.map(n => n.target) })), path).toEqual([]);
+         |                                                                                                       ^
+      22 |   }
+      23 |   expect(errors).toEqual([]);
+      24 | });
+        at /workspace/desk-setup-store/tests/e2e/audit.spec.ts:21:103
+
+    Error: /products/desk-shelf/
+
+    expect(received).toEqual(expected) // deep equality
+
+    - Expected  -  1
+    + Received  + 61
+
+    - Array []
+    + Array [
+    +   Object {
+    +     "id": "color-contrast",
+    +     "nodes": Array [
+    +       Array [
+    +         ".breadcrumbs > a[href=\"/\"]",
+    +       ],
+    +       Array [
+    +         ".breadcrumbs > a[href$=\"/#collection\"]",
+    +       ],
+    +       Array [
+    +         "span[aria-current=\"page\"]",
+    +       ],
+    +       Array [
+    +         ".detail-tagline",
+    +       ],
+    +       Array [
+    +         ".detail-price > span",
+    +       ],
+    +       Array [
+    +         "small",
+    +       ],
+    +       Array [
+    +         ".micro-copy",
+    +       ],
+    +       Array [
+    +         ".demo-callout > p",
+    +       ],
+    +       Array [
+    +         "div:nth-child(1) > dt",
+    +       ],
+    +       Array [
+    +         "div:nth-child(2) > dt",
+    +       ],
+    +       Array [
+    +         "div:nth-child(3) > dt",
+    +       ],
+    +       Array [
+    +         "div:nth-child(4) > dt",
+    +       ],
+    +       Array [
+    +         "details[open=\"\"] > p:nth-child(2)",
+    +       ],
+    +       Array [
+    +         "details[open=\"\"] > p:nth-child(3)",
+    +       ],
+    +       Array [
+    +         "p:nth-child(3) > a[href$=\"shipping-policy/\"]",
+    +       ],
+    +       Array [
+    +         ".footer-location",
+    +       ],
+    +       Array [
+    +         ".footer-bottom > span:nth-child(1)",
+    +       ],
+    +       Array [
+    +         ".footer-demo",
+    +       ],
+    +     ],
+    +   },
+    + ]
+
+      19 |     const results = await new AxeBuilder({ page }).withTags(["wcag2a", "wcag2aa", "wcag21aa", "wcag22aa"]).analyze();
+      20 |     if (results.violations.length) await testInfo.attach(`axe-${path.replaceAll("/", "_")}`, { body: JSON.stringify(results.violations, null, 2), contentType: "application/json" });
+    > 21 |     expect.soft(results.violations.map(v => ({ id: v.id, nodes: v.nodes.map(n => n.target) })), path).toEqual([]);
+         |                                                                                                       ^
+      22 |   }
+      23 |   expect(errors).toEqual([]);
+      24 | });
+        at /workspace/desk-setup-store/tests/e2e/audit.spec.ts:21:103
+
+    Error: /products/tech-pouch/
+
+    expect(received).toEqual(expected) // deep equality
+
+    - Expected  -  1
+    + Received  + 61
+
+    - Array []
+    + Array [
+    +   Object {
+    +     "id": "color-contrast",
+    +     "nodes": Array [
+    +       Array [
+    +         ".breadcrumbs > a[href=\"/\"]",
+    +       ],
+    +       Array [
+    +         ".breadcrumbs > a[href$=\"/#collection\"]",
+    +       ],
+    +       Array [
+    +         "span[aria-current=\"page\"]",
+    +       ],
+    +       Array [
+    +         ".detail-tagline",
+    +       ],
+    +       Array [
+    +         ".detail-price > span",
+    +       ],
+    +       Array [
+    +         "small",
+    +       ],
+    +       Array [
+    +         ".micro-copy",
+    +       ],
+    +       Array [
+    +         ".demo-callout > p",
+    +       ],
+    +       Array [
+    +         "div:nth-child(1) > dt",
+    +       ],
+    +       Array [
+    +         "div:nth-child(2) > dt",
+    +       ],
+    +       Array [
+    +         "div:nth-child(3) > dt",
+    +       ],
+    +       Array [
+    +         "div:nth-child(4) > dt",
+    +       ],
+    +       Array [
+    +         "details[open=\"\"] > p:nth-child(2)",
+    +       ],
+    +       Array [
+    +         "details[open=\"\"] > p:nth-child(3)",
+    +       ],
+    +       Array [
+    +         "p:nth-child(3) > a[href$=\"shipping-policy/\"]",
+    +       ],
+    +       Array [
+    +         ".footer-location",
+    +       ],
+    +       Array [
+    +         ".footer-bottom > span:nth-child(1)",
+    +       ],
+    +       Array [
+    +         ".footer-demo",
+    +       ],
+    +     ],
+    +   },
+    + ]
+
+      19 |     const results = await new AxeBuilder({ page }).withTags(["wcag2a", "wcag2aa", "wcag21aa", "wcag22aa"]).analyze();
+      20 |     if (results.violations.length) await testInfo.attach(`axe-${path.replaceAll("/", "_")}`, { body: JSON.stringify(results.violations, null, 2), contentType: "application/json" });
+    > 21 |     expect.soft(results.violations.map(v => ({ id: v.id, nodes: v.nodes.map(n => n.target) })), path).toEqual([]);
+         |                                                                                                       ^
+      22 |   }
+      23 |   expect(errors).toEqual([]);
+      24 | });
+        at /workspace/desk-setup-store/tests/e2e/audit.spec.ts:21:103
+
+    Error: /cart/
+
+    expect(received).toEqual(expected) // deep equality
+
+    - Expected  -  1
+    + Received  + 22
+
+    - Array []
+    + Array [
+    +   Object {
+    +     "id": "color-contrast",
+    +     "nodes": Array [
+    +       Array [
+    +         ".page-intro",
+    +       ],
+    +       Array [
+    +         "section > p",
+    +       ],
+    +       Array [
+    +         ".footer-location",
+    +       ],
+    +       Array [
+    +         ".footer-bottom > span:nth-child(1)",
+    +       ],
+    +       Array [
+    +         ".footer-demo",
+    +       ],
+    +     ],
+    +   },
+    + ]
+
+      19 |     const results = await new AxeBuilder({ page }).withTags(["wcag2a", "wcag2aa", "wcag21aa", "wcag22aa"]).analyze();
+      20 |     if (results.violations.length) await testInfo.attach(`axe-${path.replaceAll("/", "_")}`, { body: JSON.stringify(results.violations, null, 2), contentType: "application/json" });
+    > 21 |     expect.soft(results.violations.map(v => ({ id: v.id, nodes: v.nodes.map(n => n.target) })), path).toEqual([]);
+         |                                                                                                       ^
+      22 |   }
+      23 |   expect(errors).toEqual([]);
+      24 | });
+        at /workspace/desk-setup-store/tests/e2e/audit.spec.ts:21:103
+
+    Error: /desk-fit/
+
+    expect(received).toEqual(expected) // deep equality
+
+    - Expected  -  1
+    + Received  + 22
+
+    - Array []
+    + Array [
+    +   Object {
+    +     "id": "color-contrast",
+    +     "nodes": Array [
+    +       Array [
+    +         ".page-intro",
+    +       ],
+    +       Array [
+    +         ".demo-callout",
+    +       ],
+    +       Array [
+    +         ".footer-location",
+    +       ],
+    +       Array [
+    +         ".footer-bottom > span:nth-child(1)",
+    +       ],
+    +       Array [
+    +         ".footer-demo",
+    +       ],
+    +     ],
+    +   },
+    + ]
+
+      19 |     const results = await new AxeBuilder({ page }).withTags(["wcag2a", "wcag2aa", "wcag21aa", "wcag22aa"]).analyze();
+      20 |     if (results.violations.length) await testInfo.attach(`axe-${path.replaceAll("/", "_")}`, { body: JSON.stringify(results.violations, null, 2), contentType: "application/json" });
+    > 21 |     expect.soft(results.violations.map(v => ({ id: v.id, nodes: v.nodes.map(n => n.target) })), path).toEqual([]);
+         |                                                                                                       ^
+      22 |   }
+      23 |   expect(errors).toEqual([]);
+      24 | });
+        at /workspace/desk-setup-store/tests/e2e/audit.spec.ts:21:103
+
+    Error: /contact/
+
+    expect(received).toEqual(expected) // deep equality
+
+    - Expected  -  1
+    + Received  + 25
+
+    - Array []
+    + Array [
+    +   Object {
+    +     "id": "color-contrast",
+    +     "nodes": Array [
+    +       Array [
+    +         ".page-intro",
+    +       ],
+    +       Array [
+    +         ".inline-tag",
+    +       ],
+    +       Array [
+    +         "p:nth-child(5)",
+    +       ],
+    +       Array [
+    +         ".footer-location",
+    +       ],
+    +       Array [
+    +         ".footer-bottom > span:nth-child(1)",
+    +       ],
+    +       Array [
+    +         ".footer-demo",
+    +       ],
+    +     ],
+    +   },
+    + ]
+
+      19 |     const results = await new AxeBuilder({ page }).withTags(["wcag2a", "wcag2aa", "wcag21aa", "wcag22aa"]).analyze();
+      20 |     if (results.violations.length) await testInfo.attach(`axe-${path.replaceAll("/", "_")}`, { body: JSON.stringify(results.violations, null, 2), contentType: "application/json" });
+    > 21 |     expect.soft(results.violations.map(v => ({ id: v.id, nodes: v.nodes.map(n => n.target) })), path).toEqual([]);
+         |                                                                                                       ^
+      22 |   }
+      23 |   expect(errors).toEqual([]);
+      24 | });
+        at /workspace/desk-setup-store/tests/e2e/audit.spec.ts:21:103
+
+    Error: /shipping-policy/
+
+    expect(received).toEqual(expected) // deep equality
+
+    - Expected  -  1
+    + Received  + 28
+
+    - Array []
+    + Array [
+    +   Object {
+    +     "id": "color-contrast",
+    +     "nodes": Array [
+    +       Array [
+    +         ".breadcrumbs",
+    +       ],
+    +       Array [
+    +         ".page-intro",
+    +       ],
+    +       Array [
+    +         ".policy-banner > p",
+    +       ],
+    +       Array [
+    +         ".policy-date",
+    +       ],
+    +       Array [
+    +         ".footer-location",
+    +       ],
+    +       Array [
+    +         ".footer-bottom > span:nth-child(1)",
+    +       ],
+    +       Array [
+    +         ".footer-demo",
+    +       ],
+    +     ],
+    +   },
+    + ]
+
+      19 |     const results = await new AxeBuilder({ page }).withTags(["wcag2a", "wcag2aa", "wcag21aa", "wcag22aa"]).analyze();
+      20 |     if (results.violations.length) await testInfo.attach(`axe-${path.replaceAll("/", "_")}`, { body: JSON.stringify(results.violations, null, 2), contentType: "application/json" });
+    > 21 |     expect.soft(results.violations.map(v => ({ id: v.id, nodes: v.nodes.map(n => n.target) })), path).toEqual([]);
+         |                                                                                                       ^
+      22 |   }
+      23 |   expect(errors).toEqual([]);
+      24 | });
+        at /workspace/desk-setup-store/tests/e2e/audit.spec.ts:21:103
+
+    Error: /return-policy/
+
+    expect(received).toEqual(expected) // deep equality
+
+    - Expected  -  1
+    + Received  + 28
+
+    - Array []
+    + Array [
+    +   Object {
+    +     "id": "color-contrast",
+    +     "nodes": Array [
+    +       Array [
+    +         ".breadcrumbs",
+    +       ],
+    +       Array [
+    +         ".page-intro",
+    +       ],
+    +       Array [
+    +         ".policy-banner > p",
+    +       ],
+    +       Array [
+    +         ".policy-date",
+    +       ],
+    +       Array [
+    +         ".footer-location",
+    +       ],
+    +       Array [
+    +         ".footer-bottom > span:nth-child(1)",
+    +       ],
+    +       Array [
+    +         ".footer-demo",
+    +       ],
+    +     ],
+    +   },
+    + ]
+
+      19 |     const results = await new AxeBuilder({ page }).withTags(["wcag2a", "wcag2aa", "wcag21aa", "wcag22aa"]).analyze();
+      20 |     if (results.violations.length) await testInfo.attach(`axe-${path.replaceAll("/", "_")}`, { body: JSON.stringify(results.violations, null, 2), contentType: "application/json" });
+    > 21 |     expect.soft(results.violations.map(v => ({ id: v.id, nodes: v.nodes.map(n => n.target) })), path).toEqual([]);
+         |                                                                                                       ^
+      22 |   }
+      23 |   expect(errors).toEqual([]);
+      24 | });
+        at /workspace/desk-setup-store/tests/e2e/audit.spec.ts:21:103
+
+    Error: /privacy-policy/
+
+    expect(received).toEqual(expected) // deep equality
+
+    - Expected  -  1
+    + Received  + 28
+
+    - Array []
+    + Array [
+    +   Object {
+    +     "id": "color-contrast",
+    +     "nodes": Array [
+    +       Array [
+    +         ".breadcrumbs",
+    +       ],
+    +       Array [
+    +         ".page-intro",
+    +       ],
+    +       Array [
+    +         ".policy-banner > p",
+    +       ],
+    +       Array [
+    +         ".policy-date",
+    +       ],
+    +       Array [
+    +         ".footer-location",
+    +       ],
+    +       Array [
+    +         ".footer-bottom > span:nth-child(1)",
+    +       ],
+    +       Array [
+    +         ".footer-demo",
+    +       ],
+    +     ],
+    +   },
+    + ]
+
+      19 |     const results = await new AxeBuilder({ page }).withTags(["wcag2a", "wcag2aa", "wcag21aa", "wcag22aa"]).analyze();
+      20 |     if (results.violations.length) await testInfo.attach(`axe-${path.replaceAll("/", "_")}`, { body: JSON.stringify(results.violations, null, 2), contentType: "application/json" });
+    > 21 |     expect.soft(results.violations.map(v => ({ id: v.id, nodes: v.nodes.map(n => n.target) })), path).toEqual([]);
+         |                                                                                                       ^
+      22 |   }
+      23 |   expect(errors).toEqual([]);
+      24 | });
+        at /workspace/desk-setup-store/tests/e2e/audit.spec.ts:21:103
+
+    Error: /missing/
+
+    expect(received).toEqual(expected) // deep equality
+
+    - Expected  -  1
+    + Received  + 19
+
+    - Array []
+    + Array [
+    +   Object {
+    +     "id": "color-contrast",
+    +     "nodes": Array [
+    +       Array [
+    +         "section > p",
+    +       ],
+    +       Array [
+    +         ".footer-location",
+    +       ],
+    +       Array [
+    +         ".footer-bottom > span:nth-child(1)",
+    +       ],
+    +       Array [
+    +         ".footer-demo",
+    +       ],
+    +     ],
+    +   },
+    + ]
+
+      19 |     const results = await new AxeBuilder({ page }).withTags(["wcag2a", "wcag2aa", "wcag21aa", "wcag22aa"]).analyze();
+      20 |     if (results.violations.length) await testInfo.attach(`axe-${path.replaceAll("/", "_")}`, { body: JSON.stringify(results.violations, null, 2), contentType: "application/json" });
+    > 21 |     expect.soft(results.violations.map(v => ({ id: v.id, nodes: v.nodes.map(n => n.target) })), path).toEqual([]);
+         |                                                                                                       ^
+      22 |   }
+      23 |   expect(errors).toEqual([]);
+      24 | });
+        at /workspace/desk-setup-store/tests/e2e/audit.spec.ts:21:103
+
+    Error: /products/missing/
+
+    expect(received).toEqual(expected) // deep equality
+
+    - Expected  -  1
+    + Received  + 19
+
+    - Array []
+    + Array [
+    +   Object {
+    +     "id": "color-contrast",
+    +     "nodes": Array [
+    +       Array [
+    +         "section > p",
+    +       ],
+    +       Array [
+    +         ".footer-location",
+    +       ],
+    +       Array [
+    +         ".footer-bottom > span:nth-child(1)",
+    +       ],
+    +       Array [
+    +         ".footer-demo",
+    +       ],
+    +     ],
+    +   },
+    + ]
+
+      19 |     const results = await new AxeBuilder({ page }).withTags(["wcag2a", "wcag2aa", "wcag21aa", "wcag22aa"]).analyze();
+      20 |     if (results.violations.length) await testInfo.attach(`axe-${path.replaceAll("/", "_")}`, { body: JSON.stringify(results.violations, null, 2), contentType: "application/json" });
+    > 21 |     expect.soft(results.violations.map(v => ({ id: v.id, nodes: v.nodes.map(n => n.target) })), path).toEqual([]);
+         |                                                                                                       ^
+      22 |   }
+      23 |   expect(errors).toEqual([]);
+      24 | });
+        at /workspace/desk-setup-store/tests/e2e/audit.spec.ts:21:103
+
+    attachment #13: screenshot (image/png) ─────────────────────────────────────────────────────────
+    test-results/audit-every-route-and-erro-5836f--overflow-or-browser-errors-chromium-768/test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Error Context: test-results/audit-every-route-and-erro-5836f--overflow-or-browser-errors-chromium-768/error-context.md
+
+    attachment #15: trace (application/zip) ────────────────────────────────────────────────────────
+    test-results/audit-every-route-and-erro-5836f--overflow-or-browser-errors-chromium-768/trace.zip
+    Usage:
+
+        npx playwright show-trace test-results/audit-every-route-and-erro-5836f--overflow-or-browser-errors-chromium-768/trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+  14) [chromium-768] › tests/e2e/audit.spec.ts:42:5 › blank fit answers do not silently become zero and errors are associated with inputs 
+
+    Error: expect(locator).toHaveAttribute(expected) failed
+
+    Locator:  getByLabel('Cables you use every day')
+    Expected: "true"
+    Received: ""
+    Timeout:  5000ms
+
+    Call log:
+      - Expect "toHaveAttribute" getByLabel('Cables you use every day') with timeout 5000ms
+      - waiting for getByLabel('Cables you use every day')
+        14 × locator resolved to <input min="0" step="1" value="" max="100" type="number" id="fit-cables"/>
+           - unexpected value "null"
+
+
+      45 |   await cables.fill("");
+      46 |   await expect(page.getByRole("alert")).toBeVisible();
+    > 47 |   await expect(cables).toHaveAttribute("aria-invalid", "true");
+         |                        ^
+      48 |   await cables.fill("0");
+      49 |   await expect(page.getByRole("alert")).toHaveCount(0);
+      50 |   await page.getByLabel("Clear desk width (mm)").fill("99");
+        at /workspace/desk-setup-store/tests/e2e/audit.spec.ts:47:24
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    test-results/audit-blank-fit-answers-do-c1a15--are-associated-with-inputs-chromium-768/test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Error Context: test-results/audit-blank-fit-answers-do-c1a15--are-associated-with-inputs-chromium-768/error-context.md
+
+    attachment #3: trace (application/zip) ─────────────────────────────────────────────────────────
+    test-results/audit-blank-fit-answers-do-c1a15--are-associated-with-inputs-chromium-768/trace.zip
+    Usage:
+
+        npx playwright show-trace test-results/audit-blank-fit-answers-do-c1a15--are-associated-with-inputs-chromium-768/trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+  15) [chromium-768] › tests/e2e/audit.spec.ts:55:5 › populated bag totals, maximum quantity, download contents and accessibility 
+
+    Error: expect(received).toEqual(expected) // deep equality
+
+    - Expected  -  1
+    + Received  + 49
+
+    - Array []
+    + Array [
+    +   Object {
+    +     "id": "color-contrast",
+    +     "nodes": Array [
+    +       Array [
+    +         ".page-intro",
+    +       ],
+    +       Array [
+    +         ".product-category",
+    +       ],
+    +       Array [
+    +         ".cart-item-copy > p",
+    +       ],
+    +       Array [
+    +         ".cart-unit-price",
+    +       ],
+    +       Array [
+    +         "button[aria-label=\"Remove The Cable Keeper\"]",
+    +       ],
+    +       Array [
+    +         ".cart-below-items > .remove-button",
+    +       ],
+    +       Array [
+    +         ".cart-items > .micro-copy",
+    +       ],
+    +       Array [
+    +         ".micro-copy:nth-child(4)",
+    +       ],
+    +       Array [
+    +         ".paypal-slot > p",
+    +       ],
+    +       Array [
+    +         ".micro-copy:nth-child(7)",
+    +       ],
+    +       Array [
+    +         ".checkout-note",
+    +       ],
+    +       Array [
+    +         ".footer-location",
+    +       ],
+    +       Array [
+    +         ".footer-bottom > span:nth-child(1)",
+    +       ],
+    +       Array [
+    +         ".footer-demo",
+    +       ],
+    +     ],
+    +   },
+    + ]
+
+      69 |   expect(JSON.parse(Buffer.concat(chunks).toString())).toEqual({ schema: "desk-setup-quote-v1", currency: "AUD", mode: "demo", items: [{ productId: "demo-cable-keeper", quantity: 10 }], paymentRequested: false });
+      70 |   const scan = await new AxeBuilder({ page }).withTags(["wcag2a", "wcag2aa", "wcag21aa", "wcag22aa"]).analyze();
+    > 71 |   expect(scan.violations.map(v => ({ id: v.id, nodes: v.nodes.map(n => n.target) }))).toEqual([]);
+         |                                                                                       ^
+      72 |   expect(await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth + 1)).toBe(true);
+      73 |   if ([390, 1440].includes(page.viewportSize()!.width)) await page.screenshot({ path: `docs/qa/2026-11-14/cart-${testInfo.project.name}.png`, fullPage: true });
+      74 | });
+        at /workspace/desk-setup-store/tests/e2e/audit.spec.ts:71:87
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    test-results/audit-populated-bag-totals-af10b--contents-and-accessibility-chromium-768/test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Error Context: test-results/audit-populated-bag-totals-af10b--contents-and-accessibility-chromium-768/error-context.md
+
+    attachment #3: trace (application/zip) ─────────────────────────────────────────────────────────
+    test-results/audit-populated-bag-totals-af10b--contents-and-accessibility-chromium-768/trace.zip
+    Usage:
+
+        npx playwright show-trace test-results/audit-populated-bag-totals-af10b--contents-and-accessibility-chromium-768/trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+  16) [chromium-1440] › tests/e2e/audit.spec.ts:10:5 › every route and error page passes WCAG A/AA scan with no overflow or browser errors 
+
+    Error: /
+
+    expect(received).toEqual(expected) // deep equality
+
+    - Expected  -  1
+    + Received  + 70
+
+    - Array []
+    + Array [
+    +   Object {
+    +     "id": "color-contrast",
+    +     "nodes": Array [
+    +       Array [
+    +         ".hero-footnote",
+    +       ],
+    +       Array [
+    +         ".hero-caption > span:nth-child(2)",
+    +       ],
+    +       Array [
+    +         ".collection-count",
+    +       ],
+    +       Array [
+    +         ".product-card:nth-child(1) > .product-card-info > div:nth-child(1) > .product-category",
+    +       ],
+    +       Array [
+    +         ".product-card:nth-child(1) > .product-card-info > .product-price > span",
+    +       ],
+    +       Array [
+    +         ".product-card:nth-child(2) > .product-card-info > div:nth-child(1) > .product-category",
+    +       ],
+    +       Array [
+    +         ".product-card:nth-child(2) > .product-card-info > .product-price > span",
+    +       ],
+    +       Array [
+    +         ".product-card:nth-child(3) > .product-card-info > div:nth-child(1) > .product-category",
+    +       ],
+    +       Array [
+    +         ".product-card:nth-child(3) > .product-card-info > .product-price > span",
+    +       ],
+    +       Array [
+    +         ".catalogue-disclaimer",
+    +       ],
+    +       Array [
+    +         ".approach-copy > p:nth-child(3)",
+    +       ],
+    +       Array [
+    +         ".approach-copy > p:nth-child(4)",
+    +       ],
+    +       Array [
+    +         "article:nth-child(1) > .reason-number",
+    +       ],
+    +       Array [
+    +         "article:nth-child(1) > p",
+    +       ],
+    +       Array [
+    +         "article:nth-child(2) > .reason-number",
+    +       ],
+    +       Array [
+    +         "article:nth-child(2) > p",
+    +       ],
+    +       Array [
+    +         "article:nth-child(3) > .reason-number",
+    +       ],
+    +       Array [
+    +         "article:nth-child(3) > p",
+    +       ],
+    +       Array [
+    +         ".footer-location",
+    +       ],
+    +       Array [
+    +         ".footer-bottom > span:nth-child(1)",
+    +       ],
+    +       Array [
+    +         ".footer-demo",
+    +       ],
+    +     ],
+    +   },
+    + ]
+
+      19 |     const results = await new AxeBuilder({ page }).withTags(["wcag2a", "wcag2aa", "wcag21aa", "wcag22aa"]).analyze();
+      20 |     if (results.violations.length) await testInfo.attach(`axe-${path.replaceAll("/", "_")}`, { body: JSON.stringify(results.violations, null, 2), contentType: "application/json" });
+    > 21 |     expect.soft(results.violations.map(v => ({ id: v.id, nodes: v.nodes.map(n => n.target) })), path).toEqual([]);
+         |                                                                                                       ^
+      22 |   }
+      23 |   expect(errors).toEqual([]);
+      24 | });
+        at /workspace/desk-setup-store/tests/e2e/audit.spec.ts:21:103
+
+    Error: /products/cable-keeper/
+
+    expect(received).toEqual(expected) // deep equality
+
+    - Expected  -  1
+    + Received  + 61
+
+    - Array []
+    + Array [
+    +   Object {
+    +     "id": "color-contrast",
+    +     "nodes": Array [
+    +       Array [
+    +         ".breadcrumbs > a[href=\"/\"]",
+    +       ],
+    +       Array [
+    +         ".breadcrumbs > a[href$=\"/#collection\"]",
+    +       ],
+    +       Array [
+    +         "span[aria-current=\"page\"]",
+    +       ],
+    +       Array [
+    +         ".detail-tagline",
+    +       ],
+    +       Array [
+    +         ".detail-price > span",
+    +       ],
+    +       Array [
+    +         "small",
+    +       ],
+    +       Array [
+    +         ".micro-copy",
+    +       ],
+    +       Array [
+    +         ".demo-callout > p",
+    +       ],
+    +       Array [
+    +         "div:nth-child(1) > dt",
+    +       ],
+    +       Array [
+    +         "div:nth-child(2) > dt",
+    +       ],
+    +       Array [
+    +         "div:nth-child(3) > dt",
+    +       ],
+    +       Array [
+    +         "div:nth-child(4) > dt",
+    +       ],
+    +       Array [
+    +         "details[open=\"\"] > p:nth-child(2)",
+    +       ],
+    +       Array [
+    +         "details[open=\"\"] > p:nth-child(3)",
+    +       ],
+    +       Array [
+    +         "p:nth-child(3) > a[href$=\"shipping-policy/\"]",
+    +       ],
+    +       Array [
+    +         ".footer-location",
+    +       ],
+    +       Array [
+    +         ".footer-bottom > span:nth-child(1)",
+    +       ],
+    +       Array [
+    +         ".footer-demo",
+    +       ],
+    +     ],
+    +   },
+    + ]
+
+      19 |     const results = await new AxeBuilder({ page }).withTags(["wcag2a", "wcag2aa", "wcag21aa", "wcag22aa"]).analyze();
+      20 |     if (results.violations.length) await testInfo.attach(`axe-${path.replaceAll("/", "_")}`, { body: JSON.stringify(results.violations, null, 2), contentType: "application/json" });
+    > 21 |     expect.soft(results.violations.map(v => ({ id: v.id, nodes: v.nodes.map(n => n.target) })), path).toEqual([]);
+         |                                                                                                       ^
+      22 |   }
+      23 |   expect(errors).toEqual([]);
+      24 | });
+        at /workspace/desk-setup-store/tests/e2e/audit.spec.ts:21:103
+
+    Error: /products/desk-shelf/
+
+    expect(received).toEqual(expected) // deep equality
+
+    - Expected  -  1
+    + Received  + 61
+
+    - Array []
+    + Array [
+    +   Object {
+    +     "id": "color-contrast",
+    +     "nodes": Array [
+    +       Array [
+    +         ".breadcrumbs > a[href=\"/\"]",
+    +       ],
+    +       Array [
+    +         ".breadcrumbs > a[href$=\"/#collection\"]",
+    +       ],
+    +       Array [
+    +         "span[aria-current=\"page\"]",
+    +       ],
+    +       Array [
+    +         ".detail-tagline",
+    +       ],
+    +       Array [
+    +         ".detail-price > span",
+    +       ],
+    +       Array [
+    +         "small",
+    +       ],
+    +       Array [
+    +         ".micro-copy",
+    +       ],
+    +       Array [
+    +         ".demo-callout > p",
+    +       ],
+    +       Array [
+    +         "div:nth-child(1) > dt",
+    +       ],
+    +       Array [
+    +         "div:nth-child(2) > dt",
+    +       ],
+    +       Array [
+    +         "div:nth-child(3) > dt",
+    +       ],
+    +       Array [
+    +         "div:nth-child(4) > dt",
+    +       ],
+    +       Array [
+    +         "details[open=\"\"] > p:nth-child(2)",
+    +       ],
+    +       Array [
+    +         "details[open=\"\"] > p:nth-child(3)",
+    +       ],
+    +       Array [
+    +         "p:nth-child(3) > a[href$=\"shipping-policy/\"]",
+    +       ],
+    +       Array [
+    +         ".footer-location",
+    +       ],
+    +       Array [
+    +         ".footer-bottom > span:nth-child(1)",
+    +       ],
+    +       Array [
+    +         ".footer-demo",
+    +       ],
+    +     ],
+    +   },
+    + ]
+
+      19 |     const results = await new AxeBuilder({ page }).withTags(["wcag2a", "wcag2aa", "wcag21aa", "wcag22aa"]).analyze();
+      20 |     if (results.violations.length) await testInfo.attach(`axe-${path.replaceAll("/", "_")}`, { body: JSON.stringify(results.violations, null, 2), contentType: "application/json" });
+    > 21 |     expect.soft(results.violations.map(v => ({ id: v.id, nodes: v.nodes.map(n => n.target) })), path).toEqual([]);
+         |                                                                                                       ^
+      22 |   }
+      23 |   expect(errors).toEqual([]);
+      24 | });
+        at /workspace/desk-setup-store/tests/e2e/audit.spec.ts:21:103
+
+    Error: /products/tech-pouch/
+
+    expect(received).toEqual(expected) // deep equality
+
+    - Expected  -  1
+    + Received  + 61
+
+    - Array []
+    + Array [
+    +   Object {
+    +     "id": "color-contrast",
+    +     "nodes": Array [
+    +       Array [
+    +         ".breadcrumbs > a[href=\"/\"]",
+    +       ],
+    +       Array [
+    +         ".breadcrumbs > a[href$=\"/#collection\"]",
+    +       ],
+    +       Array [
+    +         "span[aria-current=\"page\"]",
+    +       ],
+    +       Array [
+    +         ".detail-tagline",
+    +       ],
+    +       Array [
+    +         ".detail-price > span",
+    +       ],
+    +       Array [
+    +         "small",
+    +       ],
+    +       Array [
+    +         ".micro-copy",
+    +       ],
+    +       Array [
+    +         ".demo-callout > p",
+    +       ],
+    +       Array [
+    +         "div:nth-child(1) > dt",
+    +       ],
+    +       Array [
+    +         "div:nth-child(2) > dt",
+    +       ],
+    +       Array [
+    +         "div:nth-child(3) > dt",
+    +       ],
+    +       Array [
+    +         "div:nth-child(4) > dt",
+    +       ],
+    +       Array [
+    +         "details[open=\"\"] > p:nth-child(2)",
+    +       ],
+    +       Array [
+    +         "details[open=\"\"] > p:nth-child(3)",
+    +       ],
+    +       Array [
+    +         "p:nth-child(3) > a[href$=\"shipping-policy/\"]",
+    +       ],
+    +       Array [
+    +         ".footer-location",
+    +       ],
+    +       Array [
+    +         ".footer-bottom > span:nth-child(1)",
+    +       ],
+    +       Array [
+    +         ".footer-demo",
+    +       ],
+    +     ],
+    +   },
+    + ]
+
+      19 |     const results = await new AxeBuilder({ page }).withTags(["wcag2a", "wcag2aa", "wcag21aa", "wcag22aa"]).analyze();
+      20 |     if (results.violations.length) await testInfo.attach(`axe-${path.replaceAll("/", "_")}`, { body: JSON.stringify(results.violations, null, 2), contentType: "application/json" });
+    > 21 |     expect.soft(results.violations.map(v => ({ id: v.id, nodes: v.nodes.map(n => n.target) })), path).toEqual([]);
+         |                                                                                                       ^
+      22 |   }
+      23 |   expect(errors).toEqual([]);
+      24 | });
+        at /workspace/desk-setup-store/tests/e2e/audit.spec.ts:21:103
+
+    Error: /cart/
+
+    expect(received).toEqual(expected) // deep equality
+
+    - Expected  -  1
+    + Received  + 22
+
+    - Array []
+    + Array [
+    +   Object {
+    +     "id": "color-contrast",
+    +     "nodes": Array [
+    +       Array [
+    +         ".page-intro",
+    +       ],
+    +       Array [
+    +         "section > p",
+    +       ],
+    +       Array [
+    +         ".footer-location",
+    +       ],
+    +       Array [
+    +         ".footer-bottom > span:nth-child(1)",
+    +       ],
+    +       Array [
+    +         ".footer-demo",
+    +       ],
+    +     ],
+    +   },
+    + ]
+
+      19 |     const results = await new AxeBuilder({ page }).withTags(["wcag2a", "wcag2aa", "wcag21aa", "wcag22aa"]).analyze();
+      20 |     if (results.violations.length) await testInfo.attach(`axe-${path.replaceAll("/", "_")}`, { body: JSON.stringify(results.violations, null, 2), contentType: "application/json" });
+    > 21 |     expect.soft(results.violations.map(v => ({ id: v.id, nodes: v.nodes.map(n => n.target) })), path).toEqual([]);
+         |                                                                                                       ^
+      22 |   }
+      23 |   expect(errors).toEqual([]);
+      24 | });
+        at /workspace/desk-setup-store/tests/e2e/audit.spec.ts:21:103
+
+    Error: /desk-fit/
+
+    expect(received).toEqual(expected) // deep equality
+
+    - Expected  -  1
+    + Received  + 22
+
+    - Array []
+    + Array [
+    +   Object {
+    +     "id": "color-contrast",
+    +     "nodes": Array [
+    +       Array [
+    +         ".page-intro",
+    +       ],
+    +       Array [
+    +         ".demo-callout",
+    +       ],
+    +       Array [
+    +         ".footer-location",
+    +       ],
+    +       Array [
+    +         ".footer-bottom > span:nth-child(1)",
+    +       ],
+    +       Array [
+    +         ".footer-demo",
+    +       ],
+    +     ],
+    +   },
+    + ]
+
+      19 |     const results = await new AxeBuilder({ page }).withTags(["wcag2a", "wcag2aa", "wcag21aa", "wcag22aa"]).analyze();
+      20 |     if (results.violations.length) await testInfo.attach(`axe-${path.replaceAll("/", "_")}`, { body: JSON.stringify(results.violations, null, 2), contentType: "application/json" });
+    > 21 |     expect.soft(results.violations.map(v => ({ id: v.id, nodes: v.nodes.map(n => n.target) })), path).toEqual([]);
+         |                                                                                                       ^
+      22 |   }
+      23 |   expect(errors).toEqual([]);
+      24 | });
+        at /workspace/desk-setup-store/tests/e2e/audit.spec.ts:21:103
+
+    Error: /contact/
+
+    expect(received).toEqual(expected) // deep equality
+
+    - Expected  -  1
+    + Received  + 25
+
+    - Array []
+    + Array [
+    +   Object {
+    +     "id": "color-contrast",
+    +     "nodes": Array [
+    +       Array [
+    +         ".page-intro",
+    +       ],
+    +       Array [
+    +         ".inline-tag",
+    +       ],
+    +       Array [
+    +         "p:nth-child(5)",
+    +       ],
+    +       Array [
+    +         ".footer-location",
+    +       ],
+    +       Array [
+    +         ".footer-bottom > span:nth-child(1)",
+    +       ],
+    +       Array [
+    +         ".footer-demo",
+    +       ],
+    +     ],
+    +   },
+    + ]
+
+      19 |     const results = await new AxeBuilder({ page }).withTags(["wcag2a", "wcag2aa", "wcag21aa", "wcag22aa"]).analyze();
+      20 |     if (results.violations.length) await testInfo.attach(`axe-${path.replaceAll("/", "_")}`, { body: JSON.stringify(results.violations, null, 2), contentType: "application/json" });
+    > 21 |     expect.soft(results.violations.map(v => ({ id: v.id, nodes: v.nodes.map(n => n.target) })), path).toEqual([]);
+         |                                                                                                       ^
+      22 |   }
+      23 |   expect(errors).toEqual([]);
+      24 | });
+        at /workspace/desk-setup-store/tests/e2e/audit.spec.ts:21:103
+
+    Error: /shipping-policy/
+
+    expect(received).toEqual(expected) // deep equality
+
+    - Expected  -  1
+    + Received  + 28
+
+    - Array []
+    + Array [
+    +   Object {
+    +     "id": "color-contrast",
+    +     "nodes": Array [
+    +       Array [
+    +         ".breadcrumbs",
+    +       ],
+    +       Array [
+    +         ".page-intro",
+    +       ],
+    +       Array [
+    +         ".policy-banner > p",
+    +       ],
+    +       Array [
+    +         ".policy-date",
+    +       ],
+    +       Array [
+    +         ".footer-location",
+    +       ],
+    +       Array [
+    +         ".footer-bottom > span:nth-child(1)",
+    +       ],
+    +       Array [
+    +         ".footer-demo",
+    +       ],
+    +     ],
+    +   },
+    + ]
+
+      19 |     const results = await new AxeBuilder({ page }).withTags(["wcag2a", "wcag2aa", "wcag21aa", "wcag22aa"]).analyze();
+      20 |     if (results.violations.length) await testInfo.attach(`axe-${path.replaceAll("/", "_")}`, { body: JSON.stringify(results.violations, null, 2), contentType: "application/json" });
+    > 21 |     expect.soft(results.violations.map(v => ({ id: v.id, nodes: v.nodes.map(n => n.target) })), path).toEqual([]);
+         |                                                                                                       ^
+      22 |   }
+      23 |   expect(errors).toEqual([]);
+      24 | });
+        at /workspace/desk-setup-store/tests/e2e/audit.spec.ts:21:103
+
+    Error: /return-policy/
+
+    expect(received).toEqual(expected) // deep equality
+
+    - Expected  -  1
+    + Received  + 28
+
+    - Array []
+    + Array [
+    +   Object {
+    +     "id": "color-contrast",
+    +     "nodes": Array [
+    +       Array [
+    +         ".breadcrumbs",
+    +       ],
+    +       Array [
+    +         ".page-intro",
+    +       ],
+    +       Array [
+    +         ".policy-banner > p",
+    +       ],
+    +       Array [
+    +         ".policy-date",
+    +       ],
+    +       Array [
+    +         ".footer-location",
+    +       ],
+    +       Array [
+    +         ".footer-bottom > span:nth-child(1)",
+    +       ],
+    +       Array [
+    +         ".footer-demo",
+    +       ],
+    +     ],
+    +   },
+    + ]
+
+      19 |     const results = await new AxeBuilder({ page }).withTags(["wcag2a", "wcag2aa", "wcag21aa", "wcag22aa"]).analyze();
+      20 |     if (results.violations.length) await testInfo.attach(`axe-${path.replaceAll("/", "_")}`, { body: JSON.stringify(results.violations, null, 2), contentType: "application/json" });
+    > 21 |     expect.soft(results.violations.map(v => ({ id: v.id, nodes: v.nodes.map(n => n.target) })), path).toEqual([]);
+         |                                                                                                       ^
+      22 |   }
+      23 |   expect(errors).toEqual([]);
+      24 | });
+        at /workspace/desk-setup-store/tests/e2e/audit.spec.ts:21:103
+
+    Error: /privacy-policy/
+
+    expect(received).toEqual(expected) // deep equality
+
+    - Expected  -  1
+    + Received  + 28
+
+    - Array []
+    + Array [
+    +   Object {
+    +     "id": "color-contrast",
+    +     "nodes": Array [
+    +       Array [
+    +         ".breadcrumbs",
+    +       ],
+    +       Array [
+    +         ".page-intro",
+    +       ],
+    +       Array [
+    +         ".policy-banner > p",
+    +       ],
+    +       Array [
+    +         ".policy-date",
+    +       ],
+    +       Array [
+    +         ".footer-location",
+    +       ],
+    +       Array [
+    +         ".footer-bottom > span:nth-child(1)",
+    +       ],
+    +       Array [
+    +         ".footer-demo",
+    +       ],
+    +     ],
+    +   },
+    + ]
+
+      19 |     const results = await new AxeBuilder({ page }).withTags(["wcag2a", "wcag2aa", "wcag21aa", "wcag22aa"]).analyze();
+      20 |     if (results.violations.length) await testInfo.attach(`axe-${path.replaceAll("/", "_")}`, { body: JSON.stringify(results.violations, null, 2), contentType: "application/json" });
+    > 21 |     expect.soft(results.violations.map(v => ({ id: v.id, nodes: v.nodes.map(n => n.target) })), path).toEqual([]);
+         |                                                                                                       ^
+      22 |   }
+      23 |   expect(errors).toEqual([]);
+      24 | });
+        at /workspace/desk-setup-store/tests/e2e/audit.spec.ts:21:103
+
+    Error: /missing/
+
+    expect(received).toEqual(expected) // deep equality
+
+    - Expected  -  1
+    + Received  + 19
+
+    - Array []
+    + Array [
+    +   Object {
+    +     "id": "color-contrast",
+    +     "nodes": Array [
+    +       Array [
+    +         "section > p",
+    +       ],
+    +       Array [
+    +         ".footer-location",
+    +       ],
+    +       Array [
+    +         ".footer-bottom > span:nth-child(1)",
+    +       ],
+    +       Array [
+    +         ".footer-demo",
+    +       ],
+    +     ],
+    +   },
+    + ]
+
+      19 |     const results = await new AxeBuilder({ page }).withTags(["wcag2a", "wcag2aa", "wcag21aa", "wcag22aa"]).analyze();
+      20 |     if (results.violations.length) await testInfo.attach(`axe-${path.replaceAll("/", "_")}`, { body: JSON.stringify(results.violations, null, 2), contentType: "application/json" });
+    > 21 |     expect.soft(results.violations.map(v => ({ id: v.id, nodes: v.nodes.map(n => n.target) })), path).toEqual([]);
+         |                                                                                                       ^
+      22 |   }
+      23 |   expect(errors).toEqual([]);
+      24 | });
+        at /workspace/desk-setup-store/tests/e2e/audit.spec.ts:21:103
+
+    Error: /products/missing/
+
+    expect(received).toEqual(expected) // deep equality
+
+    - Expected  -  1
+    + Received  + 19
+
+    - Array []
+    + Array [
+    +   Object {
+    +     "id": "color-contrast",
+    +     "nodes": Array [
+    +       Array [
+    +         "section > p",
+    +       ],
+    +       Array [
+    +         ".footer-location",
+    +       ],
+    +       Array [
+    +         ".footer-bottom > span:nth-child(1)",
+    +       ],
+    +       Array [
+    +         ".footer-demo",
+    +       ],
+    +     ],
+    +   },
+    + ]
+
+      19 |     const results = await new AxeBuilder({ page }).withTags(["wcag2a", "wcag2aa", "wcag21aa", "wcag22aa"]).analyze();
+      20 |     if (results.violations.length) await testInfo.attach(`axe-${path.replaceAll("/", "_")}`, { body: JSON.stringify(results.violations, null, 2), contentType: "application/json" });
+    > 21 |     expect.soft(results.violations.map(v => ({ id: v.id, nodes: v.nodes.map(n => n.target) })), path).toEqual([]);
+         |                                                                                                       ^
+      22 |   }
+      23 |   expect(errors).toEqual([]);
+      24 | });
+        at /workspace/desk-setup-store/tests/e2e/audit.spec.ts:21:103
+
+    attachment #13: screenshot (image/png) ─────────────────────────────────────────────────────────
+    test-results/audit-every-route-and-erro-5836f--overflow-or-browser-errors-chromium-1440/test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Error Context: test-results/audit-every-route-and-erro-5836f--overflow-or-browser-errors-chromium-1440/error-context.md
+
+    attachment #15: trace (application/zip) ────────────────────────────────────────────────────────
+    test-results/audit-every-route-and-erro-5836f--overflow-or-browser-errors-chromium-1440/trace.zip
+    Usage:
+
+        npx playwright show-trace test-results/audit-every-route-and-erro-5836f--overflow-or-browser-errors-chromium-1440/trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+  17) [chromium-1440] › tests/e2e/audit.spec.ts:42:5 › blank fit answers do not silently become zero and errors are associated with inputs 
+
+    Error: expect(locator).toHaveAttribute(expected) failed
+
+    Locator:  getByLabel('Cables you use every day')
+    Expected: "true"
+    Received: ""
+    Timeout:  5000ms
+
+    Call log:
+      - Expect "toHaveAttribute" getByLabel('Cables you use every day') with timeout 5000ms
+      - waiting for getByLabel('Cables you use every day')
+        14 × locator resolved to <input min="0" step="1" value="" max="100" type="number" id="fit-cables"/>
+           - unexpected value "null"
+
+
+      45 |   await cables.fill("");
+      46 |   await expect(page.getByRole("alert")).toBeVisible();
+    > 47 |   await expect(cables).toHaveAttribute("aria-invalid", "true");
+         |                        ^
+      48 |   await cables.fill("0");
+      49 |   await expect(page.getByRole("alert")).toHaveCount(0);
+      50 |   await page.getByLabel("Clear desk width (mm)").fill("99");
+        at /workspace/desk-setup-store/tests/e2e/audit.spec.ts:47:24
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    test-results/audit-blank-fit-answers-do-c1a15--are-associated-with-inputs-chromium-1440/test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Error Context: test-results/audit-blank-fit-answers-do-c1a15--are-associated-with-inputs-chromium-1440/error-context.md
+
+    attachment #3: trace (application/zip) ─────────────────────────────────────────────────────────
+    test-results/audit-blank-fit-answers-do-c1a15--are-associated-with-inputs-chromium-1440/trace.zip
+    Usage:
+
+        npx playwright show-trace test-results/audit-blank-fit-answers-do-c1a15--are-associated-with-inputs-chromium-1440/trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+  18) [chromium-1440] › tests/e2e/audit.spec.ts:55:5 › populated bag totals, maximum quantity, download contents and accessibility 
+
+    Error: expect(received).toEqual(expected) // deep equality
+
+    - Expected  -  1
+    + Received  + 49
+
+    - Array []
+    + Array [
+    +   Object {
+    +     "id": "color-contrast",
+    +     "nodes": Array [
+    +       Array [
+    +         ".page-intro",
+    +       ],
+    +       Array [
+    +         ".product-category",
+    +       ],
+    +       Array [
+    +         ".cart-item-copy > p",
+    +       ],
+    +       Array [
+    +         ".cart-unit-price",
+    +       ],
+    +       Array [
+    +         "button[aria-label=\"Remove The Cable Keeper\"]",
+    +       ],
+    +       Array [
+    +         ".cart-below-items > .remove-button",
+    +       ],
+    +       Array [
+    +         ".cart-items > .micro-copy",
+    +       ],
+    +       Array [
+    +         ".micro-copy:nth-child(4)",
+    +       ],
+    +       Array [
+    +         ".paypal-slot > p",
+    +       ],
+    +       Array [
+    +         ".micro-copy:nth-child(7)",
+    +       ],
+    +       Array [
+    +         ".checkout-note",
+    +       ],
+    +       Array [
+    +         ".footer-location",
+    +       ],
+    +       Array [
+    +         ".footer-bottom > span:nth-child(1)",
+    +       ],
+    +       Array [
+    +         ".footer-demo",
+    +       ],
+    +     ],
+    +   },
+    + ]
+
+      69 |   expect(JSON.parse(Buffer.concat(chunks).toString())).toEqual({ schema: "desk-setup-quote-v1", currency: "AUD", mode: "demo", items: [{ productId: "demo-cable-keeper", quantity: 10 }], paymentRequested: false });
+      70 |   const scan = await new AxeBuilder({ page }).withTags(["wcag2a", "wcag2aa", "wcag21aa", "wcag22aa"]).analyze();
+    > 71 |   expect(scan.violations.map(v => ({ id: v.id, nodes: v.nodes.map(n => n.target) }))).toEqual([]);
+         |                                                                                       ^
+      72 |   expect(await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth + 1)).toBe(true);
+      73 |   if ([390, 1440].includes(page.viewportSize()!.width)) await page.screenshot({ path: `docs/qa/2026-11-14/cart-${testInfo.project.name}.png`, fullPage: true });
+      74 | });
+        at /workspace/desk-setup-store/tests/e2e/audit.spec.ts:71:87
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    test-results/audit-populated-bag-totals-af10b--contents-and-accessibility-chromium-1440/test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Error Context: test-results/audit-populated-bag-totals-af10b--contents-and-accessibility-chromium-1440/error-context.md
+
+    attachment #3: trace (application/zip) ─────────────────────────────────────────────────────────
+    test-results/audit-populated-bag-totals-af10b--contents-and-accessibility-chromium-1440/trace.zip
+    Usage:
+
+        npx playwright show-trace test-results/audit-populated-bag-totals-af10b--contents-and-accessibility-chromium-1440/trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+  18 failed
+    [chromium-320] › tests/e2e/audit.spec.ts:10:5 › every route and error page passes WCAG A/AA scan with no overflow or browser errors 
+    [chromium-320] › tests/e2e/audit.spec.ts:26:5 › mobile menu supports Escape, focus restoration and viewport changes 
+    [chromium-320] › tests/e2e/audit.spec.ts:42:5 › blank fit answers do not silently become zero and errors are associated with inputs 
+    [chromium-320] › tests/e2e/audit.spec.ts:55:5 › populated bag totals, maximum quantity, download contents and accessibility 
+    [chromium-375] › tests/e2e/audit.spec.ts:10:5 › every route and error page passes WCAG A/AA scan with no overflow or browser errors 
+    [chromium-375] › tests/e2e/audit.spec.ts:26:5 › mobile menu supports Escape, focus restoration and viewport changes 
+    [chromium-375] › tests/e2e/audit.spec.ts:42:5 › blank fit answers do not silently become zero and errors are associated with inputs 
+    [chromium-375] › tests/e2e/audit.spec.ts:55:5 › populated bag totals, maximum quantity, download contents and accessibility 
+    [chromium-390] › tests/e2e/audit.spec.ts:10:5 › every route and error page passes WCAG A/AA scan with no overflow or browser errors 
+    [chromium-390] › tests/e2e/audit.spec.ts:26:5 › mobile menu supports Escape, focus restoration and viewport changes 
+    [chromium-390] › tests/e2e/audit.spec.ts:42:5 › blank fit answers do not silently become zero and errors are associated with inputs 
+    [chromium-390] › tests/e2e/audit.spec.ts:55:5 › populated bag totals, maximum quantity, download contents and accessibility 
+    [chromium-768] › tests/e2e/audit.spec.ts:10:5 › every route and error page passes WCAG A/AA scan with no overflow or browser errors 
+    [chromium-768] › tests/e2e/audit.spec.ts:42:5 › blank fit answers do not silently become zero and errors are associated with inputs 
+    [chromium-768] › tests/e2e/audit.spec.ts:55:5 › populated bag totals, maximum quantity, download contents and accessibility 
+    [chromium-1440] › tests/e2e/audit.spec.ts:10:5 › every route and error page passes WCAG A/AA scan with no overflow or browser errors 
+    [chromium-1440] › tests/e2e/audit.spec.ts:42:5 › blank fit answers do not silently become zero and errors are associated with inputs 
+    [chromium-1440] › tests/e2e/audit.spec.ts:55:5 › populated bag totals, maximum quantity, download contents and accessibility 
+  22 passed (1.3m)

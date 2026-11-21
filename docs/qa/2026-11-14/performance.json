@@ -1,0 +1,875 @@
+{
+  "observedAt": "2026-11-14T08:34:26.412Z",
+  "conditions": "Local static preview; Chromium; one cold context per viewport, subsequent route navigation shares cache; CPU 4x throttle, latency 150ms, 500KB/s down, 250KB/s up. Preview has no HTTP compression; gzip bytes are separately calculated estimates. Lab observations are not field Core Web Vitals or a Lighthouse score.",
+  "results": [
+    {
+      "width": 390,
+      "path": "/",
+      "vitals": {
+        "lcp": 688,
+        "cls": 0
+      },
+      "resources": [
+        {
+          "path": "/images/desk-scene.svg",
+          "bytes": 7332,
+          "ms": 178
+        },
+        {
+          "path": "/_next/static/chunks/webpack-9ca43f4ce1bb8938.js",
+          "bytes": 3326,
+          "ms": 209.09999999997672
+        },
+        {
+          "path": "/_next/static/css/54f7dc8f9f620235.css",
+          "bytes": 33042,
+          "ms": 374.69999999995343
+        },
+        {
+          "path": "/_next/static/chunks/4bd1b696-c7408084347438ae.js",
+          "bytes": 203721,
+          "ms": 1177.3000000000466
+        },
+        {
+          "path": "/_next/static/chunks/794-da41d197ba64135d.js",
+          "bytes": 243104,
+          "ms": 1261.5999999999767
+        },
+        {
+          "path": "/_next/static/chunks/main-app-f52d8cbfe2c9411d.js",
+          "bytes": 511,
+          "ms": 196
+        },
+        {
+          "path": "/_next/static/chunks/500-fc3b64d9ff4a32a7.js",
+          "bytes": 7642,
+          "ms": 412.5
+        },
+        {
+          "path": "/_next/static/chunks/app/layout-a7987d5306224bc4.js",
+          "bytes": 9618,
+          "ms": 447.70000000006985
+        },
+        {
+          "path": "/_next/static/chunks/437-0f1f00a941b2a3b0.js",
+          "bytes": 14384,
+          "ms": 483.5
+        },
+        {
+          "path": "/_next/static/chunks/app/page-daabb29c50e36dc6.js",
+          "bytes": 9817,
+          "ms": 585.0999999999767
+        },
+        {
+          "path": "/images/cable-keeper.svg",
+          "bytes": 4021,
+          "ms": 184.80000000004657
+        },
+        {
+          "path": "/images/desk-shelf.svg",
+          "bytes": 3177,
+          "ms": 190.30000000004657
+        },
+        {
+          "path": "/images/tech-pouch.svg",
+          "bytes": 3392,
+          "ms": 198.70000000006985
+        },
+        {
+          "path": "/",
+          "bytes": 0,
+          "ms": 153.90000000002328
+        },
+        {
+          "path": "/cart/",
+          "bytes": 0,
+          "ms": 155.40000000002328
+        },
+        {
+          "path": "/__next._tree.txt",
+          "bytes": 164,
+          "ms": 154.5
+        },
+        {
+          "path": "/cart/__next._tree.txt",
+          "bytes": 211,
+          "ms": 153.70000000006985
+        },
+        {
+          "path": "/__next.__PAGE__.txt",
+          "bytes": 12331,
+          "ms": 193.59999999997672
+        },
+        {
+          "path": "/cart/__next.cart.__PAGE__.txt",
+          "bytes": 6567,
+          "ms": 178.39999999990687
+        },
+        {
+          "path": "/_next/static/chunks/app/cart/page-4ca6357dbfc37e58.js",
+          "bytes": 12626,
+          "ms": 177.69999999995343
+        }
+      ],
+      "navigation": [
+        {
+          "domContentLoadedMs": 661.1999999999534,
+          "loadMs": 1612.6999999999534
+        }
+      ],
+      "scriptCount": 9,
+      "scriptRawBytes": 504749,
+      "scriptGzipBytes": 155138
+    },
+    {
+      "width": 390,
+      "path": "/products/cable-keeper/",
+      "vitals": {
+        "lcp": 628,
+        "cls": 0
+      },
+      "resources": [
+        {
+          "path": "/images/cable-keeper.svg",
+          "bytes": 4021,
+          "ms": 165.70000000006985
+        },
+        {
+          "path": "/_next/static/css/54f7dc8f9f620235.css",
+          "bytes": 33042,
+          "ms": 384.5
+        },
+        {
+          "path": "/_next/static/chunks/webpack-9ca43f4ce1bb8938.js",
+          "bytes": 3326,
+          "ms": 192.40000000002328
+        },
+        {
+          "path": "/_next/static/chunks/4bd1b696-c7408084347438ae.js",
+          "bytes": 203721,
+          "ms": 1138
+        },
+        {
+          "path": "/_next/static/chunks/794-da41d197ba64135d.js",
+          "bytes": 243104,
+          "ms": 1221.5
+        },
+        {
+          "path": "/_next/static/chunks/main-app-f52d8cbfe2c9411d.js",
+          "bytes": 511,
+          "ms": 198.39999999990687
+        },
+        {
+          "path": "/_next/static/chunks/500-fc3b64d9ff4a32a7.js",
+          "bytes": 7642,
+          "ms": 395.89999999990687
+        },
+        {
+          "path": "/_next/static/chunks/app/layout-a7987d5306224bc4.js",
+          "bytes": 9618,
+          "ms": 441.0999999999767
+        },
+        {
+          "path": "/_next/static/chunks/437-0f1f00a941b2a3b0.js",
+          "bytes": 14384,
+          "ms": 474.0999999999767
+        },
+        {
+          "path": "/_next/static/chunks/app/products/%5Bslug%5D/page-4f48857498ea7409.js",
+          "bytes": 8059,
+          "ms": 585.5
+        },
+        {
+          "path": "/",
+          "bytes": 0,
+          "ms": 155
+        },
+        {
+          "path": "/cart/",
+          "bytes": 0,
+          "ms": 153.90000000002328
+        },
+        {
+          "path": "/__next._tree.txt",
+          "bytes": 164,
+          "ms": 152.89999999990687
+        },
+        {
+          "path": "/cart/__next._tree.txt",
+          "bytes": 211,
+          "ms": 152.79999999993015
+        },
+        {
+          "path": "/__next.__PAGE__.txt",
+          "bytes": 12331,
+          "ms": 192.59999999997672
+        },
+        {
+          "path": "/cart/__next.cart.__PAGE__.txt",
+          "bytes": 6567,
+          "ms": 177.59999999997672
+        },
+        {
+          "path": "/_next/static/chunks/app/page-daabb29c50e36dc6.js",
+          "bytes": 9817,
+          "ms": 188.80000000004657
+        },
+        {
+          "path": "/_next/static/chunks/app/cart/page-4ca6357dbfc37e58.js",
+          "bytes": 12626,
+          "ms": 197.59999999997672
+        }
+      ],
+      "navigation": [
+        {
+          "domContentLoadedMs": 609.0999999999767,
+          "loadMs": 1519.5
+        }
+      ],
+      "scriptCount": 10,
+      "scriptRawBytes": 512808,
+      "scriptGzipBytes": 158544
+    },
+    {
+      "width": 390,
+      "path": "/cart/",
+      "vitals": {
+        "lcp": 1708,
+        "cls": 0.03855771604938271
+      },
+      "resources": [
+        {
+          "path": "/_next/static/css/54f7dc8f9f620235.css",
+          "bytes": 33042,
+          "ms": 385.5
+        },
+        {
+          "path": "/_next/static/chunks/webpack-9ca43f4ce1bb8938.js",
+          "bytes": 3326,
+          "ms": 169.09999999997672
+        },
+        {
+          "path": "/_next/static/chunks/main-app-f52d8cbfe2c9411d.js",
+          "bytes": 511,
+          "ms": 178.20000000006985
+        },
+        {
+          "path": "/_next/static/chunks/500-fc3b64d9ff4a32a7.js",
+          "bytes": 7642,
+          "ms": 240.90000000002328
+        },
+        {
+          "path": "/_next/static/chunks/4bd1b696-c7408084347438ae.js",
+          "bytes": 203721,
+          "ms": 1162.6000000000931
+        },
+        {
+          "path": "/_next/static/chunks/794-da41d197ba64135d.js",
+          "bytes": 243104,
+          "ms": 1245.9000000000233
+        },
+        {
+          "path": "/_next/static/chunks/app/layout-a7987d5306224bc4.js",
+          "bytes": 9618,
+          "ms": 419.79999999993015
+        },
+        {
+          "path": "/_next/static/chunks/437-0f1f00a941b2a3b0.js",
+          "bytes": 14384,
+          "ms": 463.19999999995343
+        },
+        {
+          "path": "/_next/static/chunks/app/page-daabb29c50e36dc6.js",
+          "bytes": 9817,
+          "ms": 474.80000000004657
+        },
+        {
+          "path": "/_next/static/chunks/app/cart/page-4ca6357dbfc37e58.js",
+          "bytes": 12626,
+          "ms": 613.4000000000233
+        },
+        {
+          "path": "/",
+          "bytes": 0,
+          "ms": 154.5
+        },
+        {
+          "path": "/cart/",
+          "bytes": 0,
+          "ms": 154.10000000009313
+        },
+        {
+          "path": "/desk-fit/",
+          "bytes": 0,
+          "ms": 158.30000000004657
+        },
+        {
+          "path": "/shipping-policy/",
+          "bytes": 0,
+          "ms": 154.20000000006985
+        },
+        {
+          "path": "/__next._tree.txt",
+          "bytes": 164,
+          "ms": 154.5
+        },
+        {
+          "path": "/cart/__next._tree.txt",
+          "bytes": 211,
+          "ms": 154.90000000002328
+        },
+        {
+          "path": "/shipping-policy/__next._tree.txt",
+          "bytes": 357,
+          "ms": 155.80000000004657
+        },
+        {
+          "path": "/desk-fit/__next._tree.txt",
+          "bytes": 215,
+          "ms": 156
+        },
+        {
+          "path": "/return-policy/",
+          "bytes": 0,
+          "ms": 154.79999999993015
+        },
+        {
+          "path": "/privacy-policy/",
+          "bytes": 0,
+          "ms": 155.20000000006985
+        },
+        {
+          "path": "/contact/",
+          "bytes": 0,
+          "ms": 154
+        },
+        {
+          "path": "/__next.__PAGE__.txt",
+          "bytes": 12331,
+          "ms": 178.5
+        },
+        {
+          "path": "/return-policy/__next._tree.txt",
+          "bytes": 355,
+          "ms": 155.29999999993015
+        },
+        {
+          "path": "/privacy-policy/__next._tree.txt",
+          "bytes": 356,
+          "ms": 153.80000000004657
+        },
+        {
+          "path": "/contact/__next._tree.txt",
+          "bytes": 214,
+          "ms": 152.80000000004657
+        },
+        {
+          "path": "/cart/__next.cart.__PAGE__.txt",
+          "bytes": 6567,
+          "ms": 166.80000000004657
+        },
+        {
+          "path": "/desk-fit/__next.desk-fit.__PAGE__.txt",
+          "bytes": 6610,
+          "ms": 174.90000000002328
+        },
+        {
+          "path": "/shipping-policy/__next.$d$policy.__PAGE__.txt",
+          "bytes": 10447,
+          "ms": 198.09999999997672
+        },
+        {
+          "path": "/return-policy/__next.$d$policy.__PAGE__.txt",
+          "bytes": 10399,
+          "ms": 201.19999999995343
+        },
+        {
+          "path": "/privacy-policy/__next.$d$policy.__PAGE__.txt",
+          "bytes": 11079,
+          "ms": 175.19999999995343
+        },
+        {
+          "path": "/_next/static/chunks/app/desk-fit/page-308e84c55fd1b680.js",
+          "bytes": 11432,
+          "ms": 194.40000000002328
+        },
+        {
+          "path": "/contact/__next.contact.__PAGE__.txt",
+          "bytes": 8769,
+          "ms": 187.90000000002328
+        },
+        {
+          "path": "/_next/static/chunks/app/%5Bpolicy%5D/page-0407286cad5f3566.js",
+          "bytes": 190,
+          "ms": 157.29999999993015
+        }
+      ],
+      "navigation": [
+        {
+          "domContentLoadedMs": 588.8999999999069,
+          "loadMs": 1595.0999999999767
+        }
+      ],
+      "scriptCount": 11,
+      "scriptRawBytes": 516371,
+      "scriptGzipBytes": 159890
+    },
+    {
+      "width": 1440,
+      "path": "/",
+      "vitals": {
+        "lcp": 628,
+        "cls": 0
+      },
+      "resources": [
+        {
+          "path": "/images/desk-scene.svg",
+          "bytes": 7332,
+          "ms": 191.90000000002328
+        },
+        {
+          "path": "/_next/static/css/54f7dc8f9f620235.css",
+          "bytes": 33042,
+          "ms": 370.5999999999767
+        },
+        {
+          "path": "/_next/static/chunks/webpack-9ca43f4ce1bb8938.js",
+          "bytes": 3326,
+          "ms": 208.59999999997672
+        },
+        {
+          "path": "/_next/static/chunks/4bd1b696-c7408084347438ae.js",
+          "bytes": 203721,
+          "ms": 1181.9000000000233
+        },
+        {
+          "path": "/_next/static/chunks/main-app-f52d8cbfe2c9411d.js",
+          "bytes": 511,
+          "ms": 197.80000000004657
+        },
+        {
+          "path": "/_next/static/chunks/794-da41d197ba64135d.js",
+          "bytes": 243104,
+          "ms": 1265.4000000000233
+        },
+        {
+          "path": "/_next/static/chunks/500-fc3b64d9ff4a32a7.js",
+          "bytes": 7642,
+          "ms": 419.5
+        },
+        {
+          "path": "/_next/static/chunks/app/layout-a7987d5306224bc4.js",
+          "bytes": 9618,
+          "ms": 446.4000000000233
+        },
+        {
+          "path": "/_next/static/chunks/437-0f1f00a941b2a3b0.js",
+          "bytes": 14384,
+          "ms": 482.29999999993015
+        },
+        {
+          "path": "/_next/static/chunks/app/page-daabb29c50e36dc6.js",
+          "bytes": 9817,
+          "ms": 578
+        },
+        {
+          "path": "/images/cable-keeper.svg",
+          "bytes": 4021,
+          "ms": 181.09999999997672
+        },
+        {
+          "path": "/images/desk-shelf.svg",
+          "bytes": 3177,
+          "ms": 205.19999999995343
+        },
+        {
+          "path": "/images/tech-pouch.svg",
+          "bytes": 3392,
+          "ms": 238
+        },
+        {
+          "path": "/images/desk-detail.svg",
+          "bytes": 3551,
+          "ms": 334.29999999993015
+        },
+        {
+          "path": "/",
+          "bytes": 0,
+          "ms": 154.19999999995343
+        },
+        {
+          "path": "/contact/",
+          "bytes": 0,
+          "ms": 159.30000000004657
+        },
+        {
+          "path": "/cart/",
+          "bytes": 0,
+          "ms": 156.70000000006985
+        },
+        {
+          "path": "/__next._tree.txt",
+          "bytes": 164,
+          "ms": 153.5
+        },
+        {
+          "path": "/cart/__next._tree.txt",
+          "bytes": 211,
+          "ms": 153.30000000004657
+        },
+        {
+          "path": "/contact/__next._tree.txt",
+          "bytes": 214,
+          "ms": 156
+        },
+        {
+          "path": "/__next.__PAGE__.txt",
+          "bytes": 12331,
+          "ms": 211.40000000002328
+        },
+        {
+          "path": "/cart/__next.cart.__PAGE__.txt",
+          "bytes": 6567,
+          "ms": 190.79999999993015
+        },
+        {
+          "path": "/contact/__next.contact.__PAGE__.txt",
+          "bytes": 8769,
+          "ms": 203.80000000004657
+        },
+        {
+          "path": "/_next/static/chunks/app/cart/page-4ca6357dbfc37e58.js",
+          "bytes": 12626,
+          "ms": 179.90000000002328
+        },
+        {
+          "path": "/_next/static/chunks/app/contact/page-0407286cad5f3566.js",
+          "bytes": 190,
+          "ms": 157.30000000004657
+        }
+      ],
+      "navigation": [
+        {
+          "domContentLoadedMs": 607.7999999999302,
+          "loadMs": 1649.5999999999767
+        }
+      ],
+      "scriptCount": 10,
+      "scriptRawBytes": 504939,
+      "scriptGzipBytes": 155304
+    },
+    {
+      "width": 1440,
+      "path": "/products/cable-keeper/",
+      "vitals": {
+        "lcp": 620,
+        "cls": 0
+      },
+      "resources": [
+        {
+          "path": "/images/cable-keeper.svg",
+          "bytes": 4021,
+          "ms": 166.40000000002328
+        },
+        {
+          "path": "/_next/static/css/54f7dc8f9f620235.css",
+          "bytes": 33042,
+          "ms": 381.29999999993015
+        },
+        {
+          "path": "/_next/static/chunks/webpack-9ca43f4ce1bb8938.js",
+          "bytes": 3326,
+          "ms": 198.09999999997672
+        },
+        {
+          "path": "/_next/static/chunks/4bd1b696-c7408084347438ae.js",
+          "bytes": 203721,
+          "ms": 1139.5999999999767
+        },
+        {
+          "path": "/_next/static/chunks/main-app-f52d8cbfe2c9411d.js",
+          "bytes": 511,
+          "ms": 195.30000000004657
+        },
+        {
+          "path": "/_next/static/chunks/500-fc3b64d9ff4a32a7.js",
+          "bytes": 7642,
+          "ms": 401.70000000006985
+        },
+        {
+          "path": "/_next/static/chunks/794-da41d197ba64135d.js",
+          "bytes": 243104,
+          "ms": 1223.9000000000233
+        },
+        {
+          "path": "/_next/static/chunks/app/layout-a7987d5306224bc4.js",
+          "bytes": 9618,
+          "ms": 446.5
+        },
+        {
+          "path": "/_next/static/chunks/437-0f1f00a941b2a3b0.js",
+          "bytes": 14384,
+          "ms": 476.29999999993015
+        },
+        {
+          "path": "/_next/static/chunks/app/products/%5Bslug%5D/page-4f48857498ea7409.js",
+          "bytes": 8059,
+          "ms": 584.8999999999069
+        },
+        {
+          "path": "/",
+          "bytes": 0,
+          "ms": 153.39999999990687
+        },
+        {
+          "path": "/contact/",
+          "bytes": 0,
+          "ms": 155.90000000002328
+        },
+        {
+          "path": "/cart/",
+          "bytes": 0,
+          "ms": 158.09999999997672
+        },
+        {
+          "path": "/__next._tree.txt",
+          "bytes": 164,
+          "ms": 155.59999999997672
+        },
+        {
+          "path": "/contact/__next._tree.txt",
+          "bytes": 214,
+          "ms": 155.19999999995343
+        },
+        {
+          "path": "/cart/__next._tree.txt",
+          "bytes": 211,
+          "ms": 156
+        },
+        {
+          "path": "/__next.__PAGE__.txt",
+          "bytes": 12331,
+          "ms": 210.90000000002328
+        },
+        {
+          "path": "/contact/__next.contact.__PAGE__.txt",
+          "bytes": 8769,
+          "ms": 198.59999999997672
+        },
+        {
+          "path": "/cart/__next.cart.__PAGE__.txt",
+          "bytes": 6567,
+          "ms": 193.40000000002328
+        },
+        {
+          "path": "/_next/static/chunks/app/page-daabb29c50e36dc6.js",
+          "bytes": 9817,
+          "ms": 191.40000000002328
+        },
+        {
+          "path": "/_next/static/chunks/app/cart/page-4ca6357dbfc37e58.js",
+          "bytes": 12626,
+          "ms": 199.29999999993015
+        },
+        {
+          "path": "/_next/static/chunks/app/contact/page-0407286cad5f3566.js",
+          "bytes": 190,
+          "ms": 157.69999999995343
+        }
+      ],
+      "navigation": [
+        {
+          "domContentLoadedMs": 606.5,
+          "loadMs": 1550.0999999999767
+        }
+      ],
+      "scriptCount": 11,
+      "scriptRawBytes": 512998,
+      "scriptGzipBytes": 158710
+    },
+    {
+      "width": 1440,
+      "path": "/cart/",
+      "vitals": {
+        "lcp": 1656,
+        "cls": 0.016161988811728395
+      },
+      "resources": [
+        {
+          "path": "/_next/static/css/54f7dc8f9f620235.css",
+          "bytes": 33042,
+          "ms": 398.80000000004657
+        },
+        {
+          "path": "/_next/static/chunks/webpack-9ca43f4ce1bb8938.js",
+          "bytes": 3326,
+          "ms": 179.5
+        },
+        {
+          "path": "/_next/static/chunks/main-app-f52d8cbfe2c9411d.js",
+          "bytes": 511,
+          "ms": 171
+        },
+        {
+          "path": "/_next/static/chunks/500-fc3b64d9ff4a32a7.js",
+          "bytes": 7642,
+          "ms": 236.19999999995343
+        },
+        {
+          "path": "/_next/static/chunks/app/layout-a7987d5306224bc4.js",
+          "bytes": 9618,
+          "ms": 425.89999999990687
+        },
+        {
+          "path": "/_next/static/chunks/437-0f1f00a941b2a3b0.js",
+          "bytes": 14384,
+          "ms": 467.5
+        },
+        {
+          "path": "/_next/static/chunks/4bd1b696-c7408084347438ae.js",
+          "bytes": 203721,
+          "ms": 1154.7999999999302
+        },
+        {
+          "path": "/_next/static/chunks/794-da41d197ba64135d.js",
+          "bytes": 243104,
+          "ms": 1244.0999999999767
+        },
+        {
+          "path": "/_next/static/chunks/app/page-daabb29c50e36dc6.js",
+          "bytes": 9817,
+          "ms": 479.30000000004657
+        },
+        {
+          "path": "/_next/static/chunks/app/cart/page-4ca6357dbfc37e58.js",
+          "bytes": 12626,
+          "ms": 626.9000000000233
+        },
+        {
+          "path": "/",
+          "bytes": 0,
+          "ms": 154.80000000004657
+        },
+        {
+          "path": "/contact/",
+          "bytes": 0,
+          "ms": 157.29999999993015
+        },
+        {
+          "path": "/cart/",
+          "bytes": 0,
+          "ms": 159.19999999995343
+        },
+        {
+          "path": "/desk-fit/",
+          "bytes": 0,
+          "ms": 161.40000000002328
+        },
+        {
+          "path": "/__next._tree.txt",
+          "bytes": 164,
+          "ms": 155
+        },
+        {
+          "path": "/contact/__next._tree.txt",
+          "bytes": 214,
+          "ms": 155.60000000009313
+        },
+        {
+          "path": "/cart/__next._tree.txt",
+          "bytes": 211,
+          "ms": 156.90000000002328
+        },
+        {
+          "path": "/desk-fit/__next._tree.txt",
+          "bytes": 215,
+          "ms": 159.19999999995343
+        },
+        {
+          "path": "/shipping-policy/",
+          "bytes": 0,
+          "ms": 154.59999999997672
+        },
+        {
+          "path": "/return-policy/",
+          "bytes": 0,
+          "ms": 153
+        },
+        {
+          "path": "/privacy-policy/",
+          "bytes": 0,
+          "ms": 153.20000000006985
+        },
+        {
+          "path": "/__next.__PAGE__.txt",
+          "bytes": 12331,
+          "ms": 175.40000000002328
+        },
+        {
+          "path": "/shipping-policy/__next._tree.txt",
+          "bytes": 357,
+          "ms": 153.60000000009313
+        },
+        {
+          "path": "/return-policy/__next._tree.txt",
+          "bytes": 355,
+          "ms": 153.80000000004657
+        },
+        {
+          "path": "/privacy-policy/__next._tree.txt",
+          "bytes": 356,
+          "ms": 155
+        },
+        {
+          "path": "/contact/__next.contact.__PAGE__.txt",
+          "bytes": 8769,
+          "ms": 168.09999999997672
+        },
+        {
+          "path": "/cart/__next.cart.__PAGE__.txt",
+          "bytes": 6567,
+          "ms": 180.5
+        },
+        {
+          "path": "/desk-fit/__next.desk-fit.__PAGE__.txt",
+          "bytes": 6610,
+          "ms": 187.79999999993015
+        },
+        {
+          "path": "/shipping-policy/__next.$d$policy.__PAGE__.txt",
+          "bytes": 10447,
+          "ms": 200.59999999997672
+        },
+        {
+          "path": "/_next/static/chunks/app/contact/page-0407286cad5f3566.js",
+          "bytes": 190,
+          "ms": 154.40000000002328
+        },
+        {
+          "path": "/return-policy/__next.$d$policy.__PAGE__.txt",
+          "bytes": 10399,
+          "ms": 177.19999999995343
+        },
+        {
+          "path": "/privacy-policy/__next.$d$policy.__PAGE__.txt",
+          "bytes": 11079,
+          "ms": 187.5
+        },
+        {
+          "path": "/_next/static/chunks/app/desk-fit/page-308e84c55fd1b680.js",
+          "bytes": 11432,
+          "ms": 189.09999999997672
+        }
+      ],
+      "navigation": [
+        {
+          "domContentLoadedMs": 569.9000000000233,
+          "loadMs": 1549.9000000000233
+        }
+      ],
+      "scriptCount": 11,
+      "scriptRawBytes": 516371,
+      "scriptGzipBytes": 159890
+    }
+  ]
+}

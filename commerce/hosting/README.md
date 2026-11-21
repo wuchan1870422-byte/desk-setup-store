@@ -10,6 +10,8 @@ node commerce/hosting/build.mjs <existing-backend-project-id>
 
 Use the exact backend project ID returned by Sites. The build rejects the storefront project ID and produces `commerce/dist/site/server/index.js` plus its own `.openai/hosting.json` and schema-only migrations. Output is ignored by Git and contains no runtime credentials. This is a reproducible artifact build, not a deployment command.
 
+Run `npm run check:commerce-hosting` to build with a synthetic project ID, apply the packaged migrations to in-memory SQLite, and verify that the bundled Worker keeps orders disabled by default. The GitHub workflow runs the same check without provider credentials.
+
 For the supported Sites source workflow, use a dedicated backend checkout with its own preserved project ID. Copy the `commerce/` core, this profile's `entry.ts` as `worker/index.ts` (change the import to `../commerce/worker`), the SQL and journal under `drizzle/`, and a build command which bundles the entrypoint into `dist/server/index.js`. Open that checkout with the Sites source helper before editing, push its source, package from the exact pushed commit, then save and deploy the matching version. Do not push the storefront repository to the backend's source remote or overwrite either Site identity. Configure runtime values through server secret storage, never Git or build arguments.
 
 Keep the backend owner-private while running authenticated manual tests. External PayPal callbacks cannot reach an owner-private Site; expose the verified callback only after the intended access policy is approved. Order-management routes retain their own admin authentication even if a callback becomes externally reachable.
